@@ -9,6 +9,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Menu menu;
+//adding nawigation drawer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

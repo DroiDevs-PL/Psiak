@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.activity_main)
     RelativeLayout activityMain;
     private Menu menu;
+//adding nawigation drawer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -67,6 +67,16 @@
             android:textSize="24sp"
             android:textStyle="bold"/>
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/noDogs"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="13dp"
+            android:text="Json do wyplucia"/>
+
 
     </RelativeLayout>
 

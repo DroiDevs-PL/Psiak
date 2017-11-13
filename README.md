@@ -1,10 +1,12 @@
-## Welcome to GitHub Pages
+## Psiak
+![BlachyPL logo](http://hd.wallpaperswide.com/thumbs/sad_boxer_dog-t2.jpg)
+
 
 You can use the [editor on GitHub](https://github.com/DroiDevs-PL/Psiak/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Cel aplikacji
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 

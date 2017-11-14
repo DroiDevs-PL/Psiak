@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-
+//region ui components declarations
     @BindView(R.id.doggie)
     ImageView doggie;
     @BindView(R.id.noDogs)
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton btnLike;
     @BindView(R.id.btn_dislike)
     FloatingActionButton btnDislike;
+//endregion
 
     //Todo implement rest https://www.journaldev.com/12648/navigationview-android
     private Menu menu;
@@ -75,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     //region navigationDrawer
     private void setUpNavigationDrawer() {
-        addDrawerItems();
         navList.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -85,11 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
-
-
-    private void addDrawerItems() {
-//        navList.setAdapter( new ArrayAdapter<String>(this, R.layout.drawer_list_item, navigationItems));
     }
     //endregion
 

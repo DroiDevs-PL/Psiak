@@ -1,5 +1,6 @@
 ## Psiak
 ![BlachyPL logo](http://hd.wallpaperswide.com/thumbs/sad_boxer_dog-t2.jpg)
+##
 **"Psiak"** to aplikacja stworzona przez grupę zapaleńców, którzy postanowili stworzyć społeczny projekt. Za pomocą tej aplikacji, możesz przeglądać zdjęcia i opisy zwierząt znajdujących się pod opieką schronisk. Użytkownik może otrzymać więcej informacji na temat zwierząt, które go zainteresują (miejsce pobytu, stosunek do innych zwierząt, bądź dzieci, itp.).
 
 ## Cel aplikacji

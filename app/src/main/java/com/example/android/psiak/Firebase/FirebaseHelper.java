@@ -36,4 +36,18 @@ public class FirebaseHelper {
 
         dogsReference.push().setValue(dog);
     }
+
+    /**
+     * Write single dog object to "dogs" database
+     * @param name Dog's first name
+     * @param category ???
+     * @param description Additional inforamtions about the dog
+     */
+
+    public void writeNewDog(String name, String category, String description) {
+
+        TestDogFirebase dog = new TestDogFirebase(name, category, description);
+
+        dogsReference.push().setValue(dog);
+    }
 }

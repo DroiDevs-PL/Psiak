@@ -12,7 +12,14 @@ public class FirebaseHelper {
 
     // region Properties
 
+    /**
+     * Reference to Firebase database
+     */
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    /**
+     * Reference to "dogs" end point in database
+     */
     private DatabaseReference dogsReference = database.getReference("dogs");
 
     // endregion
@@ -24,6 +31,7 @@ public class FirebaseHelper {
      */
 
     public void writeNewDog(String name, String locationCity) {
+
         TestDogFirebase dog = new TestDogFirebase(name, locationCity);
 
         dogsReference.push().setValue(dog);

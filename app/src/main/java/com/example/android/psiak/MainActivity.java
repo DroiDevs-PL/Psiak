@@ -19,8 +19,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.settings) {
-            Toast.makeText(this, "Tutaj będą ustawienia!", Toast.LENGTH_SHORT).show();
+        switch (id) {
+            case (R.id.settings):
+                Toast.makeText(this, "Tutaj będą ustawienia!", Toast.LENGTH_SHORT).show();
+
+            case R.id.firebaseTest:
+
         }
         return super.onOptionsItemSelected(item);
     }

@@ -44,4 +44,12 @@ dependencies {
     implementation 'com.jakewharton:butterknife:5.1.1'
     implementation 'com.google.code.gson:gson:2.2.4'
     implementation 'com.squareup.picasso:picasso:2.3.2'
+
+    //autovalue
+    annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
+    provided 'com.jakewharton.auto.value:auto-value-annotations:1.4'
+    annotationProcessor 'com.ryanharter.auto.value:auto-value-parcel:0.2.5'
+    annotationProcessor 'com.ryanharter.auto.value:auto-value-gson:0.6.0'
+    provided 'com.ryanharter.auto.value:auto-value-gson-annotations:0.6.0'
+
 }

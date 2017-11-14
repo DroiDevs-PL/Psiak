@@ -7,9 +7,8 @@ You can use the [editor on GitHub](https://github.com/DroiDevs-PL/Psiak/edit/mas
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Cel aplikacji
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
+Aplikacja została stworzona, aby uławtić proces adopcji zwierząt ze schroniska.
+![BlachyPL logo](https://i.imgur.com/XZeO0nP.png)
 ```markdown
 Syntax highlighted code block
 

@@ -1,5 +1,6 @@
 package com.example.android.psiak;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -24,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Tutaj będą ustawienia!", Toast.LENGTH_SHORT).show();
 
             case R.id.firebaseTest:
-
+                Intent intent = new Intent(this, FirebaseTesting.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

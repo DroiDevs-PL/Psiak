@@ -6,4 +6,8 @@
     <string name="firebaseTest">Firebase Test</string>
     <string name="title_activity_firebase_testing">FirebaseTesting</string>
     <string name="add_random_dog">Add random dog</string>
+    <string name="add_new_dog">Add New Dog</string>
+    <string name="dog_name">Dog name</string>
+    <string name="dog_category">Dog category</string>
+    <string name="dog_description">Dog description</string>
 </resources>

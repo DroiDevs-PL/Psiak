@@ -8,4 +8,15 @@
     tools:context="com.example.android.psiak.FirebaseTesting"
     tools:showIn="@layout/activity_firebase_testing">
 
+    <Button
+        android:id="@+id/btn_add_random_dog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/add_random_dog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

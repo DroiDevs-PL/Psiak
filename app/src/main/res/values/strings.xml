@@ -5,4 +5,5 @@
     <string name="rate">Oceń aplikację</string>
     <string name="firebaseTest">Firebase Test</string>
     <string name="title_activity_firebase_testing">FirebaseTesting</string>
+    <string name="add_random_dog">Add random dog</string>
 </resources>

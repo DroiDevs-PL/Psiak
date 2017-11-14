@@ -10,12 +10,22 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FirebaseHelper {
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getReference("dogs");
+    // region Properties
 
-    public void writeNewDog(String dogID, String name, String locationCity) {
-        TestDogFirebase user = new TestDogFirebase(name, locationCity);
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference dogsReference = database.getReference("dogs");
 
-        databaseReference.child(dogID).setValue(user);
+    // endregion
+
+    /**
+     * Write single dog object to "dogs" database
+     * @param name Dog's first name
+     * @param locationCity Dog's birth place
+     */
+
+    public void writeNewDog(String name, String locationCity) {
+        TestDogFirebase dog = new TestDogFirebase(name, locationCity);
+
+        dogsReference.push().setValue(dog);
     }
 }

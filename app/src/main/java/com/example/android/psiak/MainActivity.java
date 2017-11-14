@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     ListView navList;
 
     private Menu menu;
+//adding nawigation drawer
 
     //adding nawigation drawer
     private ArrayAdapter<String> mAdapter;

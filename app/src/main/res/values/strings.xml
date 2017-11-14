@@ -3,4 +3,7 @@
     <string name="settings">Ustawienia</string>
     <string name="about">O nas</string>
     <string name="rate">Oceń aplikację</string>
+    <string name="favourites">Ulubione</string>
+    <string name="homepage">Główna</string>
+    <string name="shelters">Schroniska</string>
 </resources>

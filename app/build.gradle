@@ -8,6 +8,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,10 +26,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-
     /*
-    Tests
-     */
+        Tests
+         */
     testImplementation 'junit:junit:4.12'
     androidTestCompile 'com.android.support:support-annotations:24.0.0'
     androidTestCompile 'com.android.support.test:runner:1.0.1'
@@ -37,19 +37,16 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
-
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.jakewharton:butterknife:5.1.1'
     implementation 'com.google.code.gson:gson:2.2.4'
     implementation 'com.squareup.picasso:picasso:2.3.2'
-
     //autovalue
     annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
     provided 'com.jakewharton.auto.value:auto-value-annotations:1.4'
     annotationProcessor 'com.ryanharter.auto.value:auto-value-parcel:0.2.5'
     annotationProcessor 'com.ryanharter.auto.value:auto-value-gson:0.6.0'
     provided 'com.ryanharter.auto.value:auto-value-gson-annotations:0.6.0'
-
+    implementation 'com.android.support:design:27.0.1'
 }

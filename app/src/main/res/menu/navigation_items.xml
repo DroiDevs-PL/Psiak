@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homepage_nav_item"
+        android:title="@string/homepage"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:checked="true"
+        />
+    <item
+        android:id="@+id/settings_nav_item"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+       />
+    <item
+        android:id="@+id/favourites_nav_item"
+        android:title="@string/favourites"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        />
+    <item
+        android:id="@+id/shelters_nav_item"
+        android:title="@string/shelters"
+        android:icon="@drawable/ic_dog_shelter"
+        />
+
+    <item
+        android:id="@+id/about_nav_item"
+        android:title="@string/about"
+        android:icon="@drawable/ic_info_black_24dp"
+        />
+</menu>

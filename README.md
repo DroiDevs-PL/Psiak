@@ -1,10 +1,13 @@
 ## Psiak
 ![BlachyPL logo](http://hd.wallpaperswide.com/thumbs/sad_boxer_dog-t2.jpg)
 
+Jeśli szuaksz odpowiedniego dla siebie pupila - nasza aplikacja to idealne do tego narzędzie. Dzięki niej w prosty sposób wyszukasz psy filtrując według swoich preferencji. 
 
-You can use the [editor on GitHub](https://github.com/DroiDevs-PL/Psiak/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+
+Główne funkcjonalności:
+
+
 
 ### Cel aplikacji
 Aplikacja została stworzona, aby uławtić proces adopcji zwierząt ze schroniska.
@@ -24,15 +27,6 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
+[Link](url) 
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/DroiDevs-PL/Psiak/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.

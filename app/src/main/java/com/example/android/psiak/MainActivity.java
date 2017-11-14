@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    //Release branch will be used for releasing stable versions of the app
 
     private Menu menu;
 

@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Network.DummyDogDataService;
@@ -41,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView noDogs;
     @BindView(R.id.woof)
     TextView woof;
-    @BindView(R.id.textView)
-    TextView textView;
+    @BindView(R.id.tempText)
+    TextView tempText;
     @BindView(R.id.activity_main)
     RelativeLayout activityMain;
     @BindView(R.id.navigation)
@@ -77,11 +76,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     for(Dog d : dogs) {
                         dogsListString = dogsListString + d + "\n";
                     }
-                    Log.v(TAG, dogsListString);
+                    tempText.setText(dogsListString);
                 }
                 else {
                     int httpCode = response.code();
-                    Log.e(TAG, Integer.toString(httpCode));
+                    tempText.setText("Error with code:" + Integer.toString(httpCode));
                 }
             }
 

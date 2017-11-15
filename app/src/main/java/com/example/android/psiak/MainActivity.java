@@ -25,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -91,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         setSupportActionBar(toolbar);
-        setUpLikeDislikeButtonsListeners();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -101,22 +101,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void setUpLikeDislikeButtonsListeners() {
-        btnLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Liked", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    @OnClick(R.id.btn_like)
+    void setupLikeButton(View view){
+        Snackbar.make(view, "Liked", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+    @OnClick(R.id.btn_dislike)
+    void setupDislikeButton(View view){
+        Snackbar.make(view, "Disliked", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
 
-        btnDislike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Disliked", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     //region navigationDrawer

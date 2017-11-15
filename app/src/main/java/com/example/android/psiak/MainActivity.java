@@ -77,12 +77,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     for(Dog d : dogs) {
                         dogsListString = dogsListString + d + "\n";
                     }
-                    textView.setText(dogsListString);
-
+                    Log.v(TAG, dogsListString);
                 }
                 else {
                     int httpCode = response.code();
-                    textView.setText(Integer.toString(httpCode));
+                    Log.e(TAG, Integer.toString(httpCode));
                 }
             }
 

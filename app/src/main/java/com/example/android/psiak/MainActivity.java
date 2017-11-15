@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,19 +18,30 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.android.psiak.Model.Dog;
+import com.example.android.psiak.Network.DummyDogDataService;
+
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //region ui components declarations
+    public final String TAG = MainActivity.class.getName();
+
     @BindView(R.id.doggie)
     ImageView doggie;
     @BindView(R.id.noDogs)
     TextView noDogs;
     @BindView(R.id.woof)
     TextView woof;
-    @BindView(R.id.textView)
-    TextView textView;
+    @BindView(R.id.tempText)
+    TextView tempText;
     @BindView(R.id.activity_main)
     RelativeLayout activityMain;
     @BindView(R.id.navigation)
@@ -51,6 +63,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Retrofit retrofit = ((DoggieApplication)getApplication()).getRetrofitInstance();
+        DummyDogDataService dummyDogDataService = retrofit.create(DummyDogDataService.class);
+        Call<List<Dog>> dogCall = dummyDogDataService.loadDog();
+        dogCall.enqueue(new Callback<List<Dog>>() {
+            @Override
+            public void onResponse(Call<List<Dog>> call, Response<List<Dog>> response) {
+                if(response.isSuccessful()) {
+                    List<Dog> dogs = response.body();
+                   // String dogsList = dogs.stream().reduce("", (d1, d2) -> d1.toString() + d2.toString()));
+                    String dogsListString = "";
+                    for(Dog d : dogs) {
+                        dogsListString = dogsListString + d + "\n";
+                    }
+                    tempText.setText(dogsListString);
+                }
+                else {
+                    int httpCode = response.code();
+                    tempText.setText("Error with code:" + Integer.toString(httpCode));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Dog>> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+            }
+        });
 
         setSupportActionBar(toolbar);
         setUpLikeDislikeButtonsListeners();

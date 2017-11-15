@@ -19,6 +19,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header"
+        android:fitsSystemWindows="false"
+        android:layout_marginTop="?attr/actionBarSize"
         app:menu="@menu/navigation_items"/>
 
 </android.support.v4.widget.DrawerLayout>

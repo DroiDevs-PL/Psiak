@@ -5,13 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,8 +20,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
-//region ui components declarations
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //region ui components declarations
     @BindView(R.id.doggie)
     ImageView doggie;
     @BindView(R.id.noDogs)
@@ -39,23 +40,30 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton btnLike;
     @BindView(R.id.btn_dislike)
     FloatingActionButton btnDislike;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 //endregion
 
-    //Todo implement rest https://www.journaldev.com/12648/navigationview-android
     private Menu menu;
-
-    private ArrayAdapter<String> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        setUpNavigationDrawer();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setUpLikeDislikeButtonsListeners();
 
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navList.setNavigationItemSelectedListener(this);
+
+    }
+
+    private void setUpLikeDislikeButtonsListeners() {
         btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,20 +79,26 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
     }
 
     //region navigationDrawer
-    private void setUpNavigationDrawer() {
-        navList.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Snackbar.make(drawerLayout, item.getTitle() + " pressed", Snackbar.LENGTH_LONG).show();
-                item.setChecked(true);
-                drawerLayout.closeDrawers();
-                return true;
-            }
-        });
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.homepage_nav_item) {
+            Snackbar.make(drawerLayout, "Główna", Snackbar.LENGTH_LONG).show();
+        } else if (id == R.id.settings_nav_item) {
+            Snackbar.make(drawerLayout, "Settings", Snackbar.LENGTH_LONG).show();
+        } else if (id == R.id.favourites_nav_item) {
+            Snackbar.make(drawerLayout, "Ulubione", Snackbar.LENGTH_LONG).show();
+        } else if (id == R.id.shelters_nav_item) {
+            Snackbar.make(drawerLayout, "Schroniska", Snackbar.LENGTH_LONG).show();
+        } else if (id == R.id.about_nav_item) {
+            Snackbar.make(drawerLayout, "O nas", Snackbar.LENGTH_LONG).show();
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
     //endregion
 

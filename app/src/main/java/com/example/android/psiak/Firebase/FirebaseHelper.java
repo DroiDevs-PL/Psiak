@@ -38,7 +38,7 @@ public class FirebaseHelper {
      */
 
     public void getAllDogs() {
-        dogsReference.addValueEventListener(dogsListener);
+        dogsReference.addListenerForSingleValueEvent(dogsListener);
     }
 
     /**
@@ -73,12 +73,20 @@ public class FirebaseHelper {
 
     // region Computed Properties
 
+    /**
+     * New listner for "dogs" end point in Firebase database
+     */
+
     ValueEventListener dogsListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            // Get Dog object and use the values to update the UI
-            //Dog dog = dataSnapshot.getValue(Dog.class);
-            // ...
+            for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+
+                TestDogFirebase testDogFirebase = messageSnapshot.getValue(TestDogFirebase.class);
+
+                Log.e(TAG, "Dogs count " + " " + dataSnapshot.getChildrenCount() + " " + "dog name" + " " + testDogFirebase.name);
+
+            }
         }
 
         @Override

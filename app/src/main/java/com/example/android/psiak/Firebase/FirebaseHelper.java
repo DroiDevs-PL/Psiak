@@ -1,14 +1,21 @@
 package com.example.android.psiak.Firebase;
 
+import android.util.Log;
+
 import com.example.android.psiak.Model.TestDogFirebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Grzegorz on 13.11.2017.
  */
 
 public class FirebaseHelper {
+
+    private static final String TAG = FirebaseHelper.class.toString();
 
     // region Properties
 
@@ -23,6 +30,16 @@ public class FirebaseHelper {
     private DatabaseReference dogsReference = database.getReference("dogs");
 
     // endregion
+
+    // region Public Methods
+
+    /**
+     * Fetch all dogs data for Firebase database
+     */
+
+    public void getAllDogs() {
+        dogsReference.addValueEventListener(dogsListener);
+    }
 
     /**
      * Write single dog object to "dogs" database
@@ -46,8 +63,31 @@ public class FirebaseHelper {
 
     public void writeNewDog(String name, String category, String description) {
 
-        TestDogFirebase dog = new TestDogFirebase(name, category, description);
+        TestDogFirebase dog = new TestDogFirebase(name, description);
 
         dogsReference.push().setValue(dog);
+
     }
+
+    // endregion
+
+    // region Computed Properties
+
+    ValueEventListener dogsListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            // Get Dog object and use the values to update the UI
+            //Dog dog = dataSnapshot.getValue(Dog.class);
+            // ...
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+            // Getting Post failed, log a message
+            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            // ...
+        }
+    };
+
+    // endregion
 }

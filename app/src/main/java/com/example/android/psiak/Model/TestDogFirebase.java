@@ -9,7 +9,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class TestDogFirebase {
 
-    // region Public Properties
+    // region Public Properties /
 
     public String id;
     public String name;

@@ -1,9 +1,12 @@
 package com.example.android.psiak.Model;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 /**
  * Created by Grzegorz on 13.11.2017.
  */
 
+@IgnoreExtraProperties
 public class TestDogFirebase {
 
     // region Public Properties
@@ -23,9 +26,9 @@ public class TestDogFirebase {
     public String keeper_mail;
     public String keeper_phone;
 
-    public Boolean vaccinated;
-    public Boolean dewormed;
-    public Boolean sterilized;
+    public Boolean vaccinated = false;
+    public Boolean dewormed = false;
+    public Boolean sterilized = false;
 
     public int weight;
     public int age;
@@ -34,9 +37,12 @@ public class TestDogFirebase {
 
     // region Initializers
 
-    public TestDogFirebase() {
-        // Default constructor required for calls to DataSnapshot.getValue(TestDogFirebase.class)
-    }
+    /**
+     * Default constructor required for calls to DataSnapshot.getValue(TestDogFirebase.class)
+     * It will set all model properties to theirs default values
+     */
+
+    private TestDogFirebase() {}
 
     public TestDogFirebase(String dogName, String description) {
         this.name = dogName;
@@ -44,4 +50,5 @@ public class TestDogFirebase {
     }
 
     // endregion
+
 }

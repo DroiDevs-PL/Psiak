@@ -16,6 +16,8 @@ import butterknife.OnClick;
 
 public class FirebaseTesting extends AppCompatActivity {
 
+    private static final String TAG = FirebaseTesting.class.toString();
+
     // region Properties
 
     private FirebaseHelper firebaseHelper;
@@ -46,15 +48,16 @@ public class FirebaseTesting extends AppCompatActivity {
 
         firebaseHelper = new FirebaseHelper();
 
+        firebaseHelper.getAllDogs();
+
     }
 
     // endregion
 
     // region Private Methods
 
-
     /**
-     * Add random dog to the firebase database
+     * Add random dog to the Firebase database
      */
 
     @OnClick(R.id.btn_add_random_dog)
@@ -64,7 +67,7 @@ public class FirebaseTesting extends AppCompatActivity {
     }
 
     /**
-     * Add random dog to the firebase database
+     * Add new dog to the Firebase database
      */
 
     @OnClick(R.id.btn_add_new_dog)

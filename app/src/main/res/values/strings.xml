@@ -18,4 +18,5 @@
     <string name="ups">Ups!</string>
     <string name="navigation_drawer_open">Otwórz</string>
     <string name="navigation_drawer_close">Zamknij</string>
+    <string name="info_no_data">Brak danych</string>
 </resources>

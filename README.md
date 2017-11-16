@@ -1,4 +1,6 @@
-[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5a0d7d82c382e000010519c4&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5a0d7d82c382e000010519c4/build/latest?branch=master)
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5a0d8c321c973d0001ccde5f&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5a0d8c321c973d0001ccde5f/build/latest?branch=master)
+
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5a0d8c321c973d0001ccde5f&branch=develop&build=latest)](https://dashboard.buddybuild.com/apps/5a0d8c321c973d0001ccde5f/build/latest?branch=develop)
 
 ## Psiak
 ![BlachyPL logo](http://hd.wallpaperswide.com/thumbs/sad_boxer_dog-t2.jpg)

@@ -1,5 +1,6 @@
 package com.example.android.psiak;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -139,8 +140,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        Snackbar.make(drawerLayout, "Settings", Snackbar.LENGTH_LONG).show();
-        return super.onOptionsItemSelected(item);
+        switch (id) {
+            case R.id.settings:
+                Snackbar.make(drawerLayout, "Settings", Snackbar.LENGTH_LONG).show();
+                return true;
+
+            case R.id.firebaseTest:
+                Intent intent = new Intent(this, FirebaseTesting.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem searchModeMenuItem = menu.findItem(R.id.settings);
+        return true;
     }
     //endregion
 }

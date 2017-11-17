@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 /**
  * Created by Grzegorz on 13.11.2017.
@@ -87,14 +88,12 @@ public class FirebaseHelper {
 
     /**
      * Write single dog object to "dogs" database
-     * @param name Dog's first name
-     * @param category ???
-     * @param description Additional inforamtions about the dog
+     * @param dogData Collection of data about the dog
      */
 
-    public void writeNewDog(String name, String category, String description) {
+    public void writeNewDog(Hashtable<String, String> dogData) {
 
-        DogFirebase dog = new DogFirebase(name, description);
+        DogFirebase dog = new DogFirebase(dogData);
 
         dogsReference.push().setValue(dog);
 

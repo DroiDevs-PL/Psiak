@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.android.psiak.Firebase.FirebaseHelper;
@@ -14,6 +15,7 @@ import com.example.android.psiak.Firebase.FirebaseDataListener;
 import com.example.android.psiak.Model.DogFirebase;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,7 +53,7 @@ public class FirebaseTesting extends AppCompatActivity implements FirebaseDataLi
     @BindView(R.id.et_dog_attitude_dogs)
     EditText etDogAttitudeDogs;
     @BindView(R.id.et_dog_attitude_cats)
-    EditText getEtDogAttitudeCats;
+    EditText etDogAttitudeCats;
     @BindView(R.id.et_dog_keeper_name)
     EditText etDogKeeperName;
     @BindView(R.id.et_dog_keeper_phone)
@@ -60,6 +62,12 @@ public class FirebaseTesting extends AppCompatActivity implements FirebaseDataLi
     EditText etDogKeeperMail;
     @BindView(R.id.et_dog_homeless_since)
     EditText etDogHomelessSince;
+    @BindView(R.id.sw_dog_vaccinated)
+    Switch swDogVaccinated;
+    @BindView(R.id.sw_dog_dewormed)
+    Switch swDogDewormed;
+    @BindView(R.id.sw_dog_sterilized)
+    Switch swDogSterilized;
 
     // endregion
 
@@ -99,10 +107,25 @@ public class FirebaseTesting extends AppCompatActivity implements FirebaseDataLi
 
     @OnClick(R.id.btn_add_new_dog)
     void addNewDogDog(View view) {
-        String dogName = etDogName.getText().toString();
-        String dogDescription = etDogDescription.getText().toString();
 
-        firebaseHelper.writeNewDog(dogName, "category", dogDescription);
+        Hashtable<String, String> dogData = new Hashtable<>();
+
+        dogData.put("name", etDogName.getText().toString());
+        dogData.put("gender", etDogGender.getText().toString());
+        dogData.put("age", etDogAge.getText().toString());
+        dogData.put("description", etDogDescription.getText().toString());
+        dogData.put("size", etDogSize.getText().toString());
+        dogData.put("weight", etDogWeight.getText().toString());
+        dogData.put("location", etDogLocation.getText().toString());
+        dogData.put("attitude_people", etDogAttitudePeople.getText().toString());
+        dogData.put("attitude_dogs", etDogAttitudeDogs.getText().toString());
+        dogData.put("attitude_cats", etDogAttitudeCats.getText().toString());
+        dogData.put("keeper_name", etDogKeeperName.getText().toString());
+        dogData.put("keeper_phone", etDogKeeperPhone.getText().toString());
+        dogData.put("keeper_mail", etDogKeeperMail.getText().toString());
+        dogData.put("homeless_since", etDogHomelessSince.getText().toString());
+        
+        firebaseHelper.writeNewDog(dogData);
 
         Toast.makeText(getBaseContext(), "New dog added", Toast.LENGTH_SHORT).show();
     }

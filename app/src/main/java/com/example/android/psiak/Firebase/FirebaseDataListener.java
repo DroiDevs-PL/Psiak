@@ -1,6 +1,6 @@
 package com.example.android.psiak.Firebase;
 
-import com.example.android.psiak.Model.TestDogFirebase;
+import com.example.android.psiak.Model.DogFirebase;
 
 import java.util.ArrayList;
 
@@ -9,5 +9,5 @@ import java.util.ArrayList;
  */
 
 public interface FirebaseDataListener {
-    void setDogsData(ArrayList<TestDogFirebase> dogsData);
+    void setDogsData(ArrayList<DogFirebase> dogsData);
 }

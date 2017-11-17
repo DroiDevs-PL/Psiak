@@ -7,7 +7,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
  */
 
 @IgnoreExtraProperties
-public class TestDogFirebase {
+public class DogFirebase {
 
     // region Public Properties
 
@@ -38,13 +38,13 @@ public class TestDogFirebase {
     // region Initializers
 
     /**
-     * Default constructor required for calls to DataSnapshot.getValue(TestDogFirebase.class)
+     * Default constructor required for calls to DataSnapshot.getValue(DogFirebase.class)
      * It will set all model properties to theirs default values
      */
 
-    private TestDogFirebase() {}
+    private DogFirebase() {}
 
-    public TestDogFirebase(String dogName, String description) {
+    public DogFirebase(String dogName, String description) {
         this.name = dogName;
         this.description = description;
     }

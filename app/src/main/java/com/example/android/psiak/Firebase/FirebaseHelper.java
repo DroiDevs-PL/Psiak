@@ -2,7 +2,7 @@ package com.example.android.psiak.Firebase;
 
 import android.util.Log;
 
-import com.example.android.psiak.Model.TestDogFirebase;
+import com.example.android.psiak.Model.DogFirebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +43,7 @@ public class FirebaseHelper {
      * List for storing all dogs objects fetched from Firebase database
      */
 
-    private ArrayList<TestDogFirebase> dogs = new ArrayList<TestDogFirebase>();
+    private ArrayList<DogFirebase> dogs = new ArrayList<DogFirebase>();
 
     // endregion
 
@@ -73,8 +73,9 @@ public class FirebaseHelper {
 
     public void writeNewDog(String name, String locationCity) {
 
-        TestDogFirebase dog = new TestDogFirebase(name, locationCity);
+        DogFirebase dog = new DogFirebase(name, locationCity);
 
+        // push() generates unique ID for dog on database
         dogsReference.push().setValue(dog);
     }
 
@@ -87,7 +88,7 @@ public class FirebaseHelper {
 
     public void writeNewDog(String name, String category, String description) {
 
-        TestDogFirebase dog = new TestDogFirebase(name, description);
+        DogFirebase dog = new DogFirebase(name, description);
 
         dogsReference.push().setValue(dog);
 
@@ -106,14 +107,14 @@ public class FirebaseHelper {
         public void onDataChange(DataSnapshot dataSnapshot) {
             for (DataSnapshot singleRecordSnapshot: dataSnapshot.getChildren()) {
 
-                TestDogFirebase testDogFirebase = singleRecordSnapshot.getValue(TestDogFirebase.class);
+                DogFirebase testDogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
                 testDogFirebase.id = singleRecordSnapshot.getKey();
 
                 dogs.add(testDogFirebase);
 
-                Log.e(TAG, "Dogs count " + " " + dataSnapshot.getChildrenCount());
-
             }
+
+            Log.e(TAG, "Dogs count " + " " + dataSnapshot.getChildrenCount());
 
             firebaseDataListener.setDogsData(dogs);
         }
@@ -129,7 +130,7 @@ public class FirebaseHelper {
 
     // region Getters
 
-    public ArrayList<TestDogFirebase> getDogs() {
+    public ArrayList<DogFirebase> getDogs() {
         return dogs;
     }
 

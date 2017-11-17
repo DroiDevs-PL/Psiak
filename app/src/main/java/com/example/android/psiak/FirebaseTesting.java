@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.android.psiak.Firebase.FirebaseHelper;
 import com.example.android.psiak.Firebase.FirebaseDataListener;
-import com.example.android.psiak.Model.TestDogFirebase;
+import com.example.android.psiak.Model.DogFirebase;
 
 import java.util.ArrayList;
 
@@ -86,8 +86,12 @@ public class FirebaseTesting extends AppCompatActivity implements FirebaseDataLi
         Toast.makeText(getBaseContext(), "New dog added", Toast.LENGTH_SHORT).show();
     }
 
+    // endregion
+
+    // region Public Methods
+
     @Override
-    public void setDogsData(ArrayList<TestDogFirebase> dogsData) {
+    public void setDogsData(ArrayList<DogFirebase> dogsData) {
         Log.e(TAG, "Dogs count " + " " + dogsData.size());
     }
 

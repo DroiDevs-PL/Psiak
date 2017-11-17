@@ -9,6 +9,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 /**
  * Created by Grzegorz on 13.11.2017.
  */
@@ -27,14 +29,36 @@ public class FirebaseHelper {
     /**
      * Reference to "dogs" end point in database
      */
+
     private DatabaseReference dogsReference = database.getReference("dogs");
+
+    /**
+     * Callback that will be invoked when all dogs data will be
+     * fetched from Firebase database
+     */
+
+    private FirebaseDataListener firebaseDataListener;
+
+    /**
+     * List for storing all dogs objects fetched from Firebase database
+     */
+
+    private ArrayList<TestDogFirebase> dogs = new ArrayList<TestDogFirebase>();
+
+    // endregion
+
+    // region Initializers
+
+    public FirebaseHelper(FirebaseDataListener dataListener) {
+        this.firebaseDataListener = dataListener;
+    }
 
     // endregion
 
     // region Public Methods
 
     /**
-     * Fetch all dogs data for Firebase database
+     * Fetch all dogs data from Firebase database
      */
 
     public void getAllDogs() {
@@ -74,28 +98,40 @@ public class FirebaseHelper {
     // region Computed Properties
 
     /**
-     * New listner for "dogs" end point in Firebase database
+     * New listener for "dogs" end point in Firebase database
      */
 
     ValueEventListener dogsListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+            for (DataSnapshot singleRecordSnapshot: dataSnapshot.getChildren()) {
 
-                TestDogFirebase testDogFirebase = messageSnapshot.getValue(TestDogFirebase.class);
+                TestDogFirebase testDogFirebase = singleRecordSnapshot.getValue(TestDogFirebase.class);
+                testDogFirebase.id = singleRecordSnapshot.getKey();
 
-                Log.e(TAG, "Dogs count " + " " + dataSnapshot.getChildrenCount() + " " + "dog name" + " " + testDogFirebase.name);
+                dogs.add(testDogFirebase);
+
+                Log.e(TAG, "Dogs count " + " " + dataSnapshot.getChildrenCount());
 
             }
+
+            firebaseDataListener.setDogsData(dogs);
         }
 
         @Override
         public void onCancelled(DatabaseError databaseError) {
-            // Getting Post failed, log a message
+            // Getting Dogs failed, log a message
             Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            // ...
         }
     };
+
+    // endregion
+
+    // region Getters
+
+    public ArrayList<TestDogFirebase> getDogs() {
+        return dogs;
+    }
 
     // endregion
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Grzegorz on 13.11.2017.
+ * Helper class for storing all functions related to Firebase operations
  */
 
 public class FirebaseHelper {
@@ -49,6 +50,11 @@ public class FirebaseHelper {
 
     // region Initializers
 
+    /**
+     *
+     * @param dataListener Object that will receive notifications about data change
+     *                     fetched from Firebase database
+     */
     public FirebaseHelper(FirebaseDataListener dataListener) {
         this.firebaseDataListener = dataListener;
     }

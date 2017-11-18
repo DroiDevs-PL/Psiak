@@ -55,4 +55,27 @@ public class DogFirebaseTest {
         assertEquals(dogFirebase.keeper_mail, "test@test.pl");
         assertEquals(dogFirebase.homeless_since, "2016-09-01");
     }
+
+    @Test
+    public void valid_DogFirebase_Initialization_With_Default_Values() throws Exception {
+
+        Hashtable<String, String> dogData = new Hashtable<>();
+
+        DogFirebase dogFirebase = new DogFirebase(dogData);
+
+        assertEquals(dogFirebase.name, Const.NO_DATA);
+        assertEquals(dogFirebase.gender, Const.NO_DATA);
+        assertEquals(dogFirebase.age, Const.NO_DATA);
+        assertEquals(dogFirebase.description, Const.NO_DATA);
+        assertEquals(dogFirebase.size, Const.NO_DATA);
+        assertEquals(dogFirebase.weight, Const.NO_DATA);
+        assertEquals(dogFirebase.location, Const.NO_DATA);
+        assertEquals(dogFirebase.attitude_people, Const.NO_DATA);
+        assertEquals(dogFirebase.attitude_dogs, Const.NO_DATA);
+        assertEquals(dogFirebase.attitude_cats, Const.NO_DATA);
+        assertEquals(dogFirebase.keeper_name, Const.NO_DATA);
+        assertEquals(dogFirebase.keeper_phone, Const.NO_DATA);
+        assertEquals(dogFirebase.keeper_mail, Const.NO_DATA);
+        assertEquals(dogFirebase.homeless_since, Const.NO_DATA);
+    }
 }

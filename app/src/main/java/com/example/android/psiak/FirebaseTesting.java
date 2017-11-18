@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.android.psiak.Firebase.FirebaseHelper;
 import com.example.android.psiak.Firebase.FirebaseDataListener;
 import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.Utils.Const;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -110,20 +111,20 @@ public class FirebaseTesting extends AppCompatActivity implements FirebaseDataLi
 
         Hashtable<String, String> dogData = new Hashtable<>();
 
-        dogData.put("name", etDogName.getText().toString());
-        dogData.put("gender", etDogGender.getText().toString());
-        dogData.put("age", etDogAge.getText().toString());
-        dogData.put("description", etDogDescription.getText().toString());
-        dogData.put("size", etDogSize.getText().toString());
-        dogData.put("weight", etDogWeight.getText().toString());
-        dogData.put("location", etDogLocation.getText().toString());
-        dogData.put("attitude_people", etDogAttitudePeople.getText().toString());
-        dogData.put("attitude_dogs", etDogAttitudeDogs.getText().toString());
-        dogData.put("attitude_cats", etDogAttitudeCats.getText().toString());
-        dogData.put("keeper_name", etDogKeeperName.getText().toString());
-        dogData.put("keeper_phone", etDogKeeperPhone.getText().toString());
-        dogData.put("keeper_mail", etDogKeeperMail.getText().toString());
-        dogData.put("homeless_since", etDogHomelessSince.getText().toString());
+        dogData.put(Const.NAME, etDogName.getText().toString());
+        dogData.put(Const.GENDER, etDogGender.getText().toString());
+        dogData.put(Const.AGE, etDogAge.getText().toString());
+        dogData.put(Const.DESCRIPTION, etDogDescription.getText().toString());
+        dogData.put(Const.SIZE, etDogSize.getText().toString());
+        dogData.put(Const.WEIGHT, etDogWeight.getText().toString());
+        dogData.put(Const.LOCATION, etDogLocation.getText().toString());
+        dogData.put(Const.ATTITUDE_PEOPLE, etDogAttitudePeople.getText().toString());
+        dogData.put(Const.ATTITUDE_DOGS, etDogAttitudeDogs.getText().toString());
+        dogData.put(Const.ATTITUDE_CATS, etDogAttitudeCats.getText().toString());
+        dogData.put(Const.KEEPER_NAME, etDogKeeperName.getText().toString());
+        dogData.put(Const.KEEPER_PHONE, etDogKeeperPhone.getText().toString());
+        dogData.put(Const.KEEPER_MAIL, etDogKeeperMail.getText().toString());
+        dogData.put(Const.HOMELESS_SINCE, etDogHomelessSince.getText().toString());
         
         firebaseHelper.writeNewDog(dogData);
 

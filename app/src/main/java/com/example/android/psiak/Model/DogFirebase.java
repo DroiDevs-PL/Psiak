@@ -1,8 +1,8 @@
 package com.example.android.psiak.Model;
 
-import android.content.res.Resources;
-
+import com.example.android.psiak.Utils.Const;
 import com.google.firebase.database.IgnoreExtraProperties;
+
 import java.util.Hashtable;
 
 /**
@@ -49,25 +49,25 @@ public class DogFirebase {
     private DogFirebase() {}
 
     public DogFirebase(Hashtable<String, String> dogsData) {
-        this.name = dogsData.containsKey("name") ? dogsData.get("name") : "no data";
-        this.gender = dogsData.containsKey("gender") ? dogsData.get("gender") : "no data";
-        this.description = dogsData.containsKey("description") ? dogsData.get("description") : "no data";
-        this.size = dogsData.containsKey("size") ? dogsData.get("size") : "no data";
-        this.location = dogsData.containsKey("location") ? dogsData.get("location") : "no data";
-        this.homeless_since = dogsData.containsKey("homeless_since") ? dogsData.get("homeless_since") : "no data";
-        this.attitude_people = dogsData.containsKey("attitude_people") ? dogsData.get("attitude_people") : "no data";
-        this.attitude_dogs = dogsData.containsKey("attitude_dogs") ? dogsData.get("attitude_dogs") : "no data";
-        this.attitude_cats = dogsData.containsKey("attitude_cats") ? dogsData.get("attitude_cats") : "no data";
-        this.keeper_name = dogsData.containsKey("keeper_name") ? dogsData.get("keeper_name") : "no data";
-        this.keeper_mail = dogsData.containsKey("keeper_mail") ? dogsData.get("keeper_mail") : "no data";
-        this.keeper_phone = dogsData.containsKey("keeper_phone") ? dogsData.get("keeper_phone") : "no data";
+        this.name = dogsData.containsKey(Const.NAME) ? dogsData.get(Const.NAME) : Const.NO_DATA;
+        this.gender = dogsData.containsKey(Const.GENDER) ? dogsData.get(Const.GENDER) : Const.NO_DATA;
+        this.description = dogsData.containsKey(Const.DESCRIPTION) ? dogsData.get(Const.DESCRIPTION) : Const.NO_DATA;
+        this.size = dogsData.containsKey(Const.SIZE) ? dogsData.get(Const.SIZE) : Const.NO_DATA;
+        this.location = dogsData.containsKey(Const.LOCATION) ? dogsData.get(Const.LOCATION) : Const.NO_DATA;
+        this.homeless_since = dogsData.containsKey(Const.HOMELESS_SINCE) ? dogsData.get(Const.HOMELESS_SINCE) : Const.NO_DATA;
+        this.attitude_people = dogsData.containsKey(Const.ATTITUDE_PEOPLE) ? dogsData.get(Const.ATTITUDE_PEOPLE) : Const.NO_DATA;
+        this.attitude_dogs = dogsData.containsKey(Const.ATTITUDE_DOGS) ? dogsData.get(Const.ATTITUDE_DOGS) : Const.NO_DATA;
+        this.attitude_cats = dogsData.containsKey(Const.ATTITUDE_CATS) ? dogsData.get(Const.ATTITUDE_CATS) : Const.NO_DATA;
+        this.keeper_name = dogsData.containsKey(Const.KEEPER_NAME) ? dogsData.get(Const.KEEPER_NAME) : Const.NO_DATA;
+        this.keeper_mail = dogsData.containsKey(Const.KEEPER_MAIL) ? dogsData.get(Const.KEEPER_MAIL) : Const.NO_DATA;
+        this.keeper_phone = dogsData.containsKey(Const.KEEPER_PHONE) ? dogsData.get(Const.KEEPER_PHONE) : Const.NO_DATA;
 
-        this.vaccinated = dogsData.containsKey("vaccinated") ? dogsData.get("vaccinated") : "no data";
-        this.dewormed = dogsData.containsKey("dewormed") ? dogsData.get("dewormed") : "no data";
-        this.sterilized = dogsData.containsKey("sterilized") ? dogsData.get("sterilized") : "no data";
+        this.vaccinated = dogsData.containsKey(Const.VACCINATED) ? dogsData.get(Const.VACCINATED) : Const.NO_DATA;
+        this.dewormed = dogsData.containsKey(Const.DEWORMED) ? dogsData.get(Const.DEWORMED) : Const.NO_DATA;
+        this.sterilized = dogsData.containsKey(Const.STERILIZED) ? dogsData.get(Const.STERILIZED) : Const.NO_DATA;
 
-        this.weight = dogsData.containsKey("weight") ? dogsData.get("weight") : "no data";
-        this.age = dogsData.containsKey("age") ? dogsData.get("age") : "no data";
+        this.weight = dogsData.containsKey(Const.WEIGHT) ? dogsData.get(Const.WEIGHT) : Const.NO_DATA;
+        this.age = dogsData.containsKey(Const.AGE) ? dogsData.get(Const.AGE) : Const.NO_DATA;
 
     }
 

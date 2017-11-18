@@ -78,4 +78,42 @@ public class DogFirebaseTest {
         assertEquals(dogFirebase.keeper_mail, Const.NO_DATA);
         assertEquals(dogFirebase.homeless_since, Const.NO_DATA);
     }
+
+    @Test
+    public void valid_DogFirebase_Initialization_With_Invalid_Values() throws Exception {
+
+        Hashtable<String, String> dogData = new Hashtable<>();
+
+        dogData.put("randomKey1", "Fafik");
+        dogData.put("randomKey2", "male");
+        dogData.put("randomKey3", "2");
+        dogData.put("randomKey4", "desc");
+        dogData.put("randomKey5", "small");
+        dogData.put("randomKey6", "10");
+        dogData.put("randomKey7", "Gdańsk");
+        dogData.put("randomKey8", "good");
+        dogData.put("randomKey9", "good");
+        dogData.put("randomKey10", "good");
+        dogData.put("randomKey11", "Marcin");
+        dogData.put("randomKey12", "111111111");
+        dogData.put("randomKey13", "test@test.pl");
+        dogData.put("randomKey14", "2016-09-01");
+
+        DogFirebase dogFirebase = new DogFirebase(dogData);
+
+        assertEquals(dogFirebase.name, Const.NO_DATA);
+        assertEquals(dogFirebase.gender, Const.NO_DATA);
+        assertEquals(dogFirebase.age, Const.NO_DATA);
+        assertEquals(dogFirebase.description, Const.NO_DATA);
+        assertEquals(dogFirebase.size, Const.NO_DATA);
+        assertEquals(dogFirebase.weight, Const.NO_DATA);
+        assertEquals(dogFirebase.location, Const.NO_DATA);
+        assertEquals(dogFirebase.attitude_people, Const.NO_DATA);
+        assertEquals(dogFirebase.attitude_dogs, Const.NO_DATA);
+        assertEquals(dogFirebase.attitude_cats, Const.NO_DATA);
+        assertEquals(dogFirebase.keeper_name, Const.NO_DATA);
+        assertEquals(dogFirebase.keeper_phone, Const.NO_DATA);
+        assertEquals(dogFirebase.keeper_mail, Const.NO_DATA);
+        assertEquals(dogFirebase.homeless_since, Const.NO_DATA);
+    }
 }

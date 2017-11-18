@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FirebaseTesting"
+            android:name=".FirebaseActivity"
             android:label="@string/title_activity_firebase_testing"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

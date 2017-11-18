@@ -22,9 +22,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FirebaseTesting extends AppCompatActivity implements FirebaseDataListener {
+public class FirebaseActivity extends AppCompatActivity implements FirebaseDataListener {
 
-    private static final String TAG = FirebaseTesting.class.toString();
+    private static final String TAG = FirebaseActivity.class.toString();
 
     // region Properties
 
@@ -82,6 +82,7 @@ public class FirebaseTesting extends AppCompatActivity implements FirebaseDataLi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // TODO Use dependency injection here
         firebaseHelper = new FirebaseHelper(this);
 
         firebaseHelper.getAllDogs();

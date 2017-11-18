@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.firebaseTest:
-                Intent intent = new Intent(this, FirebaseTesting.class);
+                Intent intent = new Intent(this, FirebaseActivity.class);
                 startActivity(intent);
                 return true;
 

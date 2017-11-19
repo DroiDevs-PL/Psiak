@@ -1,6 +1,14 @@
 <resources>
-    <string name="app_name">Psiak</string>
+    <string name="app_name">Psiaki</string>
     <string name="settings">Ustawienia</string>
     <string name="about">O nas</string>
     <string name="rate">Oceń aplikację</string>
+    <string name="favourites">Ulubione</string>
+    <string name="homepage">Główna</string>
+    <string name="shelters">Schroniska</string>
+    <string name="no_dogs_found">Wygląda na to, że zabrakło nam psiaków. Spróbuj zmienić miejsce wyszukiwania...</string>
+    <string name="sample_text">Json do wyplucia</string>
+    <string name="ups">Ups!</string>
+    <string name="navigation_drawer_open">Otwórz</string>
+    <string name="navigation_drawer_close">Zamknij</string>
 </resources>

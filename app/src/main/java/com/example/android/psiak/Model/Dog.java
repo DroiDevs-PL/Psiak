@@ -1,11 +1,14 @@
 package com.example.android.psiak.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
-public abstract class Dog {
+public class Dog {
 
     private String weight;
 
+    @SerializedName("location_city")
     private String location;
 
     private String globalId;

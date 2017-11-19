@@ -24,8 +24,6 @@ public class DogFirebase {
     public String attitude_people;
     public String attitude_dogs;
     public String attitude_cats;
-    public String profile_pic;
-    public String photos;
     public String keeper_name;
     public String keeper_mail;
     public String keeper_phone;
@@ -37,16 +35,26 @@ public class DogFirebase {
     public String weight;
     public String age;
 
+    // TODO Add properties to the constructor
+    public String profile_pic;
+    public String photos;
+
     // endregion
 
     // region Initializers
 
     /**
      * Default constructor required for calls to DataSnapshot.getValue(DogFirebase.class)
-     * It will set all model properties to theirs default values
+     * It will set all model properties to theirs default values if there won't bo corresponding data
+     * stored in Hashtable
      */
 
     private DogFirebase() {}
+
+    /**
+     * Constructor used to fully initialize dog object
+     * @param dogsData Collection of data about the dog. Hashtable is used for thread-safety
+     */
 
     public DogFirebase(Hashtable<String, String> dogsData) {
         this.name = dogsData.containsKey(Const.NAME) ? dogsData.get(Const.NAME) : Const.NO_DATA;
@@ -70,6 +78,12 @@ public class DogFirebase {
         this.age = dogsData.containsKey(Const.AGE) ? dogsData.get(Const.AGE) : Const.NO_DATA;
 
     }
+
+    /**
+     * This initalizer is used only for testing and will removed before the release
+     * @param dogName Dog's name
+     * @param description Dog's description
+     */
 
     public DogFirebase(String dogName, String description) {
         this.name = dogName;

@@ -53,7 +53,7 @@ public class FirebaseHelper {
 
     /**
      *
-     * @param dataListener Object that will receive notifications about data change
+     * @param dataListener Object that will receive notifications about change of data
      *                     fetched from Firebase database
      */
     public FirebaseHelper(FirebaseDataListener dataListener) {

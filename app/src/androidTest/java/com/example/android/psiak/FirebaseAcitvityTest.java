@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import com.example.android.psiak.Firebase.FirebaseDataListener;
 import com.example.android.psiak.Model.DogFirebase;
 
 import org.junit.Before;
@@ -16,6 +17,7 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.isA;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
@@ -40,9 +42,12 @@ public class FirebaseAcitvityTest {
     }
 
     @Test
-    public void all_Views_Are_Bind() throws Exception {
+    public void activity_Implement_Proper_Interface() {
+        assertThat(firebaseActivity, isA(FirebaseDataListener.class));
+    }
 
-        //FirebaseActivity firebaseActivity = rule.getActivity();
+    @Test
+    public void all_Views_Are_Bind() throws Exception {
 
         Button btnAddNewDog = firebaseActivity.findViewById(R.id.btn_add_new_dog);
         Button btnAddRandomDog = firebaseActivity.findViewById(R.id.btn_add_random_dog);

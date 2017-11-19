@@ -30,6 +30,8 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
 
     private FirebaseHelper firebaseHelper;
 
+    private ArrayList<DogFirebase> dogsCollection;
+
     @BindView(R.id.btn_add_random_dog)
     Button btnRandomDog;
     @BindView(R.id.btn_add_new_dog)
@@ -138,7 +140,17 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
 
     @Override
     public void setDogsData(ArrayList<DogFirebase> dogsData) {
+        this.dogsCollection = dogsData;
+
         Log.e(TAG, "Dogs count " + " " + dogsData.size());
+    }
+
+    // endregion
+
+    // region Getters
+
+    public ArrayList<DogFirebase> getDogsCollection() {
+        return dogsCollection;
     }
 
     // endregion

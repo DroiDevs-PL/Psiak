@@ -45,11 +45,10 @@ public class DogFirebase {
 
     /**
      * Default constructor required for calls to DataSnapshot.getValue(DogFirebase.class)
-     * It will set all model properties to theirs default values if there won't bo corresponding data
-     * stored in Hashtable
+     * It will set all model properties to theirs default values
      */
 
-    private DogFirebase() {}
+    public DogFirebase() {}
 
     /**
      * Constructor used to fully initialize dog object

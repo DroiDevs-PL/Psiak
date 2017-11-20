@@ -2,7 +2,7 @@ package com.example.android.psiak.Model;
 
 import java.util.List;
 
-public abstract class Dog {
+public class Dog {
 
     private String weight;
 

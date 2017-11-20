@@ -4,8 +4,15 @@ package com.example.android.psiak;
  * Created by Maciej Bialorucki on 20.11.17.
  */
 
-public interface BasePresenter<T> {
+public abstract class BasePresenter<T> {
 
-    void attach(T view);
-    void detach();
+    public T view;
+
+    public void attach(T view) {
+        this.view = view;
+    }
+
+    public void detach() {
+        this.view = null;
+    }
 }

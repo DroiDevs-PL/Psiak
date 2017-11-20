@@ -9,20 +9,15 @@ import com.example.android.psiak.Model.Dog;
 
 public interface AddAnimalContract {
 
-    interface AddAnimalView {
+    interface View {
         void showSuccessMessage();
 
         void showErrorMessage();
     }
 
-    interface AddAnimalPresenter extends BasePresenter<AddAnimalView> {
+    interface Presenter {
 
         void save(String name, String kind);//void save(Dog dog);
 
-        @Override
-        void attach(AddAnimalView view);
-
-        @Override
-        void detach();
     }
 }

@@ -16,19 +16,22 @@
         />
 
     <EditText
+        android:id="@+id/dog_name_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rasa : "/>
+        android:text="Wiek : "/>
 
     <EditText
+        android:id="@+id/dog_age_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
+        android:id="@+id/add_dog_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

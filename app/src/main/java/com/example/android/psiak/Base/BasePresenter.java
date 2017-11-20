@@ -1,4 +1,4 @@
-package com.example.android.psiak;
+package com.example.android.psiak.Base;
 
 /**
  * Created by Maciej Bialorucki on 20.11.17.

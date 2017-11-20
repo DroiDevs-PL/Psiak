@@ -1,8 +1,5 @@
 package com.example.android.psiak.AddAnimal;
 
-import com.example.android.psiak.BasePresenter;
-import com.example.android.psiak.Model.Dog;
-
 /**
  * Created by Maciej Bialorucki on 20.11.17.
  */

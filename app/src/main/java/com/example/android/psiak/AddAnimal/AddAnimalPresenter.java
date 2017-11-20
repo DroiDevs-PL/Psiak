@@ -1,6 +1,6 @@
 package com.example.android.psiak.AddAnimal;
 
-import com.example.android.psiak.BasePresenter;
+import com.example.android.psiak.Base.BasePresenter;
 import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Repository.Repository;
 
@@ -12,6 +12,7 @@ public class AddAnimalPresenter extends BasePresenter<AddAnimalContract.View> im
 
     private Repository repository;
 
+    //can by easily injected via Dagger
     public AddAnimalPresenter(Repository repository) {
         this.repository = repository;
     }

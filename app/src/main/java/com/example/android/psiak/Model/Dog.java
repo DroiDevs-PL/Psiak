@@ -2,7 +2,11 @@ package com.example.android.psiak.Model;
 
 import com.google.gson.annotations.Expose;
 
+<<<<<<< develop
 import java.util.List;
+=======
+public class Dog {
+>>>>>>> Add repository class
 
 public class Dog {
 @Expose

@@ -2,7 +2,8 @@ package com.example.android.psiak;
 
 import android.app.Application;
 
-import com.example.android.psiak.Utils.AutoValueGsonFactory;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import okhttp3.Cache;
@@ -23,15 +24,14 @@ public class DoggieApplication extends Application {
         Cache cache = new Cache(this.getCacheDir(),cacheSize);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().cache(cache).build();
 
-        GsonConverterFactory  gsonConverterFactory = GsonConverterFactory.create(
-                new GsonBuilder().registerTypeAdapterFactory(AutoValueGsonFactory.create())
-                        .create());
-
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE);
+        Gson gson = gsonBuilder.create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl(baseUrl)
-                .addConverterFactory(gsonConverterFactory)
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         return retrofit;
     }

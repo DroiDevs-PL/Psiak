@@ -10,6 +10,7 @@ import com.example.android.psiak.R;
 import com.example.android.psiak.Repository.InMemoryRepository;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AddAnimalActivity extends AppCompatActivity implements AddAnimalContract.View {
@@ -29,6 +30,8 @@ public class AddAnimalActivity extends AppCompatActivity implements AddAnimalCon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_animal);
 
+        ButterKnife.bind(this);
+
         //can be easily inject via Dagger
         this.presenter = new AddAnimalPresenter(InMemoryRepository.getInstance());
         presenter.attach(this);
@@ -41,12 +44,12 @@ public class AddAnimalActivity extends AppCompatActivity implements AddAnimalCon
 
     @Override
     public void showSuccessMessage() {
-        Snackbar.make(addDog, "Successfully added!", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(addDog.getRootView(), "Successfully added!", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void showErrorMessage() {
-        Snackbar.make(addDog, "Dog name and dog age cannot be empty!", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(addDog.getRootView(), "Dog name and dog age cannot be empty!", Snackbar.LENGTH_LONG).show();
 
     }
 

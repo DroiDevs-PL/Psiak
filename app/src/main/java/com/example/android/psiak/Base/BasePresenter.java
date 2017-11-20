@@ -15,4 +15,8 @@ public abstract class BasePresenter<T> {
     public void detach() {
         this.view = null;
     }
+
+    public boolean isViewAttached(){
+        return this.view == null;
+    }
 }

@@ -100,7 +100,7 @@ public class FirebaseAcitvityTest {
 
         ArrayList<DogFirebase> dogsCollection = new ArrayList<>();
 
-        DogFirebase dogFirebase = new DogFirebase();
+        DogFirebase dogFirebase = new DogFirebase.DogBuilder("1", "Fafik").build();
 
         dogsCollection.add(dogFirebase);
 

@@ -74,28 +74,26 @@ public class FirebaseHelper {
 
     /**
      * Write single dog object to "dogs" database
-     * @param name Dog's first name
-     * @param locationCity Dog's birth place
      */
 
-    public void writeNewDog(String name, String locationCity) {
-
-        DogFirebase dog = new DogFirebase(name, locationCity);
+    public void writeNewDog() {
 
         // push() generates unique ID for dog on database
-        dogsReference.push().setValue(dog);
+        String uniqueID = dogsReference.push().getKey();
+
+        DogFirebase dog = new DogFirebase.DogBuilder(uniqueID, "Pies testowy").build();
+
+        dogsReference.child(uniqueID).setValue(dog);
     }
 
     /**
      * Write single dog object to "dogs" database
-     * @param dogData Collection of data about the dog
+     * @param dogFirebase Collection of data about the dog
      */
 
-    public void writeNewDog(Hashtable<String, String> dogData) {
+    public void writeNewDog(DogFirebase dogFirebase) {
 
-        DogFirebase dog = new DogFirebase(dogData);
-
-        dogsReference.push().setValue(dog);
+        dogsReference.child(dogFirebase.getId()).setValue(dogFirebase);
 
     }
 
@@ -112,10 +110,9 @@ public class FirebaseHelper {
         public void onDataChange(DataSnapshot dataSnapshot) {
             for (DataSnapshot singleRecordSnapshot: dataSnapshot.getChildren()) {
 
-                DogFirebase testDogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
-                testDogFirebase.id = singleRecordSnapshot.getKey();
+                DogFirebase dogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
 
-                dogs.add(testDogFirebase);
+                dogs.add(dogFirebase);
 
             }
 

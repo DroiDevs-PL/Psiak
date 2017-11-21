@@ -14,6 +14,8 @@ import com.example.android.psiak.Firebase.FirebaseHelper;
 import com.example.android.psiak.Firebase.FirebaseDataListener;
 import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.Utils.Const;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -29,6 +31,17 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
     // region Properties
 
     private FirebaseHelper firebaseHelper;
+
+    /**
+     * Reference to Firebase database
+     */
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    /**
+     * Reference to "dogs" end point in database
+     */
+
+    private DatabaseReference dogsReference = database.getReference("dogs");
 
     private ArrayList<DogFirebase> dogsCollection;
 
@@ -101,7 +114,7 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
 
     @OnClick(R.id.btn_add_random_dog)
     void addRandomDog(View view) {
-        firebaseHelper.writeNewDog("Papik", "Warszawa");
+        firebaseHelper.writeNewDog();
         Toast.makeText(getBaseContext(), "Random dog was added", Toast.LENGTH_SHORT).show();
     }
 
@@ -112,24 +125,24 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
     @OnClick(R.id.btn_add_new_dog)
     void addNewDogDog(View view) {
 
-        Hashtable<String, String> dogData = new Hashtable<>();
+        String uniqueID = dogsReference.push().getKey();
 
-        dogData.put(Const.NAME, etDogName.getText().toString());
-        dogData.put(Const.GENDER, etDogGender.getText().toString());
-        dogData.put(Const.AGE, etDogAge.getText().toString());
-        dogData.put(Const.DESCRIPTION, etDogDescription.getText().toString());
-        dogData.put(Const.SIZE, etDogSize.getText().toString());
-        dogData.put(Const.WEIGHT, etDogWeight.getText().toString());
-        dogData.put(Const.LOCATION, etDogLocation.getText().toString());
-        dogData.put(Const.ATTITUDE_PEOPLE, etDogAttitudePeople.getText().toString());
-        dogData.put(Const.ATTITUDE_DOGS, etDogAttitudeDogs.getText().toString());
-        dogData.put(Const.ATTITUDE_CATS, etDogAttitudeCats.getText().toString());
-        dogData.put(Const.KEEPER_NAME, etDogKeeperName.getText().toString());
-        dogData.put(Const.KEEPER_PHONE, etDogKeeperPhone.getText().toString());
-        dogData.put(Const.KEEPER_MAIL, etDogKeeperMail.getText().toString());
-        dogData.put(Const.HOMELESS_SINCE, etDogHomelessSince.getText().toString());
+        DogFirebase dogFirebase = new DogFirebase.DogBuilder(uniqueID, etDogName.getText().toString())
+                .gender(etDogGender.getText().toString())
+                .age(etDogAge.getText().toString())
+                .description(etDogDescription.getText().toString())
+                .size(etDogSize.getText().toString())
+                .weight(etDogWeight.getText().toString())
+                .location(etDogLocation.getText().toString())
+                .attitudePeople(etDogAttitudePeople.getText().toString())
+                .attitudeDogs(etDogAttitudeDogs.getText().toString())
+                .attitudeCats(etDogAttitudeCats.getText().toString())
+                .keeperName(etDogKeeperPhone.getText().toString())
+                .keeperMail(etDogKeeperMail.getText().toString())
+                .homelessSince(etDogHomelessSince.getText().toString())
+                .build();
         
-        firebaseHelper.writeNewDog(dogData);
+        firebaseHelper.writeNewDog(dogFirebase);
 
         Toast.makeText(getBaseContext(), "New dog added", Toast.LENGTH_SHORT).show();
     }

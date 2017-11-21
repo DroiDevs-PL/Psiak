@@ -21,99 +21,35 @@ public class DogFirebaseTest {
     @Test
     public void valid_DogFirebase_Initialization() throws Exception {
 
-        Hashtable<String, String> dogData = new Hashtable<>();
+        DogFirebase dogFirebase = new DogFirebase.DogBuilder("1", "Fafik")
+                .gender("male")
+                .age("2")
+                .description("desc")
+                .size("small")
+                .weight("10")
+                .location("Gdańsk")
+                .attitudePeople("good")
+                .attitudeDogs("good")
+                .attitudeCats("good")
+                .keeperName("Marcin")
+                .keeperPhone("1")
+                .keeperMail("test@test.pl")
+                .homelessSince("2016-09-01")
+                .build();
 
-        dogData.put(Const.NAME, "Fafik");
-        dogData.put(Const.GENDER, "male");
-        dogData.put(Const.AGE, "2");
-        dogData.put(Const.DESCRIPTION, "desc");
-        dogData.put(Const.SIZE, "small");
-        dogData.put(Const.WEIGHT, "10");
-        dogData.put(Const.LOCATION, "Gdańsk");
-        dogData.put(Const.ATTITUDE_PEOPLE, "good");
-        dogData.put(Const.ATTITUDE_DOGS, "good");
-        dogData.put(Const.ATTITUDE_CATS, "good");
-        dogData.put(Const.KEEPER_NAME, "Marcin");
-        dogData.put(Const.KEEPER_PHONE, "111111111");
-        dogData.put(Const.KEEPER_MAIL, "test@test.pl");
-        dogData.put(Const.HOMELESS_SINCE, "2016-09-01");
-
-        DogFirebase dogFirebase = new DogFirebase(dogData);
-
-        assertEquals(dogFirebase.name, "Fafik");
-        assertEquals(dogFirebase.gender, "male");
-        assertEquals(dogFirebase.age, "2");
-        assertEquals(dogFirebase.description, "desc");
-        assertEquals(dogFirebase.size, "small");
-        assertEquals(dogFirebase.weight, "10");
-        assertEquals(dogFirebase.location, "Gdańsk");
-        assertEquals(dogFirebase.attitude_people, "good");
-        assertEquals(dogFirebase.attitude_dogs, "good");
-        assertEquals(dogFirebase.attitude_cats, "good");
-        assertEquals(dogFirebase.keeper_name, "Marcin");
-        assertEquals(dogFirebase.keeper_phone, "111111111");
-        assertEquals(dogFirebase.keeper_mail, "test@test.pl");
-        assertEquals(dogFirebase.homeless_since, "2016-09-01");
-    }
-
-    @Test
-    public void valid_DogFirebase_Initialization_With_Default_Values() throws Exception {
-
-        Hashtable<String, String> dogData = new Hashtable<>();
-
-        DogFirebase dogFirebase = new DogFirebase(dogData);
-
-        assertEquals(dogFirebase.name, Const.NO_DATA);
-        assertEquals(dogFirebase.gender, Const.NO_DATA);
-        assertEquals(dogFirebase.age, Const.NO_DATA);
-        assertEquals(dogFirebase.description, Const.NO_DATA);
-        assertEquals(dogFirebase.size, Const.NO_DATA);
-        assertEquals(dogFirebase.weight, Const.NO_DATA);
-        assertEquals(dogFirebase.location, Const.NO_DATA);
-        assertEquals(dogFirebase.attitude_people, Const.NO_DATA);
-        assertEquals(dogFirebase.attitude_dogs, Const.NO_DATA);
-        assertEquals(dogFirebase.attitude_cats, Const.NO_DATA);
-        assertEquals(dogFirebase.keeper_name, Const.NO_DATA);
-        assertEquals(dogFirebase.keeper_phone, Const.NO_DATA);
-        assertEquals(dogFirebase.keeper_mail, Const.NO_DATA);
-        assertEquals(dogFirebase.homeless_since, Const.NO_DATA);
-    }
-
-    @Test
-    public void valid_DogFirebase_Initialization_With_Invalid_Values() throws Exception {
-
-        Hashtable<String, String> dogData = new Hashtable<>();
-
-        dogData.put("randomKey1", "Fafik");
-        dogData.put("randomKey2", "male");
-        dogData.put("randomKey3", "2");
-        dogData.put("randomKey4", "desc");
-        dogData.put("randomKey5", "small");
-        dogData.put("randomKey6", "10");
-        dogData.put("randomKey7", "Gdańsk");
-        dogData.put("randomKey8", "good");
-        dogData.put("randomKey9", "good");
-        dogData.put("randomKey10", "good");
-        dogData.put("randomKey11", "Marcin");
-        dogData.put("randomKey12", "111111111");
-        dogData.put("randomKey13", "test@test.pl");
-        dogData.put("randomKey14", "2016-09-01");
-
-        DogFirebase dogFirebase = new DogFirebase(dogData);
-
-        assertEquals(dogFirebase.name, Const.NO_DATA);
-        assertEquals(dogFirebase.gender, Const.NO_DATA);
-        assertEquals(dogFirebase.age, Const.NO_DATA);
-        assertEquals(dogFirebase.description, Const.NO_DATA);
-        assertEquals(dogFirebase.size, Const.NO_DATA);
-        assertEquals(dogFirebase.weight, Const.NO_DATA);
-        assertEquals(dogFirebase.location, Const.NO_DATA);
-        assertEquals(dogFirebase.attitude_people, Const.NO_DATA);
-        assertEquals(dogFirebase.attitude_dogs, Const.NO_DATA);
-        assertEquals(dogFirebase.attitude_cats, Const.NO_DATA);
-        assertEquals(dogFirebase.keeper_name, Const.NO_DATA);
-        assertEquals(dogFirebase.keeper_phone, Const.NO_DATA);
-        assertEquals(dogFirebase.keeper_mail, Const.NO_DATA);
-        assertEquals(dogFirebase.homeless_since, Const.NO_DATA);
+        assertEquals(dogFirebase.getName(), "Fafik");
+        assertEquals(dogFirebase.getGender(), "male");
+        assertEquals(dogFirebase.getAge(), "2");
+        assertEquals(dogFirebase.getDescription(), "desc");
+        assertEquals(dogFirebase.getSize(), "small");
+        assertEquals(dogFirebase.getWeight(), "10");
+        assertEquals(dogFirebase.getLocation(), "Gdańsk");
+        assertEquals(dogFirebase.getAttitudePeople(), "good");
+        assertEquals(dogFirebase.getAttitudeDogs(), "good");
+        assertEquals(dogFirebase.getAttitudeCats(), "good");
+        assertEquals(dogFirebase.getKeeperName(), "Marcin");
+        assertEquals(dogFirebase.getKeeperPhone(), "1");
+        assertEquals(dogFirebase.getKeeperMail(), "test@test.pl");
+        assertEquals(dogFirebase.getHomelessSince(), "2016-09-01");
     }
 }

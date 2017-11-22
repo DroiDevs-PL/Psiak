@@ -2,7 +2,7 @@ package com.example.android.psiak;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
@@ -15,17 +15,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Network.DummyDogDataService;
+import com.mindorks.placeholderview.SwipeDecor;
+import com.mindorks.placeholderview.SwipePlaceHolderView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,20 +41,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView noDogs;
     @BindView(R.id.woof)
     TextView woof;
-    @BindView(R.id.tempText)
-    TextView tempText;
-    @BindView(R.id.activity_main)
-    RelativeLayout activityMain;
     @BindView(R.id.navigation)
     NavigationView navList;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-    @BindView(R.id.btn_like)
-    FloatingActionButton btnLike;
-    @BindView(R.id.btn_dislike)
-    FloatingActionButton btnDislike;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.swipeView)
+    SwipePlaceHolderView mSwipeView;
+    @BindView(R.id.noDogsLayout)
+    ConstraintLayout noDogsLayout;
+    @BindView(R.id.dogsAvailableLayout)
+    ConstraintLayout dogsAvailableLayout;
+
 //endregion
 
     private Menu menu;
@@ -64,6 +63,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        //region Swipe View init
+        mSwipeView.getBuilder()
+                .setDisplayViewCount(3)
+                .setSwipeDecor(new SwipeDecor()
+                        .setPaddingTop(20)
+                        .setRelativeScale(0.02f)
+                        .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
+                        .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
+        //endregion
+
         Retrofit retrofit = ((DoggieApplication)getApplication()).getRetrofitInstance();
         DummyDogDataService dummyDogDataService = retrofit.create(DummyDogDataService.class);
         Call<List<Dog>> dogCall = dummyDogDataService.loadDog();
@@ -71,17 +81,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onResponse(Call<List<Dog>> call, Response<List<Dog>> response) {
                 if(response.isSuccessful()) {
+                    dogsAvailableLayout.setVisibility(View.VISIBLE);
+                    noDogsLayout.setVisibility(View.INVISIBLE);
                     List<Dog> dogs = response.body();
                    // String dogsList = dogs.stream().reduce("", (d1, d2) -> d1.toString() + d2.toString()));
                     String dogsListString = "";
-                    for(Dog d : dogs) {
-                        dogsListString = dogsListString + d + "\n";
+                    for(Dog dog : dogs) {
+                        mSwipeView.addView(new TinderCard(MainActivity.this, dog, mSwipeView));
+                        Log.d(TAG, "onResponse: " + dog);
                     }
-                    tempText.setText(dogsListString);
                 }
                 else {
+                    dogsAvailableLayout.setVisibility(View.INVISIBLE);
+                    noDogsLayout.setVisibility(View.VISIBLE);
                     int httpCode = response.code();
-                    tempText.setText("Error with code:" + Integer.toString(httpCode));
+                    noDogs.setText("Error with code:" + Integer.toString(httpCode));
                 }
             }
 
@@ -98,19 +112,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
-
-    }
-
-    @OnClick(R.id.btn_like)
-    void setupLikeButton(View view){
-        Snackbar.make(view, "Liked", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-    }
-    @OnClick(R.id.btn_dislike)
-    void setupDislikeButton(View view){
-        Snackbar.make(view, "Disliked", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-
     }
 
     //region navigationDrawer

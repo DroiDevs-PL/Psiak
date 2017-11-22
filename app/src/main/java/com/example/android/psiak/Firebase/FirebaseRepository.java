@@ -2,7 +2,9 @@ package com.example.android.psiak.Firebase;
 
 import android.util.Log;
 
+import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.Repository.Repository;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -10,16 +12,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 /**
  * Created by Grzegorz on 13.11.2017.
  * Helper class for storing all functions related to Firebase operations
  */
 
-public class FirebaseHelper {
+public class FirebaseRepository implements Repository.Dogs {
 
-    private static final String TAG = FirebaseHelper.class.toString();
+    private static final String TAG = FirebaseRepository.class.toString();
 
     // region Properties
 
@@ -56,7 +57,7 @@ public class FirebaseHelper {
      * @param dataListener Object that will receive notifications about change of data
      *                     fetched from Firebase database
      */
-    public FirebaseHelper(FirebaseDataListener dataListener) {
+    public FirebaseRepository(FirebaseDataListener dataListener) {
         this.firebaseDataListener = dataListener;
     }
 
@@ -64,37 +65,26 @@ public class FirebaseHelper {
 
     // region Public Methods
 
-    /**
-     * Fetch all dogs data from Firebase database
-     */
-
+    @Override
     public void getAllDogs() {
         dogsReference.addListenerForSingleValueEvent(dogsListener);
     }
 
-    /**
-     * Write single dog object to "dogs" database
-     */
-
-    public void writeNewDog() {
-
-        // push() generates unique ID for dog on database
-        String uniqueID = dogsReference.push().getKey();
-
-        DogFirebase dog = new DogFirebase.DogBuilder(uniqueID, "Pies testowy").build();
-
-        dogsReference.child(uniqueID).setValue(dog);
+    @Override
+    public void addNewDog(DogFirebase dogFirebase) {
+        dogsReference.child(dogFirebase.getId()).setValue(dogFirebase);
     }
 
-    /**
-     * Write single dog object to "dogs" database
-     * @param dogFirebase Collection of data about the dog
-     */
+    @Override
+    public Dog findDog(String queryString) {
+        // TODO: Implement logic for findDog(String queryString)
+        return null;
+    }
 
-    public void writeNewDog(DogFirebase dogFirebase) {
-
-        dogsReference.child(dogFirebase.getId()).setValue(dogFirebase);
-
+    @Override
+    public boolean remove(DogFirebase dogFirebase) {
+        // TODO: Implement logic for remove(DogFirebase dogFirebase)
+        return false;
     }
 
     // endregion

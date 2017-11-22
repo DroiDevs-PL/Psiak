@@ -10,15 +10,13 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.android.psiak.Firebase.FirebaseHelper;
+import com.example.android.psiak.Firebase.FirebaseRepository;
 import com.example.android.psiak.Firebase.FirebaseDataListener;
 import com.example.android.psiak.Model.DogFirebase;
-import com.example.android.psiak.Utils.Const;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +28,7 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
 
     // region Properties
 
-    private FirebaseHelper firebaseHelper;
+    private FirebaseRepository firebaseRepository;
 
     /**
      * Reference to Firebase database
@@ -98,9 +96,9 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
         setSupportActionBar(toolbar);
 
         // TODO Use dependency injection here
-        firebaseHelper = new FirebaseHelper(this);
+        firebaseRepository = new FirebaseRepository(this);
 
-        firebaseHelper.getAllDogs();
+        firebaseRepository.getAllDogs();
 
     }
 
@@ -114,7 +112,13 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
 
     @OnClick(R.id.btn_add_random_dog)
     void addRandomDog(View view) {
-        firebaseHelper.writeNewDog();
+
+        String uniqueID = dogsReference.push().getKey();
+
+        DogFirebase dogFirebase = new DogFirebase.DogBuilder(uniqueID, "Random dog").build();
+
+        firebaseRepository.addNewDog(dogFirebase);
+
         Toast.makeText(getBaseContext(), "Random dog was added", Toast.LENGTH_SHORT).show();
     }
 
@@ -142,7 +146,7 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
                 .homelessSince(etDogHomelessSince.getText().toString())
                 .build();
         
-        firebaseHelper.writeNewDog(dogFirebase);
+        firebaseRepository.addNewDog(dogFirebase);
 
         Toast.makeText(getBaseContext(), "New dog added", Toast.LENGTH_SHORT).show();
     }

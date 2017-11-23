@@ -9,5 +9,10 @@ import java.util.ArrayList;
  */
 
 public interface FirebaseDataListener {
+
+    /**
+     * Callback method from FirebaseRepository
+     * @param dogsData Collection of DogFirebase object fetched from Firebase database
+     */
     void setDogsData(ArrayList<DogFirebase> dogsData);
 }

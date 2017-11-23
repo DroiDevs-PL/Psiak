@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.android.psiak.Firebase.FirebaseRepository;
-import com.example.android.psiak.Firebase.FirebaseDataListener;
+import com.example.android.psiak.Firebase.FirebaseActivityContract;
+import com.example.android.psiak.Firebase.FirebasePresenter;
 import com.example.android.psiak.Model.DogFirebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,29 +22,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FirebaseActivity extends AppCompatActivity implements FirebaseDataListener {
+public class FirebaseActivity
+        extends AppCompatActivity
+        implements FirebaseActivityContract.View {
 
     private static final String TAG = FirebaseActivity.class.toString();
 
     // region Properties
 
-    private FirebaseRepository firebaseRepository;
+    private FirebasePresenter firebasePresenter;
 
-    /**
-     * Reference to Firebase database
-     */
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-    /**
-     * Reference to "dogs" end point in database
-     */
-
-    private DatabaseReference dogsReference = database.getReference("dogs");
-
-    private ArrayList<DogFirebase> dogsCollection;
-
-    @BindView(R.id.btn_add_random_dog)
-    Button btnRandomDog;
+    @BindView(R.id.btn_show_all_dogs)
+    Button btnShowAllDogs;
     @BindView(R.id.btn_add_new_dog)
     Button btnAddNewDog;
 
@@ -96,10 +85,16 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
         setSupportActionBar(toolbar);
 
         // TODO Use dependency injection here
-        firebaseRepository = new FirebaseRepository(this);
+        firebasePresenter = new FirebasePresenter();
+        firebasePresenter.attach(this);
 
-        firebaseRepository.getAllDogs();
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (firebasePresenter != null)
+            firebasePresenter.detach();
     }
 
     // endregion
@@ -110,16 +105,9 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
      * Add random dog to the Firebase database
      */
 
-    @OnClick(R.id.btn_add_random_dog)
-    void addRandomDog(View view) {
-
-        String uniqueID = dogsReference.push().getKey();
-
-        DogFirebase dogFirebase = new DogFirebase.DogBuilder(uniqueID, "Random dog").build();
-
-        firebaseRepository.addNewDog(dogFirebase);
-
-        Toast.makeText(getBaseContext(), "Random dog was added", Toast.LENGTH_SHORT).show();
+    @OnClick(R.id.btn_show_all_dogs)
+    void getAllDogs(View view) {
+        firebasePresenter.getAllDogs();
     }
 
     /**
@@ -129,7 +117,8 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
     @OnClick(R.id.btn_add_new_dog)
     void addNewDogDog(View view) {
 
-        String uniqueID = dogsReference.push().getKey();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("dogs");
+        String uniqueID = databaseReference.push().getKey();
 
         DogFirebase dogFirebase = new DogFirebase.DogBuilder(uniqueID, etDogName.getText().toString())
                 .gender(etDogGender.getText().toString())
@@ -146,7 +135,7 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
                 .homelessSince(etDogHomelessSince.getText().toString())
                 .build();
         
-        firebaseRepository.addNewDog(dogFirebase);
+        firebasePresenter.addNewDog(dogFirebase);
 
         Toast.makeText(getBaseContext(), "New dog added", Toast.LENGTH_SHORT).show();
     }
@@ -156,18 +145,8 @@ public class FirebaseActivity extends AppCompatActivity implements FirebaseDataL
     // region Public Methods
 
     @Override
-    public void setDogsData(ArrayList<DogFirebase> dogsData) {
-        this.dogsCollection = dogsData;
-
-        Log.e(TAG, "Dogs count " + " " + dogsData.size());
-    }
-
-    // endregion
-
-    // region Getters
-
-    public ArrayList<DogFirebase> getDogsCollection() {
-        return dogsCollection;
+    public void showAllDogs(ArrayList<DogFirebase> dogs) {
+        Toast.makeText(getBaseContext(), "Dogs count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
     }
 
     // endregion

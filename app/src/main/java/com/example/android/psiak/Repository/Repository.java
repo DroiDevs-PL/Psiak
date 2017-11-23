@@ -1,8 +1,10 @@
 package com.example.android.psiak.Repository;
 
+import com.example.android.psiak.Firebase.FirebaseDataListener;
 import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Model.DogFirebase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +14,14 @@ import java.util.List;
 public interface Repository {
 
     interface Dogs {
+
+        /**
+         * Set object for callback methods
+         * @param dataListner Object that will listen about data change in repository.
+         *                    Object must implement FirebaseDataListner Interface
+         */
+
+        void setDataListner(FirebaseDataListener dataListner);
 
         /**
          * Fetch all dogs data from Firebase database
@@ -41,6 +51,13 @@ public interface Repository {
          */
 
         boolean remove(DogFirebase dogFirebase);
+
+        /**
+         * Get collection of dogs that was cached after fetching from Firebase database
+         * @return Dogs collection
+         */
+
+        ArrayList<DogFirebase> getCachedDogs();
 
     }
 }

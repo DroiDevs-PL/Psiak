@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.android.psiak.Firebase.FirebaseActivityContract;
 import com.example.android.psiak.Firebase.FirebasePresenter;
+import com.example.android.psiak.Firebase.FirebaseRepository;
 import com.example.android.psiak.Model.DogFirebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -85,7 +86,7 @@ public class FirebaseActivity
         setSupportActionBar(toolbar);
 
         // TODO Use dependency injection here
-        firebasePresenter = new FirebasePresenter();
+        firebasePresenter = new FirebasePresenter(new FirebaseRepository());
         firebasePresenter.attach(this);
 
     }

@@ -20,22 +20,31 @@ public class FirebasePresenter
 
     private static final String TAG = FirebasePresenter.class.toString();
 
-    FirebaseRepository firebaseRepository;
+    /**
+     * Repository object that will be used with this presenter
+     */
+
+    Repository.Dogs firebaseRepository;
 
     /**
-     * List for caching all dogs objects fetched from Firebase database
+     * Initialize FirebasePresenter with specified repository. After initialization FirebasePresenter object will be set as a
+     * data listner object for callback from repository
+     * @param repository Repository.Dog object that will be used with this Presenter
      */
-    private ArrayList<DogFirebase> dogs = new ArrayList<DogFirebase>();
 
-    public FirebasePresenter() {
-        this.firebaseRepository = new FirebaseRepository(this);
+    public FirebasePresenter(Repository.Dogs repository) {
+        this.firebaseRepository = repository;
+        this.firebaseRepository.setDataListner(this);
     }
 
     @Override
     public void getAllDogs() {
-        if (dogs.size() > 0) {
+
+        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
+
+        if (dogsData.size() > 0) {
             if (isViewAttached()) {
-                view.showAllDogs(this.dogs);
+                view.showAllDogs(dogsData);
             }
         } else {
             firebaseRepository.getAllDogs();
@@ -49,10 +58,8 @@ public class FirebasePresenter
 
     @Override
     public void setDogsData(ArrayList<DogFirebase> dogsData) {
-        this.dogs = dogsData;
-
         if (isViewAttached()) {
-            view.showAllDogs(this.dogs);
+            view.showAllDogs(dogsData);
         }
     }
 }

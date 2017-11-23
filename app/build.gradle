@@ -39,6 +39,7 @@ dependencies {
     androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:design:27.0.1'
+    testCompile "org.mockito:mockito-core:2.+"
 
 
     compile 'com.jakewharton:butterknife:8.8.1'

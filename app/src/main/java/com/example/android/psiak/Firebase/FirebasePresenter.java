@@ -38,13 +38,13 @@ public class FirebasePresenter
                 view.showAllDogs(this.dogs);
             }
         } else {
-            firebaseRepository.getAllDogs();
+            firebaseRepository.getAllObjects();
         }
     }
 
     @Override
     public void addNewDog(DogFirebase dogFirebase) {
-        firebaseRepository.addNewDog(dogFirebase);
+        firebaseRepository.addNew(dogFirebase);
     }
 
     @Override

@@ -11,36 +11,36 @@ import java.util.List;
 
 public interface Repository {
 
-    interface Dogs {
+    interface Firebase<Type> {
 
         /**
-         * Fetch all dogs data from Firebase database
+         * Fetch all data from Firebase database form specified endpoint
          */
 
-        void getAllDogs();
+        void getAllObjects();
 
         /**
          * Find single Dog object based on criteria specified in queryString
          * @param queryString
-         * @return Dog object
+         * @return Firebase object
          */
 
-        Dog findDog(String queryString);
+        Type find(String queryString);
 
         /**
          * Write single dog object to "dogs" database
-         * @param dogFirebase Dog object that will be saved to Firebase database
+         * @param firebaseObject Object that will be saved to Firebase database
          */
 
-        void addNewDog(DogFirebase dogFirebase);
+        void addNew(Type firebaseObject);
 
         /**
          * Remove specified Dog object from Firebase database
-         * @param dogFirebase Dog object that should be removed from database
+         * @param firebaseObject Object that should be removed from database
          * @return indicate if operation was successful
          */
 
-        boolean remove(DogFirebase dogFirebase);
+        boolean remove(Type firebaseObject);
 
     }
 }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Helper class for storing all functions related to Firebase operations
  */
 
-public class FirebaseRepository implements Repository.Dogs {
+public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
 
     private static final String TAG = FirebaseRepository.class.toString();
 
@@ -66,17 +66,17 @@ public class FirebaseRepository implements Repository.Dogs {
     // region Public Methods
 
     @Override
-    public void getAllDogs() {
+    public void getAllObjects() {
         dogsReference.addListenerForSingleValueEvent(dogsListener);
     }
 
     @Override
-    public void addNewDog(DogFirebase dogFirebase) {
+    public void addNew(DogFirebase dogFirebase) {
         dogsReference.child(dogFirebase.getId()).setValue(dogFirebase);
     }
 
     @Override
-    public Dog findDog(String queryString) {
+    public DogFirebase find(String queryString) {
         // TODO: Implement logic for findDog(String queryString)
         return null;
     }
@@ -106,14 +106,14 @@ public class FirebaseRepository implements Repository.Dogs {
 
             }
 
-            Log.e(TAG, "Dogs count " + " " + dataSnapshot.getChildrenCount());
+            Log.e(TAG, "Firebase count " + " " + dataSnapshot.getChildrenCount());
 
             firebaseDataListener.setDogsData(dogs);
         }
 
         @Override
         public void onCancelled(DatabaseError databaseError) {
-            // Getting Dogs failed, log a message
+            // Getting Firebase failed, log a message
             Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
         }
     };

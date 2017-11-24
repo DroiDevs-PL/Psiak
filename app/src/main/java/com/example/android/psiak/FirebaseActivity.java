@@ -146,7 +146,7 @@ public class FirebaseActivity
 
     @Override
     public void showAllDogs(ArrayList<DogFirebase> dogs) {
-        Toast.makeText(getBaseContext(), "Dogs count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Firebase count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
     }
 
     // endregion

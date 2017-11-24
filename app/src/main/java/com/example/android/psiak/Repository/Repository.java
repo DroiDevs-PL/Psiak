@@ -28,11 +28,18 @@ public interface Repository {
         Type find(String queryString);
 
         /**
-         * Write single dog object to "dogs" database
+         * Write single object to specified end point in database
          * @param firebaseObject Object that will be saved to Firebase database
          */
 
         void addNew(Type firebaseObject);
+
+        /**
+         * Update data at specified end point in Firebase database
+         * @param firebaseObject Object that will override data at specified location
+         */
+
+        void update(Type firebaseObject);
 
         /**
          * Remove specified Dog object from Firebase database
@@ -40,7 +47,7 @@ public interface Repository {
          * @return indicate if operation was successful
          */
 
-        boolean remove(Type firebaseObject);
+        void remove(Type firebaseObject);
 
     }
 }

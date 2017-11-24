@@ -12,6 +12,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Grzegorz on 13.11.2017.
@@ -77,14 +79,30 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
 
     @Override
     public DogFirebase find(String queryString) {
-        // TODO: Implement logic for findDog(String queryString)
+        // TODO: Implement logic for find
         return null;
     }
 
     @Override
-    public boolean remove(DogFirebase dogFirebase) {
-        // TODO: Implement logic for remove(DogFirebase dogFirebase)
-        return false;
+    public void update(DogFirebase firebaseObject) {
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put(firebaseObject.getId(), firebaseObject);
+        dogsReference.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                // TODO: Inform user that data was updated successfully
+            }
+        });
+    }
+
+    @Override
+    public void remove(DogFirebase firebaseObject) {
+        dogsReference.child(firebaseObject.getId()).removeValue(new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                // TODO: Inform user that data about dog was removed
+            }
+        });
     }
 
     // endregion

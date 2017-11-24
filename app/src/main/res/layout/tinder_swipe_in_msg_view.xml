@@ -4,12 +4,9 @@
     android:orientation="vertical"
     android:layout_width="350dp"
     android:layout_height="425dp">
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_margin="40dp"
-        android:textColor="@android:color/holo_green_light"
-        android:text="Accept"/>
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/ic_happy_dog"/>
 </LinearLayout>

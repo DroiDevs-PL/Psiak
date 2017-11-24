@@ -5,12 +5,9 @@
     android:layout_width="350dp"
     android:gravity="right"
     android:layout_height="425dp">
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_margin="40dp"
-        android:textColor="@android:color/holo_red_light"
-        android:text="Reject"/>
+        android:layout_marginRight="50dp"
+        android:src="@drawable/ic_sad_dog"/>
 </LinearLayout>

@@ -42,15 +42,10 @@ public class FirebaseAcitvityTest {
     }
 
     @Test
-    public void activity_Implement_Proper_Interface() {
-        assertThat(firebaseActivity, isA(FirebaseDataListener.class));
-    }
-
-    @Test
     public void all_Views_Are_Bind() throws Exception {
 
         Button btnAddNewDog = firebaseActivity.findViewById(R.id.btn_add_new_dog);
-        Button btnAddRandomDog = firebaseActivity.findViewById(R.id.btn_add_random_dog);
+        Button btnShowAllDogs = firebaseActivity.findViewById(R.id.btn_show_all_dogs);
 
         EditText etDogName = firebaseActivity.findViewById(R.id.et_dog_name);
         EditText etDogGender = firebaseActivity.findViewById(R.id.et_dog_gender);
@@ -72,7 +67,7 @@ public class FirebaseAcitvityTest {
         Switch swDogSterilized = firebaseActivity.findViewById(R.id.sw_dog_sterilized);
 
         assertThat(btnAddNewDog, notNullValue());
-        assertThat(btnAddRandomDog, notNullValue());
+        assertThat(btnShowAllDogs, notNullValue());
 
         assertThat(etDogName, notNullValue());
         assertThat(etDogGender, notNullValue());
@@ -92,21 +87,6 @@ public class FirebaseAcitvityTest {
         assertThat(swDogVaccinated, notNullValue());
         assertThat(swDogDewormed, notNullValue());
         assertThat(swDogSterilized, notNullValue());
-
-    }
-
-    @Test
-    public void dogs_Data_Is_Set_After_Callback() {
-
-        ArrayList<DogFirebase> dogsCollection = new ArrayList<>();
-
-        DogFirebase dogFirebase = new DogFirebase.DogBuilder("1", "Fafik").build();
-
-        dogsCollection.add(dogFirebase);
-
-        firebaseActivity.setDogsData(dogsCollection);
-
-        assertThat(firebaseActivity.getDogsCollection().size(), greaterThan(0));
 
     }
 }

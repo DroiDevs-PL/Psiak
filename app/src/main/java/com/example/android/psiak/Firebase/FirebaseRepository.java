@@ -29,6 +29,7 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     /**
      * Reference to Firebase database
      */
+
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     /**
@@ -55,17 +56,19 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     // region Initializers
 
     /**
-     *
-     * @param dataListener Object that will receive notifications about change of data
-     *                     fetched from Firebase database
+     * Default constructor
      */
-    public FirebaseRepository(FirebaseDataListener dataListener) {
-        this.firebaseDataListener = dataListener;
-    }
+    
+    public FirebaseRepository() {}
 
     // endregion
 
     // region Public Methods
+
+    @Override
+    public void setDataListner(FirebaseDataListener dataListner) {
+        this.firebaseDataListener = dataListner;
+    }
 
     @Override
     public void getAllObjects() {
@@ -124,9 +127,9 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
 
             }
 
-            Log.e(TAG, "Firebase count " + " " + dataSnapshot.getChildrenCount());
-
-            firebaseDataListener.setDogsData(dogs);
+            if (firebaseDataListener != null) {
+                firebaseDataListener.setDogsData(dogs);
+            }
         }
 
         @Override
@@ -140,7 +143,8 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
 
     // region Getters
 
-    public ArrayList<DogFirebase> getDogs() {
+    @Override
+    public ArrayList<DogFirebase> getCachedDogs() {
         return dogs;
     }
 

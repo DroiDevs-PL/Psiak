@@ -21,6 +21,7 @@ import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Network.DummyDogDataService;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
+import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 
 import java.util.List;
 
@@ -69,9 +70,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
                         .setPaddingTop(20)
-                        .setRelativeScale(0.02f)
+                        .setRelativeScale(0.05f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
+        mSwipeView.addItemRemoveListener(new ItemRemovedListener() {
+
+            @Override
+            public void onItemRemoved(int count) {
+                if(count ==0 ){
+                    dogsAvailableLayout.setVisibility(View.INVISIBLE);
+                    noDogsLayout.setVisibility(View.VISIBLE);
+                    noDogs.setText("Brak dalszych wyników");
+                }
+            }
+        });
         //endregion
 
         Retrofit retrofit = ((DoggieApplication)getApplication()).getRetrofitInstance();

@@ -80,4 +80,5 @@ public class TinderCard {
     private void onSwipeOutState(){
         Log.d("EVENT", "onSwipeOutState");
     }
+
 }

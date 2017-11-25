@@ -19,13 +19,14 @@ public class DoggieApplication extends Application {
         if(retrofit != null) {
             return retrofit;
         }
-        String baseUrl = "https://api.myjson.com";
+        String baseUrl = "https://api.myjson.com/";
         int cacheSize = 10 * 1024 * 1024;
         Cache cache = new Cache(this.getCacheDir(),cacheSize);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().cache(cache).build();
 
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE);
+        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.IDENTITY);
+        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
         Gson gson = gsonBuilder.create();
 
         Retrofit retrofit = new Retrofit.Builder()

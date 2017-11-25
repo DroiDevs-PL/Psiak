@@ -1,52 +1,51 @@
 package com.example.android.psiak.Model;
 
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose;
 
 import java.util.List;
 
 public class Dog {
-
+@Expose
     private String weight;
-
-    @SerializedName("location_city")
+@Expose
     private String location;
-
+@Expose
     private String globalId;
-
+@Expose
     private String vaccinated;
-
+@Expose
     private String attitudeDogs;
-
+@Expose
     private String attitudePeople;
-
+@Expose
     private String size;
-
+@Expose
     private String dewormed;
 
     private List<Photo> photos;
-
+@Expose
     private String id;
-
+@Expose
     private String keeperMail;
-
+@Expose
     private String homelessSince;
-
+@Expose
     private String description;
-
+    @Expose
     private String name;
-
+    @Expose
     private String age;
-
+@Expose
     private String gender;
-
+@Expose
     private String keeperPhone;
-
+@Expose
     private String sterilized;
-
+@Expose
     private String keeperName;
-
+@Expose
     private String attitudeCats;
-
+@Expose
     private String profilePic;
 
     public String getWeight() {

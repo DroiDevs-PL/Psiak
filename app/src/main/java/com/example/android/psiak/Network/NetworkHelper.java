@@ -1,13 +1,12 @@
 package com.example.android.psiak.Network;
 
-/**
- * Created by pzarzycki on 13.11.2017.
- */
-
+import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
+
+import com.readystatesoftware.chuck.ChuckInterceptor;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,19 +15,45 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import okhttp3.Cache;
+import okhttp3.OkHttpClient;
+
 /**
  * Helper class for working with a remote server
  */
 public class NetworkHelper {
 
     /**
+     * Builds client which should be used with any http requests.
+     * @param context app context
+     * @param cache cache dir
+     * @return OkHttpClient
+     */
+    public static OkHttpClient buildClient(Context context, Cache cache) {
+        return new OkHttpClient.Builder()
+                .addInterceptor(new ChuckInterceptor(context))
+                .cache(cache).build();
+    }
+
+    /**
+     * Builds client without cache! Use only in the last resort!
+     * @param context app context
+     * @return OkHttpClient
+     */
+    public static OkHttpClient buildClient(Context context) {
+        return new OkHttpClient.Builder()
+                .addInterceptor(new ChuckInterceptor(context))
+                .build();
+    }
+
+    /**
      * Returns text from a URL on a web server
      *
-     * @param address
-     * @return
-     * @throws IOException
+     * @param address what page we should fetch
+     * @return String|null
+     * @throws IOException when can not fetch page
      */
-    public static String downloadUrl(String address) throws IOException {
+    public static String downloadUrl(String address, Context context) throws IOException {
 
         InputStream is = null;
         try {
@@ -61,9 +86,9 @@ public class NetworkHelper {
     /**
      * Reads an InputStream and converts it to a String.
      *
-     * @param stream
-     * @return
-     * @throws IOException
+     * @param stream text fetched form server
+     * @return String|null
+     * @throws IOException when wasn't able  to read stream
      */
     private static String readStream(InputStream stream) throws IOException {
 
@@ -91,9 +116,10 @@ public class NetworkHelper {
     /**
      * Check for Network connection status, if boolean is true it will also check for Internet access
      *
-     * @param context
-     * @param networkListener
-     * @param checkForInternetAccess
+     * @param context app context
+     * @param networkListener network state updated
+     * @param checkForInternetAccess if user has access to internet
+     * todo method not used inside project! Determine what to do with it
      */
     public static void checkInternetConnection(@NonNull Context context, NetworkListener networkListener, boolean checkForInternetAccess) {
 
@@ -106,6 +132,13 @@ public class NetworkHelper {
 
     }
 
+    /**
+     * Checks if user has access to the internet
+     *
+     * @param networkListener interface updating network state
+     * todo Maybe we should generate 204 to our server instead google.com (in order to prefetch DNS)
+     * @link https://stackoverflow.com/questions/1989214/google-com-and-clients1-google-com-generate-204
+     */
     private static void hasInternetAccess(final NetworkListener networkListener) {
         new Thread() {
             @Override
@@ -131,7 +164,14 @@ public class NetworkHelper {
         };
     }
 
-    public static boolean IsNetworkConnected(Context context) {
+    /**
+     * Checks if user is connected to the network
+     *
+     * @param context app context
+     * @return boolean
+     */
+
+    private static boolean IsNetworkConnected(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         try {
@@ -144,6 +184,11 @@ public class NetworkHelper {
     }
 
 
+    /**
+     * Network listener
+     *
+     * Updates network state
+     */
     public interface NetworkListener {
         void updateNetworkState(boolean status);
     }

@@ -1,9 +1,8 @@
 package com.example.android.psiak.Model;
 
-import com.example.android.psiak.Utils.Const;
 import com.google.firebase.database.IgnoreExtraProperties;
 
-import java.util.Hashtable;
+import java.util.List;
 
 /**
  * Created by Grzegorz on 13.11.2017.
@@ -36,9 +35,8 @@ public class DogFirebase {
     private String weight;
     private String age;
 
-    // TODO Add properties to the constructor
     private String profilePic;
-    private String photos;
+    private List<String> photos;
 
     // endregion
 
@@ -161,7 +159,7 @@ public class DogFirebase {
         return profilePic;
     }
 
-    public String getPhotos() {
+    public List<String> getPhotos() {
         return photos;
     }
 
@@ -192,9 +190,8 @@ public class DogFirebase {
         private String weight;
         private String age;
 
-        // TODO Add properties to the constructor
         private String profilePic;
-        private String photos;
+        private List<String> photos;
 
         public DogBuilder(String id, String name) {
             this.id = id;
@@ -269,6 +266,16 @@ public class DogFirebase {
 
         public DogBuilder sterilized(String sterilized) {
             this.sterilized = sterilized;
+            return this;
+        }
+
+        public DogBuilder profilePic(String profilePic) {
+            this.profilePic = profilePic;
+            return this;
+        }
+
+        public DogBuilder photos(List<String> photos) {
+            this.photos = photos;
             return this;
         }
 

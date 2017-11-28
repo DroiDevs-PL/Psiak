@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.psiak.Model.Dog;
+import com.example.android.psiak.Model.DogFirebase;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -34,8 +35,15 @@ public class TinderCard {
     private TextView locationNameTxt;
 
     private Dog mDog;
+    private DogFirebase mDogFirebase;
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
+
+    public TinderCard(Context context, DogFirebase dog, SwipePlaceHolderView swipeView) {
+        mContext = context;
+        mDogFirebase = dog;
+        mSwipeView = swipeView;
+    }
 
     public TinderCard(Context context, Dog dog, SwipePlaceHolderView swipeView) {
         mContext = context;
@@ -43,15 +51,26 @@ public class TinderCard {
         mSwipeView = swipeView;
     }
 
+//    @Resolve
+//    private void onResolved(){
+//        Picasso.with(mContext)
+//                .load(mDog.getProfilePic())
+//                .error(R.drawable.ic_doggy)
+//                .placeholder(R.drawable.ic_doggy)
+//                .into(profileImageView);
+//        nameAgeTxt.setText(mDog.getName() + ", " + mDog.getAge());
+//        locationNameTxt.setText(mDog.getLocation());
+//    }
+
     @Resolve
     private void onResolved(){
         Picasso.with(mContext)
-                .load(mDog.getProfilePic())
+                .load(mDogFirebase.getProfilePic())
                 .error(R.drawable.ic_doggy)
                 .placeholder(R.drawable.ic_doggy)
                 .into(profileImageView);
-        nameAgeTxt.setText(mDog.getName() + ", " + mDog.getAge());
-        locationNameTxt.setText(mDog.getLocation());
+        nameAgeTxt.setText(mDogFirebase.getName() + ", " + mDogFirebase.getAge());
+        locationNameTxt.setText(mDogFirebase.getLocation());
     }
 
     @SwipeOut

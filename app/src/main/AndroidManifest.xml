@@ -3,7 +3,8 @@
     package="com.example.android.psiak">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".DoggieApplication"
         android:allowBackup="true"
@@ -22,7 +23,11 @@
         <activity
             android:name=".FirebaseActivity"
             android:label="@string/title_activity_firebase_testing"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivityOLD"
+            android:label="@string/title_activity_main_old"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

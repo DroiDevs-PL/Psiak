@@ -1,6 +1,6 @@
-package com.example.android.psiak.Network;
+package com.example.android.psiak.data.network;
 
-import com.example.android.psiak.Model.Dog;
+import com.example.android.psiak.model.Dog;
 
 import java.util.List;
 

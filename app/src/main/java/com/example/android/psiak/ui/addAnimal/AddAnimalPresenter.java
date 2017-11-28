@@ -1,8 +1,8 @@
-package com.example.android.psiak.AddAnimal;
+package com.example.android.psiak.ui.addAnimal;
 
-import com.example.android.psiak.Base.BasePresenter;
-import com.example.android.psiak.Model.Dog;
-import com.example.android.psiak.Repository.Repository;
+import com.example.android.psiak.ui.base.BasePresenter;
+import com.example.android.psiak.model.Dog;
+import com.example.android.psiak.data.repository.Repository;
 
 /**
  * Created by Maciej Bialorucki on 20.11.17.

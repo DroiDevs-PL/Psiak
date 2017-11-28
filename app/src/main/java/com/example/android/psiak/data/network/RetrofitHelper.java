@@ -1,8 +1,8 @@
-package com.example.android.psiak;
+package com.example.android.psiak.data.network;
 
-import android.app.Application;
+import android.content.Context;
 
-import com.example.android.psiak.Network.NetworkHelper;
+import com.example.android.psiak.data.network.NetworkHelper;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,23 +12,20 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DoggieApplication extends Application {
+public class RetrofitHelper {
 
     Retrofit retrofit;
 
-    /**
-     * Creates RetroFit instance and fetches api data
-     *
-     * @return RetroFit
-     */
-    public Retrofit getRetrofitInstance() {
-        if(retrofit != null) {
-            return retrofit;
-        }
+
+    public Retrofit getRetrofitInstance(Context context) {
+        //this code won't be ever called
+//        if (retrofit != null) {
+//            return retrofit;
+//        }
         String baseUrl = "https://api.myjson.com";
         int cacheSize = 10 * 1024 * 1024;
-        Cache cache = new Cache(this.getCacheDir(),cacheSize);
-        OkHttpClient okHttpClient = NetworkHelper.buildClient(this, cache);
+        Cache cache = new Cache(context.getCacheDir(), cacheSize);
+        OkHttpClient okHttpClient = NetworkHelper.buildClient(context, cache);
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE);
@@ -40,11 +37,5 @@ public class DoggieApplication extends Application {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         return retrofit;
-    }
-
-    @Override
-    public void onCreate() {
-        retrofit = null;
-        super.onCreate();
     }
 }

@@ -19,9 +19,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.android.psiak.AddAnimal.AddAnimalActivity;
-import com.example.android.psiak.Model.Dog;
-import com.example.android.psiak.Network.DummyDogDataService;
+import com.example.android.psiak.data.network.DummyDogDataService;
+import com.example.android.psiak.data.network.RetrofitHelper;
+import com.example.android.psiak.model.Dog;
+import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 
 import java.util.List;
 
@@ -66,43 +67,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-//        Retrofit retrofit = ((DoggieApplication)getApplication()).getRetrofitInstance();
-//        DummyDogDataService dummyDogDataService = retrofit.create(DummyDogDataService.class);
-//        Call<List<Dog>> dogCall = dummyDogDataService.loadDog();
-//        dogCall.enqueue(new Callback<List<Dog>>() {
-//            @Override
-//            public void onResponse(Call<List<Dog>> call, Response<List<Dog>> response) {
-//                if(response.isSuccessful()) {
-//                    List<Dog> dogs = response.body();
-//                   // String dogsList = dogs.stream().reduce("", (d1, d2) -> d1.toString() + d2.toString()));
-//                    String dogsListString = "";
-//                    for(Dog d : dogs) {
-//                        dogsListString = dogsListString + d + "\n";
-//                    }
-//                    tempText.setText(dogsListString);
-//                }
-//                else {
-//                    int httpCode = response.code();
-//                    tempText.setText("Error with code:" + Integer.toString(httpCode));
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Dog>> call, Throwable t) {
-//                Log.e(TAG, t.getMessage());
-//            }
-//        });
-//
-//        setSupportActionBar(toolbar);
-//
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawerLayout.addDrawerListener(toggle);
-//        toggle.syncState();
-//        navList.setNavigationItemSelectedListener(this);
+        Retrofit retrofit = new RetrofitHelper().getRetrofitInstance(this);
+        DummyDogDataService dummyDogDataService = retrofit.create(DummyDogDataService.class);
+        Call<List<Dog>> dogCall = dummyDogDataService.loadDog();
+        dogCall.enqueue(new Callback<List<Dog>>() {
+            @Override
+            public void onResponse(Call<List<Dog>> call, Response<List<Dog>> response) {
+                if(response.isSuccessful()) {
+                    List<Dog> dogs = response.body();
+                   // String dogsList = dogs.stream().reduce("", (d1, d2) -> d1.toString() + d2.toString()));
+                    String dogsListString = "";
+                    for(Dog d : dogs) {
+                        dogsListString = dogsListString + d + "\n";
+                    }
+                    tempText.setText(dogsListString);
+                }
+                else {
+                    int httpCode = response.code();
+                    tempText.setText("Error with code:" + Integer.toString(httpCode));
+                }
+            }
 
-        Intent intent = new Intent(this, AddAnimalActivity.class);
-        startActivity(intent);
+            @Override
+            public void onFailure(Call<List<Dog>> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+            }
+        });
+
+        setSupportActionBar(toolbar);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navList.setNavigationItemSelectedListener(this);
+
     }
 
     @OnClick(R.id.btn_like)

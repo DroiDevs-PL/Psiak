@@ -1,6 +1,6 @@
-package com.example.android.psiak.Repository;
+package com.example.android.psiak.data.repository;
 
-import com.example.android.psiak.Model.Dog;
+import com.example.android.psiak.model.Dog;
 
 import org.junit.Test;
 
@@ -14,14 +14,14 @@ public class InMemoryRepositoryTest {
 
     @Test
     public void should_have_one_element_after_add(){
-        Repository repository = InMemoryRepository.getInstance();
+        Repository repository = InMemoryDogRepository.getInstance();
         repository.add(new Dog());
         assertThat(repository.getAll().size(),is(1));
     }
 
     @Test
     public void should_be_empty_after_removeAll(){
-        Repository repository = InMemoryRepository.getInstance();
+        Repository repository = InMemoryDogRepository.getInstance();
         repository.removeAll();
         assertThat(repository.getAll().size(),is(0));
     }

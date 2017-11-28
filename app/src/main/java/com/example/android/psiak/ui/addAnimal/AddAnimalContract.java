@@ -1,4 +1,4 @@
-package com.example.android.psiak.AddAnimal;
+package com.example.android.psiak.ui.addAnimal;
 
 /**
  * Created by Maciej Bialorucki on 20.11.17.

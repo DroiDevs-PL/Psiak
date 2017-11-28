@@ -1,9 +1,5 @@
 package com.example.android.psiak.Model;
 
-/**
- * Created by Maciej Bialorucki on 18.11.17.
- */
-
 class Photo {
 
     private String title;

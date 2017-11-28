@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    tools:context="com.example.android.psiak.AddAnimal.AddAnimalActivity">
+    tools:context=".ui.addAnimal.AddAnimalActivity">
 
     <TextView
         android:id="@+id/textView2"

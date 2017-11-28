@@ -1,4 +1,4 @@
-package com.example.android.psiak.Network;
+package com.example.android.psiak.data.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

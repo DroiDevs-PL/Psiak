@@ -1,6 +1,6 @@
-package com.example.android.psiak.AddAnimal;
+package com.example.android.psiak.ui.addAnimal;
 
-import com.example.android.psiak.Repository.InMemoryRepository;
+import com.example.android.psiak.data.repository.InMemoryDogRepository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class AddAnimalPresenterTest {
 
     @Test
     public void should_be_one_dog_after_save() {
-        InMemoryRepository repository = InMemoryRepository.getInstance();
+        InMemoryDogRepository repository = InMemoryDogRepository.getInstance();
         AddAnimalPresenter presenter = new AddAnimalPresenter(repository);
         presenter.attach(mockView);
         presenter.save("Burek", "10 lat");
@@ -33,7 +33,7 @@ public class AddAnimalPresenterTest {
 
     @Test
     public void should_show_success_method_after_add() {
-        InMemoryRepository repository = InMemoryRepository.getInstance();
+        InMemoryDogRepository repository = InMemoryDogRepository.getInstance();
         AddAnimalPresenter presenter = new AddAnimalPresenter(repository);
         presenter.attach(mockView);
         presenter.save("Burek", "10 lat");
@@ -42,7 +42,7 @@ public class AddAnimalPresenterTest {
 
     @Test
     public void should_show_error_when_empty_dog_data() {
-        InMemoryRepository repository = InMemoryRepository.getInstance();
+        InMemoryDogRepository repository = InMemoryDogRepository.getInstance();
         AddAnimalPresenter presenter = new AddAnimalPresenter(repository);
         presenter.attach(mockView);
         presenter.save("", "");

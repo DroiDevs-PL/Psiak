@@ -25,6 +25,10 @@ import com.example.android.psiak.Model.DogFirebase;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.listeners.ItemRemovedListener;
+import com.example.android.psiak.data.network.DummyDogDataService;
+import com.example.android.psiak.data.network.RetrofitHelper;
+import com.example.android.psiak.model.Dog;
+import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 
 import java.util.ArrayList;
 

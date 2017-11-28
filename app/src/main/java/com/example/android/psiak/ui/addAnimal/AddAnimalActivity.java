@@ -1,4 +1,4 @@
-package com.example.android.psiak.AddAnimal;
+package com.example.android.psiak.ui.addAnimal;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.psiak.R;
-import com.example.android.psiak.Repository.InMemoryRepository;
+import com.example.android.psiak.data.repository.InMemoryDogRepository;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +33,7 @@ public class AddAnimalActivity extends AppCompatActivity implements AddAnimalCon
         ButterKnife.bind(this);
 
         //can be easily inject via Dagger
-        this.presenter = new AddAnimalPresenter(InMemoryRepository.getInstance());
+        this.presenter = new AddAnimalPresenter(InMemoryDogRepository.getInstance());
         presenter.attach(this);
     }
 

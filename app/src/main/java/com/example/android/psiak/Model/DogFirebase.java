@@ -50,8 +50,8 @@ public class DogFirebase {
     private DogFirebase() {}
 
     /**
-     * Constructor used to fully initialize dog object
-     * @param dogBuilder Collection of data about the dog. Hashtable is used for thread-safety
+     * Constructor used to fully initialize Dog object
+     * @param dogBuilder DogBuilder object used to create new instance of Dog object
      */
 
     private DogFirebase(DogBuilder dogBuilder) {
@@ -163,7 +163,9 @@ public class DogFirebase {
         return photos;
     }
 
-    // end region
+    // endregion
+
+    // region DogBuilder
 
     public static class DogBuilder {
 
@@ -294,6 +296,10 @@ public class DogFirebase {
         }
     }
 
+    // endregion
+
+    // region Equals Implementation
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -336,6 +342,10 @@ public class DogFirebase {
         return photos != null ? photos.equals(that.photos) : that.photos == null;
     }
 
+    // endregion
+
+    // region HashCode Implementation
+
     @Override
     public int hashCode() {
         int result = id.hashCode();
@@ -360,6 +370,10 @@ public class DogFirebase {
         result = 31 * result + (photos != null ? photos.hashCode() : 0);
         return result;
     }
+
+    // endregion
+
+    // region toString Implementation
 
     @Override
     public String toString() {
@@ -386,4 +400,6 @@ public class DogFirebase {
                 ", photos='" + photos + '\'' +
                 '}';
     }
+
+    // endregion
 }

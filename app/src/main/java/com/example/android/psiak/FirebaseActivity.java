@@ -3,7 +3,6 @@ package com.example.android.psiak;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -148,6 +147,11 @@ public class FirebaseActivity
     @Override
     public void showAllDogs(ArrayList<DogFirebase> dogs) {
         Toast.makeText(getBaseContext(), "Firebase count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showErrorMessage(String errorMessage) {
+        Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
     }
 
     // endregion

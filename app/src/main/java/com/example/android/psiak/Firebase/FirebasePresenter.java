@@ -1,14 +1,10 @@
 package com.example.android.psiak.Firebase;
 
-import android.util.Log;
-
 import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.Repository.Repository;
+import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by Grzegorz on 23.11.2017.
@@ -42,10 +38,8 @@ public class FirebasePresenter
 
         ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
 
-        if (dogsData.size() > 0) {
-            if (isViewAttached()) {
-                view.showAllDogs(dogsData);
-            }
+        if (dogsData.size() > 0 && isViewAttached()) {
+            view.showAllDogs(dogsData);
         } else {
             firebaseRepository.getAllObjects();
         }
@@ -61,5 +55,10 @@ public class FirebasePresenter
         if (isViewAttached()) {
             view.showAllDogs(dogsData);
         }
+    }
+
+    @Override
+    public void setErrorMessage(DatabaseException databaseException) {
+        view.showErrorMessage(databaseException.getMessage());
     }
 }

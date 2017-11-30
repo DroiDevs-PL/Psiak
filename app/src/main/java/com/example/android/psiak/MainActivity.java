@@ -174,5 +174,10 @@ public class MainActivity
         }
     }
 
+    @Override
+    public void showErrorMessage(String errorMessage) {
+        Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
     // endregion
 }

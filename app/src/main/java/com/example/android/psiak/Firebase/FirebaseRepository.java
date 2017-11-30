@@ -2,7 +2,6 @@ package com.example.android.psiak.Firebase;
 
 import android.util.Log;
 
-import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.Repository.Repository;
 import com.google.firebase.database.DataSnapshot;
@@ -134,8 +133,9 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
 
         @Override
         public void onCancelled(DatabaseError databaseError) {
-            // Getting Firebase failed, log a message
             Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+
+            firebaseDataListener.setErrorMessage(databaseError.toException());
         }
     };
 

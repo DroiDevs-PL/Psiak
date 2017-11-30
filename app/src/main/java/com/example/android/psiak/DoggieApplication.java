@@ -11,6 +11,7 @@ import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import timber.log.Timber;
 
 public class DoggieApplication extends Application {
 
@@ -46,5 +47,6 @@ public class DoggieApplication extends Application {
     public void onCreate() {
         retrofit = null;
         super.onCreate();
+        Timber.plant(new Timber.DebugTree());
     }
 }

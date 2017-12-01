@@ -3,9 +3,9 @@ package com.example.android.psiak;
 import com.example.android.psiak.Firebase.FirebaseActivityContract;
 import com.example.android.psiak.Firebase.FirebaseDataListener;
 import com.example.android.psiak.Firebase.FirebasePresenter;
-import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.Repository.Repository;
+import com.google.firebase.database.DatabaseException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
-
 import static org.mockito.Mockito.verify;
 
 /**
@@ -55,6 +54,12 @@ public class FirebasePresenterTest {
         assertNotNull(mockFirebaseRepository.dogPlaceholder);
     }
 
+    @Test
+    public void show_error_message() throws Exception {
+        DatabaseException databaseException = new DatabaseException("Exception");
+        firebasePresenter.setErrorMessage(databaseException);
+        verify(mockView).showErrorMessage(databaseException.getMessage());
+    }
 }
 
 

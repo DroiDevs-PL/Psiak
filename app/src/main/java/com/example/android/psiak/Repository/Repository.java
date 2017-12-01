@@ -1,11 +1,9 @@
 package com.example.android.psiak.Repository;
 
 import com.example.android.psiak.Firebase.FirebaseDataListener;
-import com.example.android.psiak.Model.Dog;
 import com.example.android.psiak.Model.DogFirebase;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Grzegorz Kwasniewski on 22.11.2017.
@@ -14,6 +12,13 @@ import java.util.List;
 public interface Repository {
 
     interface Firebase<Type> {
+
+        /**
+         * Generate unique ID for object that will be stored in database
+         * @return Unique ID
+         */
+
+        String generateUniqueID();
 
         /**
          * Set object for callback methods

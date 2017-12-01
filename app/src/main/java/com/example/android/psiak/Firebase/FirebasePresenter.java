@@ -34,6 +34,12 @@ public class FirebasePresenter
     }
 
     @Override
+    public String generateUniqueID() {
+        String uniqueID = firebaseRepository.generateUniqueID();
+        return uniqueID;
+    }
+
+    @Override
     public void getAllDogs() {
 
         ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();

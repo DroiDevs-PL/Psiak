@@ -70,6 +70,13 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     }
 
     @Override
+    public String generateUniqueID() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("dogs");
+        String uniqueID = databaseReference.push().getKey();
+        return uniqueID;
+    }
+
+    @Override
     public void getAllObjects() {
         dogsReference.addListenerForSingleValueEvent(dogsListener);
     }

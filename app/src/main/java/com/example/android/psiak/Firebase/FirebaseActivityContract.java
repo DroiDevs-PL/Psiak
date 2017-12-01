@@ -18,5 +18,6 @@ public interface FirebaseActivityContract {
     interface Presenter {
         void getAllDogs();
         void addNewDog(DogFirebase dogFirebase);
+        String generateUniqueID();
     }
 }

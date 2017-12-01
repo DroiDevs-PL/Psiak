@@ -13,8 +13,6 @@ import com.example.android.psiak.Firebase.FirebaseActivityContract;
 import com.example.android.psiak.Firebase.FirebasePresenter;
 import com.example.android.psiak.Firebase.FirebaseRepository;
 import com.example.android.psiak.Model.DogFirebase;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -102,7 +100,7 @@ public class FirebaseActivity
     // region Private Methods
 
     /**
-     * Add random dog to the Firebase database
+     * Get all Dog's objects form database
      */
 
     @OnClick(R.id.btn_show_all_dogs)
@@ -117,8 +115,7 @@ public class FirebaseActivity
     @OnClick(R.id.btn_add_new_dog)
     void addNewDogDog(View view) {
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("dogs");
-        String uniqueID = databaseReference.push().getKey();
+        String uniqueID = firebasePresenter.generateUniqueID();
 
         DogFirebase dogFirebase = new DogFirebase.DogBuilder(uniqueID, etDogName.getText().toString())
                 .gender(etDogGender.getText().toString())
@@ -133,6 +130,9 @@ public class FirebaseActivity
                 .keeperName(etDogKeeperPhone.getText().toString())
                 .keeperMail(etDogKeeperMail.getText().toString())
                 .homelessSince(etDogHomelessSince.getText().toString())
+                .dewormed(swDogDewormed.isChecked())
+                .sterilized(swDogSterilized.isChecked())
+                .vaccinated(swDogVaccinated.isChecked())
                 .build();
         
         firebasePresenter.addNewDog(dogFirebase);

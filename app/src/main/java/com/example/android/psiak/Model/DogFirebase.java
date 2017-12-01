@@ -28,9 +28,9 @@ public class DogFirebase {
     private String keeperMail;
     private String keeperPhone;
 
-    private String vaccinated;
-    private String dewormed;
-    private String sterilized;
+    private Boolean vaccinated;
+    private Boolean dewormed;
+    private Boolean sterilized;
 
     private String weight;
     private String age;
@@ -135,15 +135,13 @@ public class DogFirebase {
         return keeperPhone;
     }
 
-    public String getVaccinated() {
-        return vaccinated;
-    }
+    public Boolean getVaccinated() { return vaccinated; }
 
-    public String getDewormed() {
+    public Boolean getDewormed() {
         return dewormed;
     }
 
-    public String getSterilized() {
+    public Boolean getSterilized() {
         return sterilized;
     }
 
@@ -185,9 +183,9 @@ public class DogFirebase {
         private String keeperMail;
         private String keeperPhone;
 
-        private String vaccinated;
-        private String dewormed;
-        private String sterilized;
+        private Boolean vaccinated;
+        private Boolean dewormed;
+        private Boolean sterilized;
 
         private String weight;
         private String age;
@@ -256,17 +254,17 @@ public class DogFirebase {
             return this;
         }
 
-        public DogBuilder vaccinated(String vaccinated) {
+        public DogBuilder vaccinated(Boolean vaccinated) {
             this.vaccinated = vaccinated;
             return this;
         }
 
-        public DogBuilder dewormed(String dewormed) {
+        public DogBuilder dewormed(Boolean dewormed) {
             this.dewormed = dewormed;
             return this;
         }
 
-        public DogBuilder sterilized(String sterilized) {
+        public DogBuilder sterilized(Boolean sterilized) {
             this.sterilized = sterilized;
             return this;
         }

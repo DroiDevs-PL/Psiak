@@ -1,8 +1,8 @@
-## Master Branch Bulid
+## Master Branch Build
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5a0d8c321c973d0001ccde5f&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5a0d8c321c973d0001ccde5f/build/latest?branch=master)
 
 
-## Development Branch Bulid
+## Development Branch Build
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5a0d8c321c973d0001ccde5f&branch=develop&build=latest)](https://dashboard.buddybuild.com/apps/5a0d8c321c973d0001ccde5f/build/latest?branch=develop)
 
 ## Psiak

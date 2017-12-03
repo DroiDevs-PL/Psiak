@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Grzegorz on 13.11.2017.
  * Helper class for storing all functions related to Firebase operations
  */
 
@@ -32,7 +31,7 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     /**
-     * Reference to "dogs" end point in database
+     * Reference to "dogs" endpoint in database
      */
 
     private DatabaseReference dogsReference = database.getReference("dogs");
@@ -140,8 +139,6 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
 
         @Override
         public void onCancelled(DatabaseError databaseError) {
-            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-
             firebaseDataListener.setErrorMessage(databaseError.toException());
         }
     };

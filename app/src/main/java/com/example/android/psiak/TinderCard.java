@@ -18,9 +18,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by Rewan on 2017-11-21.
- */
+import timber.log.Timber;
 
 @Layout(R.layout.tinder_card_view)
 public class TinderCard {
@@ -51,17 +49,6 @@ public class TinderCard {
         mSwipeView = swipeView;
     }
 
-//    @Resolve
-//    private void onResolved(){
-//        Picasso.with(mContext)
-//                .load(mDog.getProfilePic())
-//                .error(R.drawable.ic_doggy)
-//                .placeholder(R.drawable.ic_doggy)
-//                .into(profileImageView);
-//        nameAgeTxt.setText(mDog.getName() + ", " + mDog.getAge());
-//        locationNameTxt.setText(mDog.getLocation());
-//    }
-
     @Resolve
     private void onResolved(){
         Picasso.with(mContext)
@@ -81,23 +68,15 @@ public class TinderCard {
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){
-        Log.d("EVENT", "onSwipeCancelState");
-    }
+    private void onSwipeCancelState(){}
 
     @SwipeIn
-    private void onSwipeIn(){
-        Log.d("EVENT", "onSwipedIn");
-    }
+    private void onSwipeIn(){}
 
     @SwipeInState
-    private void onSwipeInState(){
-        Log.d("EVENT", "onSwipeInState");
-    }
+    private void onSwipeInState(){}
 
     @SwipeOutState
-    private void onSwipeOutState(){
-        Log.d("EVENT", "onSwipeOutState");
-    }
+    private void onSwipeOutState(){}
 
 }

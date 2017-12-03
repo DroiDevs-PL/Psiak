@@ -4,10 +4,6 @@ import com.example.android.psiak.Model.DogFirebase;
 
 import java.util.ArrayList;
 
-/**
- * Created by Grzegorz on 23.11.2017.
- */
-
 public interface FirebaseActivityContract {
 
     interface View {

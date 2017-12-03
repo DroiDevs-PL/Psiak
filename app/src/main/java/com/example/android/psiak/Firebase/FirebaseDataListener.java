@@ -5,10 +5,6 @@ import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 
-/**
- * Created by grzegorz.kwasniewski on 17.11.2017.
- */
-
 public interface FirebaseDataListener {
 
     /**

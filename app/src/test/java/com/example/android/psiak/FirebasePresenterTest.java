@@ -16,10 +16,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-/**
- * Created by serwis on 23.11.2017.
- */
-
 public class FirebasePresenterTest {
 
     private FirebaseActivityContract.View mockView;
@@ -109,5 +105,10 @@ class MockFirebaseRepository implements Repository.Firebase<DogFirebase> {
         dogs.add(dogFirebase);
 
         return dogs;
+    }
+
+    @Override
+    public String generateUniqueID() {
+        return null;
     }
 }

@@ -4,10 +4,6 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.List;
 
-/**
- * Created by Grzegorz on 13.11.2017.
- */
-
 @IgnoreExtraProperties
 public class DogFirebase {
 

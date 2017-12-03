@@ -101,7 +101,7 @@ public class MainActivity
             if(count == 0 ){
                 dogsAvailableLayout.setVisibility(View.INVISIBLE);
                 noDogsLayout.setVisibility(View.VISIBLE);
-                noDogs.setText("Brak dalszych wyników");
+                noDogs.setText(R.string.no_more_results);
             }
         }
     };

@@ -29,7 +29,7 @@ import static org.junit.Assert.assertThat;
  */
 
 @RunWith(AndroidJUnit4.class)
-public class FirebaseAcitvityTest {
+public class FirebaseActivityTest {
 
     private FirebaseActivity firebaseActivity;
 
@@ -37,7 +37,7 @@ public class FirebaseAcitvityTest {
     public ActivityTestRule<FirebaseActivity> rule  = new  ActivityTestRule<>(FirebaseActivity.class);
 
     @Before
-    public void setAcitivity() {
+    public void setActivity() {
         firebaseActivity = rule.getActivity();
     }
 

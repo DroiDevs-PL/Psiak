@@ -1,8 +1,5 @@
-package com.example.android.psiak.Firebase;
+package com.example.android.psiak.Utils;
 
-/**
- * Created by Grzegorz on 23.11.2017.
- */
 
 public abstract class BasePresenter<T> {
     public T view;

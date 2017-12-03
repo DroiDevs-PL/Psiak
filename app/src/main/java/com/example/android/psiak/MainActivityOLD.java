@@ -11,7 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import timber.log.Timber;
 
 public class MainActivityOLD extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //region ui components declarations
@@ -81,7 +81,7 @@ public class MainActivityOLD extends AppCompatActivity implements NavigationView
                 if(count ==0 ){
                     dogsAvailableLayout.setVisibility(View.INVISIBLE);
                     noDogsLayout.setVisibility(View.VISIBLE);
-                    noDogs.setText("Brak dalszych wyników");
+                    noDogs.setText(R.string.no_more_results);
                 }
             }
         });
@@ -97,24 +97,23 @@ public class MainActivityOLD extends AppCompatActivity implements NavigationView
                     dogsAvailableLayout.setVisibility(View.VISIBLE);
                     noDogsLayout.setVisibility(View.INVISIBLE);
                     List<Dog> dogs = response.body();
-                    // String dogsList = dogs.stream().reduce("", (d1, d2) -> d1.toString() + d2.toString()));
                     String dogsListString = "";
                     for(Dog dog : dogs) {
                         mSwipeView.addView(new TinderCard(MainActivityOLD.this, dog, mSwipeView));
-                        Log.d(TAG, "onResponse: " + dog);
+                        Timber.d(TAG, "onResponse: " + dog);
                     }
                 }
                 else {
                     dogsAvailableLayout.setVisibility(View.INVISIBLE);
                     noDogsLayout.setVisibility(View.VISIBLE);
                     int httpCode = response.code();
-                    noDogs.setText("Error with code:" + Integer.toString(httpCode));
+                    noDogs.setText(Integer.toString(httpCode));
                 }
             }
 
             @Override
             public void onFailure(Call<List<Dog>> call, Throwable t) {
-                Log.e(TAG, t.getMessage());
+                Timber.e(TAG, t.getMessage());
             }
         });
 

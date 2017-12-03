@@ -2,13 +2,10 @@ package com.example.android.psiak.Firebase;
 
 import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.Repository.Repository;
+import com.example.android.psiak.Utils.BasePresenter;
 import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
-
-/**
- * Created by Grzegorz on 23.11.2017.
- */
 
 public class FirebasePresenter
         extends BasePresenter<FirebaseActivityContract.View>
@@ -23,9 +20,9 @@ public class FirebasePresenter
     Repository.Firebase firebaseRepository;
 
     /**
-     * Initialize FirebasePresenter with specified repository. After initialization FirebasePresenter object will be set as a
-     * data listner object for callback from repository
-     * @param repository Repository.Dog object that will be used with this Presenter
+     * Initialize FirebasePresenter with Firebase repository. After initialization FirebasePresenter object will be set as a
+     * data listener object for callback from Firebase repository
+     * @param repository Repository.Firebase object that will be used with this Presenter
      */
 
     public FirebasePresenter(Repository.Firebase repository) {

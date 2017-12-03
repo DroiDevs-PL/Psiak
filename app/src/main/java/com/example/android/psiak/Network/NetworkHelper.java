@@ -1,6 +1,5 @@
 package com.example.android.psiak.Network;
 
-import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -8,15 +7,16 @@ import android.support.annotation.NonNull;
 
 import com.readystatesoftware.chuck.ChuckInterceptor;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import timber.log.Timber;
 
 /**
  * Helper class for working with a remote server
@@ -29,10 +29,10 @@ public class NetworkHelper {
      * @param cache cache dir
      * @return OkHttpClient
      */
-    public static OkHttpClient buildClient(Context context, Cache cache) {
+    public static OkHttpClient.Builder getBuilder(Context context, Cache cache) {
         return new OkHttpClient.Builder()
                 .addInterceptor(new ChuckInterceptor(context))
-                .cache(cache).build();
+                .cache(cache);
     }
 
     /**
@@ -40,10 +40,9 @@ public class NetworkHelper {
      * @param context app context
      * @return OkHttpClient
      */
-    public static OkHttpClient buildClient(Context context) {
+    public static OkHttpClient.Builder getBuilder(Context context) {
         return new OkHttpClient.Builder()
-                .addInterceptor(new ChuckInterceptor(context))
-                .build();
+                .addInterceptor(new ChuckInterceptor(context));
     }
 
     /**
@@ -54,63 +53,30 @@ public class NetworkHelper {
      * @throws IOException when can not fetch page
      */
     public static String downloadUrl(String address, Context context) throws IOException {
+        String result = "";
 
-        InputStream is = null;
         try {
+            OkHttpClient okHttpClient = getBuilder(context)
+                    .connectTimeout((long) 15000, TimeUnit.MILLISECONDS )
+                    .readTimeout((long) 10000, TimeUnit.MILLISECONDS )
+                    .build();
+            Request request = new Request.Builder()
+                    .url(address)
+                    .build();
 
-            URL url = new URL(address);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(10000);
-            conn.setConnectTimeout(15000);
-            conn.setRequestMethod("GET");
-            conn.setDoInput(true);
-            conn.connect();
+            Response httpResponse = okHttpClient.newCall(request).execute();
 
-            int responseCode = conn.getResponseCode();
-            if (responseCode != 200) {
-                throw new IOException("Got response code " + responseCode);
+            if(httpResponse.isSuccessful()) {
+                result = httpResponse.body().string();
+            } else {
+                int responseCode = httpResponse.code();
+                Timber.e("Wrong response code %i", responseCode);
             }
-            is = conn.getInputStream();
-            return readStream(is);
 
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (is != null) {
-                is.close();
-            }
         }
-        return null;
-    }
-
-    /**
-     * Reads an InputStream and converts it to a String.
-     *
-     * @param stream text fetched form server
-     * @return String|null
-     * @throws IOException when wasn't able  to read stream
-     */
-    private static String readStream(InputStream stream) throws IOException {
-
-        byte[] buffer = new byte[1024];
-        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-        BufferedOutputStream out = null;
-        try {
-            int length = 0;
-            out = new BufferedOutputStream(byteArray);
-            while ((length = stream.read(buffer)) > 0) {
-                out.write(buffer, 0, length);
-            }
-            out.flush();
-            return byteArray.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            if (out != null) {
-                out.close();
-            }
-        }
+        return result;
     }
 
     /**

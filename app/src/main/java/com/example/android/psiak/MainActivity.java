@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.psiak.FavouriteView.FavouriteActivity;
 import com.example.android.psiak.Firebase.FirebaseActivityContract;
 import com.example.android.psiak.Firebase.FirebasePresenter;
 import com.example.android.psiak.Firebase.FirebaseRepository;
@@ -117,7 +118,8 @@ public class MainActivity
         } else if (id == R.id.settings_nav_item) {
             Snackbar.make(drawerLayout, "Settings", Snackbar.LENGTH_LONG).show();
         } else if (id == R.id.favourites_nav_item) {
-            Snackbar.make(drawerLayout, "Ulubione", Snackbar.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, FavouriteActivity.class);
+            startActivity(intent);
         } else if (id == R.id.shelters_nav_item) {
             Snackbar.make(drawerLayout, "Schroniska", Snackbar.LENGTH_LONG).show();
         } else if (id == R.id.about_nav_item) {

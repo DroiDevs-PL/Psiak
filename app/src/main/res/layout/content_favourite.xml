@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.android.psiak.Favourite.FavouriteActivity"
+    tools:context="com.example.android.psiak.FavouriteView.FavouriteActivity"
     tools:showIn="@layout/activity_favourite">
 
     <android.support.v7.widget.RecyclerView

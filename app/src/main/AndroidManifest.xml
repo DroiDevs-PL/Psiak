@@ -27,6 +27,10 @@
         <activity
             android:name=".MainActivityOLD"
             android:label="@string/title_activity_main_old"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Favourite.FavouriteActivity"
+            android:label="@string/title_activity_favourite"
             android:theme="@style/AppTheme"></activity>
     </application>
 

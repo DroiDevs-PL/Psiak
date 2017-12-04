@@ -16,31 +16,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.android.psiak.Firebase.FirebaseActivityContract;
-import com.example.android.psiak.Firebase.FirebasePresenter;
-import com.example.android.psiak.Firebase.FirebaseRepository;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.Model.Dog;
+import com.example.android.psiak.Network.DummyDogDataService;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 import timber.log.Timber;
 
-public class MainActivity
-        extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FirebaseActivityContract.View {
-
-    public final String TAG = MainActivity.class.getName();
-
-    private FirebasePresenter firebasePresenter;
-
+public class MainActivityOLD extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //region ui components declarations
+    public final String TAG = MainActivity.class.getName();
 
     @BindView(R.id.doggie)
     ImageView doggie;
@@ -61,7 +56,7 @@ public class MainActivity
     @BindView(R.id.dogsAvailableLayout)
     ConstraintLayout dogsAvailableLayout;
 
-    //endregion
+//endregion
 
     private Menu menu;
 
@@ -71,6 +66,7 @@ public class MainActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        //region Swipe View init
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
@@ -78,13 +74,48 @@ public class MainActivity
                         .setRelativeScale(0.05f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
+        mSwipeView.addItemRemoveListener(new ItemRemovedListener() {
 
-        mSwipeView.addItemRemoveListener(itemRemovedListener);
+            @Override
+            public void onItemRemoved(int count) {
+                if(count ==0 ){
+                    dogsAvailableLayout.setVisibility(View.INVISIBLE);
+                    noDogsLayout.setVisibility(View.VISIBLE);
+                    noDogs.setText(R.string.no_more_results);
+                }
+            }
+        });
+        //endregion
 
-        // TODO Use dependency injection here
-        firebasePresenter = new FirebasePresenter(new FirebaseRepository());
-        firebasePresenter.attach(this);
-        firebasePresenter.getAllDogs();
+        Retrofit retrofit = ((DoggieApplication)getApplication()).getRetrofitInstance();
+        DummyDogDataService dummyDogDataService = retrofit.create(DummyDogDataService.class);
+        Call<List<Dog>> dogCall = dummyDogDataService.loadDog();
+        dogCall.enqueue(new Callback<List<Dog>>() {
+            @Override
+            public void onResponse(Call<List<Dog>> call, Response<List<Dog>> response) {
+                if(response.isSuccessful()) {
+                    dogsAvailableLayout.setVisibility(View.VISIBLE);
+                    noDogsLayout.setVisibility(View.INVISIBLE);
+                    List<Dog> dogs = response.body();
+                    String dogsListString = "";
+                    for(Dog dog : dogs) {
+                        mSwipeView.addView(new TinderCard(MainActivityOLD.this, dog, mSwipeView));
+                        Timber.d(TAG, "onResponse: " + dog);
+                    }
+                }
+                else {
+                    dogsAvailableLayout.setVisibility(View.INVISIBLE);
+                    noDogsLayout.setVisibility(View.VISIBLE);
+                    int httpCode = response.code();
+                    noDogs.setText(Integer.toString(httpCode));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Dog>> call, Throwable t) {
+                Timber.e(TAG, t.getMessage());
+            }
+        });
 
         setSupportActionBar(toolbar);
 
@@ -95,19 +126,7 @@ public class MainActivity
         navList.setNavigationItemSelectedListener(this);
     }
 
-    private ItemRemovedListener itemRemovedListener = new ItemRemovedListener() {
-        @Override
-        public void onItemRemoved(int count) {
-            if(count == 0 ){
-                dogsAvailableLayout.setVisibility(View.INVISIBLE);
-                noDogsLayout.setVisibility(View.VISIBLE);
-                noDogs.setText(R.string.no_more_results);
-            }
-        }
-    };
-
     //region navigationDrawer
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -130,7 +149,6 @@ public class MainActivity
     //endregion
 
     //region menu methods
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -156,28 +174,5 @@ public class MainActivity
         MenuItem searchModeMenuItem = menu.findItem(R.id.settings);
         return true;
     }
-
     //endregion
-
-    // region Public Methods
-
-    @Override
-    public void showAllDogs(ArrayList<DogFirebase> dogs) {
-        Toast.makeText(getBaseContext(), "Firebase count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
-
-        dogsAvailableLayout.setVisibility(View.VISIBLE);
-        noDogsLayout.setVisibility(View.INVISIBLE);
-
-        for(DogFirebase dogFirebase : dogs) {
-            mSwipeView.addView(new TinderCard(MainActivity.this, dogFirebase, mSwipeView));
-            Timber.d(TAG, "onResponse: " + dogFirebase);
-        }
-    }
-
-    @Override
-    public void showErrorMessage(String errorMessage) {
-        Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
-    }
-
-    // endregion
 }

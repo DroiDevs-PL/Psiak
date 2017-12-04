@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 
 public interface DummyDogDataService {
 
-    @GET("/bins/lb8xx")
+    @GET("/bins/10jqvj")
     Call<List<Dog>> loadDog();
 
 }

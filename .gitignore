@@ -46,3 +46,7 @@ captures/
 freeline.py
 freeline/
 freeline_project_description.json
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+

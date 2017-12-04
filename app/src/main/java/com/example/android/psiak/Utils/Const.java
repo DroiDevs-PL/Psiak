@@ -1,8 +1,5 @@
 package com.example.android.psiak.Utils;
 
-/**
- * Created by grzegorz.kwasniewski on 18.11.2017.
- */
 
 public class Const {
 

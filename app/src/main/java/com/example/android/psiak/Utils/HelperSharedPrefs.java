@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 /**
- * Created by pzarzycki on 13.11.2017.
  * Helper used for saving and reading data from shared-prefences
  */
 public class HelperSharedPrefs {

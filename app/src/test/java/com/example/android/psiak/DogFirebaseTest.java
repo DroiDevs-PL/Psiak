@@ -1,17 +1,12 @@
 package com.example.android.psiak;
 
 import com.example.android.psiak.Model.DogFirebase;
-import com.example.android.psiak.Utils.Const;
 
 import org.junit.Test;
-
-import java.util.Hashtable;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by grzegorz.kwasniewski on 18.11.2017.
- *
  * Class For Testing DogFirebase Object
  */
 

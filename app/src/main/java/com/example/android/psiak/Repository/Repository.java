@@ -5,10 +5,6 @@ import com.example.android.psiak.Model.DogFirebase;
 
 import java.util.ArrayList;
 
-/**
- * Created by Grzegorz Kwasniewski on 22.11.2017.
- */
-
 public interface Repository {
 
     interface Firebase<Type> {

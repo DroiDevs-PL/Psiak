@@ -6,25 +6,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import com.example.android.psiak.Firebase.FirebaseDataListener;
-import com.example.android.psiak.Model.DogFirebase;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.isA;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 
 /**
- * Created by grzegorz.kwasniewski on 18.11.2017.
- *
  * Class For Running Instrumentation Tests For FirebaseActivty
  */
 

@@ -1,4 +1,4 @@
-package com.example.android.psiak.Utils;
+package com.example.android.psiak.utils;
 
 import com.google.gson.TypeAdapterFactory;
 

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.psiak.Model.Dog;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.Dog;
+import com.example.android.psiak.model.DogFirebase;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -47,7 +47,7 @@ public class TinderCard {
     }
 
     @Resolve
-    private void onResolved(){
+    private void onResolved() {
         Picasso.with(mContext)
                 .load(mDogFirebase.getProfilePic())
                 .error(R.drawable.ic_doggy)
@@ -58,21 +58,25 @@ public class TinderCard {
     }
 
     @SwipeOut
-    private void onSwipedOut(){
+    private void onSwipedOut() {
         mSwipeView.addView(this);
 
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){}
+    private void onSwipeCancelState() {
+    }
 
     @SwipeIn
-    private void onSwipeIn(){}
+    private void onSwipeIn() {
+    }
 
     @SwipeInState
-    private void onSwipeInState(){}
+    private void onSwipeInState() {
+    }
 
     @SwipeOutState
-    private void onSwipeOutState(){}
+    private void onSwipeOutState() {
+    }
 
 }

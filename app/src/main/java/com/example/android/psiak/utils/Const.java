@@ -1,4 +1,4 @@
-package com.example.android.psiak.Utils;
+package com.example.android.psiak.utils;
 
 /**
  * Created by grzegorz.kwasniewski on 18.11.2017.

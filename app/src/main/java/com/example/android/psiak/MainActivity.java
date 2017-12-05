@@ -18,17 +18,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.psiak.Firebase.FirebaseActivityContract;
-import com.example.android.psiak.Firebase.FirebasePresenter;
-import com.example.android.psiak.Firebase.FirebaseRepository;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.ui.firebase.FirebaseActivity;
+import com.example.android.psiak.ui.firebase.FirebaseActivityContract;
+import com.example.android.psiak.ui.firebase.FirebasePresenter;
+import com.example.android.psiak.ui.firebase.FirebaseRepository;
+import com.example.android.psiak.model.DogFirebase;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.listeners.ItemRemovedListener;
-import com.example.android.psiak.data.network.DummyDogDataService;
-import com.example.android.psiak.data.network.RetrofitHelper;
-import com.example.android.psiak.model.Dog;
-import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 
 import java.util.ArrayList;
 

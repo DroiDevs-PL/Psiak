@@ -1,4 +1,4 @@
-package com.example.android.psiak;
+package com.example.android.psiak.ui.firebase;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +9,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.android.psiak.Firebase.FirebaseActivityContract;
-import com.example.android.psiak.Firebase.FirebasePresenter;
-import com.example.android.psiak.Firebase.FirebaseRepository;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.R;
 
 import java.util.ArrayList;
 

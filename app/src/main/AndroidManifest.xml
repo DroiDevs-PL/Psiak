@@ -22,13 +22,9 @@
         </activity>
         <activity android:name=".ui.addAnimal.AddAnimalActivity"></activity>
         <activity
-            android:name=".FirebaseActivity"
+            android:name=".ui.firebase.FirebaseActivity"
             android:label="@string/title_activity_firebase_testing"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".MainActivityOLD"
-            android:label="@string/title_activity_main_old"
-            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

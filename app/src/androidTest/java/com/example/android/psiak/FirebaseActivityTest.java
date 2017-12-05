@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import com.example.android.psiak.ui.firebase.FirebaseActivity;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

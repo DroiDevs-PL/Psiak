@@ -2,54 +2,50 @@ package com.example.android.psiak.model;
 
 import com.google.gson.annotations.Expose;
 
-<<<<<<< develop
 import java.util.List;
-=======
-public class Dog {
->>>>>>> Add repository class
 
 public class Dog {
-@Expose
+    @Expose
     private String weight;
-@Expose
+    @Expose
     private String location;
-@Expose
+    @Expose
     private String globalId;
-@Expose
+    @Expose
     private String vaccinated;
-@Expose
+    @Expose
     private String attitudeDogs;
-@Expose
+    @Expose
     private String attitudePeople;
-@Expose
+    @Expose
     private String size;
-@Expose
+    @Expose
     private String dewormed;
 
     private List<Photo> photos;
-@Expose
+    @Expose
     private String id;
-@Expose
+    @Expose
     private String keeperMail;
-@Expose
+    @Expose
     private String homelessSince;
-@Expose
+    @Expose
     private String description;
     @Expose
     private String name;
     @Expose
     private String age;
-@Expose
+    @Expose
     private String gender;
-@Expose
+    @Expose
     private String keeperPhone;
-@Expose
+    @Expose
     private String sterilized;
-@Expose
+    @Expose
     private String keeperName;
-@Expose
+    @Expose
     private String attitudeCats;
-@Expose
+    @Expose
     private String profilePic;
 
     public String getWeight() {

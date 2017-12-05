@@ -1,6 +1,6 @@
-package com.example.android.psiak.Firebase;
+package com.example.android.psiak.ui.firebase;
 
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.DogFirebase;
 
 import java.util.ArrayList;
 

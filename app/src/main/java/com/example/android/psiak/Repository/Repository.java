@@ -1,7 +1,7 @@
 package com.example.android.psiak.Repository;
 
-import com.example.android.psiak.Firebase.FirebaseDataListener;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.ui.firebase.FirebaseDataListener;
+import com.example.android.psiak.model.DogFirebase;
 
 import java.util.ArrayList;
 
@@ -70,21 +70,4 @@ public interface Repository {
     }
 }
 
-package com.example.android.psiak.Repository;
 
-import com.example.android.psiak.Model.Dog;
-
-import java.util.List;
-
-/**
- * Created by Maciej Bialorucki on 20.11.17.
- */
-
-public interface Repository {
-
-    List<Dog> getAll();
-    Dog findAnimal(String queryString);
-    void add(Dog dog);
-    boolean remove(Dog dog);
-    void removeAll();
-}

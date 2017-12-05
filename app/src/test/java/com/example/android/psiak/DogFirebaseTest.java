@@ -1,6 +1,6 @@
 package com.example.android.psiak;
 
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.DogFirebase;
 
 import org.junit.Test;
 

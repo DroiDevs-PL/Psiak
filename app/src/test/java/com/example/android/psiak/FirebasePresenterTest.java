@@ -1,10 +1,10 @@
 package com.example.android.psiak;
 
-import com.example.android.psiak.Firebase.FirebaseActivityContract;
-import com.example.android.psiak.Firebase.FirebaseDataListener;
-import com.example.android.psiak.Firebase.FirebasePresenter;
-import com.example.android.psiak.Model.DogFirebase;
-import com.example.android.psiak.Repository.Repository;
+import com.example.android.psiak.ui.firebase.FirebaseActivity;
+import com.example.android.psiak.ui.firebase.FirebaseActivityContract;
+import com.example.android.psiak.ui.firebase.FirebaseDataListener;
+import com.example.android.psiak.ui.firebase.FirebasePresenter;
+import com.example.android.psiak.model.DogFirebase;
 import com.google.firebase.database.DatabaseException;
 
 import org.junit.Before;

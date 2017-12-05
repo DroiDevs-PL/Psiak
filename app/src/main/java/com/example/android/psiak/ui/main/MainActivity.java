@@ -1,4 +1,4 @@
-package com.example.android.psiak;
+package com.example.android.psiak.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,10 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.psiak.R;
 import com.example.android.psiak.ui.firebase.FirebaseActivity;
 import com.example.android.psiak.ui.firebase.FirebaseActivityContract;
 import com.example.android.psiak.ui.firebase.FirebasePresenter;
-import com.example.android.psiak.ui.firebase.FirebaseRepository;
+import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;

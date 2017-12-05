@@ -1,5 +1,6 @@
 package com.example.android.psiak.ui.firebase;
 
+import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.base.BasePresenter;
 import com.google.firebase.database.DatabaseException;

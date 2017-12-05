@@ -1,9 +1,10 @@
-package com.example.android.psiak;
+package com.example.android.psiak.ui.main;
 
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.psiak.R;
 import com.example.android.psiak.model.Dog;
 import com.example.android.psiak.model.DogFirebase;
 import com.mindorks.placeholderview.SwipePlaceHolderView;

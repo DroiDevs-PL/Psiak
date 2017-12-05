@@ -22,7 +22,7 @@ public class RetrofitHelper {
         String baseUrl = "https://api.myjson.com";
         int cacheSize = 10 * 1024 * 1024;
         Cache cache = new Cache(context.getCacheDir(), cacheSize);
-        OkHttpClient okHttpClient = NetworkHelper.buildClient(context, cache);
+        OkHttpClient okHttpClient = NetworkHelper.getBuilder(context,cache).build();
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.IDENTITY);

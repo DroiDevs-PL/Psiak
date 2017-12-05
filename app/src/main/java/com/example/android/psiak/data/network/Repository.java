@@ -1,4 +1,4 @@
-package com.example.android.psiak.Repository;
+package com.example.android.psiak.data.network;
 
 import com.example.android.psiak.ui.firebase.FirebaseDataListener;
 import com.example.android.psiak.model.DogFirebase;

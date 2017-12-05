@@ -10,7 +10,7 @@
     android:padding="5dp">
 
     <android.support.constraint.ConstraintLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
+        android:id="@+id/dog_card_view"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginBottom="8dp"
@@ -29,7 +29,7 @@
 
 
         <ImageView
-            android:id="@+id/dog_image"
+            android:id="@+id/dog_card_view_iv_dog_image"
             android:layout_width="100dp"
             android:layout_height="0dp"
             android:layout_marginTop="1dp"
@@ -39,7 +39,7 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/dog_name"
+            android:id="@+id/dog_card_view_tv_dog_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -53,7 +53,7 @@
             android:textStyle="bold"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintRight_toRightOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/dog_image"
+            card_view:layout_constraintStart_toEndOf="@+id/dog_cardview_iv_dog_image"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:layout_constraintBottom_creator="1"
             tools:layout_constraintLeft_creator="1"

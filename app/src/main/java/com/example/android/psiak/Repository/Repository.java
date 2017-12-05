@@ -68,4 +68,10 @@ public interface Repository {
         ArrayList<DogFirebase> getCachedDogs();
 
     }
+
+    interface Realm<Type> {
+
+        DogFirebase getItemAt(int position);
+        ArrayList<Type> getAllDogs();
+    }
 }

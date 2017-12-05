@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name=".data.network.RetrofitHelper"
+        android:name=".PsiakApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,17 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.addAnimal.AddAnimalActivity">
+        <activity android:name=".ui.addAnimal.AddAnimalActivity"></activity>
         <activity
             android:name=".FirebaseActivity"
             android:label="@string/title_activity_firebase_testing"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MainActivityOLD"
             android:label="@string/title_activity_main_old"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".AddAnimal.AddAnimalActivity">
-        </activity>
     </application>
 
 </manifest>

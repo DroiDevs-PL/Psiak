@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import com.example.android.psiak.ui.firebase.FirebaseActivity;
+import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,10 +24,10 @@ import static org.junit.Assert.assertThat;
 @RunWith(AndroidJUnit4.class)
 public class FirebaseActivityTest {
 
-    private FirebaseActivity firebaseActivity;
+    private AddAnimalActivity firebaseActivity;
 
     @Rule
-    public ActivityTestRule<FirebaseActivity> rule  = new  ActivityTestRule<>(FirebaseActivity.class);
+    public ActivityTestRule<AddAnimalActivity> rule  = new  ActivityTestRule<>(AddAnimalActivity.class);
 
     @Before
     public void setActivity() {

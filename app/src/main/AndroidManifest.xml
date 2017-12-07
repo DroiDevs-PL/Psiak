@@ -20,10 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.addAnimal.AddAnimalActivity"></activity>
 
         <activity
-            android:name=".ui.firebase.FirebaseActivity"
+            android:name=".ui.addAnimal.AddAnimalActivity"
             android:label="@string/title_activity_firebase_testing"
             android:theme="@style/AppTheme.NoActionBar"/>
 

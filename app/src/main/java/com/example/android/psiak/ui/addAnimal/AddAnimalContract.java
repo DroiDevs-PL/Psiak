@@ -1,20 +1,19 @@
 package com.example.android.psiak.ui.addAnimal;
 
-/**
- * Created by Maciej Bialorucki on 20.11.17.
- */
+import com.example.android.psiak.model.DogFirebase;
+
+import java.util.ArrayList;
 
 public interface AddAnimalContract {
 
     interface View {
-        void showSuccessMessage();
-
-        void showErrorMessage();
+        void showAllDogs(ArrayList<DogFirebase> dogs);
+        void showErrorMessage(String errorMessage);
     }
 
     interface Presenter {
-
-        void save(String name, String kind);//void save(Dog dog);
-
+        void getAllDogs();
+        void addNewDog(DogFirebase dogFirebase);
+        String generateUniqueID();
     }
 }

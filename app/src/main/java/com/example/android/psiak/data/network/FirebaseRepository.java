@@ -1,7 +1,7 @@
 package com.example.android.psiak.data.network;
 
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.ui.firebase.FirebaseDataListener;
+import com.example.android.psiak.ui.addAnimal.FirebaseDataListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,8 +17,6 @@ import java.util.Map;
  */
 
 public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
-
-    private static final String TAG = FirebaseRepository.class.toString();
 
     // region Properties
 

@@ -19,16 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.psiak.R;
-import com.example.android.psiak.ui.firebase.FirebaseActivity;
-import com.example.android.psiak.ui.firebase.FirebaseActivityContract;
-import com.example.android.psiak.ui.firebase.FirebasePresenter;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,16 +34,13 @@ import timber.log.Timber;
 
 public class MainActivity
         extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FirebaseActivityContract.View {
+        implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
 
     public final String TAG = MainActivity.class.getName();
-
-    private FirebasePresenter firebasePresenter;
-
-    //region ui components declarations
-
     @BindView(R.id.doggie)
     ImageView doggie;
+
+    //region ui components declarations
     @BindView(R.id.noDogs)
     TextView noDogs;
     @BindView(R.id.woof)
@@ -63,9 +58,20 @@ public class MainActivity
     @BindView(R.id.dogsAvailableLayout)
     ConstraintLayout dogsAvailableLayout;
 
-    //endregion
+    private MainPresenter mainPresenter;
 
+    //endregion
     private Menu menu;
+    private ItemRemovedListener itemRemovedListener = new ItemRemovedListener() {
+        @Override
+        public void onItemRemoved(int count) {
+            if (count == 0) {
+                dogsAvailableLayout.setVisibility(View.INVISIBLE);
+                noDogsLayout.setVisibility(View.VISIBLE);
+                noDogs.setText(R.string.no_more_results);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +90,9 @@ public class MainActivity
         mSwipeView.addItemRemoveListener(itemRemovedListener);
 
         // TODO Use dependency injection here
-        firebasePresenter = new FirebasePresenter(new FirebaseRepository());
-        firebasePresenter.attach(this);
-        firebasePresenter.getAllDogs();
+        mainPresenter = new MainPresenter(new FirebaseRepository());
+        mainPresenter.attach(this);
+        mainPresenter.getAllDogs();
 
         setSupportActionBar(toolbar);
 
@@ -96,17 +102,6 @@ public class MainActivity
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
     }
-
-    private ItemRemovedListener itemRemovedListener = new ItemRemovedListener() {
-        @Override
-        public void onItemRemoved(int count) {
-            if(count == 0 ){
-                dogsAvailableLayout.setVisibility(View.INVISIBLE);
-                noDogsLayout.setVisibility(View.VISIBLE);
-                noDogs.setText(R.string.no_more_results);
-            }
-        }
-    };
 
     //region navigationDrawer
 
@@ -142,7 +137,7 @@ public class MainActivity
                 return true;
 
             case R.id.firebaseTest:
-                Intent intent = new Intent(this, FirebaseActivity.class);
+                Intent intent = new Intent(this, AddAnimalActivity.class);
                 startActivity(intent);
                 return true;
 
@@ -164,17 +159,18 @@ public class MainActivity
     // region Public Methods
 
     @Override
-    public void showAllDogs(ArrayList<DogFirebase> dogs) {
+    public void showAllDogs(List<DogFirebase> dogs) {
         Toast.makeText(getBaseContext(), "Firebase count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
 
         dogsAvailableLayout.setVisibility(View.VISIBLE);
         noDogsLayout.setVisibility(View.INVISIBLE);
 
-        for(DogFirebase dogFirebase : dogs) {
+        for (DogFirebase dogFirebase : dogs) {
             mSwipeView.addView(new TinderCard(MainActivity.this, dogFirebase, mSwipeView));
             Timber.d(TAG, "onResponse: " + dogFirebase);
         }
     }
+
 
     @Override
     public void showErrorMessage(String errorMessage) {

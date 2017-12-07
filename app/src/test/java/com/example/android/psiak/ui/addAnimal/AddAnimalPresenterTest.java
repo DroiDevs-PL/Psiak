@@ -1,6 +1,6 @@
 package com.example.android.psiak.ui.addAnimal;
 
-import com.example.android.psiak.data.repository.InMemoryDogRepository;
+import com.example.android.psiak.data.local.InMemoryDogRepository;
 
 import org.junit.Before;
 import org.junit.Test;

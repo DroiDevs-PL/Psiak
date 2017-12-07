@@ -1,32 +1,68 @@
 package com.example.android.psiak.ui.addAnimal;
 
+import com.example.android.psiak.data.network.FirebaseRepository;
+import com.example.android.psiak.data.network.Repository;
+import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.base.BasePresenter;
-import com.example.android.psiak.model.Dog;
-import com.example.android.psiak.data.repository.Repository;
+import com.google.firebase.database.DatabaseException;
 
-/**
- * Created by Maciej Bialorucki on 20.11.17.
- */
+import java.util.ArrayList;
 
-public class AddAnimalPresenter extends BasePresenter<AddAnimalContract.View> implements AddAnimalContract.Presenter {
+public class AddAnimalPresenter
+        extends BasePresenter<AddAnimalContract.View>
+        implements AddAnimalContract.Presenter, FirebaseDataListener {
 
-    private Repository repository;
+    private static final String TAG = AddAnimalPresenter.class.toString();
 
-    //can by easily injected via Dagger
-    public AddAnimalPresenter(Repository repository) {
-        this.repository = repository;
+    /**
+     * Repository object that will be used with this presenter
+     */
+
+    Repository.Firebase<DogFirebase> firebaseRepository;
+
+    /**
+     * Initialize AddAnimalPresenter with Firebase repository. After initialization AddAnimalPresenter object will be set as a
+     * data listener object for callback from Firebase repository
+     * @param repository Repository.Firebase object that will be used with this Presenter
+     */
+
+    public AddAnimalPresenter(Repository.Firebase<DogFirebase> repository) {
+        this.firebaseRepository = repository;
+        this.firebaseRepository.setDataListner(this);
     }
 
     @Override
-    public void save(String name, String age) {
-        if (name == null || name.equals("") || age == null || age.equals("")) {
-            view.showErrorMessage();
-            return;
+    public String generateUniqueID() {
+        String uniqueID = firebaseRepository.generateUniqueID();
+        return uniqueID;
+    }
+
+    @Override
+    public void getAllDogs() {
+
+        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
+
+        if (dogsData.size() > 0 && isViewAttached()) {
+            view.showAllDogs(dogsData);
+        } else {
+            firebaseRepository.getAllObjects();
         }
-        Dog dog = new Dog();
-        dog.setName(name);
-        dog.setAge(age);
-        repository.add(dog);
-        view.showSuccessMessage();
+    }
+
+    @Override
+    public void addNewDog(DogFirebase dogFirebase) {
+        firebaseRepository.addNew(dogFirebase);
+    }
+
+    @Override
+    public void setDogsData(ArrayList<DogFirebase> dogsData) {
+        if (isViewAttached()) {
+            view.showAllDogs(dogsData);
+        }
+    }
+
+    @Override
+    public void setErrorMessage(DatabaseException databaseException) {
+        view.showErrorMessage(databaseException.getMessage());
     }
 }

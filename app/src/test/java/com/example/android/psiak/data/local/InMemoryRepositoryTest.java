@@ -1,4 +1,4 @@
-package com.example.android.psiak.data.repository;
+package com.example.android.psiak.data.local;
 
 import com.example.android.psiak.model.Dog;
 

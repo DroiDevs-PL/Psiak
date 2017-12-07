@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     android:elevation="0dp"
     android:orientation="vertical"
     android:padding="5dp">
@@ -17,7 +17,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="15dp"
-        android:background="@color/blueDevsPL"
+        android:background="@color/white"
         android:foreground="?android:attr/selectableItemBackground"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintLeft_toLeftOf="parent"
@@ -43,22 +43,33 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/dog_name"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="17sp"
             android:textStyle="bold"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintRight_toRightOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/dog_cardview_iv_dog_image"
+            card_view:layout_constraintStart_toEndOf="@+id/dog_card_view_iv_dog_image"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:layout_constraintBottom_creator="1"
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1"
             tools:layout_constraintTop_creator="1" />
+
+        <TextView
+            android:id="@+id/dog_card_view_tv_dog_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/dog_age_hint"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toEndOf="@+id/dog_card_view_tv_dog_name"
+            card_view:layout_constraintTop_toTopOf="@+id/dog_card_view_tv_dog_name" />
 
 
     </android.support.constraint.ConstraintLayout>

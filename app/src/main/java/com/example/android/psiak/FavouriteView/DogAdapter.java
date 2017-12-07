@@ -65,6 +65,7 @@ public class DogAdapter
         //dogFirebase = databaseHelper.getItemAt(position);
 
         holder.dogName.setText("Masło");
+        holder.dogAge.setText("4");
     }
 
     @Override
@@ -80,12 +81,12 @@ public class DogAdapter
 
         @BindView(R.id.dog_card_view)
         View dogCardView;
-
         @BindView(R.id.dog_card_view_iv_dog_image)
         ImageView dogImage;
-
         @BindView(R.id.dog_card_view_tv_dog_name)
         TextView dogName;
+        @BindView(R.id.dog_card_view_tv_dog_age)
+        TextView dogAge;
 
         public DogsViewHolder(View itemView) {
             super(itemView);

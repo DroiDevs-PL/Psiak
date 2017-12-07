@@ -62,14 +62,14 @@ public class DogAdapter
     @Override
     public void onBindViewHolder(DogsViewHolder holder, int position) {
 
-        dogFirebase = databaseHelper.getItemAt(position);
+        //dogFirebase = databaseHelper.getItemAt(position);
 
-        holder.dogName.setText(dogFirebase.getName());
+        holder.dogName.setText("Masło");
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 2;
     }
 
     // endregion

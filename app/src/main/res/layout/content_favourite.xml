@@ -10,20 +10,33 @@
     tools:showIn="@layout/activity_favourite"
     android:id="@+id/favourites_root_layout" >
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/favourites_recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp" />
+
+    </android.support.v4.view.ViewPager>
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/favourites_recycler_view"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="358dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:background="@color/white"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent" />-->
 
 </android.support.constraint.ConstraintLayout>

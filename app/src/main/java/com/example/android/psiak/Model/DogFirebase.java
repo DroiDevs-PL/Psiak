@@ -1,11 +1,15 @@
 package com.example.android.psiak.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.List;
 
 @IgnoreExtraProperties
-public class DogFirebase {
+public class DogFirebase
+        implements Parcelable {
 
     // region Public Properties
 
@@ -44,6 +48,10 @@ public class DogFirebase {
      */
 
     private DogFirebase() {}
+
+    public DogFirebase(Parcel parcel) {
+        name = parcel.readString();
+    }
 
     /**
      * Constructor used to fully initialize Dog object
@@ -289,6 +297,33 @@ public class DogFirebase {
             return new DogFirebase(this);
         }
     }
+
+    // endregion
+
+    // region Parcelable
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(name);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Parcelable.Creator<DogFirebase> CREATOR = new Parcelable.Creator<DogFirebase>() {
+
+        @Override
+        public DogFirebase createFromParcel(Parcel parcel) {
+            return new DogFirebase(parcel);
+        }
+
+        @Override
+        public DogFirebase[] newArray(int size) {
+            return new DogFirebase[size];
+        }
+    };
 
     // endregion
 

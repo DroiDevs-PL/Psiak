@@ -31,7 +31,8 @@
         <activity
             android:name=".FavouriteView.FavouriteActivity"
             android:label="@string/title_activity_favourite"
-            android:theme="@style/AppTheme"></activity>
+            android:parentActivityName="com.example.android.psiak.FirebaseActivity" >
+        android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

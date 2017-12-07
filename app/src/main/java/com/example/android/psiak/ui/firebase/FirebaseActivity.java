@@ -1,5 +1,6 @@
 package com.example.android.psiak.ui.firebase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.R;
+import com.example.android.psiak.ui.main.MainActivity;
 
 import java.util.ArrayList;
 
@@ -84,6 +86,14 @@ public class FirebaseActivity
         // TODO Use dependency injection here
         firebasePresenter = new FirebasePresenter(new FirebaseRepository());
         firebasePresenter.attach(this);
+
+        btnAddNewDog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FirebaseActivity.this,MainActivity.class);
+                  startActivity(intent);
+            }
+        });
 
     }
 

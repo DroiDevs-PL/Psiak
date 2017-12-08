@@ -10,12 +10,11 @@ import java.util.List;
 
 public interface MainContract {
 
-    interface View{
+    interface View {
         void showAllDogs(List<DogFirebase> dogs);
-        void showErrorMessage(String errorMessage);
     }
 
-    interface Presenter{
+    interface Presenter {
         void getAllDogs();
     }
 }

@@ -8,7 +8,7 @@ public interface AddAnimalContract {
 
     interface View {
         void showAllDogs(ArrayList<DogFirebase> dogs);
-        void showErrorMessage(String errorMessage);
+
     }
 
     interface Presenter {

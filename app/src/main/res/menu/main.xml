@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/settings"
-        android:title="@string/settings"
-        app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/about"
-        android:title="@string/about"/>
+        android:id="@+id/settings"
+        android:title="@string/settings"/>
+
     <item
-        android:id="@+id/rate"
-        android:title="@string/rate"/>
+        android:id="@+id/firebaseTest"
+        android:title="@string/firebaseTest"/>
+
 </menu>

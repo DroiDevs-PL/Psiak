@@ -36,13 +36,20 @@ public class DogAdapter
 
     // region Constructors
 
+    /**
+     * Default constructor for DogAdapter used in RecyclerView
+     * @param context Context of the app
+     * @param layoutManager LayoutManager used to specify how items in RecyclerView should be placed
+     * @param coordinatorLayout Root layout of the view that will be displaying RecyclerView
+     */
+
     public DogAdapter(Context context,
                       LinearLayoutManager layoutManager,
-                      CoordinatorLayout constraintLayout) {
+                      CoordinatorLayout coordinatorLayout) {
         super();
         this.context = context;
         this.linearLayoutManager = layoutManager;
-        this.coordinatorLayout = constraintLayout;
+        this.coordinatorLayout = coordinatorLayout;
     }
 
     // endregion
@@ -76,6 +83,10 @@ public class DogAdapter
     // endregion
 
     // region Inner Class
+
+    /**
+     * Custom implementation for ViewHolder
+     */
 
     public static class DogsViewHolder extends RecyclerView.ViewHolder {
 

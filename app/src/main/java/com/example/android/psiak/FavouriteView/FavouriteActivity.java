@@ -19,17 +19,14 @@ public class FavouriteActivity extends AppCompatActivity {
 
     // region Private Properties
 
-    //@BindView(R.id.favourites_recycler_view)
-    //RecyclerView recyclerView;
-    @BindView(R.id.favourites_root_layout)
-    ConstraintLayout rootLayout;
-
-    private DogAdapter dogAdapter;
-    private LinearLayoutManager layoutManager;
-
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.favourites_view_pager)
     ViewPager viewPager;
-    TabsPagerAdapter myAdapter;
+    @BindView(R.id.favourites_tabs)
+    TabLayout tabLayout;
 
+    private TabsPagerAdapter myAdapter;
 
     // endregion
 
@@ -39,32 +36,18 @@ public class FavouriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
+        ButterKnife.bind(this);
 
-        viewPager = (ViewPager) findViewById(R.id.vpPager);
-        myAdapter = new TabsPagerAdapter(getSupportFragmentManager(), this);
-        viewPager.setAdapter(myAdapter);
-
-        // Give the TabLayout the ViewPager
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(viewPager);
-
-        //ButterKnife.bind(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //recyclerView.setHasFixedSize(true);
+        myAdapter = new TabsPagerAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(myAdapter);
 
-        layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        tabLayout.setupWithViewPager(viewPager);
 
-        //recyclerView.setLayoutManager(layoutManager);
-        //recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        dogAdapter = new DogAdapter(this, layoutManager, rootLayout);
-
-        //recyclerView.setAdapter(dogAdapter);
     }
 
     // endregion

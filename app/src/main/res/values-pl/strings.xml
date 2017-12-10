@@ -1,0 +1,43 @@
+<resources>
+
+    <string name="app_name">Psiaki</string>
+    <string name="settings">Ustawienia</string>
+    <string name="about">O nas</string>
+    <string name="rate">Oceń aplikację</string>
+    <string name="firebaseTest">Firebase Test</string>
+    <string name="title_activity_firebase_testing">FirebaseTesting</string>
+    <string name="show_all_dogs">Pokaż wszystkie</string>
+    <string name="add_new_dog">Dodaj nowego zwierzaka</string>
+    <string name="dog_name">Imię</string>
+    <string name="dog_category">Kategoria</string>
+    <string name="dog_description">Opis</string>
+    <string name="favourites">Ulubione</string>
+    <string name="homepage">Główna</string>
+    <string name="shelters">Schroniska</string>
+    <string name="no_dogs_found">Wygląda na to, że zabrakło nam psiaków. Spróbuj zmienić miejsce wyszukiwania...</string>
+    <string name="sample_text">Json do wyplucia</string>
+    <string name="ups">Ups!</string>
+    <string name="navigation_drawer_open">Otwórz</string>
+    <string name="navigation_drawer_close">Zamknij</string>
+    <string name="info_no_data">Brak danych</string>
+    <string name="dog_name_hint">Imię</string>
+    <string name="dog_gender_hint">Płeć</string>
+    <string name="dog_age_hint">Wiek</string>
+    <string name="dog_description_hint">Opis</string>
+    <string name="dog_size_hint">Rozmiar</string>
+    <string name="dog_weight_hint">Waga</string>
+    <string name="dog_location_hint">Lokalizacja</string>
+    <string name="dog_attitude_people_hint">Stosunek do ludzi</string>
+    <string name="dog_attitude_dogs_hint">Stosunek do psów</string>
+    <string name="dog_attitude_cats_hint">Stosunek do kotów</string>
+    <string name="dog_keeper_name_hint">Imię opiekuna</string>
+    <string name="dog_keeper_mail_hint">Mail opiekuna</string>
+    <string name="dog_keeper_phone_hint">Telefon opiekuna</string>
+    <string name="dog_vaccinated_hint">Szczepiony</string>
+    <string name="dog_dewormed_hint">Odrobaczony</string>
+    <string name="dog_sterilized_hint">Wysterylizowany</string>
+    <string name="dog_homeless_since_hint">Bezdomny od</string>
+    <string name="title_activity_main_old">MainActivityOLD</string>
+    <string name="no_more_results">Nie ma więcej wyników</string>
+
+</resources>

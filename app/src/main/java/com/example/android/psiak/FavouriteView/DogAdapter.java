@@ -3,6 +3,7 @@ package com.example.android.psiak.FavouriteView;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,7 +31,7 @@ public class DogAdapter
     private DogFirebase dogFirebase;
     private Context context;
     private LinearLayoutManager linearLayoutManager;
-    private ConstraintLayout constraintLayout;
+    private CoordinatorLayout constraintLayout;
 
     // endregion
 
@@ -38,7 +39,7 @@ public class DogAdapter
 
     public DogAdapter(Context context,
                       LinearLayoutManager layoutManager,
-                      ConstraintLayout constraintLayout) {
+                      CoordinatorLayout constraintLayout) {
         super();
         this.context = context;
         this.linearLayoutManager = layoutManager;

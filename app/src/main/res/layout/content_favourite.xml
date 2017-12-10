@@ -7,11 +7,10 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.android.psiak.FavouriteView.FavouriteActivity"
-    tools:showIn="@layout/activity_favourite"
-    android:id="@+id/favourites_root_layout" >
+    tools:showIn="@layout/activity_favourite" >
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/vpPager"
+        android:id="@+id/favourites_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,21 +19,11 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/sliding_tabs"
+            android:id="@+id/favourites_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabMode="fixed" />
 
     </android.support.v4.view.ViewPager>
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/favourites_recycler_view"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="358dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:background="@color/white"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent" />-->
 
 </android.support.constraint.ConstraintLayout>

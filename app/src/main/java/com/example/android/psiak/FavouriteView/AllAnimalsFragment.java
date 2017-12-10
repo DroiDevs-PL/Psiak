@@ -19,6 +19,8 @@ import butterknife.ButterKnife;
 
 public class AllAnimalsFragment extends Fragment {
 
+    // region Properties
+
     @BindView(R.id.favourites_recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.favourites_root_layout)
@@ -26,6 +28,10 @@ public class AllAnimalsFragment extends Fragment {
 
     private DogAdapter dogAdapter;
     private LinearLayoutManager layoutManager;
+
+    // endregion
+
+    // region View Lifecycle
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,5 +52,7 @@ public class AllAnimalsFragment extends Fragment {
 
         return view;
     }
+
+    // endregion
 
 }

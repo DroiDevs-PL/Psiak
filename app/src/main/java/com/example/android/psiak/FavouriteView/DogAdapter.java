@@ -35,7 +35,7 @@ public class DogAdapter
 
     // endregion
 
-    // region Constructor
+    // region Constructors
 
     public DogAdapter(Context context,
                       LinearLayoutManager layoutManager,

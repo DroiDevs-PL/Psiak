@@ -1,26 +1,39 @@
 package com.example.android.psiak.FavouriteView;
 
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.android.psiak.R;
+
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
-    private int NUM_ITEMS = 3;
-    private String[] titles= new String[]{"First Fragment", "Second Fragment","Third Fragment"};
+    private int NUM_ITEMS = 4;
 
-    public TabsPagerAdapter(FragmentManager fm) {
-        super(fm);
+    Context context;
+
+    private String[] titles;
+
+    public TabsPagerAdapter(FragmentManager fragmentManager, Context context) {
+        super(fragmentManager);
+
+        this.context = context;
+
+        titles = new String[] {
+                context.getResources().getString(R.string.tab_all_animals),
+                context.getResources().getString(R.string.tab_dogs),
+                context.getResources().getString(R.string.tab_cats),
+                context.getResources().getString(R.string.tab_others)
+        };
     }
 
-    // Returns total number of pages
     @Override
     public int getCount() {
         return  NUM_ITEMS ;
     }
 
-    // Returns the fragment to display for that page
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -30,12 +43,13 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
                 return new AllAnimalsFragment();
             case 2:
                 return new AllAnimalsFragment();
+            case 3:
+                return new AllAnimalsFragment();
             default:
                 return null;
         }
     }
 
-    // Returns the page title for the top indicator
     @Override
     public CharSequence getPageTitle(int position) {
         return  titles[position];

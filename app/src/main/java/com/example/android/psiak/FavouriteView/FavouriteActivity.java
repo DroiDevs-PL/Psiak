@@ -2,6 +2,7 @@ package com.example.android.psiak.FavouriteView;
 
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -40,8 +41,12 @@ public class FavouriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favourite);
 
         viewPager = (ViewPager) findViewById(R.id.vpPager);
-        myAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        myAdapter = new TabsPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(myAdapter);
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
         //ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

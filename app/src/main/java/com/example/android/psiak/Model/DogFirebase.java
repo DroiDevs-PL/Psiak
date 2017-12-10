@@ -34,6 +34,8 @@ public class DogFirebase {
     private String profilePic;
     private List<String> photos;
 
+    private boolean isFavourite;
+
     // endregion
 
     // region Initializers
@@ -72,7 +74,6 @@ public class DogFirebase {
 
         this.weight = dogBuilder.weight;
         this.age = dogBuilder.age;
-
     }
 
     // endregion
@@ -157,7 +158,18 @@ public class DogFirebase {
         return photos;
     }
 
+    public boolean isFavourite() { return isFavourite; }
+
     // endregion
+
+    // region Setters
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
+    }
+
+    //endregion
+
 
     // region DogBuilder
 
@@ -188,6 +200,8 @@ public class DogFirebase {
 
         private String profilePic;
         private List<String> photos;
+
+        private boolean isFavourite;
 
         public DogBuilder(String id, String name) {
             this.id = id;
@@ -282,6 +296,11 @@ public class DogFirebase {
 
         public DogBuilder age(String age) {
             this.age = age;
+            return this;
+        }
+
+        public DogBuilder isFavourite(boolean isFavourite) {
+            this.isFavourite = isFavourite;
             return this;
         }
 

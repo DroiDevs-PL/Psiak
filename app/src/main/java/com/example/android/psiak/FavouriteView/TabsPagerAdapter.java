@@ -10,18 +10,30 @@ import com.example.android.psiak.R;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
-    private int NUM_ITEMS = 4;
+    // region Properties
 
-    Context context;
+    private int TABS_ITEMS_COUNT = 4;
 
-    private String[] titles;
+    private Context context;
+
+    private String[] tabsTitles;
+
+    // endregion
+
+    // region Initializers
+
+    /**
+     * Default initializer for TabsPagerAdapter
+     * @param fragmentManager Fragment Manager passed from calling Activity
+     * @param context Context of the app passed from calling Activity
+     */
 
     public TabsPagerAdapter(FragmentManager fragmentManager, Context context) {
         super(fragmentManager);
 
         this.context = context;
 
-        titles = new String[] {
+        tabsTitles = new String[] {
                 context.getResources().getString(R.string.tab_all_animals),
                 context.getResources().getString(R.string.tab_dogs),
                 context.getResources().getString(R.string.tab_cats),
@@ -29,9 +41,13 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         };
     }
 
+    // endregion
+
+    // region Public Methods
+
     @Override
     public int getCount() {
-        return  NUM_ITEMS ;
+        return TABS_ITEMS_COUNT;
     }
 
     @Override
@@ -52,7 +68,9 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return  titles[position];
+        return  tabsTitles[position];
     }
+
+    // endregion
 
 }

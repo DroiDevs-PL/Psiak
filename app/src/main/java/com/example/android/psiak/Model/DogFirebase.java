@@ -4,8 +4,13 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.List;
 
+import io.realm.RealmList;
+import io.realm.RealmModel;
+import io.realm.annotations.RealmClass;
+
+@RealmClass
 @IgnoreExtraProperties
-public class DogFirebase {
+public class DogFirebase implements RealmModel{
 
     // region Public Properties
 
@@ -32,7 +37,7 @@ public class DogFirebase {
     private String age;
 
     private String profilePic;
-    private List<String> photos;
+    private RealmList<Photo> photos;
 
     private boolean isFavourite;
 
@@ -45,7 +50,7 @@ public class DogFirebase {
      * It will set all model properties to theirs default values
      */
 
-    private DogFirebase() {}
+    public DogFirebase() {}
 
     /**
      * Constructor used to fully initialize Dog object
@@ -154,7 +159,7 @@ public class DogFirebase {
         return profilePic;
     }
 
-    public List<String> getPhotos() {
+    public RealmList<Photo> getPhotos() {
         return photos;
     }
 

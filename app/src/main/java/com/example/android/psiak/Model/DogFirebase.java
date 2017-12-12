@@ -6,6 +6,7 @@ import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmModel;
+import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
 
 @RealmClass
@@ -14,6 +15,7 @@ public class DogFirebase implements RealmModel{
 
     // region Public Properties
 
+    @PrimaryKey
     private String id;
     private String name;
     private String gender;
@@ -79,6 +81,8 @@ public class DogFirebase implements RealmModel{
 
         this.weight = dogBuilder.weight;
         this.age = dogBuilder.age;
+
+        this.isFavourite = dogBuilder.isFavourite;
     }
 
     // endregion

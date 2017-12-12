@@ -5,6 +5,8 @@ import com.example.android.psiak.Model.DogFirebase;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
+
 public interface Repository {
 
     interface Firebase<Type> {
@@ -67,5 +69,13 @@ public interface Repository {
 
         ArrayList<DogFirebase> getCachedDogs();
 
+    }
+
+    interface LocalRepository {
+        RealmResults<DogFirebase> getAll();
+        DogFirebase get(String id);
+        void add(DogFirebase dogFirebase);
+        void delete(String id);
+        void delete(DogFirebase dogFirebase);
     }
 }

@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.psiak.Firebase.DogsLocalRepository;
 import com.example.android.psiak.Firebase.FirebaseActivityContract;
 import com.example.android.psiak.Firebase.FirebasePresenter;
 import com.example.android.psiak.Firebase.FirebaseRepository;
@@ -81,8 +82,9 @@ public class MainActivity
 
         mSwipeView.addItemRemoveListener(itemRemovedListener);
 
+
         // TODO Use dependency injection here
-        firebasePresenter = new FirebasePresenter(new FirebaseRepository());
+        firebasePresenter = new FirebasePresenter(new FirebaseRepository(), new DogsLocalRepository());
         firebasePresenter.attach(this);
         firebasePresenter.getAllDogs();
 
@@ -168,9 +170,17 @@ public class MainActivity
         dogsAvailableLayout.setVisibility(View.VISIBLE);
         noDogsLayout.setVisibility(View.INVISIBLE);
 
-        for(DogFirebase dogFirebase : dogs) {
-            mSwipeView.addView(new TinderCard(MainActivity.this, dogFirebase, mSwipeView));
-            Timber.d(TAG, "onResponse: " + dogFirebase);
+        for(final DogFirebase dogFirebase : dogs) {
+            TinderCard tinderCard = new TinderCard(MainActivity.this, dogFirebase, mSwipeView);
+            TinderCard.SwipeCallback swipeCallback = new TinderCard.SwipeCallback() {
+                @Override
+                public void onSwipeIn() {
+                    firebasePresenter.addNewFavouriteDog(dogFirebase);
+                }
+            };
+            tinderCard.setSwipeCallback(swipeCallback);
+            mSwipeView.addView(tinderCard);
+            Timber.d("onResponse: " + dogFirebase.getName());
         }
     }
 

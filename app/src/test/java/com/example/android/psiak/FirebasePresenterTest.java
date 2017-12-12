@@ -12,6 +12,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
+
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -21,12 +23,14 @@ public class FirebasePresenterTest {
     private FirebaseActivityContract.View mockView;
     private MockFirebaseRepository mockFirebaseRepository;
     private FirebasePresenter firebasePresenter;
+    private MockLocalRepository mockLocalRepository;
 
     @Before
     public void init() {
         mockView = mock(FirebaseActivity.class);
         mockFirebaseRepository = new MockFirebaseRepository();
-        firebasePresenter = new FirebasePresenter(mockFirebaseRepository);
+        mockLocalRepository = new MockLocalRepository();
+        firebasePresenter = new FirebasePresenter(mockFirebaseRepository, mockLocalRepository);
         firebasePresenter.attach(mockView);
     }
 
@@ -110,5 +114,32 @@ class MockFirebaseRepository implements Repository.Firebase<DogFirebase> {
     @Override
     public String generateUniqueID() {
         return null;
+    }
+}
+
+class MockLocalRepository implements Repository.LocalRepository {
+    @Override
+    public RealmResults<DogFirebase> getAll() {
+        return null;
+    }
+
+    @Override
+    public DogFirebase get(String id) {
+        return null;
+    }
+
+    @Override
+    public void add(DogFirebase dogFirebase) {
+
+    }
+
+    @Override
+    public void delete(String id) {
+
+    }
+
+    @Override
+    public void delete(DogFirebase dogFirebase) {
+
     }
 }

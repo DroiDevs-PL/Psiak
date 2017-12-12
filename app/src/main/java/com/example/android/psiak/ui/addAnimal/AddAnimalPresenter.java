@@ -4,13 +4,14 @@ import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.base.BasePresenter;
+import com.example.android.psiak.ui.base.MvpView;
 import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 
 public class AddAnimalPresenter
         extends BasePresenter<AddAnimalContract.View>
-        implements AddAnimalContract.Presenter, FirebaseDataListener {
+        implements AddAnimalContract.Presenter<AddAnimalContract.View>, FirebaseDataListener {
 
     private static final String TAG = AddAnimalPresenter.class.toString();
 
@@ -65,4 +66,6 @@ public class AddAnimalPresenter
     public void setErrorMessage(DatabaseException databaseException) {
         view.showErrorMessage(databaseException.getMessage());
     }
+
+
 }

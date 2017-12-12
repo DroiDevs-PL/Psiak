@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.R;
+import com.example.android.psiak.ui.base.BasePresenter;
 import com.example.android.psiak.ui.main.MainActivity;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class AddAnimalActivity
 
     // region Properties
 
-    private AddAnimalPresenter firebasePresenter;
+    private AddAnimalContract.Presenter<AddAnimalContract.View> firebasePresenter;
 
     @BindView(R.id.btn_show_all_dogs)
     Button btnShowAllDogs;
@@ -83,7 +84,7 @@ public class AddAnimalActivity
 
         // TODO Use dependency injection here
         firebasePresenter = new AddAnimalPresenter(new FirebaseRepository());
-        firebasePresenter.attach(this);
+        firebasePresenter.attachView(this);
 
         btnAddNewDog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +100,7 @@ public class AddAnimalActivity
     protected void onDestroy() {
         super.onDestroy();
         if (firebasePresenter != null)
-            firebasePresenter.detach();
+            firebasePresenter.detachView();
     }
 
     // endregion
@@ -157,9 +158,18 @@ public class AddAnimalActivity
     }
 
     @Override
+    public void showMessage(int messageId) {
+
+    }
+
+    @Override
     public void showErrorMessage(String errorMessage) {
         Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
     }
 
+
+
     // endregion
+
+
 }

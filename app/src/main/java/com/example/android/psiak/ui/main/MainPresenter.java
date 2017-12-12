@@ -7,7 +7,7 @@ import com.example.android.psiak.ui.base.BasePresenter;
  * Created by Maciej Bialorucki on 07.12.17.
  */
 
-class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
+class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter<MainContract.View> {
 
     private final FirebaseRepository firebaseRepository;
 

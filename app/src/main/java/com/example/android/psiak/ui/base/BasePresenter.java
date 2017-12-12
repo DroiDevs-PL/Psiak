@@ -1,24 +1,24 @@
 package com.example.android.psiak.ui.base;
-
 /**
- * Created by Maciej Bialorucki on 20.11.17.
+ * Base class for all presenters in application.
+ * @param <V>
  */
+public abstract class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
-public abstract class BasePresenter<T> {
+    public V view;
 
-    //TODO consider another layout of abstraction
-    //BasePresenter<T extends MvpView> implments MvpPresenter<V>
-    public T view;
-
-    public void attach(T view) {
+    @Override
+    public void attachView(V view) {
         this.view = view;
     }
 
-    public void detach() {
+    @Override
+    public void detachView() {
         this.view = null;
     }
 
-    public boolean isViewAttached(){
+    @Override
+    public boolean isViewAttached() {
         return this.view != null;
     }
 }

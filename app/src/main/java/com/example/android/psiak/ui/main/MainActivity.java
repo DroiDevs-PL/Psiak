@@ -91,7 +91,7 @@ public class MainActivity
 
         // TODO Use dependency injection here
         mainPresenter = new MainPresenter(new FirebaseRepository());
-        mainPresenter.attach(this);
+        mainPresenter.attachView(this);
         mainPresenter.getAllDogs();
 
         setSupportActionBar(toolbar);
@@ -171,6 +171,11 @@ public class MainActivity
         }
     }
 
+
+    @Override
+    public void showMessage(int messageId) {
+
+    }
 
     @Override
     public void showErrorMessage(String errorMessage) {

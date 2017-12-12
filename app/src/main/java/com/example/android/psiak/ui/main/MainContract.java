@@ -1,6 +1,8 @@
 package com.example.android.psiak.ui.main;
 
 import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.ui.base.MvpPresenter;
+import com.example.android.psiak.ui.base.MvpView;
 
 import java.util.List;
 
@@ -10,11 +12,11 @@ import java.util.List;
 
 public interface MainContract {
 
-    interface View {
+    interface View extends MvpView {
         void showAllDogs(List<DogFirebase> dogs);
     }
 
-    interface Presenter {
+    interface Presenter<V extends MvpView> extends MvpPresenter<V> {
         void getAllDogs();
     }
 }

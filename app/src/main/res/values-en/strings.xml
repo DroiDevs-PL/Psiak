@@ -1,43 +1,53 @@
 <resources>
 
-    <string name="app_name">Psiaki</string>
-    <string name="settings">Settings</string>
-    <string name="about">About us</string>
-    <string name="rate">Estimate app</string>
-    <string name="firebaseTest">Firebase Test</string>
-    <string name="title_activity_firebase_testing">FirebaseTesting</string>
-    <string name="show_all_dogs">Show all dogs</string>
-    <string name="add_new_dog">Add New Dog</string>
-    <string name="dog_name">Dog name</string>
-    <string name="dog_category">Dog category</string>
-    <string name="dog_description">Dog description</string>
-    <string name="favourites">Favourites</string>
-    <string name="homepage">Home</string>
-    <string name="shelters">Shelters</string>
-    <string name="no_dogs_found">Ups! No dogs found, please change search criteria</string>
-    <string name="sample_text">Json</string>
-    <string name="ups">Ups!</string>
+    <!-- Main UI -->
+
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
-    <string name="info_no_data">Lack of data</string>
-    <string name="dog_name_hint">dog name</string>
-    <string name="dog_gender_hint">dog gender</string>
-    <string name="dog_age_hint">dog age</string>
-    <string name="dog_description_hint">dog description</string>
-    <string name="dog_size_hint">dog size</string>
-    <string name="dog_weight_hint">dog weight</string>
-    <string name="dog_location_hint">dog location</string>
-    <string name="dog_attitude_people_hint"> attitude people </string>
-    <string name="dog_attitude_dogs_hint">attitude dogs</string>
-    <string name="dog_attitude_cats_hint">attitude cats</string>
-    <string name="dog_keeper_name_hint">keeper name</string>
-    <string name="dog_keeper_mail_hint">keeper mail</string>
-    <string name="dog_keeper_phone_hint">keeper phone</string>
+    <string name="no_more_results">There are no more results</string>
+
+    <!--Content main UI-->
+
+    <string name="no_dogs_found">No dogs found</string>
+    <string name="ups">Ups!</string>
+
+    <!-- Menu UI -->
+
+    <string name="firebaseTest">Firebase test</string>
+    <string name="settings">Settings</string>
+    <string name="about">About us</string>
+    <string name="favourites">Favourites</string>
+    <string name="homepage">Main</string>
+    <string name="shelters">Shelters</string>
+
+    <!-- Firebase UI -->
+
+    <string name="dog_name_hint">Dog name</string>
+    <string name="dog_gender_hint">Dog gender</string>
+    <string name="dog_age_hint">Dog age</string>
+    <string name="dog_description_hint">Dog description</string>
+    <string name="dog_size_hint">Dog size</string>
+    <string name="dog_weight_hint">Dog weight</string>
+    <string name="dog_location_hint">Dog location</string>
+    <string name="dog_attitude_people_hint">Attitude people</string>
+    <string name="dog_attitude_dogs_hint">Attitude dogs</string>
+    <string name="dog_attitude_cats_hint">Attitude cats</string>
+    <string name="dog_keeper_name_hint">Keeper name</string>
+    <string name="dog_keeper_mail_hint">Keeper mail</string>
+    <string name="dog_keeper_phone_hint">Keeper phone</string>
     <string name="dog_vaccinated_hint">Vaccinated</string>
     <string name="dog_dewormed_hint">Dewormed</string>
     <string name="dog_sterilized_hint">Sterilized</string>
-    <string name="dog_homeless_since_hint">homeless since</string>
-    <string name="title_activity_main_old">MainActivityOLD</string>
-    <string name="no_more_results">There are no more results</string>
+    <string name="dog_homeless_since_hint">Homeless since</string>
+    <string name="show_all_dogs">Show all dogs</string>
+    <string name="add_new_dog">Add new dog</string>
+
+    <!-- Additional - need to be verified -->
+
+    <string name="dog_category">Dog category</string>
+    <string name="dog_description">Dog description</string>
+    <string name="rate">Oceń aplikację</string>
+    <string name="sample_text">Json do wyplucia</string>
+    <string name="info_no_data">Brak danych</string>
 
 </resources>

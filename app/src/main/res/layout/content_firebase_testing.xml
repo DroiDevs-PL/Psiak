@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.android.psiak.FirebaseActivity"
+    tools:showIn="@layout/activity_firebase_testing">
+
+    <EditText
+        android:id="@+id/et_dog_name"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/dog_name_hint"
+        android:inputType="textEmailSubject|textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_dog_description"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_description_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_age" />
+
+    <Button
+        android:id="@+id/btn_add_new_dog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="88dp"
+        android:text="@string/add_new_dog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_phone" />
+
+    <Button
+        android:id="@+id/btn_show_all_dogs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/show_all_dogs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_dog_gender"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_gender_hint"
+        android:inputType="textEmailSubject|textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_name" />
+
+    <EditText
+        android:id="@+id/et_dog_age"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_age_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_gender" />
+
+    <EditText
+        android:id="@+id/et_dog_size"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_size_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_description" />
+
+    <EditText
+        android:id="@+id/et_dog_weight"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_weight_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_size" />
+
+    <EditText
+        android:id="@+id/et_dog_location"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_location_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_weight" />
+
+    <Switch
+        android:id="@+id/sw_dog_vaccinated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dog_vaccinated_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_dog_name" />
+
+    <Switch
+        android:id="@+id/sw_dog_dewormed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dog_dewormed_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sw_dog_vaccinated" />
+
+    <Switch
+        android:id="@+id/sw_dog_sterilized"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dog_sterilized_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sw_dog_dewormed" />
+
+    <EditText
+        android:id="@+id/et_dog_attitude_people"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_attitude_people_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_location" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.043956045" />
+
+    <EditText
+        android:id="@+id/et_dog_attitude_dogs"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_attitude_dogs_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_attitude_people" />
+
+    <EditText
+        android:id="@+id/et_dog_attitude_cats"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_attitude_cats_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_attitude_dogs" />
+
+    <EditText
+        android:id="@+id/et_dog_keeper_name"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="@string/dog_keeper_name_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sw_dog_sterilized" />
+
+    <EditText
+        android:id="@+id/et_dog_keeper_mail"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_keeper_mail_hint"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_name" />
+
+    <EditText
+        android:id="@+id/et_dog_keeper_phone"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_keeper_phone_hint"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_mail" />
+
+    <EditText
+        android:id="@+id/et_dog_homeless_since"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dog_homeless_since_hint"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_phone" />
+
+</android.support.constraint.ConstraintLayout>

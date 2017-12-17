@@ -17,8 +17,11 @@ import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.R;
 import com.example.android.psiak.Repository.Repository;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmResults;
 
 public class AllAnimalsFragment extends Fragment {
 
@@ -44,8 +47,10 @@ public class AllAnimalsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tab_all_animals, container, false);
         ButterKnife.bind(this, view);
 
+        // TODO: Use Presenter
         localRepository = new DogsLocalRepository();
-        
+        RealmResults<DogFirebase> dogsCollection = localRepository.getAll();
+
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
@@ -54,7 +59,7 @@ public class AllAnimalsFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        dogAdapter = new DogAdapter(getContext(), layoutManager, rootLayout, localRepository);
+        dogAdapter = new DogAdapter(getContext(), layoutManager, rootLayout, dogsCollection);
 
         recyclerView.setAdapter(dogAdapter);
 

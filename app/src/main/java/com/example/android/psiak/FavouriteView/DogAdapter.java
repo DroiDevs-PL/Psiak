@@ -13,10 +13,10 @@ import android.widget.TextView;
 
 import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.R;
-import com.example.android.psiak.Repository.Repository;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmResults;
 
 public class DogAdapter
         extends RecyclerView.Adapter<DogAdapter.DogsViewHolder> {
@@ -25,7 +25,7 @@ public class DogAdapter
 
     // region Properties
 
-    Repository.LocalRepository localRepository;
+    RealmResults<DogFirebase> dogsCollection;
 
     private DogFirebase dogFirebase;
     private Context context;
@@ -46,12 +46,12 @@ public class DogAdapter
     public DogAdapter(Context context,
                       LinearLayoutManager layoutManager,
                       CoordinatorLayout coordinatorLayout,
-                      Repository.LocalRepository localRepository ) {
+                      RealmResults<DogFirebase> dogsCollection) {
         super();
         this.context = context;
         this.linearLayoutManager = layoutManager;
         this.coordinatorLayout = coordinatorLayout;
-        this.localRepository = localRepository;
+        this.dogsCollection = dogsCollection;
     }
 
     // endregion
@@ -71,16 +71,15 @@ public class DogAdapter
     @Override
     public void onBindViewHolder(DogsViewHolder holder, int position) {
 
-        // TODO: This will throw an error - ID for DogFirebase object is something like -dfdererer, not 1..2..3
-        //dogFirebase = localRepository.get(Integer.toString(position));
+        dogFirebase = dogsCollection.get(position);
 
-        holder.dogName.setText("Balon");
-        holder.dogAge.setText("2");
+        holder.dogName.setText(dogFirebase.getName());
+        holder.dogAge.setText(dogFirebase.getAge());
     }
 
     @Override
     public int getItemCount() {
-        return localRepository.getAll().size();
+        return dogsCollection.size();
     }
 
     // endregion

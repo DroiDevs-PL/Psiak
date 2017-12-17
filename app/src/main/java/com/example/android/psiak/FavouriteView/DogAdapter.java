@@ -21,11 +21,11 @@ import butterknife.ButterKnife;
 public class DogAdapter
         extends RecyclerView.Adapter<DogAdapter.DogsViewHolder> {
 
-    // region Properties
-
     private final static String TAG = DogAdapter.class.toString();
 
-    Repository.LocalRepository databaseHelper;
+    // region Properties
+
+    Repository.LocalRepository localRepository;
 
     private DogFirebase dogFirebase;
     private Context context;
@@ -45,11 +45,13 @@ public class DogAdapter
 
     public DogAdapter(Context context,
                       LinearLayoutManager layoutManager,
-                      CoordinatorLayout coordinatorLayout) {
+                      CoordinatorLayout coordinatorLayout,
+                      Repository.LocalRepository localRepository ) {
         super();
         this.context = context;
         this.linearLayoutManager = layoutManager;
         this.coordinatorLayout = coordinatorLayout;
+        this.localRepository = localRepository;
     }
 
     // endregion
@@ -69,15 +71,16 @@ public class DogAdapter
     @Override
     public void onBindViewHolder(DogsViewHolder holder, int position) {
 
-        //dogFirebase = databaseHelper.getItemAt(position);
+        // TODO: This will throw an error - ID for DogFirebase object is something like -dfdererer, not 1..2..3
+        //dogFirebase = localRepository.get(Integer.toString(position));
 
-        holder.dogName.setText("Masło");
-        holder.dogAge.setText("4");
+        holder.dogName.setText("Balon");
+        holder.dogAge.setText("2");
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return localRepository.getAll().size();
     }
 
     // endregion

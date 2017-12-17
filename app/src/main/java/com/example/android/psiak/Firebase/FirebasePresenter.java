@@ -22,6 +22,7 @@ public class FirebasePresenter
 
     Repository.Firebase firebaseRepository;
     Repository.LocalRepository localRepository;
+
     /**
      * Initialize FirebasePresenter with Firebase repository. After initialization FirebasePresenter object will be set as a
      * data listener object for callback from Firebase repository
@@ -54,10 +55,14 @@ public class FirebasePresenter
 
     @Override
     public void addNewFavouriteDog(DogFirebase dogFirebase) {
+
         dogFirebase.setFavourite(true);
         localRepository.add(dogFirebase);
+
         Timber.d("Save "  + dogFirebase.getName());
+
         RealmResults<DogFirebase> dogs = localRepository.getAll();
+
         for(DogFirebase d : dogs) {
             Timber.d(d.toString());
         }

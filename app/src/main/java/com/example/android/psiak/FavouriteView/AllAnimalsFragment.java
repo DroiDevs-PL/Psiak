@@ -12,7 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android.psiak.Firebase.DogsLocalRepository;
+import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.R;
+import com.example.android.psiak.Repository.Repository;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +32,9 @@ public class AllAnimalsFragment extends Fragment {
     private DogAdapter dogAdapter;
     private LinearLayoutManager layoutManager;
 
+    private Repository.LocalRepository localRepository;
+
+
     // endregion
 
     // region View Lifecycle
@@ -38,6 +44,8 @@ public class AllAnimalsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tab_all_animals, container, false);
         ButterKnife.bind(this, view);
 
+        localRepository = new DogsLocalRepository();
+        
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
@@ -46,7 +54,7 @@ public class AllAnimalsFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        dogAdapter = new DogAdapter(getContext(), layoutManager, rootLayout);
+        dogAdapter = new DogAdapter(getContext(), layoutManager, rootLayout, localRepository);
 
         recyclerView.setAdapter(dogAdapter);
 

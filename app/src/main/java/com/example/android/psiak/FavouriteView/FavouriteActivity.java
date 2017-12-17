@@ -5,13 +5,19 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
+import com.example.android.psiak.Firebase.DogsLocalRepository;
 import com.example.android.psiak.R;
+import com.example.android.psiak.Repository.Repository;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class FavouriteActivity extends AppCompatActivity {
+
+    private static final String TAG = FavouriteActivity.class.toString();
 
     // region Private Properties
 

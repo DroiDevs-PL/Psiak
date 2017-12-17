@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.android.psiak.Firebase.DogsLocalRepository;
 import com.example.android.psiak.Firebase.FirebaseActivityContract;
 import com.example.android.psiak.Firebase.FirebasePresenter;
 import com.example.android.psiak.Firebase.FirebaseRepository;
@@ -83,7 +84,7 @@ public class FirebaseActivity
         setSupportActionBar(toolbar);
 
         // TODO Use dependency injection here
-        firebasePresenter = new FirebasePresenter(new FirebaseRepository());
+        firebasePresenter = new FirebasePresenter(new FirebaseRepository(), new DogsLocalRepository());
         firebasePresenter.attach(this);
 
     }

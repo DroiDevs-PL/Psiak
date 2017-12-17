@@ -7,6 +7,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import io.realm.Realm;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -49,5 +50,6 @@ public class DoggieApplication extends Application {
         retrofit = null;
         super.onCreate();
         Timber.plant(new Timber.DebugTree());
+        Realm.init(this);
     }
 }

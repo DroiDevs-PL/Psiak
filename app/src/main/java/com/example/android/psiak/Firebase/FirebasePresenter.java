@@ -7,6 +7,9 @@ import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
+import timber.log.Timber;
+
 public class FirebasePresenter
         extends BasePresenter<FirebaseActivityContract.View>
         implements FirebaseActivityContract.Presenter, FirebaseDataListener {
@@ -18,15 +21,16 @@ public class FirebasePresenter
      */
 
     Repository.Firebase firebaseRepository;
-
+    Repository.LocalRepository localRepository;
     /**
      * Initialize FirebasePresenter with Firebase repository. After initialization FirebasePresenter object will be set as a
      * data listener object for callback from Firebase repository
      * @param repository Repository.Firebase object that will be used with this Presenter
      */
 
-    public FirebasePresenter(Repository.Firebase repository) {
+    public FirebasePresenter(Repository.Firebase repository, Repository.LocalRepository localRepository) {
         this.firebaseRepository = repository;
+        this.localRepository = localRepository;
         this.firebaseRepository.setDataListner(this);
     }
 
@@ -45,6 +49,17 @@ public class FirebasePresenter
             view.showAllDogs(dogsData);
         } else {
             firebaseRepository.getAllObjects();
+        }
+    }
+
+    @Override
+    public void addNewFavouriteDog(DogFirebase dogFirebase) {
+        dogFirebase.setFavourite(true);
+        localRepository.add(dogFirebase);
+        Timber.d("Save "  + dogFirebase.getName());
+        RealmResults<DogFirebase> dogs = localRepository.getAll();
+        for(DogFirebase d : dogs) {
+            Timber.d(d.toString());
         }
     }
 

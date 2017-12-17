@@ -7,12 +7,18 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.List;
 
+import io.realm.RealmList;
+import io.realm.RealmModel;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
+
+@RealmClass
 @IgnoreExtraProperties
-public class DogFirebase
-        implements Parcelable {
+public class DogFirebase implements RealmModel{
 
     // region Public Properties
 
+    @PrimaryKey
     private String id;
     private String name;
     private String gender;
@@ -36,7 +42,9 @@ public class DogFirebase
     private String age;
 
     private String profilePic;
-    private List<String> photos;
+    private RealmList<Photo> photos;
+
+    private boolean isFavourite;
 
     // endregion
 
@@ -47,7 +55,7 @@ public class DogFirebase
      * It will set all model properties to theirs default values
      */
 
-    private DogFirebase() {}
+    public DogFirebase() {}
 
     public DogFirebase(Parcel parcel) {
         name = parcel.readString();
@@ -81,6 +89,7 @@ public class DogFirebase
         this.weight = dogBuilder.weight;
         this.age = dogBuilder.age;
 
+        this.isFavourite = dogBuilder.isFavourite;
     }
 
     // endregion
@@ -161,11 +170,22 @@ public class DogFirebase
         return profilePic;
     }
 
-    public List<String> getPhotos() {
+    public RealmList<Photo> getPhotos() {
         return photos;
     }
 
+    public boolean isFavourite() { return isFavourite; }
+
     // endregion
+
+    // region Setters
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
+    }
+
+    //endregion
+
 
     // region DogBuilder
 
@@ -196,6 +216,8 @@ public class DogFirebase
 
         private String profilePic;
         private List<String> photos;
+
+        private boolean isFavourite;
 
         public DogBuilder(String id, String name) {
             this.id = id;
@@ -293,6 +315,11 @@ public class DogFirebase
             return this;
         }
 
+        public DogBuilder isFavourite(boolean isFavourite) {
+            this.isFavourite = isFavourite;
+            return this;
+        }
+
         public DogFirebase build() {
             return new DogFirebase(this);
         }
@@ -300,17 +327,17 @@ public class DogFirebase
 
     // endregion
 
-    // region Parcelable
-
-    @Override
-    public void writeToParcel(Parcel parcel, int flags) {
-        parcel.writeString(name);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+//    // region Parcelable
+//
+//    @Override
+//    public void writeToParcel(Parcel parcel, int flags) {
+//        parcel.writeString(name);
+//    }
+//
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
 
     public static final Parcelable.Creator<DogFirebase> CREATOR = new Parcelable.Creator<DogFirebase>() {
 

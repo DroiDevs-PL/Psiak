@@ -25,7 +25,7 @@ public class DogAdapter
 
     private final static String TAG = DogAdapter.class.toString();
 
-    Repository.Realm databaseHelper;
+    Repository.LocalRepository databaseHelper;
 
     private DogFirebase dogFirebase;
     private Context context;

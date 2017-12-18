@@ -142,7 +142,7 @@ public class MainActivity
                 return true;
             case R.id.refresh:
                 mSwipeView.removeAllViews();
-                firebasePresenter.getAllDogs();
+                mainPresenter.getAllDogs();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

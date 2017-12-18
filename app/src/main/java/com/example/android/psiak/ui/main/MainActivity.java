@@ -140,7 +140,10 @@ public class MainActivity
                 Intent intent = new Intent(this, AddAnimalActivity.class);
                 startActivity(intent);
                 return true;
-
+            case R.id.refresh:
+                mSwipeView.removeAllViews();
+                firebasePresenter.getAllDogs();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

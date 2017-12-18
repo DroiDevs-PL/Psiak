@@ -47,6 +47,9 @@
     <string name="dog_homeless_since_hint">Homeless since</string>
     <string name="show_all_dogs">Show all dogs</string>
     <string name="add_new_dog">Add new dog</string>
+    <string name="title_activity_main_old">MainActivityOLD</string>
+    <string name="no_more_results">There are no more results</string>
+    <string name="refresh">refresh</string>
 
     <!-- Additional - need to be verified -->
 
@@ -55,6 +58,5 @@
     <string name="rate">Oceń aplikację</string>
     <string name="sample_text">Json do wyplucia</string>
     <string name="info_no_data">Brak danych</string>
-
 
 </resources>

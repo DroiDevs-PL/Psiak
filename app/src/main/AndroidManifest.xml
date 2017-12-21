@@ -25,7 +25,7 @@
             android:name=".ui.addAnimal.AddAnimalActivity"
             android:label="@string/title_activity_firebase_testing"
             android:theme="@style/AppTheme.NoActionBar"/>
-
+        <activity android:name=".AboutUsActivity"/>
     </application>
 
 </manifest>

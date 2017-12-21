@@ -118,7 +118,9 @@ public class MainActivity
         } else if (id == R.id.shelters_nav_item) {
             Snackbar.make(drawerLayout, "Schroniska", Snackbar.LENGTH_LONG).show();
         } else if (id == R.id.about_nav_item) {
-            Snackbar.make(drawerLayout, "O nas", Snackbar.LENGTH_LONG).show();
+            //Snackbar.make(drawerLayout, "O nas", Snackbar.LENGTH_LONG).show();
+            Intent aboutIntent = new Intent(MainActivity.this, AboutUsActivity.class);
+            startActivity(aboutIntent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

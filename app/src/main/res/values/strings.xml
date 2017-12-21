@@ -10,7 +10,7 @@
 
     <string name="navigation_drawer_open">Otwórz</string>
     <string name="navigation_drawer_close">Zamknij</string>
-    <string name="no_more_results">There are no more results</string>
+    <string name="no_more_results">Nie ma więcej wyników</string>
 
     <!--Content main UI-->
 
@@ -28,33 +28,37 @@
 
     <!-- Firebase UI -->
 
-    <string name="dog_name_hint">Dog name</string>
-    <string name="dog_gender_hint">Dog gender</string>
-    <string name="dog_age_hint">Dog age</string>
-    <string name="dog_description_hint">Dog description</string>
-    <string name="dog_size_hint">Dog size</string>
-    <string name="dog_weight_hint">Dog weight</string>
-    <string name="dog_location_hint">Dog location</string>
-    <string name="dog_attitude_people_hint">Attitude people</string>
-    <string name="dog_attitude_dogs_hint">Attitude dogs</string>
-    <string name="dog_attitude_cats_hint">Attitude cats</string>
-    <string name="dog_keeper_name_hint">Keeper name</string>
-    <string name="dog_keeper_mail_hint">Keeper mail</string>
-    <string name="dog_keeper_phone_hint">Keeper phone</string>
-    <string name="dog_vaccinated_hint">Vaccinated</string>
-    <string name="dog_dewormed_hint">Dewormed</string>
-    <string name="dog_sterilized_hint">Sterilized</string>
-    <string name="dog_homeless_since_hint">Homeless since</string>
-    <string name="show_all_dogs">Show all dogs</string>
-    <string name="add_new_dog">Add new dog</string>
-    <string name="title_activity_main_old">MainActivityOLD</string>
-    <string name="no_more_results">There are no more results</string>
-    <string name="refresh">refresh</string>
+    <string name="dog_name_hint">Imię</string>
+    <string name="dog_gender_hint">Płeć</string>
+    <string name="dog_age_hint">Wiek</string>
+    <string name="dog_description_hint">Opis</string>
+    <string name="dog_size_hint">Rozmiar</string>
+    <string name="dog_weight_hint">Waga</string>
+    <string name="dog_location_hint">Lokalizacja</string>
+    <string name="dog_attitude_people_hint">Stosunek do ludzi</string>
+    <string name="dog_attitude_dogs_hint">Stosunek do psów</string>
+    <string name="dog_attitude_cats_hint">Stosunek do kotów</string>
+    <string name="dog_keeper_name_hint">Imię opiekuna</string>
+    <string name="dog_keeper_mail_hint">Mail opiekuna</string>
+    <string name="dog_keeper_phone_hint">Telefon opiekuna</string>
+    <string name="dog_vaccinated_hint">Szczepiony</string>
+    <string name="dog_dewormed_hint">Odrobaczony</string>
+    <string name="dog_sterilized_hint">Wysterylizowany</string>
+    <string name="dog_homeless_since_hint">Bezdomy od</string>
+    <string name="show_all_dogs">Pokaż wszystkie</string>
+    <string name="add_new_dog">Dodaj zwierzę</string>
+    <string name="refresh">Odśwież</string>
+
+    <!-- About us -->
+
+    <string name="about_lead">LEAD LEAD LEAD LEAD LEAD lorem ipsum lorem ipsum lorem ipsum lorem</string>
+    <string name="about_description">Description description Description description description description description Description description description description description description description description description description description description description Description description description description description description description Description description description description description description description Description description description description description description description</string>
+    <string name="content_description">Logo_image_description</string>
 
     <!-- Additional - need to be verified -->
 
-    <string name="dog_category">Dog category</string>
-    <string name="dog_description">Dog description</string>
+    <string name="dog_category">Kategoria</string>
+    <string name="dog_description">Opis</string>
     <string name="rate">Oceń aplikację</string>
     <string name="sample_text">Json do wyplucia</string>
     <string name="info_no_data">Brak danych</string>

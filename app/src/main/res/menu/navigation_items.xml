@@ -2,32 +2,32 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/homepage_nav_item"
-            android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/homepage"
-            />
-        <item
-            android:id="@+id/settings_nav_item"
-            android:icon="@drawable/ic_settings_black_24dp"
-            android:title="@string/settings"
-            />
-        <item
-            android:id="@+id/favourites_nav_item"
-            android:icon="@drawable/ic_favorite_black_24dp"
-            android:title="@string/favourites"
-            />
-        <item
-            android:id="@+id/shelters_nav_item"
-            android:icon="@drawable/ic_dog_shelter"
-            android:title="@string/shelters"
-            />
+    <item
+        android:id="@+id/homepage_nav_item"
+        android:checked="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/homepage"
+        />
+    <item
+        android:id="@+id/settings_nav_item"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/settings"
+        />
+    <item
+        android:id="@+id/favourites_nav_item"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="@string/favourites"
+        />
+    <item
+        android:id="@+id/shelters_nav_item"
+        android:icon="@drawable/ic_dog_shelter"
+        android:title="@string/shelters"
+        />
 
-        <item
-            android:id="@+id/about_nav_item"
-            android:icon="@drawable/ic_info_black_24dp"
-            android:title="@string/about"
-            />
-    </group>
+    <item
+        android:id="@+id/about_nav_item"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="@string/about"
+        />
+</group>
 </menu>

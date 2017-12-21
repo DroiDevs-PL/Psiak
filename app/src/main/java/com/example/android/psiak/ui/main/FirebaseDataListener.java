@@ -1,4 +1,4 @@
-package com.example.android.psiak.ui.addAnimal;
+package com.example.android.psiak.ui.main;
 
 import com.example.android.psiak.model.DogFirebase;
 import com.google.firebase.database.DatabaseException;

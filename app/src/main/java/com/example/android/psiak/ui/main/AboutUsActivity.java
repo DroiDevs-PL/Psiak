@@ -1,7 +1,9 @@
-package com.example.android.psiak;
+package com.example.android.psiak.ui.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.android.psiak.R;
 
 public class AboutUsActivity extends AppCompatActivity {
 

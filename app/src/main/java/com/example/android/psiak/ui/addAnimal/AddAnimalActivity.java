@@ -10,13 +10,10 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.android.psiak.R;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.R;
-import com.example.android.psiak.ui.base.BasePresenter;
 import com.example.android.psiak.ui.main.MainActivity;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,8 +27,7 @@ public class AddAnimalActivity
 
     private AddAnimalContract.Presenter<AddAnimalContract.View> firebasePresenter;
 
-    @BindView(R.id.btn_show_all_dogs)
-    Button btnShowAllDogs;
+
     @BindView(R.id.btn_add_new_dog)
     Button btnAddNewDog;
 
@@ -108,15 +104,6 @@ public class AddAnimalActivity
     // region Private Methods
 
     /**
-     * Get all Dog's objects form database
-     */
-
-    @OnClick(R.id.btn_show_all_dogs)
-    void getAllDogs(View view) {
-        firebasePresenter.getAllDogs();
-    }
-
-    /**
      * Add new dog to the Firebase database
      */
 
@@ -152,10 +139,6 @@ public class AddAnimalActivity
 
     // region Public Methods
 
-    @Override
-    public void showAllDogs(ArrayList<DogFirebase> dogs) {
-        Toast.makeText(getBaseContext(), "Firebase count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     public void showMessage(int messageId) {

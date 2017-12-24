@@ -4,13 +4,14 @@
 
     <string name="app_name">Psiaki</string>
     <string name="title_activity_firebase_testing">Firebase testing</string>
-    <string name="title_activity_main_old">MainActivityOLD</string>
+    <!--<string name="title_activity_main_old">MainActivityOLD</string>-->
 
     <!-- Main UI -->
 
     <string name="navigation_drawer_open">Otwórz</string>
     <string name="navigation_drawer_close">Zamknij</string>
     <string name="no_more_results">Nie ma więcej wyników</string>
+
 
     <!--Content main UI-->
 

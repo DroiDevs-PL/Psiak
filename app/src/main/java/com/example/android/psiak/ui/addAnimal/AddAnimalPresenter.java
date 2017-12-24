@@ -1,17 +1,12 @@
 package com.example.android.psiak.ui.addAnimal;
 
-import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.base.BasePresenter;
-import com.example.android.psiak.ui.base.MvpView;
-import com.google.firebase.database.DatabaseException;
-
-import java.util.ArrayList;
 
 public class AddAnimalPresenter
         extends BasePresenter<AddAnimalContract.View>
-        implements AddAnimalContract.Presenter<AddAnimalContract.View>, FirebaseDataListener {
+        implements AddAnimalContract.Presenter<AddAnimalContract.View> {
 
     private static final String TAG = AddAnimalPresenter.class.toString();
 
@@ -29,7 +24,6 @@ public class AddAnimalPresenter
 
     public AddAnimalPresenter(Repository.Firebase<DogFirebase> repository) {
         this.firebaseRepository = repository;
-        this.firebaseRepository.setDataListner(this);
     }
 
     @Override
@@ -38,33 +32,10 @@ public class AddAnimalPresenter
         return uniqueID;
     }
 
-    @Override
-    public void getAllDogs() {
-
-        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
-
-        if (dogsData.size() > 0 && isViewAttached()) {
-            view.showAllDogs(dogsData);
-        } else {
-            firebaseRepository.getAllObjects();
-        }
-    }
 
     @Override
     public void addNewDog(DogFirebase dogFirebase) {
         firebaseRepository.addNew(dogFirebase);
-    }
-
-    @Override
-    public void setDogsData(ArrayList<DogFirebase> dogsData) {
-        if (isViewAttached()) {
-            view.showAllDogs(dogsData);
-        }
-    }
-
-    @Override
-    public void setErrorMessage(DatabaseException databaseException) {
-        view.showErrorMessage(databaseException.getMessage());
     }
 
 

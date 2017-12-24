@@ -41,6 +41,14 @@
     <string name="dog_homeless_since_hint">Homeless since</string>
     <string name="show_all_dogs">Show all dogs</string>
     <string name="add_new_dog">Add new dog</string>
+    <string name="refresh">Refresh</string>
+
+    <!-- About us -->
+
+    <string name="about_lead">LEAD LEAD LEAD LEAD LEAD lorem ipsum lorem ipsum lorem ipsum lorem</string>
+    <string name="about_description">Description description Description description description description description Description description description description description description description description description description description description description Description description description description description description description Description description description description description description description Description description description description description description description</string>
+    <string name="content_description">Logo_image_description</string>
+
 
     <!-- Additional - need to be verified -->
 

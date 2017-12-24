@@ -26,7 +26,7 @@
             android:label="@string/title_activity_firebase_testing"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".ui.main.AboutUsActivity"
+        <activity android:name=".ui.aboutUs.AboutUsActivity"
             android:parentActivityName=".ui.main.MainActivity"/>
     </application>
 

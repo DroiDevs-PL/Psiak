@@ -1,4 +1,4 @@
-package com.example.android.psiak.ui.main;
+package com.example.android.psiak.ui.aboutUs;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

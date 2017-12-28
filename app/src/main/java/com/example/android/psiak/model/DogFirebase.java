@@ -5,7 +5,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import java.util.List;
 
 @IgnoreExtraProperties
-public class DogFirebase {
+public class DogFirebase implements AnimalInterface {
 
     // region Public Properties
 

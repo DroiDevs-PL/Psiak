@@ -28,7 +28,7 @@ public class FirebasePresenterTest {
         mockView = mock(AddAnimalActivity.class);
         mockFirebaseRepository = new MockFirebaseRepository();
         firebasePresenter = new AddAnimalPresenter(mockFirebaseRepository);
-        firebasePresenter.attach(mockView);
+        firebasePresenter.attachView(mockView);
     }
 
     @Test

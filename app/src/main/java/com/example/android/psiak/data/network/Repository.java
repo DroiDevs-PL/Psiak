@@ -39,6 +39,14 @@ public interface Repository {
         Type find(String queryString);
 
         /**
+         * Find entity by given ID.
+         *
+         * @param id
+         * @param callback
+         */
+        void getById(String id, final FirebaseDataListener callback);
+
+        /**
          * Write single object to specified end point in database
          * @param firebaseObject Object that will be saved to Firebase database
          */

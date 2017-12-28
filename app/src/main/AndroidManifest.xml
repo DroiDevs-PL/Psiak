@@ -28,6 +28,7 @@
 
         <activity android:name=".ui.aboutUs.AboutUsActivity"
             android:parentActivityName=".ui.main.MainActivity"/>
+      <activity android:name=".ui.showAnimalDetails.ShowAnimalDetailsActivity"/>
     </application>
 
 </manifest>

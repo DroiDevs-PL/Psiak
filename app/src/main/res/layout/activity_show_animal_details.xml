@@ -4,8 +4,9 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/white"
-  tools:context="com.example.android.psiak.Features.AnimalDetailedView.AnimalDetailedViewActivity">
+  android:background="@color/grayBackground"
+  tools:context=".ui.showAnimalDetails.ShowAnimalDetailsActivity"
+  >
 
   <LinearLayout
     android:id="@+id/layout_ShowAnimalDetails"

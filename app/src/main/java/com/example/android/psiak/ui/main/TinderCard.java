@@ -5,8 +5,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.psiak.R;
-import com.example.android.psiak.Model.Dog;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.Dog;
+import com.example.android.psiak.model.DogFirebase;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;

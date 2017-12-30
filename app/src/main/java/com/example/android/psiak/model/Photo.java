@@ -1,4 +1,4 @@
-package com.example.android.psiak.Model;
+package com.example.android.psiak.model;
 
 import io.realm.RealmModel;
 import io.realm.annotations.RealmClass;

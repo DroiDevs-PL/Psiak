@@ -1,6 +1,6 @@
 package com.example.android.psiak.data.network;
 
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

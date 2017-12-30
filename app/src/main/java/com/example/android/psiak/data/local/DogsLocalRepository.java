@@ -1,9 +1,9 @@
-package com.example.android.psiak.Firebase;
+package com.example.android.psiak.data.local;
 
 import android.content.Context;
 
-import com.example.android.psiak.Model.DogFirebase;
-import com.example.android.psiak.Model.DogFirebaseFields;
+import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.model.DogFirebaseFields;
 import com.example.android.psiak.data.network.Repository;
 
 import io.realm.Realm;

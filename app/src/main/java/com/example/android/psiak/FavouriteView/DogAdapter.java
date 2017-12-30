@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.R;
 
 import butterknife.BindView;

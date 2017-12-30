@@ -1,6 +1,5 @@
 package com.example.android.psiak.FavouriteView;
 
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -12,12 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.android.psiak.Firebase.DogsLocalRepository;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.data.local.DogsLocalRepository;
+import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.R;
 import com.example.android.psiak.data.network.Repository;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

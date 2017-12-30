@@ -1,6 +1,6 @@
 package com.example.android.psiak.ui.addAnimal;
 
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.base.MvpPresenter;
 import com.example.android.psiak.ui.base.MvpView;
 

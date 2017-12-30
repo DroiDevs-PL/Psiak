@@ -1,6 +1,5 @@
-package com.example.android.psiak.Model;
+package com.example.android.psiak.model;
 
-import com.example.android.psiak.Model.Photo;
 import com.google.gson.annotations.Expose;
 
 import java.util.List;

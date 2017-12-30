@@ -1,6 +1,6 @@
 package com.example.android.psiak.data.local;
 
-import com.example.android.psiak.Model.Dog;
+import com.example.android.psiak.model.Dog;
 
 import java.util.ArrayList;
 import java.util.List;

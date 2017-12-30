@@ -1,7 +1,7 @@
 package com.example.android.psiak.data.network;
 
 import com.example.android.psiak.ui.main.FirebaseDataListener;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.DogFirebase;
 
 import java.util.ArrayList;
 

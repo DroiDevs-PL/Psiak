@@ -19,9 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.psiak.FavouriteView.FavouriteActivity;
-import com.example.android.psiak.Firebase.DogsLocalRepository;
+import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.FirebaseRepository;
-import com.example.android.psiak.Model.DogFirebase;
+import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.R;
 import com.example.android.psiak.ui.aboutUs.AboutUsActivity;
 import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;

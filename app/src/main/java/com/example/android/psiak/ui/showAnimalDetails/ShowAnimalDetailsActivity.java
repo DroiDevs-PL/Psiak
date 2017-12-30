@@ -30,8 +30,10 @@ public class ShowAnimalDetailsActivity extends AppCompatActivity implements Show
   LinearLayout lShowAnimalDetails;
   @BindView(R.id.layout_AnimalLoader)
   RelativeLayout lAnimalLoader;
-  private ShowAnimalDetailsContract.Presenter<ShowAnimalDetailsContract.View> showAnimalDetailsPresenter;
+  int profileWidth = 0;
   //endregion
+  int profileHeight = 0;
+  private ShowAnimalDetailsContract.Presenter<ShowAnimalDetailsContract.View> showAnimalDetailsPresenter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +78,6 @@ public class ShowAnimalDetailsActivity extends AppCompatActivity implements Show
     // Set profile image
     Picasso.with(getBaseContext())
         .load(animal.getProfilePic())
-        .error(R.drawable.ic_doggy)
-        .placeholder(R.drawable.ic_doggy)
         .resize(this.animalProfileImage.getWidth(), this.animalProfileImage.getHeight())
         .centerCrop()
         .into(animalProfileImage);

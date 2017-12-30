@@ -39,8 +39,8 @@ public class ShowAnimalDetailsPresenter
 
       @Override
       public void onAnimalReceived(AnimalInterface animalInterface) {
-        view.setAnimalDetails(animalInterface);
         view.hideLoader();
+        view.setAnimalDetails(animalInterface);
       }
     });
   }

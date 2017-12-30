@@ -30,9 +30,8 @@ public class ShowAnimalDetailsActivity extends AppCompatActivity implements Show
   LinearLayout lShowAnimalDetails;
   @BindView(R.id.layout_AnimalLoader)
   RelativeLayout lAnimalLoader;
-  int profileWidth = 0;
   //endregion
-  int profileHeight = 0;
+  
   private ShowAnimalDetailsContract.Presenter<ShowAnimalDetailsContract.View> showAnimalDetailsPresenter;
 
   @Override

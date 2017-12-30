@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.psiak">
+          package="com.example.android.psiak">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name=".DoggieApplication"
+        android:name=".PsiakApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".FirebaseActivity"
+            android:name=".ui.addAnimal.AddAnimalActivity"
             android:label="@string/title_activity_firebase_testing"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivityOLD"
-            android:label="@string/title_activity_main_old"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".FavouriteView.FavouriteActivity"
             android:label="@string/title_activity_favourite"
-            android:parentActivityName="com.example.android.psiak.FirebaseActivity" >
-        android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+
+        <activity android:name=".ui.aboutUs.AboutUsActivity"
+            android:parentActivityName=".ui.main.MainActivity"/>
     </application>
 
 </manifest>

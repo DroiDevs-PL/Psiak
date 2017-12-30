@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.example.android.psiak.Firebase.DogsLocalRepository;
 import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.R;
-import com.example.android.psiak.Repository.Repository;
+import com.example.android.psiak.data.network.Repository;
 
 import java.util.ArrayList;
 
@@ -48,7 +48,7 @@ public class AllAnimalsFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         // TODO: Use Presenter
-        localRepository = new DogsLocalRepository();
+        localRepository = new DogsLocalRepository(getContext());
         RealmResults<DogFirebase> dogsCollection = localRepository.getAll();
 
         recyclerView.setHasFixedSize(true);

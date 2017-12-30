@@ -1,10 +1,11 @@
 package com.example.android.psiak;
 
-import com.example.android.psiak.Firebase.FirebaseActivityContract;
-import com.example.android.psiak.Firebase.FirebaseDataListener;
-import com.example.android.psiak.Firebase.FirebasePresenter;
-import com.example.android.psiak.Model.DogFirebase;
-import com.example.android.psiak.Repository.Repository;
+import com.example.android.psiak.data.network.Repository;
+import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
+import com.example.android.psiak.ui.addAnimal.AddAnimalContract;
+import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
+import com.example.android.psiak.ui.main.FirebaseDataListener;
+import com.example.android.psiak.model.DogFirebase;
 import com.google.firebase.database.DatabaseException;
 
 import org.junit.Before;
@@ -20,17 +21,25 @@ import static org.mockito.Mockito.verify;
 
 public class FirebasePresenterTest {
 
-    private FirebaseActivityContract.View mockView;
+    private AddAnimalContract.View mockView;
     private MockFirebaseRepository mockFirebaseRepository;
+<<<<<<< HEAD
     private FirebasePresenter firebasePresenter;
     private MockLocalRepository mockLocalRepository;
+=======
+    private AddAnimalPresenter firebasePresenter;
+>>>>>>> 323dfc57df0f2398786649fcb97225e0d672f3e6
 
     @Before
     public void init() {
-        mockView = mock(FirebaseActivity.class);
+        mockView = mock(AddAnimalActivity.class);
         mockFirebaseRepository = new MockFirebaseRepository();
+<<<<<<< HEAD
         mockLocalRepository = new MockLocalRepository();
         firebasePresenter = new FirebasePresenter(mockFirebaseRepository, mockLocalRepository);
+=======
+        firebasePresenter = new AddAnimalPresenter(mockFirebaseRepository);
+>>>>>>> 323dfc57df0f2398786649fcb97225e0d672f3e6
         firebasePresenter.attach(mockView);
     }
 

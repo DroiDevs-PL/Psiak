@@ -1,8 +1,9 @@
 package com.example.android.psiak.Firebase;
 
 import com.example.android.psiak.Model.DogFirebase;
-import com.example.android.psiak.Repository.Repository;
-import com.example.android.psiak.Utils.BasePresenter;
+import com.example.android.psiak.data.network.Repository;
+import com.example.android.psiak.ui.base.BasePresenter;
+import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class FirebasePresenter
      * Repository object that will be used with this presenter
      */
 
-    Repository.Firebase firebaseRepository;
+    com.example.android.psiak.data.network.Repository.Firebase firebaseRepository;
     Repository.LocalRepository localRepository;
 
     /**

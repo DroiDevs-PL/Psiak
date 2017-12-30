@@ -9,7 +9,7 @@ import android.util.Log;
 
 import com.example.android.psiak.Firebase.DogsLocalRepository;
 import com.example.android.psiak.R;
-import com.example.android.psiak.Repository.Repository;
+import com.example.android.psiak.data.network.Repository;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,8 +1,10 @@
 package com.example.android.psiak.Firebase;
 
+import android.content.Context;
+
 import com.example.android.psiak.Model.DogFirebase;
 import com.example.android.psiak.Model.DogFirebaseFields;
-import com.example.android.psiak.Repository.Repository;
+import com.example.android.psiak.data.network.Repository;
 
 import io.realm.Realm;
 import io.realm.RealmAsyncTask;
@@ -15,7 +17,8 @@ public class DogsLocalRepository implements Repository.LocalRepository {
 
     private Realm realm;
 
-    public DogsLocalRepository() {
+    public DogsLocalRepository(Context context) {
+        Realm.init(context);
         realm = Realm.getDefaultInstance();
     }
 

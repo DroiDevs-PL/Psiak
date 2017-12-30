@@ -3,8 +3,9 @@ package com.example.android.psiak.ui.showAnimalDetails;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,21 +17,20 @@ import com.squareup.picasso.Picasso;
 
 public class ShowAnimalDetailsActivity extends AppCompatActivity implements ShowAnimalDetailsContract.View {
 
-  private ShowAnimalDetailsContract.Presenter<ShowAnimalDetailsContract.View> showAnimalDetailsPresenter;
-
-
   //region ui
   @BindView(R.id.tv_AnimalHeading)
   TextView tvAnimalHeading;
-
   @BindView(R.id.tv_Shelter)
   TextView tvShelter;
-
   @BindView(R.id.tv_Description)
   TextView tvDescription;
-
   @BindView(R.id.iv_AnimalProfile)
   ImageView animalProfileImage;
+  @BindView(R.id.layout_ShowAnimalDetails)
+  LinearLayout lShowAnimalDetails;
+  @BindView(R.id.layout_AnimalLoader)
+  RelativeLayout lAnimalLoader;
+  private ShowAnimalDetailsContract.Presenter<ShowAnimalDetailsContract.View> showAnimalDetailsPresenter;
   //endregion
 
   @Override
@@ -55,11 +55,22 @@ public class ShowAnimalDetailsActivity extends AppCompatActivity implements Show
   }
 
   @Override
-  public void setAnimalDetails(AnimalInterface animal) {
+  public void showLoader() {
+    this.lShowAnimalDetails.setVisibility(LinearLayout.INVISIBLE);
+    this.lAnimalLoader.setVisibility(RelativeLayout.VISIBLE);
+  }
 
+  @Override
+  public void hideLoader() {
+    this.lAnimalLoader.setVisibility(RelativeLayout.INVISIBLE);
+    this.lShowAnimalDetails.setVisibility(LinearLayout.VISIBLE);
+  }
+
+  @Override
+  public void setAnimalDetails(AnimalInterface animal) {
     // Set texts
     this.tvAnimalHeading.setText(String.format("%s, %s", animal.getName(), animal.getAge()));
-    this.tvShelter.setText("Schronisko w ...");
+    this.tvShelter.setText("Schronisko w ..."); // TODO: Add shelter info here
     this.tvDescription.setText(animal.getDescription());
 
     // Set profile image

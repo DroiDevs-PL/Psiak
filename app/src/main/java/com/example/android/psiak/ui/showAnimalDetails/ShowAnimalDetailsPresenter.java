@@ -24,6 +24,8 @@ public class ShowAnimalDetailsPresenter
 
   @Override
   public void loadAnimal(String id) {
+    view.showLoader();
+
     this.repository.getById(id, new FirebaseDataListener() {
       @Override
       public void setDogsData(ArrayList<DogFirebase> dogsData) {
@@ -38,6 +40,7 @@ public class ShowAnimalDetailsPresenter
       @Override
       public void onAnimalReceived(AnimalInterface animalInterface) {
         view.setAnimalDetails(animalInterface);
+        view.hideLoader();
       }
     });
   }

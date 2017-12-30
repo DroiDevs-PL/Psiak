@@ -10,6 +10,9 @@ public interface ShowAnimalDetailsContract {
     String INTENT_EXTRA_ANIMAL_ID = "animal_id";
 
     void setAnimalDetails(AnimalInterface animal);
+
+    void showLoader();
+    void hideLoader();
   }
 
   interface Presenter<V extends MvpView> extends MvpPresenter<V> {

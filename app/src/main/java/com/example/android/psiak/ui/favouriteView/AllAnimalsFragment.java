@@ -1,4 +1,4 @@
-package com.example.android.psiak.FavouriteView;
+package com.example.android.psiak.ui.favouriteView;
 
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;

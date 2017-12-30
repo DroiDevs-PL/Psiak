@@ -31,7 +31,7 @@ public class ShowAnimalDetailsActivity extends AppCompatActivity implements Show
   @BindView(R.id.layout_AnimalLoader)
   RelativeLayout lAnimalLoader;
   //endregion
-  
+
   private ShowAnimalDetailsContract.Presenter<ShowAnimalDetailsContract.View> showAnimalDetailsPresenter;
 
   @Override

@@ -81,15 +81,6 @@ public class AddAnimalActivity
         // TODO Use dependency injection here
         firebasePresenter = new AddAnimalPresenter(new FirebaseRepository());
         firebasePresenter.attachView(this);
-
-        btnAddNewDog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddAnimalActivity.this,MainActivity.class);
-                  startActivity(intent);
-            }
-        });
-
     }
 
     @Override
@@ -150,9 +141,6 @@ public class AddAnimalActivity
         Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
     }
 
-
-
     // endregion
-
 
 }

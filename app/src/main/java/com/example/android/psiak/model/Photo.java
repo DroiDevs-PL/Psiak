@@ -1,9 +1,15 @@
 package com.example.android.psiak.model;
 
-class Photo {
+import io.realm.RealmModel;
+import io.realm.annotations.RealmClass;
+
+@RealmClass
+public class Photo implements RealmModel {
 
     private String title;
     private String url;
+
+    public Photo() {}
 
     public String getTitle() {
         return title;

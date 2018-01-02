@@ -8,9 +8,8 @@ import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 
-/**
- * Created by Maciej Bialorucki on 07.12.17.
- */
+import io.realm.RealmResults;
+import timber.log.Timber;
 
 class MainPresenter
         extends BasePresenter<MainContract.View>
@@ -18,46 +17,72 @@ class MainPresenter
 
         private static final String TAG = AddAnimalPresenter.class.toString();
 
-        /**
-         * Repository object that will be used with this presenter
-         */
+    /**
+     * Repository object that will be used with this presenter
+     */
 
-        Repository.Firebase<DogFirebase> firebaseRepository;
+    Repository.Firebase firebaseRepository;
+    Repository.LocalRepository localRepository;
 
-        /**
-         * Initialize MainPresenter with Firebase repository. After initialization MainPresenter object will be set as a
-         * data listener object for callback from Firebase repository
-         * @param repository Repository.Firebase object that will be used with this Presenter
-         */
+    /**
+     * Initialize FirebasePresenter with Firebase repository. After initialization FirebasePresenter object will be set as a
+     * data listener object for callback from Firebase repository
+     * @param repository Repository.Firebase object that will be used with this Presenter
+     */
 
-    public MainPresenter(Repository.Firebase< DogFirebase > repository) {
-            this.firebaseRepository = repository;
-            this.firebaseRepository.setDataListner(this);
+    public MainPresenter(Repository.Firebase repository, Repository.LocalRepository localRepository) {
+        this.firebaseRepository = repository;
+        this.localRepository = localRepository;
+        this.firebaseRepository.setDataListner(this);
+    }
+
+    @Override
+    public String generateUniqueID() {
+        String uniqueID = firebaseRepository.generateUniqueID();
+        return uniqueID;
+    }
+
+    @Override
+    public void getAllDogs() {
+
+        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
+
+        if (dogsData.size() > 0 && isViewAttached()) {
+            view.showAllDogs(dogsData);
+        } else {
+            firebaseRepository.getAllObjects();
         }
+    }
 
+    @Override
+    public void addNewFavouriteDog(DogFirebase dogFirebase) {
 
-        @Override
-        public void getAllDogs() {
+        dogFirebase.setFavourite(true);
+        localRepository.add(dogFirebase);
 
-            ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
+        Timber.d("Save "  + dogFirebase.getName());
 
-            if (dogsData.size() > 0 && isViewAttached()) {
-                view.showAllDogs(dogsData);
-            } else {
-                firebaseRepository.getAllObjects();
-            }
+        RealmResults<DogFirebase> dogs = localRepository.getAll();
+
+        for(DogFirebase d : dogs) {
+            Timber.d(d.toString());
         }
+    }
 
+    @Override
+    public void addNewDog(DogFirebase dogFirebase) {
+        firebaseRepository.addNew(dogFirebase);
+    }
 
-        @Override
-        public void setDogsData(ArrayList<DogFirebase> dogsData) {
-            if (isViewAttached()) {
-                view.showAllDogs(dogsData);
-            }
+    @Override
+    public void setDogsData(ArrayList<DogFirebase> dogsData) {
+        if (isViewAttached()) {
+            view.showAllDogs(dogsData);
         }
+    }
 
-        @Override
-        public void setErrorMessage(DatabaseException databaseException) {
-            view.showErrorMessage(databaseException.getMessage());
-        }
+    @Override
+    public void setErrorMessage(DatabaseException databaseException) {
+        view.showErrorMessage(databaseException.getMessage());
+    }
 }

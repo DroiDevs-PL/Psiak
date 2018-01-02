@@ -149,4 +149,5 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     }
 
     // endregion
+
 }

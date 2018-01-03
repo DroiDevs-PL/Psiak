@@ -11,8 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.R;
+import com.example.android.psiak.model.DogFirebase;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,6 +76,11 @@ public class DogAdapter
 
         holder.dogName.setText(dogFirebase.getName());
         holder.dogAge.setText(dogFirebase.getAge());
+        Picasso.with(context)
+                .load(dogFirebase.getProfilePic())
+                .error(R.drawable.ic_doggy)
+                .placeholder(R.drawable.ic_doggy)
+                .into(holder.dogImage);
     }
 
     @Override

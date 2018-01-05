@@ -71,7 +71,6 @@ public class DogAdapter
 
     @Override
     public void onBindViewHolder(DogsViewHolder holder, int position) {
-
         dogFirebase = dogsCollection.get(position);
 
         holder.dogName.setText(dogFirebase.getName());

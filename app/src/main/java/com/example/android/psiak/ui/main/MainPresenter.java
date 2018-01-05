@@ -1,12 +1,16 @@
 package com.example.android.psiak.ui.main;
 
 import com.example.android.psiak.data.network.Repository;
+import com.example.android.psiak.data.network.SortingStrategyFactory;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
 import com.example.android.psiak.ui.base.BasePresenter;
 import com.google.firebase.database.DatabaseException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -44,13 +48,22 @@ class MainPresenter
 
     @Override
     public void getAllDogs() {
-
         ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
 
         if (dogsData.size() > 0 && isViewAttached()) {
             view.showAllDogs(dogsData);
         } else {
             firebaseRepository.getAllObjects();
+        }
+    }
+
+
+    @Override
+    public void getSortedDogs(String fieldName) {
+        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
+        Collections.sort(dogsData, SortingStrategyFactory.getStrategyForField(fieldName));
+        if(isViewAttached()){
+            view.showAllDogs(dogsData);
         }
     }
 

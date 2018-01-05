@@ -7,6 +7,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,10 +65,14 @@ public class MainActivity
     @BindView(R.id.dogsAvailableLayout)
     ConstraintLayout dogsAvailableLayout;
 
+    //ButterKnife don't work with menu items
+    Spinner sortSpinner;
+
     private MainPresenter mainPresenter;
 
     //endregion
     private Menu menu;
+
     private ItemRemovedListener itemRemovedListener = new ItemRemovedListener() {
         @Override
         public void onItemRemoved(int count) {
@@ -105,6 +113,30 @@ public class MainActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
+
+
+    }
+
+    private void configureSortSpinner() {
+        final MenuItem item = menu.findItem(R.id.sort);
+        sortSpinner = (Spinner) item.getActionView();
+        ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this,R.array.sort_criteria_array,android.R.layout.simple_spinner_item);
+        sortAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortSpinner.setAdapter(sortAdapter);
+        sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedItem = sortSpinner.getSelectedItem().toString();
+                mSwipeView.removeAllViews();
+               mainPresenter.getSortedDogs(selectedItem);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
     //region navigationDrawer
@@ -151,6 +183,7 @@ public class MainActivity
                 mSwipeView.removeAllViews();
                 mainPresenter.getAllDogs();
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -161,6 +194,8 @@ public class MainActivity
         this.menu = menu;
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem searchModeMenuItem = menu.findItem(R.id.settings);
+
+        configureSortSpinner();
         return true;
     }
 

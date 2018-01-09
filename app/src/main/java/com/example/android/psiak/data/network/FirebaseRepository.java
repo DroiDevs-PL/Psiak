@@ -2,6 +2,7 @@ package com.example.android.psiak.data.network;
 
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.main.FirebaseDataListener;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,6 +49,36 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
   // endregion
 
   // region Initializers
+  /**
+   * New listener for "dogs" end point in Firebase database
+   */
+
+  ValueEventListener dogsListener = new ValueEventListener() {
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+      for (DataSnapshot singleRecordSnapshot : dataSnapshot.getChildren()) {
+
+        DogFirebase dogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
+        dogFirebase.setId(singleRecordSnapshot.getKey());
+
+        dogs.add(dogFirebase);
+
+      }
+
+      if (firebaseDataListener != null) {
+        firebaseDataListener.setDogsData(dogs);
+      }
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+      firebaseDataListener.setErrorMessage(databaseError.toException());
+    }
+  };
+
+  // endregion
+
+  // region Public Methods
 
   /**
    * Default constructor
@@ -55,10 +86,6 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
 
   public FirebaseRepository() {
   }
-
-  // endregion
-
-  // region Public Methods
 
   @Override
   public void setDataListner(FirebaseDataListener dataListner) {
@@ -77,24 +104,20 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     dogsReference.addListenerForSingleValueEvent(dogsListener);
   }
 
-
   @Override
   public void getById(String id, final FirebaseDataListener callback) {
-    this.dogsReference.orderByKey().equalTo(id).limitToFirst(1)
-        .addValueEventListener(new ValueEventListener() {
-          @Override
-          public void onDataChange(DataSnapshot dataSnapshot) {
-            for (DataSnapshot singleRecordSnapshot : dataSnapshot.getChildren()) {
-              DogFirebase dog = singleRecordSnapshot.getValue(DogFirebase.class);
-              callback.onAnimalReceived(dog);
-            }
-          }
+    this.dogsReference.child(id).addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(DataSnapshot dataSnapshot) {
+        DogFirebase dog = dataSnapshot.getValue(DogFirebase.class);
+        callback.onAnimalReceived(dog);
+      }
 
-          @Override
-          public void onCancelled(DatabaseError databaseError) {
-            callback.setErrorMessage(databaseError.toException());
-          }
-        });
+      @Override
+      public void onCancelled(DatabaseError databaseError) {
+        callback.setErrorMessage(databaseError.toException());
+      }
+    });
   }
 
   @Override
@@ -120,6 +143,10 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     });
   }
 
+  // endregion
+
+  // region Computed Properties
+
   @Override
   public void remove(DogFirebase firebaseObject) {
     dogsReference.child(firebaseObject.getId())
@@ -130,36 +157,6 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
           }
         });
   }
-
-  // endregion
-
-  // region Computed Properties
-
-  /**
-   * New listener for "dogs" end point in Firebase database
-   */
-
-  ValueEventListener dogsListener = new ValueEventListener() {
-    @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
-      for (DataSnapshot singleRecordSnapshot : dataSnapshot.getChildren()) {
-
-        DogFirebase dogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
-
-        dogs.add(dogFirebase);
-
-      }
-
-      if (firebaseDataListener != null) {
-        firebaseDataListener.setDogsData(dogs);
-      }
-    }
-
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
-      firebaseDataListener.setErrorMessage(databaseError.toException());
-    }
-  };
 
   // endregion
 

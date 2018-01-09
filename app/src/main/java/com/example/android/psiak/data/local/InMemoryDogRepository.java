@@ -1,7 +1,6 @@
 package com.example.android.psiak.data.local;
 
 import com.example.android.psiak.model.Dog;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,16 +13,15 @@ public class InMemoryDogRepository implements Repository<Dog> {
     private static InMemoryDogRepository instance;
     private final List<Dog> items;
 
+    private InMemoryDogRepository(){
+        this.items = new ArrayList<>();
+    }
+
     public static InMemoryDogRepository getInstance(){
         if(instance == null)
             instance = new InMemoryDogRepository();
         return instance;
     }
-
-    private InMemoryDogRepository(){
-        this.items = new ArrayList<>();
-    }
-
 
     @Override
     public List<Dog> getAll() {

@@ -3,6 +3,7 @@ package com.example.android.psiak.ui.showAnimalDetails;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -11,7 +12,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.android.psiak.R;
 import com.example.android.psiak.data.network.FirebaseRepository;
-import com.example.android.psiak.model.AnimalInterface;
+import com.example.android.psiak.data.network.dog.DogFirebaseRepository;
+import com.example.android.psiak.model.DogFirebase;
 import com.squareup.picasso.Picasso;
 
 
@@ -41,7 +43,8 @@ public class ShowAnimalDetailsActivity extends AppCompatActivity implements Show
     ButterKnife.bind(this);
 
     // Init presenter
-    showAnimalDetailsPresenter = new ShowAnimalDetailsPresenter(new FirebaseRepository());
+    showAnimalDetailsPresenter = new ShowAnimalDetailsPresenter(new DogFirebaseRepository());
+//    showAnimalDetailsPresenter = new ShowAnimalDetailsPresenter(new FirebaseRepository());
     showAnimalDetailsPresenter.attachView(this);
 
     // Handle intents
@@ -51,6 +54,7 @@ public class ShowAnimalDetailsActivity extends AppCompatActivity implements Show
       String animalId = intentThatStartedThisActivity.getStringExtra(INTENT_EXTRA_ANIMAL_ID);
 
       // Load animal
+      this.showLoader();
       showAnimalDetailsPresenter.loadAnimal(animalId);
     }
   }
@@ -68,18 +72,29 @@ public class ShowAnimalDetailsActivity extends AppCompatActivity implements Show
   }
 
   @Override
-  public void setAnimalDetails(AnimalInterface animal) {
+  public void setAnimalDetails(final DogFirebase animal) {
     // Set texts
     this.tvAnimalHeading.setText(String.format("%s, %s", animal.getName(), animal.getAge()));
     this.tvShelter.setText("Schronisko w ..."); // TODO: Add shelter info here
     this.tvDescription.setText(animal.getDescription());
 
-    // Set profile image
-    Picasso.with(getBaseContext())
-        .load(animal.getProfilePic())
-        .resize(this.animalProfileImage.getWidth(), this.animalProfileImage.getHeight())
-        .centerCrop()
-        .into(animalProfileImage);
+    this.animalProfileImage.getViewTreeObserver().addOnGlobalLayoutListener(
+        new OnGlobalLayoutListener() {
+          @Override
+          public void onGlobalLayout() {
+            // Ensure we call this only once
+            animalProfileImage.getViewTreeObserver()
+                .removeOnGlobalLayoutListener(this);
+
+            // Set profile image
+            Picasso.with(getBaseContext())
+                .load(animal.getProfilePic())
+                .resize(animalProfileImage.getWidth(), animalProfileImage.getHeight())
+                .centerCrop()
+                .into(animalProfileImage);
+          }
+        }
+    );
   }
 
   @Override

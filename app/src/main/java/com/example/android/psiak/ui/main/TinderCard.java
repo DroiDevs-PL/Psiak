@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.psiak.R;
-import com.example.android.psiak.model.AnimalInterface;
 import com.example.android.psiak.model.Dog;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.showAnimalDetails.ShowAnimalDetailsActivity;
@@ -99,7 +98,7 @@ public class TinderCard {
      *
      * @param animal
      */
-    private void showAnimalDetailedView(AnimalInterface animal)
+    private void showAnimalDetailedView(DogFirebase animal)
     {
         Intent startAnimalDetailedViewActivity = new Intent(this.mContext, ShowAnimalDetailsActivity.class);
         startAnimalDetailedViewActivity.putExtra(ShowAnimalDetailsContract.View.INTENT_EXTRA_ANIMAL_ID, animal.getId());

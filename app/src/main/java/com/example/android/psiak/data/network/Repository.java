@@ -3,6 +3,7 @@ package com.example.android.psiak.data.network;
 import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.example.android.psiak.model.DogFirebase;
 
+import io.reactivex.Observable;
 import java.util.ArrayList;
 
 public interface Repository {

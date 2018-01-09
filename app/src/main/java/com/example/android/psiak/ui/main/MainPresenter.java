@@ -1,7 +1,6 @@
 package com.example.android.psiak.ui.main;
 
 import com.example.android.psiak.data.network.Repository;
-import com.example.android.psiak.model.AnimalInterface;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
 import com.example.android.psiak.ui.base.BasePresenter;
@@ -64,7 +63,7 @@ class MainPresenter
   }
 
   @Override
-  public void onAnimalReceived(AnimalInterface animalInterface) {
+  public void onAnimalReceived(DogFirebase animalInterface) {
 
   }
 }

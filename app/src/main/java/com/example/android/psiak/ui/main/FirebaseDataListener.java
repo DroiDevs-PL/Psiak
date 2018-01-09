@@ -1,6 +1,5 @@
 package com.example.android.psiak.ui.main;
 
-import com.example.android.psiak.model.AnimalInterface;
 import com.example.android.psiak.model.DogFirebase;
 import com.google.firebase.database.DatabaseException;
 
@@ -24,5 +23,5 @@ public interface FirebaseDataListener {
      * Called when Animal was successfully returned by from database.
      * @param animalInterface
      */
-    void onAnimalReceived(AnimalInterface animalInterface);
+    void onAnimalReceived(DogFirebase animalInterface);
 }

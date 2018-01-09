@@ -18,9 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.psiak.R;
+import com.example.android.psiak.ui.favouriteView.FavouriteActivity;
+import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.R;
 import com.example.android.psiak.ui.aboutUs.AboutUsActivity;
 import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 import com.mindorks.placeholderview.SwipeDecor;
@@ -90,8 +92,9 @@ public class MainActivity
 
         mSwipeView.addItemRemoveListener(itemRemovedListener);
 
+
         // TODO Use dependency injection here
-        mainPresenter = new MainPresenter(new FirebaseRepository());
+        mainPresenter = new MainPresenter(new FirebaseRepository(), new DogsLocalRepository(this));
         mainPresenter.attachView(this);
         mainPresenter.getAllDogs();
 
@@ -115,7 +118,8 @@ public class MainActivity
         } else if (id == R.id.settings_nav_item) {
             Snackbar.make(drawerLayout, "Settings", Snackbar.LENGTH_LONG).show();
         } else if (id == R.id.favourites_nav_item) {
-            Snackbar.make(drawerLayout, "Ulubione", Snackbar.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, FavouriteActivity.class);
+            startActivity(intent);
         } else if (id == R.id.shelters_nav_item) {
             Snackbar.make(drawerLayout, "Schroniska", Snackbar.LENGTH_LONG).show();
         } else if (id == R.id.about_nav_item) {
@@ -171,9 +175,17 @@ public class MainActivity
         dogsAvailableLayout.setVisibility(View.VISIBLE);
         noDogsLayout.setVisibility(View.INVISIBLE);
 
-        for (DogFirebase dogFirebase : dogs) {
-            mSwipeView.addView(new TinderCard(MainActivity.this, dogFirebase, mSwipeView));
-            Timber.d(TAG, "onResponse: " + dogFirebase);
+        for(final DogFirebase dogFirebase : dogs) {
+            TinderCard tinderCard = new TinderCard(MainActivity.this, dogFirebase, mSwipeView);
+            TinderCard.SwipeCallback swipeCallback = new TinderCard.SwipeCallback() {
+                @Override
+                public void onSwipeIn() {
+                    mainPresenter.addNewFavouriteDog(dogFirebase);
+                }
+            };
+            tinderCard.setSwipeCallback(swipeCallback);
+            mSwipeView.addView(tinderCard);
+            Timber.d("onResponse: " + dogFirebase.getName());
         }
     }
 

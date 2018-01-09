@@ -63,5 +63,15 @@
     <string name="rate">Oceń aplikację</string>
     <string name="sample_text">Json do wyplucia</string>
     <string name="info_no_data">Brak danych</string>
+    <string name="title_activity_main_old">MainActivityOLD</string>
+    <string name="title_activity_favourite">FavouriteActivity</string>
+
+    <!-- Values For Tab Layout In Favourite Screen -->
+
+    <string name="tab_all_animals">All Animals</string>
+    <string name="tab_dogs">Dogs</string>
+    <string name="tab_cats">Cats</string>
+    <string name="tab_others">Others</string>
+    <string name="dog_name">Dog name</string>
 
 </resources>

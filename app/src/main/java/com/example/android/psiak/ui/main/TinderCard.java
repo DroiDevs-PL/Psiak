@@ -26,6 +26,11 @@ import timber.log.Timber;
 @Layout(R.layout.tinder_card_view)
 public class TinderCard {
 
+    public interface SwipeCallback{
+
+        void onSwipeIn();
+    }
+
     @View(R.id.profileImageView)
     private ImageView profileImageView;
 
@@ -39,6 +44,7 @@ public class TinderCard {
     private DogFirebase mDogFirebase;
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
+    private SwipeCallback swipeCallback;
 
     public TinderCard(Context context, DogFirebase dog, SwipePlaceHolderView swipeView) {
         mContext = context;
@@ -50,6 +56,10 @@ public class TinderCard {
         mContext = context;
         mDog = dog;
         mSwipeView = swipeView;
+    }
+
+    public void setSwipeCallback(SwipeCallback mSwipeCallback) {
+        this.swipeCallback = mSwipeCallback;
     }
 
     @Resolve
@@ -74,7 +84,10 @@ public class TinderCard {
     }
 
     @SwipeIn
-    private void onSwipeIn() {
+    private void onSwipeIn(){
+        if(swipeCallback != null) {
+            swipeCallback.onSwipeIn();
+        }
     }
 
     @SwipeInState

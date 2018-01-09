@@ -13,6 +13,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
+
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -21,14 +23,24 @@ public class FirebasePresenterTest {
 
     private AddAnimalContract.View mockView;
     private MockFirebaseRepository mockFirebaseRepository;
+<<<<<<< HEAD
+    private FirebasePresenter firebasePresenter;
+    private MockLocalRepository mockLocalRepository;
+=======
     private AddAnimalPresenter firebasePresenter;
+>>>>>>> 323dfc57df0f2398786649fcb97225e0d672f3e6
 
     @Before
     public void init() {
         mockView = mock(AddAnimalActivity.class);
         mockFirebaseRepository = new MockFirebaseRepository();
+<<<<<<< HEAD
+        mockLocalRepository = new MockLocalRepository();
+        firebasePresenter = new FirebasePresenter(mockFirebaseRepository, mockLocalRepository);
+=======
         firebasePresenter = new AddAnimalPresenter(mockFirebaseRepository);
-        firebasePresenter.attachView(mockView);
+>>>>>>> 323dfc57df0f2398786649fcb97225e0d672f3e6
+        firebasePresenter.attach(mockView);
     }
 
     @Test
@@ -111,5 +123,32 @@ class MockFirebaseRepository implements Repository.Firebase<DogFirebase> {
     @Override
     public String generateUniqueID() {
         return null;
+    }
+}
+
+class MockLocalRepository implements Repository.LocalRepository {
+    @Override
+    public RealmResults<DogFirebase> getAll() {
+        return null;
+    }
+
+    @Override
+    public DogFirebase get(String id) {
+        return null;
+    }
+
+    @Override
+    public void add(DogFirebase dogFirebase) {
+
+    }
+
+    @Override
+    public void delete(String id) {
+
+    }
+
+    @Override
+    public void delete(DogFirebase dogFirebase) {
+
     }
 }

@@ -26,17 +26,9 @@ public class ShowAnimalDetailsPresenter
 
     dogRepository.getById(id)
         .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<DogFirebase>() {
-          @Override
-          public void accept(DogFirebase dog) throws Exception {
-            view.hideLoader();
-            view.setAnimalDetails(dog);
-          }
-        }, new Consumer<Throwable>() {
-          @Override
-          public void accept(Throwable throwable) throws Exception {
-            Timber.e(throwable);
-          }
-        });
+        .subscribe(dog -> {
+          view.hideLoader();
+          view.setAnimalDetails(dog);
+        }, Timber::e);
   }
 }

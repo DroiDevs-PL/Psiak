@@ -128,6 +128,7 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
             for (DataSnapshot singleRecordSnapshot: dataSnapshot.getChildren()) {
 
                 DogFirebase dogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
+                dogFirebase.setId(singleRecordSnapshot.getKey());
 
                 dogs.add(dogFirebase);
 

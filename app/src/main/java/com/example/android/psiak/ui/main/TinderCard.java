@@ -109,12 +109,12 @@ public class TinderCard {
     /**
      * Show activity with detailed information's about animal.
      *
-     * @param animal
+     * @param dog
      */
-    private void showAnimalDetailedView(DogFirebase animal)
+    private void showAnimalDetailedView(DogFirebase dog)
     {
         Intent startAnimalDetailedViewActivity = new Intent(this.mContext, ShowAnimalDetailsActivity.class);
-        startAnimalDetailedViewActivity.putExtra(ShowAnimalDetailsContract.View.INTENT_EXTRA_ANIMAL_ID, animal.getId());
+        startAnimalDetailedViewActivity.putExtra(ShowAnimalDetailsContract.View.INTENT_EXTRA_ANIMAL_ID, dog.getId());
 
         // Start activity
         this.mContext.startActivity(startAnimalDetailedViewActivity);

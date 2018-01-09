@@ -33,6 +33,7 @@ public class DogFirebaseRepository implements DogRepositoryInterface {
           @Override
           public void onDataChange(DataSnapshot dataSnapshot) {
             DogFirebase dog = dataSnapshot.getValue(DogFirebase.class);
+            dog.setId(dataSnapshot.getKey());
             e.onNext(dog);
           }
 

@@ -12,4 +12,5 @@
     <color name="blueDevsPL">#004df4</color>
     <color name="white">#FFFFFF</color>
     <color name="backgroundGray">#3e2723</color>
+    <color name="bgShowAnimalDetails">#F6FAFC</color>
 </resources>

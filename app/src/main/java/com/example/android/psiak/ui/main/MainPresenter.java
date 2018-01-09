@@ -85,4 +85,9 @@ class MainPresenter
     public void setErrorMessage(DatabaseException databaseException) {
         view.showErrorMessage(databaseException.getMessage());
     }
+
+    @Override
+    public void onAnimalReceived(DogFirebase animalInterface) {
+
+    }
 }

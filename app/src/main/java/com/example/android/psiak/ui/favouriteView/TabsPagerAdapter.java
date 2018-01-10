@@ -34,7 +34,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         this.context = context;
 
         tabsTitles = new String[] {
-                context.getResources().getString(R.string.tab_all_animals),
                 context.getResources().getString(R.string.tab_dogs),
                 context.getResources().getString(R.string.tab_cats),
                 context.getResources().getString(R.string.tab_others)
@@ -58,8 +57,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new AllAnimalsFragment();
             case 2:
-                return new AllAnimalsFragment();
-            case 3:
                 return new AllAnimalsFragment();
             default:
                 return null;

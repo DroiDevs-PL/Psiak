@@ -73,5 +73,6 @@
     <string name="tab_cats">Cats</string>
     <string name="tab_others">Others</string>
     <string name="dog_name">Dog name</string>
+    <string name="sort">sort</string>
 
 </resources>

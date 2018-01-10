@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmResults;
 
-public class AllAnimalsFragment
+public class AnimalsFragment
         extends Fragment
         implements FavouriteViewContract.View  {
 
@@ -30,10 +30,14 @@ public class AllAnimalsFragment
     @BindView(R.id.favourites_root_layout)
     CoordinatorLayout rootLayout;
 
+    /**
+     * Presenter for this view
+     */
+
+    private FavouriteViewContract.Presenter<FavouriteViewContract.View> favouritePresenter;
+
     private DogAdapter dogAdapter;
     private LinearLayoutManager layoutManager;
-
-    private FavouritePresenter favouritePresenter;
 
     // endregion
 

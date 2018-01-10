@@ -1,7 +1,10 @@
 package com.example.android.psiak.ui.favouriteView;
 
+import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.base.MvpPresenter;
 import com.example.android.psiak.ui.base.MvpView;
+
+import io.realm.RealmResults;
 
 public interface FavouriteViewContract {
 
@@ -10,6 +13,6 @@ public interface FavouriteViewContract {
     }
 
     interface Presenter<V extends MvpView> extends MvpPresenter<V> {
-        void getAllDogsFromLocalRepository();
+        RealmResults<DogFirebase> getAllDogsFromLocalRepository();
     }
 }

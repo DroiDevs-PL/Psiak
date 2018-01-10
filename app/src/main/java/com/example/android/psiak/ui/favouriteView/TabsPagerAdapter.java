@@ -53,11 +53,11 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new AllAnimalsFragment();
+                return new AnimalsFragment();
             case 1:
-                return new AllAnimalsFragment();
+                return new AnimalsFragment();
             case 2:
-                return new AllAnimalsFragment();
+                return new AnimalsFragment();
             default:
                 return null;
         }

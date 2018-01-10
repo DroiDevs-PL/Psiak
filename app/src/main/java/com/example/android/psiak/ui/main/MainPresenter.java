@@ -7,9 +7,7 @@ import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
 import com.example.android.psiak.ui.base.BasePresenter;
 import com.google.firebase.database.DatabaseException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 import io.realm.RealmResults;
@@ -32,6 +30,7 @@ class MainPresenter
      * Initialize FirebasePresenter with Firebase repository. After initialization FirebasePresenter object will be set as a
      * data listener object for callback from Firebase repository
      * @param repository Repository.Firebase object that will be used with this Presenter
+     * @param localRepository Repository.LocalRepository object that will be used with this Presenter
      */
 
     public MainPresenter(Repository.Firebase repository, Repository.LocalRepository localRepository) {

@@ -12,7 +12,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
     // region Properties
 
-    private int TABS_ITEMS_COUNT = 4;
+    private int TABS_ITEMS_COUNT = 3;
 
     private Context context;
 

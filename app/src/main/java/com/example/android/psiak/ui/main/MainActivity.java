@@ -189,6 +189,8 @@ public class MainActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
+
+
     }
 
     private void configureSortSpinner() {

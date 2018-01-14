@@ -105,7 +105,8 @@ public class MainActivity
         setUpAnimation();
 
         // TODO Use dependency injection here
-        mainPresenter = new MainPresenter(new FirebaseRepository(), new DogsLocalRepository(this));
+        mainPresenter = new MainPresenter(new FirebaseRepository<DogFirebase>(
+                FirebaseRepository.AVAILABLE_DOGS_ENDPOINT), new DogsLocalRepository(this));
         mainPresenter.attachView(this);
         mainPresenter.getAllDogs();
 

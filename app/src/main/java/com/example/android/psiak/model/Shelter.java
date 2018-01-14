@@ -1,11 +1,14 @@
 package com.example.android.psiak.model;
 
+import com.example.android.psiak.data.network.Repository;
+
 /**
  * Created by Radek on 13.01.2018.
  */
 
-public class Shelter {
+public class Shelter implements Repository.Firebase.Identifiable{
 
+    private String id;
     private String email;
     private String name;
     private String street;
@@ -18,6 +21,8 @@ public class Shelter {
     }
 
     // region Getters
+
+    public String getId() { return id; }
 
     public String getEmail() {
         return email;
@@ -52,6 +57,8 @@ public class Shelter {
 
     // region Setters
 
+    public void setId(String id) { this.id = id; }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -84,25 +91,14 @@ public class Shelter {
     // endregion
 
     @Override
-    public String toString() {
-        return "Shelter{" +
-                "email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", street='" + street + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", website='" + website + '\'' +
-                ", telephoneNumber='" + telephoneNumber + '\'' +
-                ", city='" + city + '\'' +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Shelter)) return false;
 
         Shelter shelter = (Shelter) o;
 
+        if (getId() != null ? !getId().equals(shelter.getId()) : shelter.getId() != null)
+            return false;
         if (getEmail() != null ? !getEmail().equals(shelter.getEmail()) : shelter.getEmail() != null)
             return false;
         if (getName() != null ? !getName().equals(shelter.getName()) : shelter.getName() != null)
@@ -120,7 +116,8 @@ public class Shelter {
 
     @Override
     public int hashCode() {
-        int result = getEmail() != null ? getEmail().hashCode() : 0;
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
         result = 31 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + (getStreet() != null ? getStreet().hashCode() : 0);
         result = 31 * result + (getZipCode() != null ? getZipCode().hashCode() : 0);
@@ -128,5 +125,19 @@ public class Shelter {
         result = 31 * result + (getTelephoneNumber() != null ? getTelephoneNumber().hashCode() : 0);
         result = 31 * result + (getCity() != null ? getCity().hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Shelter{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", street='" + street + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", website='" + website + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

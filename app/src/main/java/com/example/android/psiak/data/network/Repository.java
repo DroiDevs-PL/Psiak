@@ -1,11 +1,12 @@
 package com.example.android.psiak.data.network;
 
 import com.example.android.psiak.model.AnimalType;
-import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.ui.main.FirebaseDataListener;
+
+import java.util.ArrayList;
 
 import io.realm.RealmResults;
-import java.util.ArrayList;
 
 public interface Repository {
 
@@ -76,8 +77,12 @@ public interface Repository {
          */
 
         ArrayList<DogFirebase> getCachedDogs();
-
+        
         ArrayList<DogFirebase> getCachedAnimals(AnimalType animalType, String shelter_name);
+         interface Identifiable {
+            String getId();
+        }
+
     }
 
     interface LocalRepository {

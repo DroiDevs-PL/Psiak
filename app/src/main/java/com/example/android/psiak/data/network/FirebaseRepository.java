@@ -88,6 +88,11 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     }
 
     @Override
+    public void getById(String id, FirebaseDataListener callback) {
+
+    }
+
+    @Override
     public void update(DogFirebase firebaseObject) {
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put(firebaseObject.getId(), firebaseObject);
@@ -123,6 +128,7 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
             for (DataSnapshot singleRecordSnapshot: dataSnapshot.getChildren()) {
 
                 DogFirebase dogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
+                dogFirebase.setId(singleRecordSnapshot.getKey());
 
                 dogs.add(dogFirebase);
 

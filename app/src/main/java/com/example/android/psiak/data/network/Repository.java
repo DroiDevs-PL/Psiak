@@ -3,9 +3,8 @@ package com.example.android.psiak.data.network;
 import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.example.android.psiak.model.DogFirebase;
 
-import java.util.ArrayList;
-
 import io.realm.RealmResults;
+import java.util.ArrayList;
 
 public interface Repository {
 
@@ -39,6 +38,14 @@ public interface Repository {
          */
 
         Type find(String queryString);
+
+        /**
+         * Find entity by given ID.
+         *
+         * @param id
+         * @param callback
+         */
+        void getById(String id, final FirebaseDataListener callback);
 
         /**
          * Write single object to specified end point in database

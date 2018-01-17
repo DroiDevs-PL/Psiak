@@ -99,6 +99,10 @@ public class DogFirebase implements RealmModel{
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -187,6 +191,111 @@ public class DogFirebase implements RealmModel{
 
 
     // region DogBuilder
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DogFirebase that = (DogFirebase) o;
+
+        if (!id.equals(that.id)) return false;
+        if (!name.equals(that.name)) return false;
+        if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null)
+            return false;
+        if (size != null ? !size.equals(that.size) : that.size != null) return false;
+        if (location != null ? !location.equals(that.location) : that.location != null)
+            return false;
+        if (homelessSince != null ? !homelessSince.equals(that.homelessSince) : that.homelessSince != null)
+            return false;
+        if (attitudePeople != null ? !attitudePeople.equals(that.attitudePeople) : that.attitudePeople != null)
+            return false;
+        if (attitudeDogs != null ? !attitudeDogs.equals(that.attitudeDogs) : that.attitudeDogs != null)
+            return false;
+        if (attitudeCats != null ? !attitudeCats.equals(that.attitudeCats) : that.attitudeCats != null)
+            return false;
+        if (keeperName != null ? !keeperName.equals(that.keeperName) : that.keeperName != null)
+            return false;
+        if (keeperMail != null ? !keeperMail.equals(that.keeperMail) : that.keeperMail != null)
+            return false;
+        if (keeperPhone != null ? !keeperPhone.equals(that.keeperPhone) : that.keeperPhone != null)
+            return false;
+        if (vaccinated != null ? !vaccinated.equals(that.vaccinated) : that.vaccinated != null)
+            return false;
+        if (dewormed != null ? !dewormed.equals(that.dewormed) : that.dewormed != null)
+            return false;
+        if (sterilized != null ? !sterilized.equals(that.sterilized) : that.sterilized != null)
+            return false;
+        if (weight != null ? !weight.equals(that.weight) : that.weight != null) return false;
+        if (age != null ? !age.equals(that.age) : that.age != null) return false;
+        if (profilePic != null ? !profilePic.equals(that.profilePic) : that.profilePic != null)
+            return false;
+        return photos != null ? photos.equals(that.photos) : that.photos == null;
+    }
+
+    // endregion
+
+    // region Equals Implementation
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (size != null ? size.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (homelessSince != null ? homelessSince.hashCode() : 0);
+        result = 31 * result + (attitudePeople != null ? attitudePeople.hashCode() : 0);
+        result = 31 * result + (attitudeDogs != null ? attitudeDogs.hashCode() : 0);
+        result = 31 * result + (attitudeCats != null ? attitudeCats.hashCode() : 0);
+        result = 31 * result + (keeperName != null ? keeperName.hashCode() : 0);
+        result = 31 * result + (keeperMail != null ? keeperMail.hashCode() : 0);
+        result = 31 * result + (keeperPhone != null ? keeperPhone.hashCode() : 0);
+        result = 31 * result + (vaccinated != null ? vaccinated.hashCode() : 0);
+        result = 31 * result + (dewormed != null ? dewormed.hashCode() : 0);
+        result = 31 * result + (sterilized != null ? sterilized.hashCode() : 0);
+        result = 31 * result + (weight != null ? weight.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + (profilePic != null ? profilePic.hashCode() : 0);
+        result = 31 * result + (photos != null ? photos.hashCode() : 0);
+        return result;
+    }
+
+    // endregion
+
+    // region HashCode Implementation
+
+    @Override
+    public String toString() {
+        return "DogFirebase{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", description='" + description + '\'' +
+                ", size='" + size + '\'' +
+                ", location='" + location + '\'' +
+                ", homelessSince='" + homelessSince + '\'' +
+                ", attitudePeople='" + attitudePeople + '\'' +
+                ", attitudeDogs='" + attitudeDogs + '\'' +
+                ", attitudeCats='" + attitudeCats + '\'' +
+                ", keeperName='" + keeperName + '\'' +
+                ", keeperMail='" + keeperMail + '\'' +
+                ", keeperPhone='" + keeperPhone + '\'' +
+                ", vaccinated='" + vaccinated + '\'' +
+                ", dewormed='" + dewormed + '\'' +
+                ", sterilized='" + sterilized + '\'' +
+                ", weight='" + weight + '\'' +
+                ", age='" + age + '\'' +
+                ", profilePic='" + profilePic + '\'' +
+                ", photos='" + photos + '\'' +
+                '}';
+    }
+
+    // endregion
+
+    // region toString Implementation
 
     public static class DogBuilder {
 
@@ -322,111 +431,6 @@ public class DogFirebase implements RealmModel{
         public DogFirebase build() {
             return new DogFirebase(this);
         }
-    }
-
-    // endregion
-
-    // region Equals Implementation
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DogFirebase that = (DogFirebase) o;
-
-        if (!id.equals(that.id)) return false;
-        if (!name.equals(that.name)) return false;
-        if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null)
-            return false;
-        if (size != null ? !size.equals(that.size) : that.size != null) return false;
-        if (location != null ? !location.equals(that.location) : that.location != null)
-            return false;
-        if (homelessSince != null ? !homelessSince.equals(that.homelessSince) : that.homelessSince != null)
-            return false;
-        if (attitudePeople != null ? !attitudePeople.equals(that.attitudePeople) : that.attitudePeople != null)
-            return false;
-        if (attitudeDogs != null ? !attitudeDogs.equals(that.attitudeDogs) : that.attitudeDogs != null)
-            return false;
-        if (attitudeCats != null ? !attitudeCats.equals(that.attitudeCats) : that.attitudeCats != null)
-            return false;
-        if (keeperName != null ? !keeperName.equals(that.keeperName) : that.keeperName != null)
-            return false;
-        if (keeperMail != null ? !keeperMail.equals(that.keeperMail) : that.keeperMail != null)
-            return false;
-        if (keeperPhone != null ? !keeperPhone.equals(that.keeperPhone) : that.keeperPhone != null)
-            return false;
-        if (vaccinated != null ? !vaccinated.equals(that.vaccinated) : that.vaccinated != null)
-            return false;
-        if (dewormed != null ? !dewormed.equals(that.dewormed) : that.dewormed != null)
-            return false;
-        if (sterilized != null ? !sterilized.equals(that.sterilized) : that.sterilized != null)
-            return false;
-        if (weight != null ? !weight.equals(that.weight) : that.weight != null) return false;
-        if (age != null ? !age.equals(that.age) : that.age != null) return false;
-        if (profilePic != null ? !profilePic.equals(that.profilePic) : that.profilePic != null)
-            return false;
-        return photos != null ? photos.equals(that.photos) : that.photos == null;
-    }
-
-    // endregion
-
-    // region HashCode Implementation
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + (gender != null ? gender.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (size != null ? size.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
-        result = 31 * result + (homelessSince != null ? homelessSince.hashCode() : 0);
-        result = 31 * result + (attitudePeople != null ? attitudePeople.hashCode() : 0);
-        result = 31 * result + (attitudeDogs != null ? attitudeDogs.hashCode() : 0);
-        result = 31 * result + (attitudeCats != null ? attitudeCats.hashCode() : 0);
-        result = 31 * result + (keeperName != null ? keeperName.hashCode() : 0);
-        result = 31 * result + (keeperMail != null ? keeperMail.hashCode() : 0);
-        result = 31 * result + (keeperPhone != null ? keeperPhone.hashCode() : 0);
-        result = 31 * result + (vaccinated != null ? vaccinated.hashCode() : 0);
-        result = 31 * result + (dewormed != null ? dewormed.hashCode() : 0);
-        result = 31 * result + (sterilized != null ? sterilized.hashCode() : 0);
-        result = 31 * result + (weight != null ? weight.hashCode() : 0);
-        result = 31 * result + (age != null ? age.hashCode() : 0);
-        result = 31 * result + (profilePic != null ? profilePic.hashCode() : 0);
-        result = 31 * result + (photos != null ? photos.hashCode() : 0);
-        return result;
-    }
-
-    // endregion
-
-    // region toString Implementation
-
-    @Override
-    public String toString() {
-        return "DogFirebase{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", description='" + description + '\'' +
-                ", size='" + size + '\'' +
-                ", location='" + location + '\'' +
-                ", homelessSince='" + homelessSince + '\'' +
-                ", attitudePeople='" + attitudePeople + '\'' +
-                ", attitudeDogs='" + attitudeDogs + '\'' +
-                ", attitudeCats='" + attitudeCats + '\'' +
-                ", keeperName='" + keeperName + '\'' +
-                ", keeperMail='" + keeperMail + '\'' +
-                ", keeperPhone='" + keeperPhone + '\'' +
-                ", vaccinated='" + vaccinated + '\'' +
-                ", dewormed='" + dewormed + '\'' +
-                ", sterilized='" + sterilized + '\'' +
-                ", weight='" + weight + '\'' +
-                ", age='" + age + '\'' +
-                ", profilePic='" + profilePic + '\'' +
-                ", photos='" + photos + '\'' +
-                '}';
     }
 
     // endregion

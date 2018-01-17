@@ -18,4 +18,10 @@ public interface FirebaseDataListener {
      * @param databaseException Database exception passed to listener object
      */
     void setErrorMessage(DatabaseException databaseException);
+
+    /**
+     * Called when Animal was successfully returned by from database.
+     * @param animalInterface
+     */
+    void onAnimalReceived(DogFirebase animalInterface);
 }

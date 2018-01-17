@@ -77,6 +77,7 @@ public interface Repository {
         void add(DogFirebase dogFirebase);
         void delete(String id);
         void delete(DogFirebase dogFirebase);
+        boolean checkIfEmpty(String id);
     }
 }
 

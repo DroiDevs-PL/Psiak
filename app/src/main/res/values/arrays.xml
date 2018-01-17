@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_criteria_array">
+        <item>wiek</item>
+        <item>płeć</item>
+        <item>waga</item>
+        <item>wielkość</item>
+        <item>gatunek</item>
+    </string-array>
+</resources>

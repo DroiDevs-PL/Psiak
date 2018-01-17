@@ -14,17 +14,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.psiak.ui.favouriteView.FavouriteActivity;
+import com.example.android.psiak.R;
 import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.R;
 import com.example.android.psiak.ui.aboutUs.AboutUsActivity;
 import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
+import com.example.android.psiak.ui.favouriteView.FavouriteActivity;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.listeners.ItemRemovedListener;
@@ -39,7 +42,6 @@ public class MainActivity
         extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
 
-    public final String TAG = MainActivity.class.getName();
     @BindView(R.id.doggie)
     ImageView doggie;
 
@@ -61,10 +63,14 @@ public class MainActivity
     @BindView(R.id.dogsAvailableLayout)
     ConstraintLayout dogsAvailableLayout;
 
+    //ButterKnife don't work with menu items
+    Spinner sortSpinner;
+
     private MainPresenter mainPresenter;
 
     //endregion
     private Menu menu;
+
     private ItemRemovedListener itemRemovedListener = new ItemRemovedListener() {
         @Override
         public void onItemRemoved(int count) {
@@ -107,6 +113,29 @@ public class MainActivity
         navList.setNavigationItemSelectedListener(this);
     }
 
+
+    private void configureSortSpinner() {
+        final MenuItem item = menu.findItem(R.id.sort);
+        sortSpinner = (Spinner) item.getActionView();
+        ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this,R.array.sort_criteria_array,android.R.layout.simple_spinner_item);
+        sortAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortSpinner.setAdapter(sortAdapter);
+        sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedItem = sortSpinner.getSelectedItem().toString();
+                mSwipeView.removeAllViews();
+               mainPresenter.getSortedDogs(selectedItem);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
+
     //region navigationDrawer
 
     @Override
@@ -123,7 +152,6 @@ public class MainActivity
         } else if (id == R.id.shelters_nav_item) {
             Snackbar.make(drawerLayout, "Schroniska", Snackbar.LENGTH_LONG).show();
         } else if (id == R.id.about_nav_item) {
-            //Snackbar.make(drawerLayout, "O nas", Snackbar.LENGTH_LONG).show();
             Intent aboutIntent = new Intent(MainActivity.this, AboutUsActivity.class);
             startActivity(aboutIntent);
         }
@@ -142,7 +170,6 @@ public class MainActivity
             case R.id.settings:
                 Snackbar.make(drawerLayout, "Settings", Snackbar.LENGTH_LONG).show();
                 return true;
-
             case R.id.firebaseTest:
                 Intent intent = new Intent(this, AddAnimalActivity.class);
                 startActivity(intent);
@@ -161,6 +188,7 @@ public class MainActivity
         this.menu = menu;
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem searchModeMenuItem = menu.findItem(R.id.settings);
+        configureSortSpinner();
         return true;
     }
 
@@ -177,22 +205,15 @@ public class MainActivity
 
         for(final DogFirebase dogFirebase : dogs) {
             TinderCard tinderCard = new TinderCard(MainActivity.this, dogFirebase, mSwipeView);
-            TinderCard.SwipeCallback swipeCallback = new TinderCard.SwipeCallback() {
-                @Override
-                public void onSwipeIn() {
-                    mainPresenter.addNewFavouriteDog(dogFirebase);
-                }
-            };
+            TinderCard.SwipeCallback swipeCallback = () -> mainPresenter.addNewFavouriteDog(dogFirebase);
             tinderCard.setSwipeCallback(swipeCallback);
             mSwipeView.addView(tinderCard);
             Timber.d("onResponse: " + dogFirebase.getName());
         }
     }
 
-
     @Override
     public void showMessage(int messageId) {
-
     }
 
     @Override

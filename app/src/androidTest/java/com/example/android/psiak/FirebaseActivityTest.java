@@ -38,7 +38,7 @@ public class FirebaseActivityTest {
     public void all_Views_Are_Bind() throws Exception {
 
         Button btnAddNewDog = firebaseActivity.findViewById(R.id.btn_add_new_dog);
-        Button btnShowAllDogs = firebaseActivity.findViewById(R.id.btn_show_all_dogs);
+//        Button btnShowAllDogs = firebaseActivity.findViewById(R.id.btn_show_all_dogs);
 
         EditText etDogName = firebaseActivity.findViewById(R.id.et_dog_name);
         EditText etDogGender = firebaseActivity.findViewById(R.id.et_dog_gender);
@@ -60,7 +60,7 @@ public class FirebaseActivityTest {
         Switch swDogSterilized = firebaseActivity.findViewById(R.id.sw_dog_sterilized);
 
         assertThat(btnAddNewDog, notNullValue());
-        assertThat(btnShowAllDogs, notNullValue());
+//        assertThat(btnShowAllDogs, notNullValue());
 
         assertThat(etDogName, notNullValue());
         assertThat(etDogGender, notNullValue());

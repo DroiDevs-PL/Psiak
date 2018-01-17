@@ -9,6 +9,8 @@ import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -50,7 +52,7 @@ class MainPresenter
         ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
 
         if (dogsData.size() > 0 && isViewAttached()) {
-            view.showAllDogs(dogsData);
+            setDogsWithoutDuplicates(dogsData);
         } else {
             firebaseRepository.getAllObjects();
         }
@@ -62,7 +64,7 @@ class MainPresenter
         ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
         Collections.sort(dogsData, SortingStrategyFactory.getStrategyForField(fieldName));
         if(isViewAttached()){
-            view.showAllDogs(dogsData);
+            setDogsWithoutDuplicates(dogsData);
         }
     }
 
@@ -89,12 +91,30 @@ class MainPresenter
     @Override
     public void setDogsData(ArrayList<DogFirebase> dogsData) {
         if (isViewAttached()) {
-            view.showAllDogs(dogsData);
+            setDogsWithoutDuplicates(dogsData);
         }
     }
 
     @Override
     public void setErrorMessage(DatabaseException databaseException) {
         view.showErrorMessage(databaseException.getMessage());
+    }
+
+    @Override
+    public void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData) {
+        Iterator<DogFirebase> dogsToModify;
+        List<DogFirebase> dogsToShow = new ArrayList<DogFirebase>();
+        for (dogsToModify = dogsData.iterator(); dogsToModify.hasNext(); ) {
+            DogFirebase dogFromNetwork = dogsToModify.next();
+            if (localRepository.checkIfEmpty(dogFromNetwork.getId())) {
+               dogsToShow.add(dogFromNetwork);
+            }
+        }
+        view.showAllDogs(dogsToShow);
+    }
+
+    @Override
+    public void onAnimalReceived(DogFirebase animalInterface) {
+
     }
 }

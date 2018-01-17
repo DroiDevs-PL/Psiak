@@ -4,6 +4,7 @@ import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.base.MvpPresenter;
 import com.example.android.psiak.ui.base.MvpView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,8 @@ public interface MainContract {
         void getSortedDogs(String fieldName);
         void addNewFavouriteDog(DogFirebase dogFirebase);
         void addNewDog(DogFirebase dogFirebase);
+
         String generateUniqueID();
+        void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData);
     }
 }

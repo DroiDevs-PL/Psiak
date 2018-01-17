@@ -99,6 +99,13 @@ dependencies {
     testCompile "org.mockito:mockito-core:2.+"
     implementation 'com.jakewharton.timber:timber:4.6.0'
 
+    /*
+    RxAndroid
+     */
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile 'io.reactivex.rxjava2:rxjava:2.1.7'
 }
 
 apply plugin: 'com.google.gms.google-services'

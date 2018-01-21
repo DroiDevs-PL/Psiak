@@ -77,7 +77,7 @@ public interface Repository {
          */
 
         ArrayList<DogFirebase> getCachedDogs();
-        
+
         ArrayList<DogFirebase> getCachedAnimals(AnimalType animalType, String shelter_name);
          interface Identifiable {
             String getId();

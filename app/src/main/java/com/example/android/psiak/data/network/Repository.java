@@ -3,6 +3,7 @@ package com.example.android.psiak.data.network;
 import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.example.android.psiak.model.DogFirebase;
 
+import io.realm.RealmResults;
 import java.util.ArrayList;
 
 public interface Repository {
@@ -39,6 +40,14 @@ public interface Repository {
         Type find(String queryString);
 
         /**
+         * Find entity by given ID.
+         *
+         * @param id
+         * @param callback
+         */
+        void getById(String id, final FirebaseDataListener callback);
+
+        /**
          * Write single object to specified end point in database
          * @param firebaseObject Object that will be saved to Firebase database
          */
@@ -67,6 +76,15 @@ public interface Repository {
 
         ArrayList<DogFirebase> getCachedDogs();
 
+    }
+
+    interface LocalRepository {
+        RealmResults<DogFirebase> getAll();
+        DogFirebase get(String id);
+        void add(DogFirebase dogFirebase);
+        void delete(String id);
+        void delete(DogFirebase dogFirebase);
+        boolean checkIfEmpty(String id);
     }
 }
 

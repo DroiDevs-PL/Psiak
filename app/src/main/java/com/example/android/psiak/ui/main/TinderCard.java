@@ -1,13 +1,17 @@
 package com.example.android.psiak.ui.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.psiak.R;
 import com.example.android.psiak.model.Dog;
 import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.ui.showAnimalDetails.ShowAnimalDetailsActivity;
+import com.example.android.psiak.ui.showAnimalDetails.ShowAnimalDetailsContract;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
@@ -17,9 +21,15 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 import com.squareup.picasso.Picasso;
+import timber.log.Timber;
 
 @Layout(R.layout.tinder_card_view)
 public class TinderCard {
+
+    public interface SwipeCallback{
+
+        void onSwipeIn();
+    }
 
     @View(R.id.profileImageView)
     private ImageView profileImageView;
@@ -34,6 +44,7 @@ public class TinderCard {
     private DogFirebase mDogFirebase;
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
+    private SwipeCallback swipeCallback;
 
     public TinderCard(Context context, DogFirebase dog, SwipePlaceHolderView swipeView) {
         mContext = context;
@@ -45,6 +56,10 @@ public class TinderCard {
         mContext = context;
         mDog = dog;
         mSwipeView = swipeView;
+    }
+
+    public void setSwipeCallback(SwipeCallback mSwipeCallback) {
+        this.swipeCallback = mSwipeCallback;
     }
 
     @Resolve
@@ -69,7 +84,10 @@ public class TinderCard {
     }
 
     @SwipeIn
-    private void onSwipeIn() {
+    private void onSwipeIn(){
+        if(swipeCallback != null) {
+            swipeCallback.onSwipeIn();
+        }
     }
 
     @SwipeInState
@@ -78,6 +96,28 @@ public class TinderCard {
 
     @SwipeOutState
     private void onSwipeOutState() {
+    }
+
+    @Click(R.id.profileImageView)
+    private void onProfileImageClick() {
+        Timber.d("ProfileImageClicked Animal ID: %s", this.mDogFirebase.getId());
+
+        this.showAnimalDetailedView(this.mDogFirebase);
+    }
+
+
+    /**
+     * Show activity with detailed information's about animal.
+     *
+     * @param dog
+     */
+    private void showAnimalDetailedView(DogFirebase dog)
+    {
+        Intent startAnimalDetailedViewActivity = new Intent(this.mContext, ShowAnimalDetailsActivity.class);
+        startAnimalDetailedViewActivity.putExtra(ShowAnimalDetailsContract.View.INTENT_EXTRA_ANIMAL_ID, dog.getId());
+
+        // Start activity
+        this.mContext.startActivity(startAnimalDetailedViewActivity);
     }
 
 }

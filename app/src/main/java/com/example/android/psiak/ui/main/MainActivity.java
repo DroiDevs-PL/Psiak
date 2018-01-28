@@ -111,6 +111,8 @@ public class MainActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
+//todo uncomment before release
+//        GooglePlayUtils.app_launched(this);
     }
 
 

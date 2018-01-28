@@ -6,4 +6,5 @@
     <dimen name="nav_header_height">120dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
     <dimen name="psiaki_default_margin">16dp</dimen>
+    <dimen name="app_bar_margin">64dp</dimen>
 </resources>

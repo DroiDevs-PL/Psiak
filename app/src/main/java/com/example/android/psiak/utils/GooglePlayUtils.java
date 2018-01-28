@@ -39,6 +39,7 @@ public class GooglePlayUtils {
         HelperSharedPrefs.putSharedPreferencesLong(mContext, "launch_count", launch_count);
 
         if (launch_count >= LAUNCHES_UNTIL_PROMPT) {
+                showRateDialog(mContext);
         }
     }
 

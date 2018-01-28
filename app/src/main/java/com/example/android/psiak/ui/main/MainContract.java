@@ -22,6 +22,7 @@ public interface MainContract {
         void getSortedDogs(String fieldName);
         void addNewFavouriteDog(DogFirebase dogFirebase);
         void addNewDog(DogFirebase dogFirebase);
+
         String generateUniqueID();
         void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData);
     }

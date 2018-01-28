@@ -32,6 +32,7 @@ class MainPresenter
      * Initialize FirebasePresenter with Firebase repository. After initialization FirebasePresenter object will be set as a
      * data listener object for callback from Firebase repository
      * @param repository Repository.Firebase object that will be used with this Presenter
+     * @param localRepository Repository.LocalRepository object that will be used with this Presenter
      */
 
     public MainPresenter(Repository.Firebase repository, Repository.LocalRepository localRepository) {
@@ -110,5 +111,10 @@ class MainPresenter
             }
         }
         view.showAllDogs(dogsToShow);
+    }
+
+    @Override
+    public void onAnimalReceived(DogFirebase animalInterface) {
+
     }
 }

@@ -12,7 +12,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
     // region Properties
 
-    private int TABS_ITEMS_COUNT = 4;
+    private int TABS_ITEMS_COUNT = 3;
 
     private Context context;
 
@@ -34,7 +34,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         this.context = context;
 
         tabsTitles = new String[] {
-                context.getResources().getString(R.string.tab_all_animals),
                 context.getResources().getString(R.string.tab_dogs),
                 context.getResources().getString(R.string.tab_cats),
                 context.getResources().getString(R.string.tab_others)
@@ -54,13 +53,11 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new AllAnimalsFragment();
+                return new AnimalsFragment();
             case 1:
-                return new AllAnimalsFragment();
+                return new AnimalsFragment();
             case 2:
-                return new AllAnimalsFragment();
-            case 3:
-                return new AllAnimalsFragment();
+                return new AnimalsFragment();
             default:
                 return null;
         }

@@ -112,9 +112,4 @@ class MainPresenter
         }
         view.showAllDogs(dogsToShow);
     }
-
-    @Override
-    public void onAnimalReceived(DogFirebase animalInterface) {
-
-    }
 }

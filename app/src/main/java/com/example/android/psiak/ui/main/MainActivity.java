@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.psiak.R;
-import com.example.android.psiak.Utils.GooglePlayUtils;
+import com.example.android.psiak.utils.GooglePlayUtils;
 import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
@@ -43,10 +43,10 @@ public class MainActivity
         extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
 
-    @BindView(R.id.doggie)
-    ImageView doggie;
 
     //region ui components declarations
+    @BindView(R.id.doggie)
+    ImageView doggie;
     @BindView(R.id.noDogs)
     TextView noDogs;
     @BindView(R.id.woof)

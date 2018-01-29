@@ -1,4 +1,4 @@
-package com.example.android.psiak.Utils;
+package com.example.android.psiak.utils;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;

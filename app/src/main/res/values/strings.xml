@@ -68,11 +68,25 @@
 
     <!-- Values For Tab Layout In Favourite Screen -->
 
-    <string name="tab_all_animals">All Animals</string>
     <string name="tab_dogs">Dogs</string>
     <string name="tab_cats">Cats</string>
     <string name="tab_others">Others</string>
     <string name="dog_name">Dog name</string>
+    <string name="rate_please_message">Jeśli spodobała Ci się aplikacja bylibyśmy wdzięczni za ocenę. Twój feedback pomaga w rozwoju aplikacji.\n Dzięki za pomoc!</string>
+    <string name="ok">Okej!</string>
+    <string name="questionForRating">Jak oceniasz aplikację?</string>
     <string name="sort">sort</string>
+    <string name="another_time">Innym razem</string>
+    <string name="rate_title">Oceń Psiaki</string>
+    <string name="rating_0">Tragiczna</string>
+    <string name="rating_1">Słaba</string>
+    <string name="rating_2">W porządku</string>
+    <string name="rating_4">Daje radę</string>
+    <string name="rating_3">Świetna!</string>
+
+    <!-- Values For tools design purposes only-->
+    <string name="lorem_placeholder_short">Lorem ipsum dolor sit amet, consectetur adipiscing veniam. </string>
+    <string name="lorem_placeholder_medium">Lorem ipsum dolor sit amet, consectetur dolore magna alea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
+    <string name="lorem_placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.!</string>
 
 </resources>

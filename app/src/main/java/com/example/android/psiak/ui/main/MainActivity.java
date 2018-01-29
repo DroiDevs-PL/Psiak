@@ -111,6 +111,8 @@ public class MainActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
+//todo uncomment before release
+//        GooglePlayUtils.app_launched(this);
     }
 
 
@@ -167,9 +169,6 @@ public class MainActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.settings:
-                Snackbar.make(drawerLayout, "Settings", Snackbar.LENGTH_LONG).show();
-                return true;
             case R.id.firebaseTest:
                 Intent intent = new Intent(this, AddAnimalActivity.class);
                 startActivity(intent);
@@ -187,7 +186,6 @@ public class MainActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem searchModeMenuItem = menu.findItem(R.id.settings);
         configureSortSpinner();
         return true;
     }

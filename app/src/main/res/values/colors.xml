@@ -11,6 +11,6 @@
     <color name="splash">#f5e2d6</color>
     <color name="blueDevsPL">#004df4</color>
     <color name="white">#FFFFFF</color>
-    <color name="backgroundGray">#3e2723</color>
     <color name="bgShowAnimalDetails">#F6FAFC</color>
+    <color name="backgroundGray">#5d4037</color>
 </resources>

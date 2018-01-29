@@ -35,15 +35,12 @@ public class FavouriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
         ButterKnife.bind(this);
-
-        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         myAdapter = new TabsPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(myAdapter);
-
         tabLayout.setupWithViewPager(viewPager);
 
     }

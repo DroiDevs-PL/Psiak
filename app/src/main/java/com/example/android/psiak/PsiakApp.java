@@ -11,5 +11,6 @@ public class PsiakApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
     }
 }

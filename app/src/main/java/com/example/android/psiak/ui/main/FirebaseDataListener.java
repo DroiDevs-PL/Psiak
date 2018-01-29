@@ -23,5 +23,4 @@ public interface FirebaseDataListener {
      * Called when Animal was successfully returned by from database.
      * @param animalInterface
      */
-    void onAnimalReceived(DogFirebase animalInterface);
 }

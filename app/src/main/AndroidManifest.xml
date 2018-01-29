@@ -8,9 +8,9 @@
     <application
         android:name=".PsiakApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_psiaki_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_psiaki_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.main.MainActivity"/>
@@ -21,10 +21,13 @@
         <activity
             android:name=".ui.favouriteView.FavouriteActivity"
             android:label="@string/title_activity_favourite"
+            android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/AppTheme"/>
         <activity
             android:name=".ui.aboutUs.AboutUsActivity"
-            android:parentActivityName=".ui.main.MainActivity"/>
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme"/>
+
         <activity android:name=".ui.SplashActivity"   android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

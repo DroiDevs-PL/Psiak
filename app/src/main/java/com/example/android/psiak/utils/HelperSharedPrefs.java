@@ -1,4 +1,4 @@
-package com.example.android.psiak.utils;
+package com.example.android.psiak.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

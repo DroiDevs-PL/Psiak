@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.psiak.R;
+import com.example.android.psiak.Utils.GooglePlayUtils;
 import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
@@ -112,7 +113,7 @@ public class MainActivity
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
 //todo uncomment before release
-//        GooglePlayUtils.app_launched(this);
+        GooglePlayUtils.app_launched(this);
     }
 
 

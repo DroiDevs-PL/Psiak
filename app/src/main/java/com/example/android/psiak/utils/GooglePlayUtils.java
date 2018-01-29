@@ -1,4 +1,4 @@
-package com.example.android.psiak.utils;
+package com.example.android.psiak.Utils;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -51,7 +51,7 @@ public class GooglePlayUtils {
         final View view = factory.inflate(R.layout.rating_dialog, null);
 
         alertadd.setView(view);
-        alertadd.setCancelable(false);
+        alertadd.setCancelable(mContext.getResources().getBoolean(R.bool.rate_dialog_cancelable));
         alertadd.setPositiveButton(R.string.ok, (dialog, which) -> {
             if (userIsHappy) {
                 openAppInStore(mContext);

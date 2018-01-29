@@ -6,21 +6,15 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
     tools:openDrawer="start">
-
-
     <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        layout="@layout/app_bar_main"/>
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header"
-        android:fitsSystemWindows="false"
-        android:layout_marginTop="?attr/actionBarSize"
         app:menu="@menu/navigation_items"/>
-
 </android.support.v4.widget.DrawerLayout>

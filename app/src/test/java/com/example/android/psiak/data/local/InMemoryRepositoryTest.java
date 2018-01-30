@@ -1,5 +1,7 @@
 package com.example.android.psiak.data.local;
 
+import com.example.android.psiak.model.Dog;
+
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

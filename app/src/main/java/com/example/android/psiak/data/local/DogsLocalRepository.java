@@ -25,8 +25,7 @@ import timber.log.Timber;
 
         @Override
         public RealmResults<DogFirebase> getAll() {
-            RealmResults<DogFirebase> results = realm.where(DogFirebase.class).findAll();
-            return results;
+            return realm.where(DogFirebase.class).findAll();
         }
 
         @Override

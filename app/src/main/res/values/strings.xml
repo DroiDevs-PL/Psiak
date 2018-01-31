@@ -12,7 +12,6 @@
     <string name="navigation_drawer_close">Zamknij</string>
     <string name="no_more_results">Nie ma więcej wyników</string>
 
-
     <!--Content main UI-->
 
     <string name="no_dogs_found">Wygląda na to, że zabrakło nam psiaków. Spróbuj zmienić miejsce wyszukiwania...</string>
@@ -85,8 +84,14 @@
     <string name="rating_3">Świetna!</string>
 
     <!-- Values For tools design purposes only-->
+
     <string name="lorem_placeholder_short">Lorem ipsum dolor sit amet, consectetur adipiscing veniam. </string>
     <string name="lorem_placeholder_medium">Lorem ipsum dolor sit amet, consectetur dolore magna alea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
     <string name="lorem_placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.!</string>
+    <string name="image_view_animal_profile">imageAnimalProfile</string>
+    <string name="tv_description">Description</string>
+    <string name="tinder_card_image">tinderCardImageDescription</string>
+    <string name="tinder_swipe_in_image">tinderInImageDescription</string>
+    <string name="tinder_swipe_out_image">tinderOutImageDescription</string>
 
 </resources>

@@ -10,125 +10,87 @@
 
     <EditText
         android:id="@+id/et_dog_name"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
         android:hint="@string/dog_name_hint"
-        android:inputType="textEmailSubject|textPersonName"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/ContentFirebaseEditTextTextTop"/>
 
     <EditText
         android:id="@+id/et_dog_description"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_description_hint"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_age" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_age"
+        style="@style/ContentFirebaseEditTextText"/>
 
     <Button
         android:id="@+id/btn_add_new_dog"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="88dp"
         android:text="@string/add_new_dog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_phone" />
-
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_homeless_since"
+        style="@style/ContentFirebaseButton"/>
 
     <EditText
         android:id="@+id/et_dog_gender"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_gender_hint"
-        android:inputType="textEmailSubject|textPersonName"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_name"
+        style="@style/ContentFirebaseEditTextTextMail"/>
 
     <EditText
         android:id="@+id/et_dog_age"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_age_hint"
-        android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_gender" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_gender"
+        style="@style/ContentFirebaseEditTextNumber"/>
 
     <EditText
         android:id="@+id/et_dog_size"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_size_hint"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_description" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_description"
+        style="@style/ContentFirebaseEditTextText"/>
 
     <EditText
         android:id="@+id/et_dog_weight"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_weight_hint"
-        android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_size" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_size"
+        style="@style/ContentFirebaseEditTextNumber"/>
 
     <EditText
         android:id="@+id/et_dog_location"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_location_hint"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_weight" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_weight"
+        style="@style/ContentFirebaseEditTextText"/>
 
     <Switch
         android:id="@+id/sw_dog_vaccinated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
         android:text="@string/dog_vaccinated_hint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_dog_name" />
+        app:layout_constraintTop_toTopOf="@+id/et_dog_name"
+        style="@style/ContentFirebaseSwitch"/>
 
     <Switch
         android:id="@+id/sw_dog_dewormed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
         android:text="@string/dog_dewormed_hint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sw_dog_vaccinated" />
+        app:layout_constraintTop_toBottomOf="@+id/sw_dog_vaccinated"
+        style="@style/ContentFirebaseSwitch"/>
 
     <Switch
         android:id="@+id/sw_dog_sterilized"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
         android:text="@string/dog_sterilized_hint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sw_dog_dewormed" />
+        app:layout_constraintTop_toBottomOf="@+id/sw_dog_dewormed"
+        style="@style/ContentFirebaseSwitch"/>
 
     <EditText
         android:id="@+id/et_dog_attitude_people"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_attitude_people_hint"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_location" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_location"
+        style="@style/ContentFirebaseEditTextText"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -139,63 +101,44 @@
 
     <EditText
         android:id="@+id/et_dog_attitude_dogs"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_attitude_dogs_hint"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_attitude_people" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_attitude_people"
+        style="@style/ContentFirebaseEditTextText"/>
 
     <EditText
         android:id="@+id/et_dog_attitude_cats"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_attitude_cats_hint"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_attitude_dogs" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_attitude_dogs"
+        style="@style/ContentFirebaseEditTextText"/>
 
     <EditText
         android:id="@+id/et_dog_keeper_name"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
         android:hint="@string/dog_keeper_name_hint"
-        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sw_dog_sterilized" />
+        app:layout_constraintTop_toBottomOf="@+id/sw_dog_sterilized"
+        style="@style/ContentFirebaseEditTextTextTopBig"/>
 
     <EditText
         android:id="@+id/et_dog_keeper_mail"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_keeper_mail_hint"
-        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_name"
+        style="@style/ContentFirebaseEditTextMailAdress"/>
 
     <EditText
         android:id="@+id/et_dog_keeper_phone"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_keeper_phone_hint"
-        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_mail" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_mail"
+        style="@style/ContentFirebaseEditTextPhone"/>
 
     <EditText
         android:id="@+id/et_dog_homeless_since"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dog_homeless_since_hint"
-        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_phone"
+        style="@style/ContentFirebaseEditTextDate"/>
 
 </android.support.constraint.ConstraintLayout>

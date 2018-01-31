@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -21,8 +20,376 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme.Splash" parent="Theme.AppCompat.NoActionBar" >
+    <style name="AppTheme.Splash" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
 
+    <style name="AboutImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_about_image_margin_top</item>
+    </style>
+
+    <style name="AboutTextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/psiaki_default_margin</item>
+    </style>
+
+    <style name="AboutTextViewTitle" parent="AboutTextView">
+        <item name="android:layout_marginEnd">@dimen/psiaki_default_margin</item>
+        <item name="android:layout_marginStart">@dimen/psiaki_default_margin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/psiaki_text_size_medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AboutTextViewDesc" parent="AboutTextView">
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin</item>
+        <item name="android:textSize">@dimen/psiaki_text_size_small</item>
+    </style>
+
+    <style name="ShowAnimalDetailLinearLayoutShowAnimal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/psiaki_animal_details_layout_padding_top</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+    <style name="ShowAnimalDetailImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/psiaki_animal_details_image_height</item>
+    </style>
+
+    <style name="ShowAnimalDetailLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/psiaki_animal_details_layout_padding</item>
+    </style>
+
+    <style name="ShowAnimalDetailText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ShowAnimalDetailTextHeading" parent="ShowAnimalDetailText">
+        <item name="android:textSize">@dimen/psiaki_text_size_large</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="ShowAnimalDetailTextShelter" parent="ShowAnimalDetailText">
+        <item name="android:textSize">@dimen/psiaki_text_size_medium</item>
+    </style>
+
+    <style name="ShowAnimalDetailTextDescription" parent="ShowAnimalDetailText">
+        <item name="android:textSize">@dimen/psiaki_text_size_small</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_animal_details_text_margin_top</item>
+    </style>
+
+    <style name="ShowAnimalDetailRelativeLayoutAnimalLoader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/psiaki_animal_details_layout_padding_top</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="ContentFirebaseEditText">
+        <item name="android:ems">10</item>
+        <item name="android:layout_width">@dimen/psiaki_content_firebase_edit_text_width</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ContentFirebaseEditTextText" parent="ContentFirebaseEditText">
+        <item name="android:inputType">textPersonName</item>
+    </style>
+
+    <style name="ContentFirebaseEditTextTextMail" parent="ContentFirebaseEditText">
+        <item name="android:inputType">textEmailSubject|textPersonName</item>
+    </style>
+
+    <style name="ContentFirebaseEditTextMailAdress" parent="ContentFirebaseEditText">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="ContentFirebaseEditTextPhone" parent="ContentFirebaseEditText">
+        <item name="android:inputType">phone</item>
+    </style>
+
+    <style name="ContentFirebaseEditTextDate" parent="ContentFirebaseEditText">
+        <item name="android:inputType">date</item>
+    </style>
+
+    <style name="ContentFirebaseEditTextNumber" parent="ContentFirebaseEditText">
+        <item name="android:inputType">number</item>
+    </style>
+
+    <style name="ContentFirebaseEditTextTextTop" parent="ContentFirebaseEditTextText">
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin</item>
+    </style>
+
+    <style name="ContentFirebaseEditTextTextTopBig" parent="ContentFirebaseEditTextText">
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin_large</item>
+    </style>
+
+    <style name="ContentFirebaseButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/psiaki_default_margin_large</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin_large</item>
+    </style>
+
+    <style name="ContentFirebaseSwitch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin_small</item>
+    </style>
+
+    <style name="ContentMainConstraintLayoutVisible">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:visibility">visible</item>
+
+    </style>
+
+    <style name="ContentMainConstraintLayoutInvisible">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:visibility">invisible</item>
+
+    </style>
+
+    <style name="ContentMainButton">
+        <item name="android:layout_width">@dimen/psiaki_content_main_button_width</item>
+        <item name="android:layout_height">@dimen/psiaki_content_main_button_height</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin_small</item>
+    </style>
+
+    <style name="ContentMainButtonStart" parent="ContentMainButton">
+        <item name="android:layout_marginStart">@dimen/psiaki_default_margin_small</item>
+        <item name="android:background">@drawable/sad_dog_button</item>
+    </style>
+
+    <style name="ContentMainButtonEnd" parent="ContentMainButton">
+        <item name="android:layout_marginEnd">@dimen/psiaki_default_margin_small</item>
+        <item name="android:background">@drawable/happy_dog_button</item>
+    </style>
+
+    <style name="ContentMainPlaceHolderView">
+        <item name="android:layout_width">@dimen/psiaki_content_main_placeholder_width</item>
+        <item name="android:layout_height">@dimen/psiaki_content_main_placeholder_height</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin_small</item>
+    </style>
+
+    <style name="ContentMainTextViewNoDogs">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">16</item>
+        <item name="android:minLines">2</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/psiaki_text_size_medium</item>
+    </style>
+
+    <style name="ContentMainImageView">
+        <item name="android:layout_width">@dimen/psiaki_content_main_image_width</item>
+        <item name="android:layout_height">@dimen/psiaki_content_main_image_height</item>
+        <item name="android:layout_marginEnd">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginStart">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:src">@drawable/ic_doggy</item>
+    </style>
+
+    <style name="ContentMainTextViewWoof">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginStart">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin_small</item>
+        <item name="android:textSize">@dimen/psiaki_text_size_medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DogCardView">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/psiaki_dog_card_view_height</item>
+        <item name="android:layout_marginBottom">@dimen/psiaki_dog_card_view_margin_bottom</item>
+        <item name="android:layout_marginEnd">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginStart">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_dog_card_view_margin_top</item>
+    </style>
+
+    <style name="DogCardViewImage">
+        <item name="android:layout_width">@dimen/psiaki_dog_card_view_image_width</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginBottom">@dimen/psiaki_dog_card_view_image_margin_bottom</item>
+        <item name="android:layout_marginStart">@dimen/psiaki_dog_card_view_image_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_dog_card_view_image_margin_top</item>
+    </style>
+
+    <style name="DogCardViewText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/psiaki_text_size_xsmall</item>
+    </style>
+
+    <style name="DogCardViewTextDogName" parent="DogCardViewText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginEnd">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginStart">@dimen/psiaki_default_margin</item>
+        <item name="android:layout_marginBottom">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin_small</item>
+    </style>
+
+    <style name="DogCardViewTextDogAge" parent="DogCardViewText">
+        <item name="android:layout_marginStart">@dimen/psiaki_default_margin_small</item>
+    </style>
+
+    <style name="DrawerHeaderLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/psiaki_drawer_header_layout_height</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">@dimen/psiaki_default_padding</item>
+        <item name="android:paddingRight">@dimen/psiaki_default_padding</item>
+    </style>
+
+    <style name="DrawerHeaderImageView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/psiaki_default_padding</item>
+    </style>
+
+    <style name="DrawerListItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingEnd">@dimen/psiaki_default_padding</item>
+        <item name="android:paddingStart">@dimen/psiaki_default_padding</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="FragmentTabAnimalsLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="FragmentTabAnimalsRecycler">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginBottom">@dimen/psiaki_default_margin_small</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin_small</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="RatingDialogLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_horizontal|center_vertical</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    
+    <style name="RatingDialogImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    
+    <style name="RatingDialogText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/psiaki_default_margin</item>
+        <item name="android:layout_marginTop">@dimen/psiaki_default_margin</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="RatingDialogTextMessage" parent="RatingDialogText">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/psiaki_text_size_medium</item>
+    </style>
+
+    <style name="RatingDialogTextQuestion" parent="RatingDialogText">
+        <item name="android:textSize">@dimen/psiaki_text_size_large</item>
+    </style>
+
+    <style name="TinderCardFrame">
+        <item name="android:layout_width">@dimen/psiaki_tinder_card_frame_width</item>
+        <item name="android:layout_height">@dimen/psiaki_tinder_card_frame_height</item>
+        <item name="android:layout_marginBottom">@dimen/psiaki_tinder_card_frame_margin_bottom</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TinderCardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/psiaki_tinder_card_view_margin</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TinderCardImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginBottom">@dimen/psiaki_tinder_card_image_margin_bottom</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="TinderCardLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/psiaki_tinder_card_layout_height</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingEnd">@dimen/psiaki_tinder_card_layout_padding_end</item>
+        <item name="android:paddingStart">@dimen/psiaki_tinder_card_layout_padding_start</item>
+    </style>
+
+    <style name="TinderCardText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/psiaki_text_size_small</item>
+    </style>
+
+    <style name="TinderCardTextAge" parent="TinderCardText">
+       <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TinderSwipeInLayout">
+        <item name="android:layout_width">@dimen/psiaki_tinder_swipe_layout_width</item>
+        <item name="android:layout_height">@dimen/psiaki_tinder_swipe_layout_height</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TinderSwipeInImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/psiaki_tinder_swipe_image_margin_start</item>
+    </style>
+
+    <style name="TinderSwipeOutLayout">
+        <item name="android:layout_width">@dimen/psiaki_tinder_swipe_layout_width</item>
+        <item name="android:layout_height">@dimen/psiaki_tinder_swipe_layout_height</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">end</item>
+    </style>
+
+    <style name="TinderSwipeOutImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/psiaki_tinder_swipe_image_margin_end</item>
+    </style>
+
 </resources>
+

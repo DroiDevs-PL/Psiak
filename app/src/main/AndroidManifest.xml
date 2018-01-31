@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_psiaki_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".ui.main.MainActivity"
+            android:theme="@style/AppTheme.TransparentStatusBar"/>
         <activity
             android:name=".ui.addAnimal.AddAnimalActivity"
             android:label="@string/title_activity_firebase_testing"

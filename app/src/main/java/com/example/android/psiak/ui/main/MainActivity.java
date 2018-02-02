@@ -78,23 +78,33 @@ public class MainActivity
     //endregion
     private Menu menu;
 
-    private ItemRemovedListener itemRemovedListener = new ItemRemovedListener() {
-        @Override
-        public void onItemRemoved(int count) {
-            if (count == 0) {
-                dogsAvailableLayout.setVisibility(View.INVISIBLE);
-                noDogsLayout.setVisibility(View.VISIBLE);
-                noDogs.setText(R.string.no_more_results);
-            }
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
+        configureSwipeView();
+
+        configureActionDrawer();
+
+        setSupportActionBar(toolbar);
+
+        // TODO Use dependency injection here
+        mainPresenter = new MainPresenter(new FirebaseRepository(), new DogsLocalRepository(this));
+        mainPresenter.attachView(this);
+        mainPresenter.getAllDogs();
+
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
+        //TODO uncomment before release
+        GooglePlayUtils.app_launched(this);
+    }
+
+
+
+    //region UI components configuration
+    private void configureSwipeView() {
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
@@ -103,31 +113,21 @@ public class MainActivity
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
-        mSwipeView.addItemRemoveListener(itemRemovedListener);
+        mSwipeView.addItemRemoveListener(count -> {
+            if (count == 0) {
+                dogsAvailableLayout.setVisibility(View.INVISIBLE);
+                noDogsLayout.setVisibility(View.VISIBLE);
+                noDogs.setText(R.string.no_more_results);
+            }
+        });
+    }
 
-
-        // TODO Use dependency injection here
-        mainPresenter = new MainPresenter(new FirebaseRepository(), new DogsLocalRepository(this));
-        mainPresenter.attachView(this);
-        mainPresenter.getAllDogs();
-
-        setSupportActionBar(toolbar);
-
+    private void configureActionDrawer() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
-
-        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
-//todo uncomment before release
-        GooglePlayUtils.app_launched(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
     }
 
     private void configureSortSpinner() {
@@ -151,6 +151,15 @@ public class MainActivity
         });
 
     }
+    //endregion
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+
 
     //region navigationDrawer
 
@@ -258,10 +267,5 @@ public class MainActivity
 
     }
 
-    private void setupSharedPreferences(){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //TODO implment getting data from shared preferences and updating animals list
-        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-    }
     // endregion
 }

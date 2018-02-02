@@ -73,7 +73,7 @@ class MainPresenter
         }
     }
 
-    //endregion
+    //endregion`
 
     @Override
     public void setDogsData(ArrayList<DogFirebase> dogsData) {

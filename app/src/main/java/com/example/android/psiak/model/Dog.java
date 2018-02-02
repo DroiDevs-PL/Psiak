@@ -48,6 +48,8 @@ public class Dog {
   private String attitudeCats;
   @Expose
   private String profilePic;
+  @Expose
+  private String type;
 
   public String getWeight() {
     return weight;
@@ -217,6 +219,14 @@ public class Dog {
     this.profilePic = profilePic;
   }
 
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -254,7 +264,9 @@ public class Dog {
       return false;
     if (attitudeCats != null ? !attitudeCats.equals(dog.attitudeCats) : dog.attitudeCats != null)
       return false;
-    return profilePic != null ? profilePic.equals(dog.profilePic) : dog.profilePic == null;
+    if (profilePic != null ? !profilePic.equals(dog.profilePic) : dog.profilePic != null)
+      return false;
+    return type != null ? type.equals(dog.type) : dog.type == null;
   }
 
   @Override
@@ -280,33 +292,35 @@ public class Dog {
     result = 31 * result + (keeperName != null ? keeperName.hashCode() : 0);
     result = 31 * result + (attitudeCats != null ? attitudeCats.hashCode() : 0);
     result = 31 * result + (profilePic != null ? profilePic.hashCode() : 0);
+    result = 31 * result + (type != null ? type.hashCode() : 0);
     return result;
   }
 
   @Override
   public String toString() {
     return "Dog{" +
-        "weight='" + weight + '\'' +
-        ", location='" + location + '\'' +
-        ", globalId='" + globalId + '\'' +
-        ", vaccinated='" + vaccinated + '\'' +
-        ", attitudeDogs='" + attitudeDogs + '\'' +
-        ", attitudePeople='" + attitudePeople + '\'' +
-        ", size='" + size + '\'' +
-        ", dewormed='" + dewormed + '\'' +
-        ", photos=" + photos +
-        ", id='" + id + '\'' +
-        ", keeperMail='" + keeperMail + '\'' +
-        ", homelessSince='" + homelessSince + '\'' +
-        ", description='" + description + '\'' +
-        ", name='" + name + '\'' +
-        ", age='" + age + '\'' +
-        ", gender='" + gender + '\'' +
-        ", keeperPhone='" + keeperPhone + '\'' +
-        ", sterilized='" + sterilized + '\'' +
-        ", keeperName='" + keeperName + '\'' +
-        ", attitudeCats='" + attitudeCats + '\'' +
-        ", profilePic='" + profilePic + '\'' +
-        '}';
+            "weight='" + weight + '\'' +
+            ", location='" + location + '\'' +
+            ", globalId='" + globalId + '\'' +
+            ", vaccinated='" + vaccinated + '\'' +
+            ", attitudeDogs='" + attitudeDogs + '\'' +
+            ", attitudePeople='" + attitudePeople + '\'' +
+            ", size='" + size + '\'' +
+            ", dewormed='" + dewormed + '\'' +
+            ", photos=" + photos +
+            ", id='" + id + '\'' +
+            ", keeperMail='" + keeperMail + '\'' +
+            ", homelessSince='" + homelessSince + '\'' +
+            ", description='" + description + '\'' +
+            ", name='" + name + '\'' +
+            ", age='" + age + '\'' +
+            ", gender='" + gender + '\'' +
+            ", keeperPhone='" + keeperPhone + '\'' +
+            ", sterilized='" + sterilized + '\'' +
+            ", keeperName='" + keeperName + '\'' +
+            ", attitudeCats='" + attitudeCats + '\'' +
+            ", profilePic='" + profilePic + '\'' +
+            ", type='" + type + '\'' +
+            '}';
   }
 }

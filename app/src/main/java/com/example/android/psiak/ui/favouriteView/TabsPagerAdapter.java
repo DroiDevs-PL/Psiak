@@ -2,11 +2,14 @@ package com.example.android.psiak.ui.favouriteView;
 
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.android.psiak.R;
+import com.example.android.psiak.model.AnimalType;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
@@ -53,14 +56,23 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new AnimalsFragment();
+                return createFragment("dog");
             case 1:
-                return new AnimalsFragment();
+                return createFragment("cat");
             case 2:
-                return new AnimalsFragment();
+                return createFragment("other");
             default:
                 return null;
         }
+    }
+
+    @NonNull
+    private Fragment createFragment(String animalsType) {
+        AnimalsFragment fragment = new AnimalsFragment();
+        Bundle animalsToshow = new Bundle();
+        animalsToshow.putString("animalsToShow", animalsType);
+        fragment.setArguments(animalsToshow);
+        return fragment;
     }
 
     @Override

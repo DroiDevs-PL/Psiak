@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.android.psiak.R;
 import com.example.android.psiak.data.local.DogsLocalRepository;
+import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
 
 import butterknife.BindView;
@@ -39,6 +40,9 @@ public class AnimalsFragment
     private DogAdapter dogAdapter;
     private LinearLayoutManager layoutManager;
 
+
+
+
     // endregion
 
     // region View Lifecycle
@@ -53,6 +57,12 @@ public class AnimalsFragment
         favouritePresenter.attachView(this);
         RealmResults<DogFirebase> dogsCollection = favouritePresenter.getAllDogsFromLocalRepository();
 
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            String animalType = bundle.getString("animalsToShow");
+            dogsCollection = dogsCollection.where().contains("type",animalType).findAll();
+
+        }
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());

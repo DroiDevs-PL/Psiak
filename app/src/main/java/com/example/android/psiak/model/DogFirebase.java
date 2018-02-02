@@ -40,6 +40,8 @@ public class DogFirebase implements RealmModel{
     private String weight;
     private String age;
 
+    private String type;
+
     private String profilePic;
     private RealmList<Photo> photos;
 
@@ -179,6 +181,14 @@ public class DogFirebase implements RealmModel{
 
     public boolean isFavourite() { return isFavourite; }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     // endregion
 
     // region Setters
@@ -199,8 +209,9 @@ public class DogFirebase implements RealmModel{
 
         DogFirebase that = (DogFirebase) o;
 
-        if (!id.equals(that.id)) return false;
-        if (!name.equals(that.name)) return false;
+        if (isFavourite != that.isFavourite) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null)
             return false;
@@ -229,19 +240,16 @@ public class DogFirebase implements RealmModel{
             return false;
         if (weight != null ? !weight.equals(that.weight) : that.weight != null) return false;
         if (age != null ? !age.equals(that.age) : that.age != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
         if (profilePic != null ? !profilePic.equals(that.profilePic) : that.profilePic != null)
             return false;
         return photos != null ? photos.equals(that.photos) : that.photos == null;
     }
 
-    // endregion
-
-    // region Equals Implementation
-
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (size != null ? size.hashCode() : 0);
@@ -258,14 +266,12 @@ public class DogFirebase implements RealmModel{
         result = 31 * result + (sterilized != null ? sterilized.hashCode() : 0);
         result = 31 * result + (weight != null ? weight.hashCode() : 0);
         result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (profilePic != null ? profilePic.hashCode() : 0);
         result = 31 * result + (photos != null ? photos.hashCode() : 0);
+        result = 31 * result + (isFavourite ? 1 : 0);
         return result;
     }
-
-    // endregion
-
-    // region HashCode Implementation
 
     @Override
     public String toString() {
@@ -283,15 +289,18 @@ public class DogFirebase implements RealmModel{
                 ", keeperName='" + keeperName + '\'' +
                 ", keeperMail='" + keeperMail + '\'' +
                 ", keeperPhone='" + keeperPhone + '\'' +
-                ", vaccinated='" + vaccinated + '\'' +
-                ", dewormed='" + dewormed + '\'' +
-                ", sterilized='" + sterilized + '\'' +
+                ", vaccinated=" + vaccinated +
+                ", dewormed=" + dewormed +
+                ", sterilized=" + sterilized +
                 ", weight='" + weight + '\'' +
                 ", age='" + age + '\'' +
+                ", type='" + type + '\'' +
                 ", profilePic='" + profilePic + '\'' +
-                ", photos='" + photos + '\'' +
+                ", photos=" + photos +
+                ", isFavourite=" + isFavourite +
                 '}';
     }
+
 
     // endregion
 
@@ -322,6 +331,7 @@ public class DogFirebase implements RealmModel{
         private String weight;
         private String age;
 
+        private String type;
         private String profilePic;
         private List<String> photos;
 
@@ -425,6 +435,11 @@ public class DogFirebase implements RealmModel{
 
         public DogBuilder isFavourite(boolean isFavourite) {
             this.isFavourite = isFavourite;
+            return this;
+        }
+
+        private DogBuilder type(String type){
+            this.type = type;
             return this;
         }
 

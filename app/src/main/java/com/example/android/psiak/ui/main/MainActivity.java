@@ -111,7 +111,7 @@ public class MainActivity
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
                         .setPaddingTop(20)
-                        .setRelativeScale(0.05f)
+                        .setRelativeScale(0.2f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
@@ -224,8 +224,7 @@ public class MainActivity
 
     @Override
     public void showAllDogs(List<DogFirebase> dogs) {
-        Toast.makeText(getBaseContext(), "Firebase count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(this, "Firebase count " + " " + dogs.size(), Toast.LENGTH_SHORT).show();
         dogsAvailableLayout.setVisibility(View.VISIBLE);
         noDogsLayout.setVisibility(View.INVISIBLE);
 
@@ -234,7 +233,7 @@ public class MainActivity
             TinderCard.SwipeCallback swipeCallback = () -> mainPresenter.addNewFavouriteDog(dogFirebase);
             tinderCard.setSwipeCallback(swipeCallback);
             mSwipeView.addView(tinderCard);
-            Timber.d("onResponse: " + dogFirebase.getName());
+            Timber.d(String.format("onResponse: %s", dogFirebase.getName()));
         }
     }
 

@@ -28,7 +28,6 @@ import timber.log.Timber;
 public class TinderCard {
 
     public interface SwipeCallback{
-
         void onSwipeIn();
     }
 
@@ -70,7 +69,7 @@ public class TinderCard {
                 .error(R.drawable.ic_doggy)
                 .placeholder(R.drawable.ic_doggy)
                 .into(profileImageView);
-        nameAgeTxt.setText(mDogFirebase.getName() + ", " + mDogFirebase.getAge());
+        nameAgeTxt.setText(String.format("%s, %s", mDogFirebase.getName(), mDogFirebase.getAge()));
         locationNameTxt.setText(mDogFirebase.getLocation());
     }
 

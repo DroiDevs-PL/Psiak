@@ -10,8 +10,6 @@ import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -84,15 +82,16 @@ class MainPresenter
 
     @Override
     public void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData) {
-        Iterator<DogFirebase> dogsToModify;
-        List<DogFirebase> dogsToShow = new ArrayList<DogFirebase>();
-        for (dogsToModify = dogsData.iterator(); dogsToModify.hasNext(); ) {
-            DogFirebase dogFromNetwork = dogsToModify.next();
-            if (localRepository.checkIfEmpty(dogFromNetwork.getId())) {
-                dogsToShow.add(dogFromNetwork);
-            }
-        }
-        view.showAllDogs(dogsToShow);
+        //todo zwraca 0 wyników
+//        Iterator<DogFirebase> dogsToModify;
+//        List<DogFirebase> dogsToShow = new ArrayList<>();
+//        for (dogsToModify = dogsData.iterator(); dogsToModify.hasNext(); ) {
+//            DogFirebase dogFromNetwork = dogsToModify.next();
+//            if (localRepository.checkIfEmpty(dogFromNetwork.getId())) {
+//                dogsToShow.add(dogFromNetwork);
+//            }
+//        }
+        view.showAllDogs(dogsData);
     }
 
 

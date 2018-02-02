@@ -77,8 +77,8 @@ public class DogAdapter
         holder.dogAge.setText(dogFirebase.getAge());
         Picasso.with(context)
                 .load(dogFirebase.getProfilePic())
-                .error(R.drawable.ic_doggy)
-                .placeholder(R.drawable.ic_doggy)
+                .error(R.drawable.dog_placeholder)
+                .placeholder(R.drawable.dog_placeholder)
                 .into(holder.dogImage);
     }
 

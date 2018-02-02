@@ -66,8 +66,8 @@ public class TinderCard {
     private void onResolved() {
         Picasso.with(mContext)
                 .load(mDogFirebase.getProfilePic())
-                .error(R.drawable.ic_doggy)
-                .placeholder(R.drawable.ic_doggy)
+                .error(R.drawable.dog_placeholder)
+                .placeholder(R.drawable.dog_placeholder)
                 .into(profileImageView);
         nameAgeTxt.setText(String.format("%s, %s", mDogFirebase.getName(), mDogFirebase.getAge()));
         locationNameTxt.setText(mDogFirebase.getLocation());

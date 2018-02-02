@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 public class MainActivity
@@ -71,6 +73,10 @@ public class MainActivity
 
     //ButterKnife don't work with menu items
     Spinner sortSpinner;
+    @BindView(R.id.rejectBtn)
+    ImageButton rejectBtn;
+    @BindView(R.id.acceptBtn)
+    ImageButton acceptBtn;
     private Menu menu;
 
     //endregion
@@ -111,7 +117,7 @@ public class MainActivity
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
                         .setPaddingTop(20)
-                        .setRelativeScale(0.2f)
+                        .setRelativeScale(0.05f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
@@ -167,7 +173,7 @@ public class MainActivity
                 Snackbar.make(drawerLayout, "Główna", Snackbar.LENGTH_LONG).show();
                 break;
             case R.id.settings_nav_item:
-                intent = new Intent(MainActivity.this,SettingsActivity.class);
+                intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.favourites_nav_item:
@@ -186,7 +192,6 @@ public class MainActivity
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 
     //endregion
@@ -253,15 +258,27 @@ public class MainActivity
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Log.d("MainActivity.class","Preference changed " + key);
-        if(key.equals(getString(R.string.animal_preference_key))) {
+        Log.d("MainActivity.class", "Preference changed " + key);
+        if (key.equals(getString(R.string.animal_preference_key))) {
             String animal_type = sharedPreferences.getString(key, getString(R.string.animal_default_value));
-            String shelter_name = sharedPreferences.getString(getString(R.string.shelter_preference_key),getString(R.string.shelter_default_value));
+            String shelter_name = sharedPreferences.getString(getString(R.string.shelter_preference_key), getString(R.string.shelter_default_value));
             //TODO implement presenter call for animal type filtering
             mSwipeView.removeAllViews();
 
-        }else if(key.equals(getString(R.string.shelter_preference_key))){
+        } else if (key.equals(getString(R.string.shelter_preference_key))) {
             //TODO implement presenter call for shelter change
+        }
+    }
+
+    @OnClick({R.id.rejectBtn, R.id.acceptBtn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rejectBtn:
+                mSwipeView.doSwipe(false);
+                break;
+            case R.id.acceptBtn:
+                mSwipeView.doSwipe(true);
+                break;
         }
     }
     // endregion

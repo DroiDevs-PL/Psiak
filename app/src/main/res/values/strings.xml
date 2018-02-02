@@ -100,4 +100,11 @@
     <string name="animal_default_value" translatable="false">psy</string>
     <string name="shelter_default_value" translatable="false">Warszawa</string>
 
+
+    <string name="image_view_animal_profile">imageAnimalProfile</string>
+    <string name="tv_description">Description</string>
+    <string name="tinder_card_image">tinderCardImageDescription</string>
+    <string name="tinder_swipe_in_image">tinderInImageDescription</string>
+    <string name="tinder_swipe_out_image">tinderOutImageDescription</string>
+
 </resources>

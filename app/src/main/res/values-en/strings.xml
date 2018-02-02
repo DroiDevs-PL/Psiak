@@ -57,5 +57,11 @@
     <string name="rate">Oceń aplikację</string>
     <string name="sample_text">Json do wyplucia</string>
     <string name="info_no_data">Brak danych</string>
+    <string name="choose_animal">Choose default animal type</string>
+    <string name="choose_animal_summary">Which animal type should be display by default</string>
+    <string name="choose">Choose</string>
+    <string name="shelter">Shelter</string>
+    <string name="choose_shelter">Choose shelter</string>
+
 
 </resources>

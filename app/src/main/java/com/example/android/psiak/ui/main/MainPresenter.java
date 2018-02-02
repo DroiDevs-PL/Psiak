@@ -1,5 +1,6 @@
 package com.example.android.psiak.ui.main;
 
+import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.data.network.SortingStrategyFactory;
 import com.example.android.psiak.model.DogFirebase;
@@ -48,7 +49,7 @@ class MainPresenter
     }
 
     @Override
-    public void getAllDogs() {
+    public void  getAllDogs() {
         ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
 
         if (dogsData.size() > 0 && isViewAttached()) {
@@ -65,6 +66,27 @@ class MainPresenter
         Collections.sort(dogsData, SortingStrategyFactory.getStrategyForField(fieldName));
         if(isViewAttached()){
             setDogsWithoutDuplicates(dogsData);
+        }
+    }
+
+    @Override
+    public void getAnimalsForShelter(AnimalType animalType,String shelterName) {
+        //TODO implment filtering by shelter
+    }
+
+    @Override
+    public void getAllAnimals(AnimalType animalType) {
+
+        switch(animalType){
+            case DOGS:
+                getAllDogs();
+                break;
+            case CATS:
+                //TODO implement getting all cats
+                break;
+            case OTHERS:
+                //TODO: implement getting all others
+                break;
         }
     }
 
@@ -111,5 +133,16 @@ class MainPresenter
             }
         }
         view.showAllDogs(dogsToShow);
+    }
+
+    @Override
+    public void loadAnimals(AnimalType animalType, String shelter_name) {
+        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedAnimals(animalType,shelter_name);
+
+        if (dogsData.size() > 0 && isViewAttached()) {
+            setDogsWithoutDuplicates(dogsData);
+        } else {
+            firebaseRepository.getAllObjects();
+        }
     }
 }

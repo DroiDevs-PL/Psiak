@@ -6,7 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
     </style>
+
 
     <style name="AppTheme.TransparentStatusBar">
         <item name="android:windowTranslucentStatus">true</item>
@@ -24,5 +26,6 @@
     <style name="AppTheme.Splash" parent="Theme.AppCompat.NoActionBar" >
         <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
+
 
 </resources>

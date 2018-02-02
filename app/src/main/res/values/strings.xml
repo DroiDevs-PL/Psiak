@@ -89,4 +89,15 @@
     <string name="lorem_placeholder_medium">Lorem ipsum dolor sit amet, consectetur dolore magna alea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
     <string name="lorem_placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.!</string>
 
+    <!--Preferences-->
+    <string name="choose_animal">Domyślny gatunek</string>
+    <string name="choose_animal_summary">Jakie zwierzęta mają być domyślnie wyświetlane</string>
+    <string name="choose">Wybierz</string>
+    <string name="shelter">Schronisko</string>
+    <string name="choose_shelter">Wybierz schronisko</string>
+    <string name="animal_preference_key" translatable="false">animal_preference</string>
+    <string name="shelter_preference_key" translatable="false">shelter_preference</string>
+    <string name="animal_default_value" translatable="false">psy</string>
+    <string name="shelter_default_value" translatable="false">Warszawa</string>
+
 </resources>

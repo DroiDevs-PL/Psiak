@@ -1,6 +1,7 @@
 package com.example.android.psiak.ui.main;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -10,7 +11,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,13 +25,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.psiak.R;
-import com.example.android.psiak.utils.GooglePlayUtils;
 import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.FirebaseRepository;
+import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.aboutUs.AboutUsActivity;
 import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 import com.example.android.psiak.ui.favouriteView.FavouriteActivity;
+import com.example.android.psiak.ui.settings.SettingsActivity;
+import com.example.android.psiak.utils.GooglePlayUtils;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.listeners.ItemRemovedListener;
@@ -41,7 +46,8 @@ import timber.log.Timber;
 
 public class MainActivity
         extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        MainContract.View, SharedPreferences.OnSharedPreferenceChangeListener {
 
 
     //region ui components declarations
@@ -112,15 +118,22 @@ public class MainActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navList.setNavigationItemSelectedListener(this);
+
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
 //todo uncomment before release
         GooglePlayUtils.app_launched(this);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+    }
 
     private void configureSortSpinner() {
         final MenuItem item = menu.findItem(R.id.sort);
         sortSpinner = (Spinner) item.getActionView();
-        ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this,R.array.sort_criteria_array,android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this, R.array.sort_criteria_array, android.R.layout.simple_spinner_item);
         sortAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sortSpinner.setAdapter(sortAdapter);
         sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -128,7 +141,7 @@ public class MainActivity
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedItem = sortSpinner.getSelectedItem().toString();
                 mSwipeView.removeAllViews();
-               mainPresenter.getSortedDogs(selectedItem);
+                mainPresenter.getSortedDogs(selectedItem);
             }
 
             @Override
@@ -143,24 +156,35 @@ public class MainActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
+        int menuItemId = item.getItemId();
+        Intent intent;
 
-        if (id == R.id.homepage_nav_item) {
-            Snackbar.make(drawerLayout, "Główna", Snackbar.LENGTH_LONG).show();
-        } else if (id == R.id.settings_nav_item) {
-            Snackbar.make(drawerLayout, "Settings", Snackbar.LENGTH_LONG).show();
-        } else if (id == R.id.favourites_nav_item) {
-            Intent intent = new Intent(MainActivity.this, FavouriteActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.shelters_nav_item) {
-            Snackbar.make(drawerLayout, "Schroniska", Snackbar.LENGTH_LONG).show();
-        } else if (id == R.id.about_nav_item) {
-            Intent aboutIntent = new Intent(MainActivity.this, AboutUsActivity.class);
-            startActivity(aboutIntent);
+        switch (menuItemId) {
+            case R.id.homepage_nav_item:
+                Snackbar.make(drawerLayout, "Główna", Snackbar.LENGTH_LONG).show();
+                break;
+            case R.id.settings_nav_item:
+                intent = new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.favourites_nav_item:
+                intent = new Intent(MainActivity.this, FavouriteActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.shelters_nav_item:
+                Snackbar.make(drawerLayout, "Schroniska", Snackbar.LENGTH_LONG).show();
+                break;
+            case R.id.about_nav_item:
+                Intent aboutIntent = new Intent(MainActivity.this, AboutUsActivity.class);
+                startActivity(aboutIntent);
+                break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
     //endregion
 
@@ -202,7 +226,7 @@ public class MainActivity
         dogsAvailableLayout.setVisibility(View.VISIBLE);
         noDogsLayout.setVisibility(View.INVISIBLE);
 
-        for(final DogFirebase dogFirebase : dogs) {
+        for (final DogFirebase dogFirebase : dogs) {
             TinderCard tinderCard = new TinderCard(MainActivity.this, dogFirebase, mSwipeView);
             TinderCard.SwipeCallback swipeCallback = () -> mainPresenter.addNewFavouriteDog(dogFirebase);
             tinderCard.setSwipeCallback(swipeCallback);
@@ -220,5 +244,24 @@ public class MainActivity
         Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        Log.d("MainActivity.class","Preference changed " + key);
+        if(key.equals(getString(R.string.animal_preference_key))) {
+            String animal_type = sharedPreferences.getString(key, getString(R.string.animal_default_value));
+            String shelter_name = sharedPreferences.getString(getString(R.string.shelter_preference_key),getString(R.string.shelter_default_value));
+            //TODO implement presenter call for animal type filtering
+            mSwipeView.removeAllViews();
+        }else if(key.equals(getString(R.string.shelter_preference_key))){
+            //TODO implement presenter call for shelter change
+        }
+
+    }
+
+    private void setupSharedPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //TODO implment getting data from shared preferences and updating animals list
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
     // endregion
 }

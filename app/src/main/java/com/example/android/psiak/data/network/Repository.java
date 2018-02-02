@@ -1,5 +1,6 @@
 package com.example.android.psiak.data.network;
 
+import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.example.android.psiak.model.DogFirebase;
 
@@ -76,6 +77,7 @@ public interface Repository {
 
         ArrayList<DogFirebase> getCachedDogs();
 
+        ArrayList<DogFirebase> getCachedAnimals(AnimalType animalType, String shelter_name);
     }
 
     interface LocalRepository {

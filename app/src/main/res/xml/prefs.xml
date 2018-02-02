@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <ListPreference
+        android:key="@string/animal_preference_key"
+        android:title="@string/choose_animal"
+        android:summary="@string/choose_animal_summary"
+        android:entries="@array/animal_types"
+        android:entryValues="@array/animal_types"
+        android:dialogTitle="@string/choose"
+        android:defaultValue="1"
+        />
+
+    <ListPreference
+        android:key="@string/shelter_preference_key"
+        android:title="@string/shelter"
+        android:summary="@string/choose_shelter"
+        android:entries="@array/shelters"
+        android:entryValues="@array/animal_types"
+        android:dialogTitle="@string/choose"
+        android:defaultValue="1"
+
+        />
+</PreferenceScreen>

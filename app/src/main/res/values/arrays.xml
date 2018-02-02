@@ -7,4 +7,14 @@
         <item>wielkość</item>
         <item>gatunek</item>
     </string-array>
+    <string-array name="animal_types">
+        <item>psy</item>
+        <item>koty</item>
+        <item>inne</item>
+    </string-array>
+    <string-array name="shelters">
+        <item>Warszawa</item>
+        <item>Legnica</item>
+        <item>Gdańsk</item>
+    </string-array>
 </resources>

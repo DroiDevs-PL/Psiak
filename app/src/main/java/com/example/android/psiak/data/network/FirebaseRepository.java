@@ -1,5 +1,6 @@
 package com.example.android.psiak.data.network;
 
+import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.google.firebase.database.DataSnapshot;
@@ -152,6 +153,11 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     @Override
     public ArrayList<DogFirebase> getCachedDogs() {
         return dogs;
+    }
+
+    @Override
+    public ArrayList<DogFirebase> getCachedAnimals(AnimalType animalType, String shelter_name) {
+        return null;
     }
 
     // endregion

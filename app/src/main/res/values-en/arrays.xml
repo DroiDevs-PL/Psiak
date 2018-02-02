@@ -7,4 +7,9 @@
         <item>size</item>
         <item>kind</item>
     </string-array>
+    <string-array name="animal_types">
+        <item>dogs</item>
+        <item>cats</item>
+        <item>others</item>
+    </string-array>
 </resources>

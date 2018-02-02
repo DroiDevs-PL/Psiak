@@ -1,5 +1,6 @@
 package com.example.android.psiak.ui.main;
 
+import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.base.MvpPresenter;
 import com.example.android.psiak.ui.base.MvpView;
@@ -20,10 +21,14 @@ public interface MainContract {
     interface Presenter<V extends MvpView> extends MvpPresenter<V> {
         void getAllDogs();
         void getSortedDogs(String fieldName);
+        void getAnimalsForShelter(AnimalType animalType,String shelterName);
+        void getAllAnimals(AnimalType animalType);
         void addNewFavouriteDog(DogFirebase dogFirebase);
         void addNewDog(DogFirebase dogFirebase);
 
         String generateUniqueID();
         void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData);
+
+        void loadAnimals(AnimalType animalType, String shelter_name);
     }
 }

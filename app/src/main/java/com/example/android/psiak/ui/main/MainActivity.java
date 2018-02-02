@@ -27,7 +27,7 @@ import android.widget.Toast;
 import com.example.android.psiak.R;
 import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.FirebaseRepository;
-import com.example.android.psiak.model.AnimalType;
+import com.example.android.psiak.model.Animal;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.aboutUs.AboutUsActivity;
 import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
@@ -36,7 +36,6 @@ import com.example.android.psiak.ui.settings.SettingsActivity;
 import com.example.android.psiak.utils.GooglePlayUtils;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
-import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 
 import java.util.List;
 
@@ -72,11 +71,11 @@ public class MainActivity
 
     //ButterKnife don't work with menu items
     Spinner sortSpinner;
-
-    private MainPresenter mainPresenter;
+    private Menu menu;
 
     //endregion
-    private Menu menu;
+
+    private MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +83,11 @@ public class MainActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-
         configureSwipeView();
 
-        configureActionDrawer();
-
         setSupportActionBar(toolbar);
+
+        configureActionDrawer();
 
         // TODO Use dependency injection here
         mainPresenter = new MainPresenter(new FirebaseRepository(), new DogsLocalRepository(this));
@@ -101,7 +99,11 @@ public class MainActivity
         GooglePlayUtils.app_launched(this);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+    }
 
     //region UI components configuration
     private void configureSwipeView() {
@@ -152,14 +154,6 @@ public class MainActivity
 
     }
     //endregion
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
-    }
-
-
 
     //region navigationDrawer
 
@@ -245,6 +239,11 @@ public class MainActivity
     }
 
     @Override
+    public void showAnimals(List<Animal> animals) {
+        //TODO implment showing animals in cards, like in @see MainActivity#showAllDogs method
+    }
+
+    @Override
     public void showMessage(int messageId) {
     }
 
@@ -261,11 +260,10 @@ public class MainActivity
             String shelter_name = sharedPreferences.getString(getString(R.string.shelter_preference_key),getString(R.string.shelter_default_value));
             //TODO implement presenter call for animal type filtering
             mSwipeView.removeAllViews();
+
         }else if(key.equals(getString(R.string.shelter_preference_key))){
             //TODO implement presenter call for shelter change
         }
-
     }
-
     // endregion
 }

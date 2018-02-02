@@ -1,10 +1,10 @@
 package com.example.android.psiak.ui.main;
 
-import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.data.network.SortingStrategyFactory;
+import com.example.android.psiak.model.Animal;
+import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
 import com.example.android.psiak.ui.base.BasePresenter;
 import com.google.firebase.database.DatabaseException;
 
@@ -18,13 +18,7 @@ import timber.log.Timber;
 
 class MainPresenter
         extends BasePresenter<MainContract.View>
-        implements MainContract.Presenter<MainContract.View> , FirebaseDataListener {
-
-        private static final String TAG = AddAnimalPresenter.class.toString();
-
-    /**
-     * Repository object that will be used with this presenter
-     */
+        implements MainContract.Presenter<MainContract.View>, FirebaseDataListener {
 
     Repository.Firebase firebaseRepository;
     Repository.LocalRepository localRepository;
@@ -32,7 +26,8 @@ class MainPresenter
     /**
      * Initialize FirebasePresenter with Firebase repository. After initialization FirebasePresenter object will be set as a
      * data listener object for callback from Firebase repository
-     * @param repository Repository.Firebase object that will be used with this Presenter
+     *
+     * @param repository      Repository.Firebase object that will be used with this Presenter
      * @param localRepository Repository.LocalRepository object that will be used with this Presenter
      */
 
@@ -42,14 +37,9 @@ class MainPresenter
         this.firebaseRepository.setDataListner(this);
     }
 
+    //region old methods from Presenter interface
     @Override
-    public String generateUniqueID() {
-        String uniqueID = firebaseRepository.generateUniqueID();
-        return uniqueID;
-    }
-
-    @Override
-    public void  getAllDogs() {
+    public void getAllDogs() {
         ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
 
         if (dogsData.size() > 0 && isViewAttached()) {
@@ -59,25 +49,63 @@ class MainPresenter
         }
     }
 
-
     @Override
     public void getSortedDogs(String fieldName) {
         ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
         Collections.sort(dogsData, SortingStrategyFactory.getStrategyForField(fieldName));
-        if(isViewAttached()){
+        if (isViewAttached()) {
             setDogsWithoutDuplicates(dogsData);
         }
     }
 
     @Override
-    public void getAnimalsForShelter(AnimalType animalType,String shelterName) {
+    public void addNewFavouriteDog(DogFirebase dogFirebase) {
+
+        dogFirebase.setFavourite(true);
+        localRepository.add(dogFirebase);
+
+        Timber.d("Save " + dogFirebase.getName());
+
+        RealmResults<DogFirebase> dogs = localRepository.getAll();
+
+        for (DogFirebase d : dogs) {
+            Timber.d(d.toString());
+        }
+    }
+
+    //endregion
+
+    @Override
+    public void setDogsData(ArrayList<DogFirebase> dogsData) {
+        if (isViewAttached()) {
+            setDogsWithoutDuplicates(dogsData);
+        }
+    }
+
+    @Override
+    public void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData) {
+        Iterator<DogFirebase> dogsToModify;
+        List<DogFirebase> dogsToShow = new ArrayList<DogFirebase>();
+        for (dogsToModify = dogsData.iterator(); dogsToModify.hasNext(); ) {
+            DogFirebase dogFromNetwork = dogsToModify.next();
+            if (localRepository.checkIfEmpty(dogFromNetwork.getId())) {
+                dogsToShow.add(dogFromNetwork);
+            }
+        }
+        view.showAllDogs(dogsToShow);
+    }
+
+
+    //region new methods from Presenter interface
+    @Override
+    public void getAnimalsForShelter(AnimalType animalType, String shelterName) {
         //TODO implment filtering by shelter
     }
 
     @Override
     public void getAllAnimals(AnimalType animalType) {
 
-        switch(animalType){
+        switch (animalType) {
             case DOGS:
                 getAllDogs();
                 break;
@@ -91,58 +119,21 @@ class MainPresenter
     }
 
     @Override
-    public void addNewFavouriteDog(DogFirebase dogFirebase) {
+    public void addNewFavouriteAnimal(Animal animal) {
 
-        dogFirebase.setFavourite(true);
-        localRepository.add(dogFirebase);
-
-        Timber.d("Save "  + dogFirebase.getName());
-
-        RealmResults<DogFirebase> dogs = localRepository.getAll();
-
-        for(DogFirebase d : dogs) {
-            Timber.d(d.toString());
-        }
     }
 
     @Override
-    public void addNewDog(DogFirebase dogFirebase) {
-        firebaseRepository.addNew(dogFirebase);
-    }
+    public void getAllAnimalsForShelter(String shelterName) {
 
-    @Override
-    public void setDogsData(ArrayList<DogFirebase> dogsData) {
-        if (isViewAttached()) {
-            setDogsWithoutDuplicates(dogsData);
-        }
     }
+    //endregion
+
 
     @Override
     public void setErrorMessage(DatabaseException databaseException) {
         view.showErrorMessage(databaseException.getMessage());
     }
 
-    @Override
-    public void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData) {
-        Iterator<DogFirebase> dogsToModify;
-        List<DogFirebase> dogsToShow = new ArrayList<DogFirebase>();
-        for (dogsToModify = dogsData.iterator(); dogsToModify.hasNext(); ) {
-            DogFirebase dogFromNetwork = dogsToModify.next();
-            if (localRepository.checkIfEmpty(dogFromNetwork.getId())) {
-               dogsToShow.add(dogFromNetwork);
-            }
-        }
-        view.showAllDogs(dogsToShow);
-    }
 
-    @Override
-    public void loadAnimals(AnimalType animalType, String shelter_name) {
-        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedAnimals(animalType,shelter_name);
-
-        if (dogsData.size() > 0 && isViewAttached()) {
-            setDogsWithoutDuplicates(dogsData);
-        } else {
-            firebaseRepository.getAllObjects();
-        }
-    }
 }

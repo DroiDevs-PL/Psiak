@@ -15,17 +15,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimaryLight">
 
         <com.mindorks.placeholderview.SwipePlaceHolderView
             android:id="@+id/swipeView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/psiaki_default_margin_large"
             app:layout_constraintBottom_toTopOf="@id/buttonPanel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_fileName="like.json"
+            app:lottie_loop="false"
+            app:lottie_autoPlay="false"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/buttonPanel"
@@ -35,7 +49,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:paddingStart="@dimen/psiaki_default_padding"
             android:paddingEnd="@dimen/psiaki_default_padding"
-            android:layout_marginBottom="60dp"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             >
@@ -67,6 +80,5 @@
         </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
-
     <include layout="@layout/no_dogs"/>
 </android.support.constraint.ConstraintLayout>

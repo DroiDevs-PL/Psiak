@@ -1,7 +1,9 @@
 package com.example.android.psiak.ui.main;
 
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -14,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +28,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.android.psiak.R;
 import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.FirebaseRepository;
@@ -77,7 +81,10 @@ public class MainActivity
     ImageButton rejectBtn;
     @BindView(R.id.acceptBtn)
     ImageButton acceptBtn;
+    @BindView(R.id.animation_view)
+    LottieAnimationView animationView;
     private Menu menu;
+    ValueAnimator likeAnimator;
 
     //endregion
 
@@ -94,6 +101,7 @@ public class MainActivity
         setSupportActionBar(toolbar);
 
         configureActionDrawer();
+        setUpAnimation();
 
         // TODO Use dependency injection here
         mainPresenter = new MainPresenter(new FirebaseRepository(), new DogsLocalRepository(this));
@@ -113,9 +121,17 @@ public class MainActivity
 
     //region UI components configuration
     private void configureSwipeView() {
+        mSwipeView = findViewById(R.id.swipeView);
+
+        int bottomMargin = TinderCard.dpToPx(165);
+        Point windowSize = TinderCard.getDisplaySize(getWindowManager());
+
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
+                        .setViewWidth(windowSize.x - 30)
+                                               .setViewHeight(windowSize.y - bottomMargin)
+                                       .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
                         .setRelativeScale(0.05f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
@@ -278,8 +294,24 @@ public class MainActivity
                 break;
             case R.id.acceptBtn:
                 mSwipeView.doSwipe(true);
+                startLikeAnimation();
                 break;
         }
     }
+
+    private void startLikeAnimation() {
+        if (animationView.getProgress() == 0f) {
+            likeAnimator.start();
+        } else {
+            animationView.setProgress(0f);
+        }
+    }
     // endregion
+
+    private void setUpAnimation() {
+        likeAnimator = ValueAnimator.ofFloat(0f, 1f).setDuration(750);
+        likeAnimator.addUpdateListener((ValueAnimator valueAnimator) -> animationView.setProgress((Float) valueAnimator.getAnimatedValue()));
+
+    }
 }
+

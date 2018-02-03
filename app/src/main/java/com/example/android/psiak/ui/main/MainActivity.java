@@ -1,7 +1,10 @@
 package com.example.android.psiak.ui.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -14,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -78,6 +82,7 @@ public class MainActivity
     @BindView(R.id.acceptBtn)
     ImageButton acceptBtn;
     private Menu menu;
+    private Context mContext;
 
     //endregion
 
@@ -113,10 +118,18 @@ public class MainActivity
 
     //region UI components configuration
     private void configureSwipeView() {
+        mSwipeView = (SwipePlaceHolderView)findViewById(R.id.swipeView);
+        mContext = getApplicationContext();
+
+        int bottomMargin = TinderCard.dpToPx(160);
+        Point windowSize = TinderCard.getDisplaySize(getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
-                        .setPaddingTop(20)
+                        .setViewWidth(windowSize.x)
+                        .setViewHeight(windowSize.y - bottomMargin)
+                        .setViewGravity(Gravity.TOP)
+                        .setPaddingTop(30)
                         .setRelativeScale(0.05f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
@@ -280,6 +293,9 @@ public class MainActivity
                 mSwipeView.doSwipe(true);
                 break;
         }
+    }
+    public static int dpToPx(int dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
     // endregion
 }

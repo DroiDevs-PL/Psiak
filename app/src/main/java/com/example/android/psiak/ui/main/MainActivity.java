@@ -328,6 +328,7 @@ public class MainActivity
         switch (view.getId()) {
             case R.id.rejectBtn:
                 mSwipeView.doSwipe(false);
+                startDisiikeAnimation();
                 break;
             case R.id.acceptBtn:
                 mSwipeView.doSwipe(true);
@@ -336,7 +337,13 @@ public class MainActivity
         }
     }
 
+    private void startDisiikeAnimation() {//todo after a second view in layout or try with         animationView.setAnimation("dislike.json"); (overlapping))
+//        animator.start();
+//        animationView.cancelAnimation();
+    }
+
     private void startLikeAnimation() {
+        animationView.setAnimation("like.json");
         animator.start();
         animationView.cancelAnimation();
     }

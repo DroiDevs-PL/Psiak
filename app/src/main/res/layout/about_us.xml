@@ -1,47 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
-    tools:ignore="ContentDescription">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.android.psiak.ui.favouriteView.FavouriteActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/about_us_logo_iv"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/psiaki_default_margin"
-            android:layout_marginTop="@dimen/app_bar_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dog_brown"/>
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"/>
 
-        <TextView
-            android:id="@+id/about_us_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/psiaki_default_margin"
-            android:gravity="center"
-            android:text="@string/lorem_placeholder_short"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/about_us_logo_iv"/>
 
-        <TextView
-            android:id="@+id/about_us_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/psiaki_default_margin"
-            android:text="@string/lorem_placeholder_long"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/about_us_title"/>
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+    </android.support.design.widget.AppBarLayout>
+
+    <fragment
+        android:id="@+id/activity_about_us"
+        android:name="com.example.android.psiak.ui.aboutUs.AboutUsFragment"
+        android:layout_below="@id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

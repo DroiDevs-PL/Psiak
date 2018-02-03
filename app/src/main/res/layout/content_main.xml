@@ -18,23 +18,16 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/colorPrimaryLight">
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="20dp"
-            app:layout_constraintGuide_percent="0.1" />
-
         <com.mindorks.placeholderview.SwipePlaceHolderView
             android:id="@+id/swipeView"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@+id/buttonPanel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline2">
+            app:layout_constraintTop_toTopOf="parent">
 
         </com.mindorks.placeholderview.SwipePlaceHolderView>
 

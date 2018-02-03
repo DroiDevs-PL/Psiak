@@ -1,5 +1,6 @@
 package com.example.android.psiak.ui.main;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -84,7 +85,7 @@ public class MainActivity
     @BindView(R.id.animation_view)
     LottieAnimationView animationView;
     private Menu menu;
-    ValueAnimator likeAnimator;
+    ValueAnimator animator;
 
     //endregion
 
@@ -113,6 +114,44 @@ public class MainActivity
         GooglePlayUtils.app_launched(this);
     }
 
+    private void setUpAnimation() {
+        animationView.addAnimatorUpdateListener((animation) -> {
+            // Do something.
+        });
+        animationView.playAnimation();
+        if (animationView.isAnimating()) {
+            // Do something.
+        }
+        animationView.setProgress(0.5f);
+        // Custom animation speed or duration.
+        animator = ValueAnimator.ofFloat(0f, 1f)
+                .setDuration(500);
+        animator.addUpdateListener(animation -> {
+            animationView.setProgress((Float) animation.getAnimatedValue());
+        });
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+                animationView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                animationView.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+                animationView.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -130,12 +169,10 @@ public class MainActivity
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
                         .setViewWidth(windowSize.x - 30)
-                                               .setViewHeight(windowSize.y - bottomMargin)
-                                       .setViewGravity(Gravity.TOP)
+                        .setViewHeight(windowSize.y - bottomMargin)
+                        .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
-                        .setRelativeScale(0.05f)
-                        .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
-                        .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
+                        .setRelativeScale(0.05f));
 
         mSwipeView.addItemRemoveListener(count -> {
             if (count == 0) {
@@ -300,18 +337,9 @@ public class MainActivity
     }
 
     private void startLikeAnimation() {
-        if (animationView.getProgress() == 0f) {
-            likeAnimator.start();
-        } else {
-            animationView.setProgress(0f);
-        }
+        animator.start();
+        animationView.cancelAnimation();
     }
     // endregion
-
-    private void setUpAnimation() {
-        likeAnimator = ValueAnimator.ofFloat(0f, 1f).setDuration(750);
-        likeAnimator.addUpdateListener((ValueAnimator valueAnimator) -> animationView.setProgress((Float) valueAnimator.getAnimatedValue()));
-
-    }
 }
 

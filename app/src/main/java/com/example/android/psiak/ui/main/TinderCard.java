@@ -2,6 +2,11 @@ package com.example.android.psiak.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -66,8 +71,8 @@ public class TinderCard {
     private void onResolved() {
         Picasso.with(mContext)
                 .load(mDogFirebase.getProfilePic())
-                .error(R.drawable.dog_placeholder)
-                .placeholder(R.drawable.dog_placeholder)
+                .error(R.drawable.ic_placeholder)
+                .placeholder(R.drawable.ic_placeholder)
                 .into(profileImageView);
         nameAgeTxt.setText(String.format("%s, %s", mDogFirebase.getName(), mDogFirebase.getAge()));
         locationNameTxt.setText(mDogFirebase.getLocation());
@@ -119,5 +124,20 @@ public class TinderCard {
         // Start activity
         this.mContext.startActivity(startAnimalDetailedViewActivity);
     }
+    public static Point getDisplaySize(WindowManager windowManager){
+        try {
+                Display display = windowManager.getDefaultDisplay();
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                display.getMetrics(displayMetrics);
+                return new Point(displayMetrics.widthPixels, displayMetrics.heightPixels);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Point(0, 0);
+        }
+    }
+    public static int dpToPx(int dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+    }
+
 
 }

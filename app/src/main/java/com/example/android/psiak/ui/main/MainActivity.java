@@ -162,13 +162,13 @@ public class MainActivity
     private void configureSwipeView() {
         mSwipeView = findViewById(R.id.swipeView);
 
-        int bottomMargin = TinderCard.dpToPx(165);
+        int bottomMargin = TinderCard.dpToPx(210);
         Point windowSize = TinderCard.getDisplaySize(getWindowManager());
 
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
-                        .setViewWidth(windowSize.x - 30)
+                        .setViewWidth(windowSize.x - 50)
                         .setViewHeight(windowSize.y - bottomMargin)
                         .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)

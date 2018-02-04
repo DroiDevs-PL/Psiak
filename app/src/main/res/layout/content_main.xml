@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
-                                             android:fitsSystemWindows="true"
-                                             tools:ignore="ContentDescription">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:ignore="ContentDescription">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/dogsAvailableLayout"
@@ -22,7 +22,7 @@
             android:id="@+id/swipeView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/app_bar_margin"
+            android:layout_marginTop="@dimen/psiaki_default_margin_small"
             app:layout_constraintBottom_toTopOf="@id/buttonPanel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,22 +57,23 @@
                 android:id="@+id/rejectBtn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/psiaki_default_margin"
                 android:background="@drawable/sad_dog_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/rejectBtnGeideline"/>
+                app:layout_constraintEnd_toEndOf="@id/rejectBtnGuideline"/>
 
             <ImageButton
                 android:id="@+id/acceptBtn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/psiaki_default_margin"
                 android:background="@drawable/happy_dog_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="@id/acceptBtnGuideline"/>
+                app:layout_constraintStart_toStartOf="@id/acceptBtnGuideline"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <android.support.constraint.Guideline
                 android:id="@+id/acceptBtnGuideline"
@@ -82,7 +83,7 @@
                 app:layout_constraintGuide_percent="0.7" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/rejectBtnGeideline"
+                android:id="@+id/rejectBtnGuideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

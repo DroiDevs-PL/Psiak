@@ -5,6 +5,8 @@
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="no_more_results">There are no more results</string>
+    <string name="no_network_connection">Network connection disabled</string>
+    <string name="network_connection_disabled">Network connection disabled</string>
 
     <!--Content main UI-->
 

@@ -110,7 +110,12 @@ public class MainActivity
                 FirebaseRepository.AVAILABLE_DOGS_ENDPOINT, DogFirebase.class),
                 new DogsLocalRepository(this));
         mainPresenter.attachView(this);
-        mainPresenter.getAllDogs();
+        if (mainPresenter.isNetworkAvailable(this)){
+            mainPresenter.getAllDogs();
+        }
+        else{
+            showMessage(R.string.network_connection_disabled);
+        }
 
         PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
         //TODO uncomment before release
@@ -165,13 +170,13 @@ public class MainActivity
     private void configureSwipeView() {
         mSwipeView = findViewById(R.id.swipeView);
 
-        int bottomMargin = TinderCard.dpToPx(165);
+        int bottomMargin = TinderCard.dpToPx(190);
         Point windowSize = TinderCard.getDisplaySize(getWindowManager());
 
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
-                        .setViewWidth(windowSize.x - 30)
+                        .setViewWidth(windowSize.x - 50)
                         .setViewHeight(windowSize.y - bottomMargin)
                         .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
@@ -207,7 +212,12 @@ public class MainActivity
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedItem = sortSpinner.getSelectedItem().toString();
                 mSwipeView.removeAllViews();
-                mainPresenter.getSortedDogs(selectedItem);
+                if (mainPresenter.isNetworkAvailable(MainActivity.this)){
+                    mainPresenter.getSortedDogs(selectedItem);
+                }
+                else{
+                    showMessage(R.string.network_connection_disabled);
+                }
             }
 
             @Override
@@ -307,6 +317,14 @@ public class MainActivity
 
     @Override
     public void showMessage(int messageId) {
+        View view = findViewById(android.R.id.content);
+        switch (messageId){
+            case R.string.network_connection_disabled:
+                dogsAvailableLayout.setVisibility(View.INVISIBLE);
+                noDogsLayout.setVisibility(View.VISIBLE);
+                noDogs.setText(R.string.no_network_connection);
+                break;
+        }
     }
 
     @Override

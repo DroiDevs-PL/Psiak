@@ -1,6 +1,9 @@
 package com.example.android.psiak.ui.main;
 
 import com.example.android.psiak.data.network.FirebaseDataListener;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.data.network.SortingStrategyFactory;
 import com.example.android.psiak.model.Animal;
@@ -12,6 +15,8 @@ import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -135,6 +140,14 @@ class MainPresenter
 
     }
     //endregion
+
+    @Override
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 
     @Override

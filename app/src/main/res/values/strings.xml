@@ -11,6 +11,8 @@
     <string name="navigation_drawer_open">Otwórz</string>
     <string name="navigation_drawer_close">Zamknij</string>
     <string name="no_more_results">Nie ma więcej wyników</string>
+    <string name="no_network_connection">Brak połączenia z internetem</string>
+    <string name="network_connection_disabled">Network connection disabled</string>
 
 
     <!--Content main UI-->

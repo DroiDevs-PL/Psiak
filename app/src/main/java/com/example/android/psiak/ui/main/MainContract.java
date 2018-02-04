@@ -1,5 +1,7 @@
 package com.example.android.psiak.ui.main;
 
+import android.content.Context;
+
 import com.example.android.psiak.model.Animal;
 import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
@@ -31,5 +33,6 @@ public interface MainContract {
         void getAllAnimals(AnimalType animalType);
         void addNewFavouriteAnimal(Animal animal);
         void getAllAnimalsForShelter(String shelterName);
+        boolean isNetworkAvailable(Context context);
     }
 }

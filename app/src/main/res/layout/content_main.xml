@@ -22,7 +22,7 @@
             android:id="@+id/swipeView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/psiaki_default_margin_large"
+            android:layout_marginTop="@dimen/app_bar_margin"
             app:layout_constraintBottom_toTopOf="@id/buttonPanel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,53 +32,70 @@
             android:id="@+id/animation_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:lottie_fileName="like.json"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="false"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="like.json"
+            app:lottie_loop="true" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/buttonPanel"
-            app:layout_constraintTop_toBottomOf="@id/swipeView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingStart="@dimen/psiaki_default_padding"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:paddingEnd="@dimen/psiaki_default_padding"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            >
+            android:paddingStart="@dimen/psiaki_default_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonPanelGuideline">
 
             <ImageButton
                 android:id="@+id/rejectBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/sad_dog_button"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="@id/rejectBtnGeideline"/>
 
             <ImageButton
                 android:id="@+id/acceptBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:scaleX="0.7"
-                android:scaleY="0.7"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:background="@drawable/happy_dog_button"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@id/acceptBtnGuideline"/>
+
+            <android.support.constraint.Guideline
+                android:id="@+id/acceptBtnGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/rejectBtnGeideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
+
         </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/buttonPanelGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
 
     </android.support.constraint.ConstraintLayout>
     <include layout="@layout/no_dogs"/>

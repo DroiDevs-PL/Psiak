@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.87" />
 
     </android.support.constraint.ConstraintLayout>
     <include layout="@layout/no_dogs"/>

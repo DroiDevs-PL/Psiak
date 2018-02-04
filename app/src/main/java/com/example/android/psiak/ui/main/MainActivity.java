@@ -162,7 +162,7 @@ public class MainActivity
     private void configureSwipeView() {
         mSwipeView = findViewById(R.id.swipeView);
 
-        int bottomMargin = TinderCard.dpToPx(210);
+        int bottomMargin = TinderCard.dpToPx(190);
         Point windowSize = TinderCard.getDisplaySize(getWindowManager());
 
         mSwipeView.getBuilder()

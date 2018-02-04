@@ -22,5 +22,4 @@ public class Const {
     public static final String AGE = "age";
 
     public static final String NO_DATA = "no data";
-
 }

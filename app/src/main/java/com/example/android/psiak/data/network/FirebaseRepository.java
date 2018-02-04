@@ -2,7 +2,6 @@ package com.example.android.psiak.data.network;
 
 import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,7 +16,8 @@ import java.util.Map;
  * Helper class for storing all functions related to Firebase operations
  */
 
-public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
+public class FirebaseRepository<T extends Repository.Firebase.Identifiable>
+        implements Repository.Firebase<T> {
 
     // region Properties
 
@@ -31,20 +31,24 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
      * Reference to "dogs" endpoint in database
      */
 
-    private DatabaseReference dogsReference = database.getReference("dogs");
+    private DatabaseReference dogsReference;
 
     /**
      * Callback that will be invoked when all dogs data will be
      * fetched from Firebase database
      */
 
-    private FirebaseDataListener firebaseDataListener;
+    private FirebaseDataListener<T> firebaseDataListener;
 
     /**
      * List for storing all dogs objects fetched from Firebase database
      */
 
-    private ArrayList<DogFirebase> dogs = new ArrayList<DogFirebase>();
+    private ArrayList<T> dogs = new ArrayList<>();
+
+    private final Class<T> typeParameterClass;
+
+    private String endpoint;
 
     // endregion
 
@@ -54,9 +58,17 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
      * Default constructor
      */
     
-    public FirebaseRepository() {}
+    public FirebaseRepository(String endpoint, Class<T> typeParameterClass) {
+        this.endpoint = endpoint;
+        dogsReference  = database.getReference(endpoint);
+        this.typeParameterClass = typeParameterClass;
+    }
 
     // endregion
+
+    public static final String SHELTER_ENDPOINT = "shelters";
+    public static final String AVAILABLE_DOGS_ENDPOINT = "dogs";
+
 
     // region Public Methods
 
@@ -67,7 +79,7 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
 
     @Override
     public String generateUniqueID() {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("dogs");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(endpoint);
         String uniqueID = databaseReference.push().getKey();
         return uniqueID;
     }
@@ -78,12 +90,12 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     }
 
     @Override
-    public void addNew(DogFirebase dogFirebase) {
+    public void addNew(T dogFirebase) {
         dogsReference.child(dogFirebase.getId()).setValue(dogFirebase);
     }
 
     @Override
-    public DogFirebase find(String queryString) {
+    public T find(String queryString) {
         // TODO: Implement logic for find
         return null;
     }
@@ -94,7 +106,7 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     }
 
     @Override
-    public void update(DogFirebase firebaseObject) {
+    public void update(T firebaseObject) {
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put(firebaseObject.getId(), firebaseObject);
         dogsReference.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
@@ -106,7 +118,7 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     }
 
     @Override
-    public void remove(DogFirebase firebaseObject) {
+    public void remove(T firebaseObject) {
         dogsReference.child(firebaseObject.getId()).removeValue(new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
@@ -127,10 +139,8 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             for (DataSnapshot singleRecordSnapshot: dataSnapshot.getChildren()) {
-
-                DogFirebase dogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
+                T dogFirebase = singleRecordSnapshot.getValue(typeParameterClass);
                 dogFirebase.setId(singleRecordSnapshot.getKey());
-
                 dogs.add(dogFirebase);
 
             }
@@ -151,7 +161,7 @@ public class FirebaseRepository implements Repository.Firebase<DogFirebase> {
     // region Getters
 
     @Override
-    public ArrayList<DogFirebase> getCachedDogs() {
+    public ArrayList<T> getCachedDogs() {
         return dogs;
     }
 

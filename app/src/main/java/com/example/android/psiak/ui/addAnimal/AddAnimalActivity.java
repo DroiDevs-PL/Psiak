@@ -1,6 +1,5 @@
 package com.example.android.psiak.ui.addAnimal;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +12,6 @@ import android.widget.Toast;
 import com.example.android.psiak.R;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.ui.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -79,7 +77,8 @@ public class AddAnimalActivity
         setSupportActionBar(toolbar);
 
         // TODO Use dependency injection here
-        firebasePresenter = new AddAnimalPresenter(new FirebaseRepository());
+        firebasePresenter = new AddAnimalPresenter(new FirebaseRepository<>(
+                FirebaseRepository.AVAILABLE_DOGS_ENDPOINT, DogFirebase.class));
         firebasePresenter.attachView(this);
     }
 

@@ -78,6 +78,7 @@
     <string name="ok">Okej!</string>
     <string name="questionForRating">Jak oceniasz aplikację?</string>
     <string name="sort">sort</string>
+
     <string name="another_time">Innym razem</string>
     <string name="rate_title">Oceń Psiaki</string>
     <string name="rating_0">Tragiczna</string>
@@ -108,5 +109,9 @@
     <string name="tinder_card_image">tinderCardImageDescription</string>
     <string name="tinder_swipe_in_image">tinderInImageDescription</string>
     <string name="tinder_swipe_out_image">tinderOutImageDescription</string>
+
+    <string name="title_activity_shelters">SheltersActivity</string>
+    <string name="action_settings">Settings</string>
+
 
 </resources>

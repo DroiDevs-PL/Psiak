@@ -1,17 +1,16 @@
-package com.example.android.psiak.ui.main;
+package com.example.android.psiak.data.network;
 
-import com.example.android.psiak.model.DogFirebase;
 import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 
-public interface FirebaseDataListener {
+public interface FirebaseDataListener<T> {
 
     /**
      * Callback method from FirebaseRepository called after data was successfully fetch from database
      * @param dogsData Collection of DogFirebase object fetched from Firebase database
      */
-    void setDogsData(ArrayList<DogFirebase> dogsData);
+    void setDogsData(ArrayList<T> dogsData);
 
     /**
      * Callback method from FirebaseRepository called after fetching data from database failed

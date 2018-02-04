@@ -2,6 +2,7 @@ package com.example.android.psiak.model;
 
 import android.os.Parcel;
 
+import com.example.android.psiak.data.network.Repository;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import io.realm.annotations.RealmClass;
 
 @RealmClass
 @IgnoreExtraProperties
-public class DogFirebase implements RealmModel{
+public class DogFirebase implements RealmModel, Repository.Firebase.Identifiable {
 
     // region Public Properties
 

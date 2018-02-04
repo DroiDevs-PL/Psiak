@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
-                                             android:fitsSystemWindows="true"
-                                             tools:ignore="ContentDescription">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:ignore="ContentDescription">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/dogsAvailableLayout"
@@ -22,7 +22,7 @@
             android:id="@+id/swipeView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/psiaki_default_margin_large"
+            android:layout_marginTop="@dimen/psiaki_default_margin_small"
             app:layout_constraintBottom_toTopOf="@id/buttonPanel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,41 +44,59 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/buttonPanel"
-            app:layout_constraintTop_toBottomOf="@id/swipeView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingEnd="@dimen/psiaki_default_padding"
+            android:paddingStart="@dimen/psiaki_default_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingStart="@dimen/psiaki_default_padding"
-            android:paddingEnd="@dimen/psiaki_default_padding"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            >
+            app:layout_constraintTop_toBottomOf="@id/buttonPanelGuideline">
 
             <ImageButton
                 android:id="@+id/rejectBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/psiaki_default_margin"
                 android:background="@drawable/sad_dog_button"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="@id/rejectBtnGuideline"/>
 
             <ImageButton
                 android:id="@+id/acceptBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:scaleX="0.7"
-                android:scaleY="0.7"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/psiaki_default_margin"
                 android:background="@drawable/happy_dog_button"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/acceptBtnGuideline"
                 app:layout_constraintTop_toTopOf="parent"/>
+
+            <android.support.constraint.Guideline
+                android:id="@+id/acceptBtnGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/rejectBtnGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
+
         </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/buttonPanelGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.87" />
 
     </android.support.constraint.ConstraintLayout>
     <include layout="@layout/no_dogs"/>

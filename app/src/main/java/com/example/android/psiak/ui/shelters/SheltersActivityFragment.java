@@ -10,10 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.psiak.R;
-import com.example.android.psiak.data.network.FirebaseDataListener;
 import com.example.android.psiak.data.network.FirebaseRepository;
+import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.model.Shelter;
-import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
 
@@ -23,10 +22,19 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class SheltersActivityFragment extends Fragment implements FirebaseDataListener<Shelter> {
+public class SheltersActivityFragment extends Fragment
+        implements SheltersViewContract.View{
+
+    // region Properties
 
     @BindView(R.id.rv_shelters)
     RecyclerView recyclerView;
+
+    /**
+     * Presenter for this view
+     */
+
+    private SheltersViewContract.Presenter<SheltersViewContract.View> sheltersPresenter;
 
     private SheltersAdapter sheltersAdapter;
 
@@ -40,31 +48,42 @@ public class SheltersActivityFragment extends Fragment implements FirebaseDataLi
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shelters, container, false);
         ButterKnife.bind(this, view);
-        FirebaseRepository<Shelter> shelterFirebaseRepository =
-                new FirebaseRepository<>(FirebaseRepository.SHELTER_ENDPOINT, Shelter.class);
-        shelterFirebaseRepository.setDataListner(this);
-        shelterFirebaseRepository.getAllObjects();
-        ArrayList<Shelter> shelters = new ArrayList<>();
+        Repository.Firebase<Shelter> shelterFirebase = new FirebaseRepository<>(FirebaseRepository.SHELTER_ENDPOINT, Shelter.class);
+        sheltersPresenter = new SheltersPresenter(shelterFirebase);
+        sheltersPresenter.attachView(this);
 
+        ArrayList<Shelter> shelters = new ArrayList<>();
         sheltersAdapter = new SheltersAdapter(shelters, getContext());
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
         recyclerView.setAdapter(sheltersAdapter);
-
+        sheltersPresenter.getAllSheltersFromRemoteRepository();
         return view;
     }
 
     @Override
-    public void setDogsData(ArrayList<Shelter> dogsData) {
+    public void showShelters(ArrayList<Shelter> dogsData) {
         Log.d("PIES", dogsData.get(0).toString());
         sheltersAdapter.setShelters(dogsData);
         sheltersAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void setErrorMessage(DatabaseException databaseException) {
 
+    @Override
+    public void showMessage(int messageId) {
+
+    }
+
+    @Override
+    public void showErrorMessage(String errorMessage) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        sheltersPresenter.detachView();
     }
 }

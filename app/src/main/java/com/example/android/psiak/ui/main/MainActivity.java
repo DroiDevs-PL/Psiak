@@ -40,6 +40,7 @@ import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 import com.example.android.psiak.ui.favouriteView.FavouriteActivity;
 import com.example.android.psiak.ui.settings.SettingsActivity;
 import com.example.android.psiak.utils.GooglePlayUtils;
+import com.example.android.psiak.ui.shelters.SheltersActivity;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
@@ -105,8 +106,9 @@ public class MainActivity
         setUpAnimation();
 
         // TODO Use dependency injection here
-        mainPresenter = new MainPresenter(new FirebaseRepository<DogFirebase>(
-                FirebaseRepository.AVAILABLE_DOGS_ENDPOINT), new DogsLocalRepository(this));
+        mainPresenter = new MainPresenter(new FirebaseRepository<>(
+                FirebaseRepository.AVAILABLE_DOGS_ENDPOINT, DogFirebase.class),
+                new DogsLocalRepository(this));
         mainPresenter.attachView(this);
         mainPresenter.getAllDogs();
 
@@ -237,13 +239,13 @@ public class MainActivity
                 startActivity(intent);
                 break;
             case R.id.shelters_nav_item:
-                Snackbar.make(drawerLayout, "Schroniska", Snackbar.LENGTH_LONG).show();
+                intent = new Intent(MainActivity.this, SheltersActivity.class);
+                startActivity(intent);
                 break;
             case R.id.about_nav_item:
                 Intent aboutIntent = new Intent(MainActivity.this, AboutUsActivity.class);
                 startActivity(aboutIntent);
                 break;
-
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

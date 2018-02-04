@@ -1,10 +1,12 @@
 package com.example.android.psiak.ui.main;
 
+import com.example.android.psiak.data.network.FirebaseDataListener;
 import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.data.network.SortingStrategyFactory;
 import com.example.android.psiak.model.Animal;
 import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
 import com.example.android.psiak.ui.base.BasePresenter;
 import com.google.firebase.database.DatabaseException;
 
@@ -16,8 +18,14 @@ import timber.log.Timber;
 
 class MainPresenter
         extends BasePresenter<MainContract.View>
-        implements MainContract.Presenter<MainContract.View>, FirebaseDataListener {
 
+        implements MainContract.Presenter<MainContract.View> , FirebaseDataListener<DogFirebase> {
+
+        private static final String TAG = AddAnimalPresenter.class.toString();
+
+    /**
+     * Repository object that will be used with this presenter
+     */
     Repository.Firebase firebaseRepository;
     Repository.LocalRepository localRepository;
 

@@ -4,7 +4,7 @@ import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 import com.example.android.psiak.ui.addAnimal.AddAnimalContract;
 import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
-import com.example.android.psiak.ui.main.FirebaseDataListener;
+import com.example.android.psiak.data.network.FirebaseDataListener;
 import com.example.android.psiak.model.DogFirebase;
 import com.google.firebase.database.DatabaseException;
 

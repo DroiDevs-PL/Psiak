@@ -2,7 +2,6 @@ package com.example.android.psiak.data.network;
 
 import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.ui.main.FirebaseDataListener;
 
 import java.util.ArrayList;
 
@@ -76,11 +75,12 @@ public interface Repository {
          * @return Dogs collection
          */
 
-        ArrayList<DogFirebase> getCachedDogs();
+        ArrayList<Type> getCachedDogs();
 
         ArrayList<DogFirebase> getCachedAnimals(AnimalType animalType, String shelter_name);
          interface Identifiable {
             String getId();
+            void setId(String id);
         }
 
     }

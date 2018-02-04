@@ -16,6 +16,7 @@ public class Shelter implements Repository.Firebase.Identifiable{
     private String website;
     private String telephoneNumber;
     private String city;
+   // private String photo;
 
     public Shelter() {
     }
@@ -52,6 +53,7 @@ public class Shelter implements Repository.Firebase.Identifiable{
         return city;
     }
 
+   // public String getPhoto() { return photo; }
 
     // endregion
 
@@ -87,45 +89,9 @@ public class Shelter implements Repository.Firebase.Identifiable{
         this.city = city;
     }
 
+  //  public void setPhoto(String photo) { this.photo = photo; }
 
     // endregion
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Shelter)) return false;
-
-        Shelter shelter = (Shelter) o;
-
-        if (getId() != null ? !getId().equals(shelter.getId()) : shelter.getId() != null)
-            return false;
-        if (getEmail() != null ? !getEmail().equals(shelter.getEmail()) : shelter.getEmail() != null)
-            return false;
-        if (getName() != null ? !getName().equals(shelter.getName()) : shelter.getName() != null)
-            return false;
-        if (getStreet() != null ? !getStreet().equals(shelter.getStreet()) : shelter.getStreet() != null)
-            return false;
-        if (getZipCode() != null ? !getZipCode().equals(shelter.getZipCode()) : shelter.getZipCode() != null)
-            return false;
-        if (getWebsite() != null ? !getWebsite().equals(shelter.getWebsite()) : shelter.getWebsite() != null)
-            return false;
-        if (getTelephoneNumber() != null ? !getTelephoneNumber().equals(shelter.getTelephoneNumber()) : shelter.getTelephoneNumber() != null)
-            return false;
-        return getCity() != null ? getCity().equals(shelter.getCity()) : shelter.getCity() == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getStreet() != null ? getStreet().hashCode() : 0);
-        result = 31 * result + (getZipCode() != null ? getZipCode().hashCode() : 0);
-        result = 31 * result + (getWebsite() != null ? getWebsite().hashCode() : 0);
-        result = 31 * result + (getTelephoneNumber() != null ? getTelephoneNumber().hashCode() : 0);
-        result = 31 * result + (getCity() != null ? getCity().hashCode() : 0);
-        return result;
-    }
 
     @Override
     public String toString() {

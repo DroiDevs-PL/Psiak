@@ -14,8 +14,6 @@ public class SheltersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shelters);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
- 
     }
 
 }

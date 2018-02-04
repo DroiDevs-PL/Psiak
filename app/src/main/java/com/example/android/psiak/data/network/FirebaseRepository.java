@@ -2,7 +2,6 @@ package com.example.android.psiak.data.network;
 
 import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.ui.main.FirebaseDataListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,13 +38,15 @@ public class FirebaseRepository<T extends Repository.Firebase.Identifiable>
      * fetched from Firebase database
      */
 
-    private FirebaseDataListener firebaseDataListener;
+    private FirebaseDataListener<T> firebaseDataListener;
 
     /**
      * List for storing all dogs objects fetched from Firebase database
      */
 
-    private ArrayList<DogFirebase> dogs = new ArrayList<DogFirebase>();
+    private ArrayList<T> dogs = new ArrayList<>();
+
+    private final Class<T> typeParameterClass;
 
     private String endpoint;
 
@@ -57,9 +58,10 @@ public class FirebaseRepository<T extends Repository.Firebase.Identifiable>
      * Default constructor
      */
     
-    public FirebaseRepository(String endpoint) {
+    public FirebaseRepository(String endpoint, Class<T> typeParameterClass) {
         this.endpoint = endpoint;
         dogsReference  = database.getReference(endpoint);
+        this.typeParameterClass = typeParameterClass;
     }
 
     // endregion
@@ -137,10 +139,8 @@ public class FirebaseRepository<T extends Repository.Firebase.Identifiable>
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             for (DataSnapshot singleRecordSnapshot: dataSnapshot.getChildren()) {
-
-                DogFirebase dogFirebase = singleRecordSnapshot.getValue(DogFirebase.class);
+                T dogFirebase = singleRecordSnapshot.getValue(typeParameterClass);
                 dogFirebase.setId(singleRecordSnapshot.getKey());
-
                 dogs.add(dogFirebase);
 
             }
@@ -161,7 +161,7 @@ public class FirebaseRepository<T extends Repository.Firebase.Identifiable>
     // region Getters
 
     @Override
-    public ArrayList<DogFirebase> getCachedDogs() {
+    public ArrayList<T> getCachedDogs() {
         return dogs;
     }
 

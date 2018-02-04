@@ -6,5 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.psiak.ui.shelters.SheltersActivityFragment"
     tools:showIn="@layout/activity_shelters">
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_shelters"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </android.support.constraint.ConstraintLayout>

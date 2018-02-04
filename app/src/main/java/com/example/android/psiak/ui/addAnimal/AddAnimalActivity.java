@@ -77,8 +77,8 @@ public class AddAnimalActivity
         setSupportActionBar(toolbar);
 
         // TODO Use dependency injection here
-        firebasePresenter = new AddAnimalPresenter(new FirebaseRepository<DogFirebase>(
-                FirebaseRepository.AVAILABLE_DOGS_ENDPOINT));
+        firebasePresenter = new AddAnimalPresenter(new FirebaseRepository<>(
+                FirebaseRepository.AVAILABLE_DOGS_ENDPOINT, DogFirebase.class));
         firebasePresenter.attachView(this);
     }
 

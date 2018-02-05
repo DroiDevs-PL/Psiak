@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.psiak">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".PsiakApp"
@@ -16,42 +16,46 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.TransparentStatusBar"/>
+            android:theme="@style/AppTheme.TransparentStatusBar" />
         <activity
             android:name=".ui.addAnimal.AddAnimalActivity"
             android:label="@string/title_activity_firebase_testing"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.favouriteView.FavouriteActivity"
             android:label="@string/title_activity_favourite"
             android:parentActivityName=".ui.main.MainActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.aboutUs.AboutUsActivity"
             android:parentActivityName=".ui.main.MainActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.showAnimalDetails.ShowAnimalDetailsActivity"/>
+        <activity android:name=".ui.showAnimalDetails.ShowAnimalDetailsActivity" />
         <activity
             android:name=".ui.settings.SettingsActivity"
             android:label="@string/settings"
             android:parentActivityName=".ui.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.main.MainActivity"/>
+                android:value=".ui.main.MainActivity" />
         </activity>
         <activity
             android:name=".ui.shelters.SheltersActivity"
             android:label="@string/title_activity_shelters"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.shelterDetail.ShelterDetailActivity"
+            android:label="@string/title_activity_shelter_detail"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

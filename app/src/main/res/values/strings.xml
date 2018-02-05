@@ -113,6 +113,8 @@
     <string name="title_activity_shelters">SheltersActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_shelter_detail">shelterDetailActivity</string>
+    <string name="phone_label">telefon</string>
+    <string name="shelter_info_header">O schronisku</string>
 
 
 </resources>

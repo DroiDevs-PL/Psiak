@@ -1,6 +1,7 @@
 package com.example.android.psiak.ui.addAnimal;
 
 import com.example.android.psiak.data.local.InMemoryDogRepository;
+import com.example.android.psiak.model.DogFirebase;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,27 +27,9 @@ public class AddAnimalPresenterTest {
     public void should_be_one_dog_after_save() {
         InMemoryDogRepository repository = InMemoryDogRepository.getInstance();
         AddAnimalPresenter presenter = new AddAnimalPresenter(repository);
-        presenter.attach(mockView);
-        presenter.save("Burek", "10 lat");
-        assertThat(repository.getAll().size(), is(1));
-    }
-
-    @Test
-    public void should_show_success_method_after_add() {
-        InMemoryDogRepository repository = InMemoryDogRepository.getInstance();
-        AddAnimalPresenter presenter = new AddAnimalPresenter(repository);
-        presenter.attach(mockView);
-        presenter.save("Burek", "10 lat");
-        verify(mockView).showSuccessMessage();
-    }
-
-    @Test
-    public void should_show_error_when_empty_dog_data() {
-        InMemoryDogRepository repository = InMemoryDogRepository.getInstance();
-        AddAnimalPresenter presenter = new AddAnimalPresenter(repository);
-        presenter.attach(mockView);
-        presenter.save("", "");
-        verify(mockView).showErrorMessage();
+        presenter.attachView(mockView);
+        presenter.addNewDog(new DogFirebase());
+        assertThat(repository.getCachedDogs().size(), is(1));
     }
 
 }

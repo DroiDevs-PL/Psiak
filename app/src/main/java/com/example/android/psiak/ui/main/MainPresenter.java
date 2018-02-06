@@ -21,7 +21,7 @@ import java.util.List;
 import io.realm.RealmResults;
 import timber.log.Timber;
 
-class MainPresenter
+public class MainPresenter
         extends BasePresenter<MainContract.View>
 
         implements MainContract.Presenter<MainContract.View> , FirebaseDataListener<DogFirebase> {

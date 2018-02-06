@@ -5,39 +5,48 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_gravity="center_horizontal|center_vertical"
+              android:layout_margin="@dimen/psiaki_default_margin_small"
               android:orientation="vertical"
               tools:ignore="ContentDescription">
 
-        <ImageView
-            android:id="@+id/dialog_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/dog_brown"
-            />
-        <TextView
-            android:id="@+id/rateHint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/rate_please_message"
-            android:layout_gravity="center_horizontal"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
+    <ImageView
+        android:id="@+id/dialog_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/dog_brown"
+        />
+
+    <TextView
+        android:id="@+id/rateHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="@string/rate_please_message"
+        android:textSize="15sp"
+        android:paddingTop="@dimen/psiaki_default_margin_small"
+        android:paddingStart="@dimen/psiaki_default_margin_small"
+        android:paddingEnd="@dimen/psiaki_default_margin_small"
+        android:textStyle="bold"/>
 
 
-        <TextView
-            android:id="@+id/rateQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/questionForRating"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/rateQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/questionForRating"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
 
-        <com.hsalf.smilerating.SmileRating
-            android:id="@+id/smile_rating"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/psiaki_default_margin_small"
+        android:paddingEnd="@dimen/psiaki_default_margin_small"
+        android:paddingBottom="@dimen/psiaki_default_margin_small"
+        android:paddingTop="@dimen/psiaki_default_margin_small"/>
 
 </LinearLayout>

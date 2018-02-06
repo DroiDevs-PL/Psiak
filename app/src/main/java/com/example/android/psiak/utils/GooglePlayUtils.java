@@ -25,7 +25,7 @@ import java.util.List;
 public class GooglePlayUtils {
 
     private final static int LAUNCHES_UNTIL_PROMPT = 4;
-    static boolean userIsHappy = false;
+    private static boolean userIsHappy = false;
 
     public static void app_launched(Context mContext) {
 
@@ -44,22 +44,22 @@ public class GooglePlayUtils {
     }
 
     @SuppressLint("ResourceAsColor")
-    public static void showRateDialog(final Context mContext) {
-        final AlertDialog.Builder alertadd = new AlertDialog.Builder(mContext);
+    private static void showRateDialog(final Context mContext) {
+        final AlertDialog.Builder rateDialog = new AlertDialog.Builder(mContext);
         LayoutInflater factory = LayoutInflater.from(mContext);
 
         final View view = factory.inflate(R.layout.rating_dialog, null);
 
-        alertadd.setView(view);
-        alertadd.setCancelable(mContext.getResources().getBoolean(R.bool.rate_dialog_cancelable));
-        alertadd.setPositiveButton(R.string.ok, (dialog, which) -> {
+        rateDialog.setView(view);
+        rateDialog.setCancelable(mContext.getResources().getBoolean(R.bool.rate_dialog_cancelable));
+        rateDialog.setPositiveButton(R.string.ok, (dialog, which) -> {
             if (userIsHappy) {
                 openAppInStore(mContext);
                 dialog.dismiss();
             }
         });
 
-        alertadd.setNegativeButton(R.string.another_time, (dialog, which) -> {
+        rateDialog.setNegativeButton(R.string.another_time, (dialog, which) -> {
             dialog.dismiss();
             HelperSharedPrefs.putSharedPreferencesLong(mContext, "launch_count", 0);
         });
@@ -67,12 +67,12 @@ public class GooglePlayUtils {
         TextView title = new TextView(mContext);
         title.setText(R.string.rate_title);
         title.setBackgroundResource(R.color.colorPrimaryDark);
-        title.setPadding(10, 10, 10, 10);
+        title.setPadding(8, 8, 8, 8);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(20);
-        alertadd.setCustomTitle(title);
-        alertadd.show();
+        title.setTextSize(26);
+        rateDialog.setCustomTitle(title);
+        rateDialog.show();
 
         SmileRating smileRating = view.findViewById(R.id.smile_rating);
         smileRating.setNameForSmile(BaseRating.TERRIBLE, R.string.rating_0);

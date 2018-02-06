@@ -112,6 +112,11 @@
 
     <string name="title_activity_shelters">SheltersActivity</string>
     <string name="action_settings">Settings</string>
-
+    <string name="title_activity_shelter_detail">shelterDetailActivity</string>
+    <string name="phone_label">telefon</string>
+    <string name="shelter_info_header">O schronisku</string>
+    <string name="phone_label_text">Telefon</string>
+    <string name="address_label_string">Adres</string>
+    <string name="mock_shelter_description">Do najważniejszych zadań Schroniska należy: Przyjmowanie i przetrzymywanie zwierząt zagubionych, zabłąkanych i porzuconych lub z innych przyczyn bezdomnych, a w szczególności psów, kotów, a także innych zwierząt, które w wyniku zdarzeń losowych nie są zdolne samodzielnie egzystować. Poszukiwanie nowych domów dla zwierząt porzuconych, bezdomnych lub tych, które nie są w stanie przeżyć na wolności lub którym wypuszczenie na wolność może przysporzyć cierpień oraz przekazywanie zwierząt osobom zainteresowanym ich posiadaniem, zdolnym zapewnić im należyte warunki bytowania. Leczenie chorych zwierząt przebywających w Schronisku, rokujących nadzieję na wyzdrowienie. Informujemy, że z dniem 1.12.2014  w gabinecie Schroniska mieszkańcy Szczecina mogą bezpłatnie zaczipować swojego psa. Nie świadczymy żadnych innych usług weterynaryjnych. Nasz gabinet obejmuje swoją opieką jedynie psy znajdujące się na stanie Schroniska.</string>
 
 </resources>

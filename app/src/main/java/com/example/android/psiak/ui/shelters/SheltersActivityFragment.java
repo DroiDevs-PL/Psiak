@@ -1,5 +1,6 @@
 package com.example.android.psiak.ui.shelters;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import com.example.android.psiak.R;
 import com.example.android.psiak.data.network.FirebaseRepository;
 import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.model.Shelter;
+import com.example.android.psiak.ui.shelterDetail.ShelterDetailActivity;
 
 import java.util.ArrayList;
 
@@ -53,7 +55,7 @@ public class SheltersActivityFragment extends Fragment
         sheltersPresenter.attachView(this);
 
         ArrayList<Shelter> shelters = new ArrayList<>();
-        sheltersAdapter = new SheltersAdapter(shelters, getContext());
+        sheltersAdapter = new SheltersAdapter(shelters, s -> sheltersPresenter.openShelterDetails(s));
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
@@ -68,6 +70,15 @@ public class SheltersActivityFragment extends Fragment
         Log.d("PIES", dogsData.get(0).toString());
         sheltersAdapter.setShelters(dogsData);
         sheltersAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showSheltersDetailsUi(Shelter shelter) {
+        Intent intent = new Intent(getContext(), ShelterDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ShelterDetailActivity.KEY_SHELTER, shelter);
+        intent.putExtra(ShelterDetailActivity.EXTRA_SHELTER, bundle);
+        startActivity(intent);
     }
 
 
@@ -85,5 +96,9 @@ public class SheltersActivityFragment extends Fragment
     public void onDestroy() {
         super.onDestroy();
         sheltersPresenter.detachView();
+    }
+
+    public interface ShelterItemListener {
+        void onTaskClick(Shelter clickedShelter);
     }
 }

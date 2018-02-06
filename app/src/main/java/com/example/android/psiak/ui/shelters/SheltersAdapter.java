@@ -26,16 +26,17 @@ public class  SheltersAdapter extends RecyclerView.Adapter<SheltersAdapter.Shelt
     }
 
     private ArrayList<Shelter> shelters;
-    private Context context;
+    private SheltersActivityFragment.ShelterItemListener shelterItemListener;
 
     public void setShelters(ArrayList<Shelter> shelters) {
         this.shelters = shelters;
     }
 
-    public SheltersAdapter(ArrayList<Shelter> shelters, Context context) {
+    public SheltersAdapter(ArrayList<Shelter> shelters,
+                           SheltersActivityFragment.ShelterItemListener shelterItemListener) {
         super();
         this.shelters = shelters;
-        this.context = context;
+        this.shelterItemListener = shelterItemListener;
     }
 
     @Override
@@ -49,6 +50,7 @@ public class  SheltersAdapter extends RecyclerView.Adapter<SheltersAdapter.Shelt
     @Override
     public void onBindViewHolder(SheltersViewHolder holder, int position) {
         Shelter shelter = shelters.get(position);
+        holder.itemView.setOnClickListener(v -> shelterItemListener.onTaskClick(shelter));
         holder.shelterName.setText(shelter.getName());
         String address = shelter.getStreet();
         holder.shelterAddress.setText(address);

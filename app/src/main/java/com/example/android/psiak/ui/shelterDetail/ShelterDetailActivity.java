@@ -29,6 +29,8 @@ public class ShelterDetailActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_detail);
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

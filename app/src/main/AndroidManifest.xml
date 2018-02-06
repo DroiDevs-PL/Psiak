@@ -51,11 +51,13 @@
         <activity
             android:name=".ui.shelters.SheltersActivity"
             android:label="@string/title_activity_shelters"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.main.MainActivity" />
         <activity
             android:name=".ui.shelterDetail.ShelterDetailActivity"
             android:label="@string/title_activity_shelter_detail"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.shelters.SheltersActivity"/>
     </application>
 
 </manifest>

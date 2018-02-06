@@ -36,6 +36,7 @@ public class AddAnimalPresenter
     @Override
     public void addNewDog(DogFirebase dogFirebase) {
         firebaseRepository.addNew(dogFirebase);
+
     }
 
 

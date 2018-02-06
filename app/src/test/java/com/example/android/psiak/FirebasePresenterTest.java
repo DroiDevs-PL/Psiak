@@ -1,11 +1,12 @@
 package com.example.android.psiak;
 
-import com.example.android.psiak.data.network.Repository;
-import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
-import com.example.android.psiak.ui.addAnimal.AddAnimalContract;
-import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
 import com.example.android.psiak.data.network.FirebaseDataListener;
+import com.example.android.psiak.data.network.Repository;
+import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
+import com.example.android.psiak.ui.main.MainActivity;
+import com.example.android.psiak.ui.main.MainContract;
+import com.example.android.psiak.ui.main.MainPresenter;
 import com.google.firebase.database.DatabaseException;
 
 import org.junit.Before;
@@ -15,58 +16,41 @@ import java.util.ArrayList;
 
 import io.realm.RealmResults;
 
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class FirebasePresenterTest {
 
-    private AddAnimalContract.View mockView;
+    private MainContract.View mockView;
     private MockFirebaseRepository mockFirebaseRepository;
-<<<<<<< HEAD
-    private FirebasePresenter firebasePresenter;
     private MockLocalRepository mockLocalRepository;
-=======
-    private AddAnimalPresenter firebasePresenter;
->>>>>>> 323dfc57df0f2398786649fcb97225e0d672f3e6
+    private MainPresenter mainPresenter;
 
     @Before
     public void init() {
-        mockView = mock(AddAnimalActivity.class);
+        mockView = mock(MainActivity.class);
         mockFirebaseRepository = new MockFirebaseRepository();
-<<<<<<< HEAD
         mockLocalRepository = new MockLocalRepository();
-        firebasePresenter = new FirebasePresenter(mockFirebaseRepository, mockLocalRepository);
-=======
-        firebasePresenter = new AddAnimalPresenter(mockFirebaseRepository);
->>>>>>> 323dfc57df0f2398786649fcb97225e0d672f3e6
-        firebasePresenter.attach(mockView);
+        mainPresenter = new MainPresenter(mockFirebaseRepository, mockLocalRepository);
+        mainPresenter.attachView(mockView);
     }
 
     @Test
-    public void show_all_dogs_after_fetch() throws Exception{
-        firebasePresenter.getAllDogs();
+    public void show_all_dogs_after_fetch() throws Exception {
+        mainPresenter.getAllDogs();
         verify(mockView).showAllDogs(mockFirebaseRepository.getCachedDogs());
     }
 
     @Test
-    public void show_all_dogs_after_callback() throws Exception{
-        firebasePresenter.setDogsData(mockFirebaseRepository.getCachedDogs());
+    public void show_all_dogs_after_callback() throws Exception {
+        mainPresenter.setDogsData(mockFirebaseRepository.getCachedDogs());
         verify(mockView).showAllDogs(mockFirebaseRepository.getCachedDogs());
-    }
-
-    @Test
-    public void add_new_dog() throws Exception {
-        DogFirebase dogFirebase = new DogFirebase.DogBuilder("1", "Fafik").build();
-        firebasePresenter.addNewDog(dogFirebase);
-
-        assertNotNull(mockFirebaseRepository.dogPlaceholder);
     }
 
     @Test
     public void show_error_message() throws Exception {
         DatabaseException databaseException = new DatabaseException("Exception");
-        firebasePresenter.setErrorMessage(databaseException);
+        mainPresenter.setErrorMessage(databaseException);
         verify(mockView).showErrorMessage(databaseException.getMessage());
     }
 }
@@ -96,6 +80,11 @@ class MockFirebaseRepository implements Repository.Firebase<DogFirebase> {
     }
 
     @Override
+    public void getById(String id, FirebaseDataListener callback) {
+
+    }
+
+    @Override
     public void addNew(DogFirebase dogFirebase) {
         this.dogPlaceholder = dogFirebase;
     }
@@ -118,6 +107,11 @@ class MockFirebaseRepository implements Repository.Firebase<DogFirebase> {
         dogs.add(dogFirebase);
 
         return dogs;
+    }
+
+    @Override
+    public ArrayList<DogFirebase> getCachedAnimals(AnimalType animalType, String shelter_name) {
+        return null;
     }
 
     @Override
@@ -150,5 +144,10 @@ class MockLocalRepository implements Repository.LocalRepository {
     @Override
     public void delete(DogFirebase dogFirebase) {
 
+    }
+
+    @Override
+    public boolean checkIfEmpty(String id) {
+        return false;
     }
 }

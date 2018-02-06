@@ -13,10 +13,16 @@ import java.util.ArrayList;
 public interface SheltersViewContract {
 
     interface View extends MvpView {
-        public void showShelters(ArrayList<Shelter> dogsData);
+
+        void showShelters(ArrayList<Shelter> dogsData);
+
+        void showSheltersDetailsUi(Shelter shelter);
     }
 
     interface Presenter<V extends MvpView> extends MvpPresenter<V> {
+
         void getAllSheltersFromRemoteRepository();
+
+        void openShelterDetails(Shelter shelter);
     }
 }

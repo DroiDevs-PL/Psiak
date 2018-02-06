@@ -1,11 +1,8 @@
 package com.example.android.psiak.ui.shelterDetail;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.example.android.psiak.R;
 import com.example.android.psiak.model.Shelter;
@@ -17,21 +14,16 @@ public class ShelterDetailActivity
             extends AppCompatActivity
             implements SheltersViewContract.View{
 
+    public final static String EXTRA_SHELTER = "com.example.android.psiak.extra.SHELTER_DATA";
+    //TODO Naming convention for keys
+    public final static String KEY_SHELTER = "KEY_SHELTER";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
@@ -46,6 +38,16 @@ public class ShelterDetailActivity
 
     @Override
     public void showShelters(ArrayList<Shelter> dogsData) {
+
+    }
+
+    @Override
+    public void showSheltersDetailsUi(Shelter shelter) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }

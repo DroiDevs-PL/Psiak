@@ -40,6 +40,11 @@ class SheltersPresenter extends BasePresenter<SheltersViewContract.View>
         remoteRepository.getAllObjects();
     }
 
+    @Override
+    public void openShelterDetails(Shelter shelter) {
+        view.showSheltersDetailsUi(shelter);
+    }
+
 
     @Override
     public void attachView(SheltersViewContract.View view) {

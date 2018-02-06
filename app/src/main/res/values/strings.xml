@@ -115,6 +115,7 @@
     <string name="title_activity_shelter_detail">shelterDetailActivity</string>
     <string name="phone_label">telefon</string>
     <string name="shelter_info_header">O schronisku</string>
-
+    <string name="phone_label_text">Telefon</string>
+    <string name="address_label_string">Adres</string>
 
 </resources>

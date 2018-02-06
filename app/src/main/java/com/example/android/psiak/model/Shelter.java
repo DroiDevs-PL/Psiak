@@ -1,12 +1,15 @@
 package com.example.android.psiak.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.android.psiak.data.network.Repository;
 
 /**
  * Created by Radek on 13.01.2018.
  */
 
-public class Shelter implements Repository.Firebase.Identifiable{
+public class Shelter implements Repository.Firebase.Identifiable, Parcelable{
 
     private String id;
     private String email;
@@ -22,6 +25,18 @@ public class Shelter implements Repository.Firebase.Identifiable{
     }
 
     // region Getters
+
+    protected Shelter(Parcel in) {
+        id = in.readString();
+        email = in.readString();
+        name = in.readString();
+        street = in.readString();
+        zipCode = in.readString();
+        website = in.readString();
+        telephoneNumber = in.readString();
+        city = in.readString();
+    }
+
 
     public String getId() { return id; }
 
@@ -105,5 +120,34 @@ public class Shelter implements Repository.Firebase.Identifiable{
                 ", telephoneNumber='" + telephoneNumber + '\'' +
                 ", city='" + city + '\'' +
                 '}';
+    }
+
+    public static final Creator<Shelter> CREATOR = new Creator<Shelter>() {
+        @Override
+        public Shelter createFromParcel(Parcel in) {
+            return new Shelter(in);
+        }
+
+        @Override
+        public Shelter[] newArray(int size) {
+            return new Shelter[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(email);
+        dest.writeString(name);
+        dest.writeString(street);
+        dest.writeString(zipCode);
+        dest.writeString(website);
+        dest.writeString(telephoneNumber);
+        dest.writeString(city);
     }
 }

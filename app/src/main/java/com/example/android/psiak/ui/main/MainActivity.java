@@ -168,7 +168,6 @@ public class MainActivity
 
     //region UI components configuration
     private void configureSwipeView() {
-        mSwipeView = findViewById(R.id.swipeView);
 
         int bottomMargin = TinderCard.dpToPx(190);
         Point windowSize = TinderCard.getDisplaySize(getWindowManager());
@@ -367,8 +366,10 @@ public class MainActivity
 
     private void startLikeAnimation() {
         animationView.setAnimation("like.json");
-        animator.start();
-        animationView.cancelAnimation();
+        if(!animator.isRunning()) {
+            animator.start();
+            animationView.cancelAnimation();
+        }
     }
     // endregion
 }

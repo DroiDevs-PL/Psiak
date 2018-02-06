@@ -32,6 +32,7 @@ public class SheltersActivityFragment extends Fragment
     @BindView(R.id.rv_shelters)
     RecyclerView recyclerView;
 
+    //endregion
     /**
      * Presenter for this view
      */

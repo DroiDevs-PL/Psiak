@@ -19,6 +19,7 @@ public class Shelter implements Repository.Firebase.Identifiable, Parcelable{
     private String website;
     private String telephoneNumber;
     private String city;
+    private String about;
    // private String photo;
 
     public Shelter() {
@@ -35,6 +36,7 @@ public class Shelter implements Repository.Firebase.Identifiable, Parcelable{
         website = in.readString();
         telephoneNumber = in.readString();
         city = in.readString();
+        about = in.readString();
     }
 
 
@@ -68,6 +70,8 @@ public class Shelter implements Repository.Firebase.Identifiable, Parcelable{
         return city;
     }
 
+    public String getAbout() { return about; }
+
    // public String getPhoto() { return photo; }
 
     // endregion
@@ -100,6 +104,10 @@ public class Shelter implements Repository.Firebase.Identifiable, Parcelable{
         this.telephoneNumber = telephoneNumber;
     }
 
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
@@ -119,6 +127,7 @@ public class Shelter implements Repository.Firebase.Identifiable, Parcelable{
                 ", website='" + website + '\'' +
                 ", telephoneNumber='" + telephoneNumber + '\'' +
                 ", city='" + city + '\'' +
+                ", about='" + city + '\'' +
                 '}';
     }
 
@@ -149,5 +158,6 @@ public class Shelter implements Repository.Firebase.Identifiable, Parcelable{
         dest.writeString(website);
         dest.writeString(telephoneNumber);
         dest.writeString(city);
+        dest.writeString(about);
     }
 }

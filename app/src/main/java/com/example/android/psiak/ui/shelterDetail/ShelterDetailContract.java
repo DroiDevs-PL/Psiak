@@ -1,5 +1,8 @@
 package com.example.android.psiak.ui.shelterDetail;
 
+import android.net.Uri;
+
+import com.example.android.psiak.model.Shelter;
 import com.example.android.psiak.ui.base.MvpPresenter;
 import com.example.android.psiak.ui.base.MvpView;
 
@@ -10,14 +13,10 @@ import com.example.android.psiak.ui.base.MvpView;
 public interface ShelterDetailContract {
 
     interface View extends MvpView {
-        void showAddress(String street, String city);
-        void showPhone(String phone);
-        void showDescription(String description);
-        void showDogsList();
+        void showDialer(Uri phoneUri);
     }
 
     interface Presenter<V extends MvpView> extends MvpPresenter<V> {
-        void openPhoneDialer(String phoneNumber);
-        void openMapWithLocation(String location);
+        void openDialer(Shelter shelter);
     }
 }

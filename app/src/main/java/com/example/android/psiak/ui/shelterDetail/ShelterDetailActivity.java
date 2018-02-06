@@ -10,6 +10,9 @@ import com.example.android.psiak.ui.shelters.SheltersViewContract;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ShelterDetailActivity
             extends AppCompatActivity
             implements SheltersViewContract.View{
@@ -18,12 +21,14 @@ public class ShelterDetailActivity
     //TODO Naming convention for keys
     public final static String KEY_SHELTER = "KEY_SHELTER";
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_detail);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
     }
 
     @Override

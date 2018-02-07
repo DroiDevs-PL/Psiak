@@ -24,6 +24,8 @@ public class AnimalsFragment
         extends Fragment
         implements FavouriteViewContract.View  {
 
+    private static final String TAG = AnimalsFragment.class.toString();
+
     // region Properties
 
     @BindView(R.id.favourites_recycler_view)
@@ -32,16 +34,19 @@ public class AnimalsFragment
     CoordinatorLayout rootLayout;
 
     /**
-     * Presenter for this view
+     * Number of columns for the grid view.
+     */
+
+    private final int COLUMN_NUMBER = 2;
+
+    /**
+     * Presenter for this view.
      */
 
     private FavouriteViewContract.Presenter<FavouriteViewContract.View> favouritePresenter;
 
     private DogAdapter dogAdapter;
     private GridLayoutManager layoutManager;
-
-
-
 
     // endregion
 
@@ -63,9 +68,10 @@ public class AnimalsFragment
             dogsCollection = dogsCollection.where().contains("type",animalType).findAll();
 
         }
+
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new GridLayoutManager(getContext(), 2);
+        layoutManager = new GridLayoutManager(getContext(), COLUMN_NUMBER);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         recyclerView.setLayoutManager(layoutManager);

@@ -96,15 +96,15 @@ public class MainPresenter
     @Override
     public void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData) {
         //todo zwraca 0 wyników
-//        Iterator<DogFirebase> dogsToModify;
-//        List<DogFirebase> dogsToShow = new ArrayList<>();
-//        for (dogsToModify = dogsData.iterator(); dogsToModify.hasNext(); ) {
-//            DogFirebase dogFromNetwork = dogsToModify.next();
-//            if (localRepository.checkIfEmpty(dogFromNetwork.getId())) {
-//                dogsToShow.add(dogFromNetwork);
-//            }
-//        }
-        view.showAllDogs(dogsData);
+        Iterator<DogFirebase> dogsToModify;
+        List<DogFirebase> dogsToShow = new ArrayList<>();
+        for (dogsToModify = dogsData.iterator(); dogsToModify.hasNext(); ) {
+            DogFirebase dogFromNetwork = dogsToModify.next();
+            if (localRepository.checkIfEmpty(dogFromNetwork.getId())) {
+                dogsToShow.add(dogFromNetwork);
+            }
+        }
+        view.showAllDogs(dogsToShow);
     }
 
 
@@ -140,6 +140,15 @@ public class MainPresenter
 
     }
     //endregion
+
+    @Override
+    public void getAllResetDogs() {
+        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
+
+        if (dogsData.size() > 0 && isViewAttached()) {
+            view.showAllDogs(dogsData);
+        }
+    }
 
     @Override
     public boolean isNetworkAvailable(Context context) {

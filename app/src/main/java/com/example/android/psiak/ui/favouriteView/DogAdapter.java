@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.psiak.R;
 import com.example.android.psiak.model.DogFirebase;
@@ -80,6 +81,10 @@ public class DogAdapter
                 .error(R.drawable.dog_placeholder)
                 .placeholder(R.drawable.dog_placeholder)
                 .into(holder.dogImage);
+
+        holder.dogCardView.setOnClickListener(view -> {
+            Toast.makeText(context, "Item Clicked", Toast.LENGTH_LONG).show();
+        });
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.example.android.psiak.R;
 import com.example.android.psiak.data.local.DogsLocalRepository;
-import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
 
 import butterknife.BindView;
@@ -24,6 +24,8 @@ public class AnimalsFragment
         extends Fragment
         implements FavouriteViewContract.View  {
 
+    private static final String TAG = AnimalsFragment.class.toString();
+
     // region Properties
 
     @BindView(R.id.favourites_recycler_view)
@@ -32,16 +34,19 @@ public class AnimalsFragment
     CoordinatorLayout rootLayout;
 
     /**
-     * Presenter for this view
+     * Number of columns for the grid view.
+     */
+
+    private final int COLUMN_NUMBER = 2;
+
+    /**
+     * Presenter for this view.
      */
 
     private FavouriteViewContract.Presenter<FavouriteViewContract.View> favouritePresenter;
 
     private DogAdapter dogAdapter;
-    private LinearLayoutManager layoutManager;
-
-
-
+    private GridLayoutManager layoutManager;
 
     // endregion
 
@@ -63,9 +68,10 @@ public class AnimalsFragment
             dogsCollection = dogsCollection.where().contains("type",animalType).findAll();
 
         }
+
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(container.getContext());
+        layoutManager = new GridLayoutManager(getContext(), COLUMN_NUMBER);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         recyclerView.setLayoutManager(layoutManager);

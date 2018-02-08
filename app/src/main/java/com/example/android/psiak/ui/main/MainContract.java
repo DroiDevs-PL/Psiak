@@ -34,5 +34,6 @@ public interface MainContract {
         void addNewFavouriteAnimal(Animal animal);
         void getAllAnimalsForShelter(String shelterName);
         boolean isNetworkAvailable(Context context);
+        void getAllResetDogs();
     }
 }

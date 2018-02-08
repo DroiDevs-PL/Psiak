@@ -275,7 +275,7 @@ public class MainActivity
                 return true;
             case R.id.refresh:
                 mSwipeView.removeAllViews();
-                mainPresenter.getAllDogs();
+                mainPresenter.getAllResetDogs();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

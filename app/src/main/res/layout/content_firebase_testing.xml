@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/psiak_spacing_medium"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.addAnimal.AddAnimalActivity"
     tools:showIn="@layout/activity_firebase_testing">
 
     <EditText
         android:id="@+id/et_dog_name"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/psiak_spacing_medium"
         android:ems="10"
         android:hint="@string/dog_name_hint"
         android:inputType="textEmailSubject|textPersonName"
@@ -21,7 +22,7 @@
 
     <EditText
         android:id="@+id/et_dog_description"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_description_hint"
@@ -33,16 +34,16 @@
         android:id="@+id/btn_add_new_dog"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginEnd="@dimen/psiak_spacing_medium"
+        android:layout_marginTop="40dp"
         android:text="@string/add_new_dog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_dog_keeper_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/et_dog_homeless_since" />
 
 
     <EditText
         android:id="@+id/et_dog_gender"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_gender_hint"
@@ -52,7 +53,7 @@
 
     <EditText
         android:id="@+id/et_dog_age"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_age_hint"
@@ -62,7 +63,7 @@
 
     <EditText
         android:id="@+id/et_dog_size"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_size_hint"
@@ -72,7 +73,7 @@
 
     <EditText
         android:id="@+id/et_dog_weight"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_weight_hint"
@@ -82,7 +83,7 @@
 
     <EditText
         android:id="@+id/et_dog_location"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_location_hint"
@@ -94,8 +95,8 @@
         android:id="@+id/sw_dog_vaccinated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/psiak_spacing_small"
+        android:layout_marginTop="@dimen/psiak_spacing_small"
         android:text="@string/dog_vaccinated_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/et_dog_name" />
@@ -104,8 +105,8 @@
         android:id="@+id/sw_dog_dewormed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/psiak_spacing_small"
+        android:layout_marginTop="@dimen/psiak_spacing_small"
         android:text="@string/dog_dewormed_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw_dog_vaccinated" />
@@ -114,15 +115,15 @@
         android:id="@+id/sw_dog_sterilized"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/psiak_spacing_small"
+        android:layout_marginTop="@dimen/psiak_spacing_small"
         android:text="@string/dog_sterilized_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw_dog_dewormed" />
 
     <EditText
         android:id="@+id/et_dog_attitude_people"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_attitude_people_hint"
@@ -139,7 +140,7 @@
 
     <EditText
         android:id="@+id/et_dog_attitude_dogs"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_attitude_dogs_hint"
@@ -149,7 +150,7 @@
 
     <EditText
         android:id="@+id/et_dog_attitude_cats"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_attitude_cats_hint"
@@ -159,9 +160,9 @@
 
     <EditText
         android:id="@+id/et_dog_keeper_name"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/psiak_spacing_large"
         android:ems="10"
         android:hint="@string/dog_keeper_name_hint"
         android:inputType="textPersonName"
@@ -170,7 +171,7 @@
 
     <EditText
         android:id="@+id/et_dog_keeper_mail"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_keeper_mail_hint"
@@ -180,7 +181,7 @@
 
     <EditText
         android:id="@+id/et_dog_keeper_phone"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_keeper_phone_hint"
@@ -190,7 +191,7 @@
 
     <EditText
         android:id="@+id/et_dog_homeless_since"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_homeless_since_hint"

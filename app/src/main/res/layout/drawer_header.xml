@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_header"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
+    android:layout_height="120dp"
     android:gravity="bottom"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/psiak_spacing_medium"
+    android:paddingRight="@dimen/psiak_spacing_medium"
     android:layout_marginBottom="88dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     tools:ignore="ContentDescription">
@@ -18,7 +18,6 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/dog_brown"
-        />
+        android:paddingTop="@dimen/psiak_spacing_large"
+        app:srcCompat="@drawable/dog_brown" />
 </LinearLayout>

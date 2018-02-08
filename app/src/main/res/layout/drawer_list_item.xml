@@ -4,8 +4,8 @@
           android:layout_height="wrap_content"
           android:textAppearance="?android:attr/textAppearanceListItem"
           android:gravity="center_vertical"
-          android:paddingLeft="16dp"
-          android:paddingRight="16dp"
+          android:paddingLeft="@dimen/psiak_spacing_medium"
+          android:paddingRight="@dimen/psiak_spacing_medium"
           android:textColor="#fff"
           android:background="?android:attr/activatedBackgroundIndicator"
            />

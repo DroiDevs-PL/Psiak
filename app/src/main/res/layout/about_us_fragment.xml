@@ -6,6 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/psiak_spacing_medium"
+    android:layout_marginEnd="@dimen/psiak_spacing_medium"
     android:fitsSystemWindows="true"
     tools:ignore="ContentDescription">
 
@@ -15,33 +17,40 @@
 
         <ImageView
             android:id="@+id/about_us_logo_iv"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/psiaki_default_margin"
-            android:layout_marginTop="@dimen/app_bar_margin"
+            android:layout_marginEnd="@dimen/psiak_spacing_medium"
+            android:layout_marginStart="@dimen/psiak_spacing_medium"
+            android:layout_marginTop="@dimen/psiak_spacing_medium"
+            android:paddingBottom="@dimen/psiak_spacing_medium"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/dog_brown"/>
 
         <TextView
             android:id="@+id/about_us_title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/psiaki_default_margin"
-            android:gravity="center"
+            android:layout_margin="@dimen/psiak_spacing_medium"
+            android:fontFamily="@font/montserrat"
+            android:paddingBottom="@dimen/psiak_spacing_medium"
             android:text="@string/lorem_placeholder_short"
-            android:textSize="22sp"
+            android:textSize="@dimen/psiak_text_size_medium"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/about_us_logo_iv"/>
 
         <TextView
             android:id="@+id/about_us_desc"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/psiaki_default_margin"
+            android:layout_margin="@dimen/psiak_spacing_medium"
+            android:fontFamily="@font/montserrat"
             android:text="@string/lorem_placeholder_long"
-            android:textSize="18sp"
+            android:textSize="@dimen/psiak_text_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/about_us_title"/>
     </android.support.constraint.ConstraintLayout>

@@ -10,11 +10,10 @@
         android:id="@+id/iv_shelter_list_image"
         android:src="@drawable/ic_doggy"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:scaleType="centerInside"
-        />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/psiak_spacing_medium"
+        android:layout_marginEnd="@dimen/psiak_spacing_medium"
+        android:scaleType="centerInside" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,10 +22,10 @@
         android:layout_toEndOf="@+id/iv_shelter_list_image"
         android:layout_toRightOf="@+id/iv_shelter_list_image"
         android:orientation="vertical"
-        android:paddingBottom="16dp"
-        android:paddingTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
+        android:paddingBottom="@dimen/psiak_spacing_medium"
+        android:paddingTop="@dimen/psiak_spacing_medium"
+        android:layout_marginLeft="@dimen/psiak_spacing_medium"
+        android:layout_marginRight="@dimen/psiak_spacing_medium">
         <TextView
             android:id="@+id/tv_shelter_name"
             style="@style/TextAppearance.AppCompat.Body2"

@@ -11,7 +11,7 @@
 
     <EditText
         android:id="@+id/et_dog_name"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/psiak_spacing_medium"
         android:ems="10"
@@ -22,7 +22,7 @@
 
     <EditText
         android:id="@+id/et_dog_description"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_description_hint"
@@ -43,7 +43,7 @@
 
     <EditText
         android:id="@+id/et_dog_gender"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_gender_hint"
@@ -53,7 +53,7 @@
 
     <EditText
         android:id="@+id/et_dog_age"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_age_hint"
@@ -63,7 +63,7 @@
 
     <EditText
         android:id="@+id/et_dog_size"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_size_hint"
@@ -73,7 +73,7 @@
 
     <EditText
         android:id="@+id/et_dog_weight"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_weight_hint"
@@ -83,7 +83,7 @@
 
     <EditText
         android:id="@+id/et_dog_location"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_location_hint"
@@ -123,7 +123,7 @@
 
     <EditText
         android:id="@+id/et_dog_attitude_people"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_attitude_people_hint"
@@ -140,7 +140,7 @@
 
     <EditText
         android:id="@+id/et_dog_attitude_dogs"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_attitude_dogs_hint"
@@ -150,7 +150,7 @@
 
     <EditText
         android:id="@+id/et_dog_attitude_cats"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_attitude_cats_hint"
@@ -160,7 +160,7 @@
 
     <EditText
         android:id="@+id/et_dog_keeper_name"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/psiak_spacing_large"
         android:ems="10"
@@ -171,7 +171,7 @@
 
     <EditText
         android:id="@+id/et_dog_keeper_mail"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_keeper_mail_hint"
@@ -181,7 +181,7 @@
 
     <EditText
         android:id="@+id/et_dog_keeper_phone"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_keeper_phone_hint"
@@ -191,7 +191,7 @@
 
     <EditText
         android:id="@+id/et_dog_homeless_since"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/dog_homeless_since_hint"

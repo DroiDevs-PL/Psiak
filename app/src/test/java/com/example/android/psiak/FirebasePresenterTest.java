@@ -21,22 +21,18 @@ import static org.mockito.Mockito.verify;
 
 public class FirebasePresenterTest {
 
-    /*private AddAnimalContract.View mockView;
+    private MainContract.View mockView;
     private MockFirebaseRepository mockFirebaseRepository;
-
-    private FirebasePresenter firebasePresenter;
     private MockLocalRepository mockLocalRepository;
-
-    private AddAnimalPresenter firebasePresenter;
+    private MainPresenter mainPresenter;
 
     @Before
     public void init() {
         mockView = mock(MainActivity.class);
         mockFirebaseRepository = new MockFirebaseRepository();
-
         mockLocalRepository = new MockLocalRepository();
-        firebasePresenter = new FirebasePresenter(mockFirebaseRepository, mockLocalRepository);
-        firebasePresenter.attach(mockView);
+        mainPresenter = new MainPresenter(mockFirebaseRepository, mockLocalRepository);
+        mainPresenter.attachView(mockView);
     }
 
     @Test
@@ -56,11 +52,11 @@ public class FirebasePresenterTest {
         DatabaseException databaseException = new DatabaseException("Exception");
         mainPresenter.setErrorMessage(databaseException);
         verify(mockView).showErrorMessage(databaseException.getMessage());
-    }*/
+    }
 }
 
 
-/*class MockFirebaseRepository implements Repository.Firebase<DogFirebase> {
+class MockFirebaseRepository implements Repository.Firebase<DogFirebase> {
 
     public DogFirebase dogPlaceholder;
 
@@ -122,9 +118,9 @@ public class FirebasePresenterTest {
     public String generateUniqueID() {
         return null;
     }
-}*/
+}
 
-/*class MockLocalRepository implements Repository.LocalRepository {
+class MockLocalRepository implements Repository.LocalRepository {
     @Override
     public RealmResults<DogFirebase> getAll() {
         return null;
@@ -149,4 +145,9 @@ public class FirebasePresenterTest {
     public void delete(DogFirebase dogFirebase) {
 
     }
-}*/
+
+    @Override
+    public boolean checkIfEmpty(String id) {
+        return false;
+    }
+}

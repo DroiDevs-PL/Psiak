@@ -1,9 +1,9 @@
 package com.example.android.psiak.ui.main;
 
+import com.example.android.psiak.R;
 import com.example.android.psiak.data.network.FirebaseDataListener;
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.content.IntentFilter;
 import com.example.android.psiak.data.network.Repository;
 import com.example.android.psiak.data.network.SortingStrategyFactory;
 import com.example.android.psiak.model.Animal;
@@ -11,6 +11,8 @@ import com.example.android.psiak.model.AnimalType;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.addAnimal.AddAnimalPresenter;
 import com.example.android.psiak.ui.base.BasePresenter;
+import com.example.android.psiak.utils.NetworkState;
+import com.example.android.psiak.utils.NetworkStateDataListener;
 import com.google.firebase.database.DatabaseException;
 
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ import timber.log.Timber;
 public class MainPresenter
         extends BasePresenter<MainContract.View>
 
-        implements MainContract.Presenter<MainContract.View> , FirebaseDataListener<DogFirebase> {
+        implements MainContract.Presenter<MainContract.View>, FirebaseDataListener<DogFirebase>, NetworkStateDataListener {
 
         private static final String TAG = AddAnimalPresenter.class.toString();
 
@@ -33,6 +35,7 @@ public class MainPresenter
      */
     Repository.Firebase firebaseRepository;
     Repository.LocalRepository localRepository;
+    NetworkState networkState;
 
     /**
      * Initialize FirebasePresenter with Firebase repository. After initialization FirebasePresenter object will be set as a
@@ -46,26 +49,35 @@ public class MainPresenter
         this.firebaseRepository = repository;
         this.localRepository = localRepository;
         this.firebaseRepository.setDataListner(this);
+        networkState = new NetworkState(this);
     }
 
     //region old methods from Presenter interface
     @Override
-    public void getAllDogs() {
-        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
+    public void getAllDogs(Context context) {
+        if (networkState.isNetworkAvailable(context)) {
+            ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
 
-        if (dogsData.size() > 0 && isViewAttached()) {
-            setDogsWithoutDuplicates(dogsData);
+            if (dogsData.size() > 0 && isViewAttached()) {
+                setDogsWithoutDuplicates(dogsData);
+            } else {
+                firebaseRepository.getAllObjects();
+            }
         } else {
-            firebaseRepository.getAllObjects();
+            view.showMessage(R.string.network_connection_disabled);
         }
     }
 
     @Override
-    public void getSortedDogs(String fieldName) {
-        ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
-        Collections.sort(dogsData, SortingStrategyFactory.getStrategyForField(fieldName));
-        if (isViewAttached()) {
-            setDogsWithoutDuplicates(dogsData);
+    public void getSortedDogs(String fieldName, Context context) {
+        if(networkState.isNetworkAvailable(context)) {
+            ArrayList<DogFirebase> dogsData = firebaseRepository.getCachedDogs();
+            Collections.sort(dogsData, SortingStrategyFactory.getStrategyForField(fieldName));
+            if (isViewAttached()) {
+                setDogsWithoutDuplicates(dogsData);
+            }
+        } else {
+            view.showMessage(R.string.network_connection_disabled);
         }
     }
 
@@ -119,7 +131,7 @@ public class MainPresenter
 
         switch (animalType) {
             case DOGS:
-                getAllDogs();
+//                getAllDogs();
                 break;
             case CATS:
                 //TODO implement getting all cats
@@ -151,17 +163,18 @@ public class MainPresenter
     }
 
     @Override
-    public boolean isNetworkAvailable(Context context) {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
-
-    @Override
     public void setErrorMessage(DatabaseException databaseException) {
         view.showErrorMessage(databaseException.getMessage());
+    }
+    public IntentFilter getIntentFilter(){
+       return networkState.getIntentFilter();
+    }
+    public NetworkState getReceiver(){
+        return networkState;
+    }
+    @Override
+    public void refreshAnimalsData(){
+        view.getAnimals();
     }
 
 

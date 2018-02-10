@@ -110,16 +110,24 @@ public class MainActivity
                 FirebaseRepository.AVAILABLE_DOGS_ENDPOINT, DogFirebase.class),
                 new DogsLocalRepository(this));
         mainPresenter.attachView(this);
-        if (mainPresenter.isNetworkAvailable(this)){
-            mainPresenter.getAllDogs();
-        }
-        else{
-            showMessage(R.string.network_connection_disabled);
-        }
+        mainPresenter.getAllDogs(this);
+
 
         PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
         //TODO uncomment before release
         GooglePlayUtils.app_launched(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mainPresenter.getReceiver(), mainPresenter.getIntentFilter());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mainPresenter.getReceiver());
     }
 
     private void setUpAnimation() {
@@ -211,12 +219,7 @@ public class MainActivity
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedItem = sortSpinner.getSelectedItem().toString();
                 mSwipeView.removeAllViews();
-                if (mainPresenter.isNetworkAvailable(MainActivity.this)){
-                    mainPresenter.getSortedDogs(selectedItem);
-                }
-                else{
-                    showMessage(R.string.network_connection_disabled);
-                }
+                mainPresenter.getSortedDogs(selectedItem, MainActivity.this);
             }
 
             @Override
@@ -372,5 +375,9 @@ public class MainActivity
         }
     }
     // endregion
+    @Override
+    public void getAnimals(){
+        mainPresenter.getAllDogs(this);
+    }
 }
 

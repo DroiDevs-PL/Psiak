@@ -20,12 +20,13 @@ public interface MainContract {
     interface View extends MvpView {
         void showAllDogs(List<DogFirebase> dogs);
         void showAnimals(List<Animal> animals);
+        void getAnimals();
     }
 
     interface Presenter<V extends MvpView> extends MvpPresenter<V> {
 
-        void getAllDogs();
-        void getSortedDogs(String fieldName);
+        void getAllDogs(Context context);
+        void getSortedDogs(String fieldName, Context context);
         void setDogsWithoutDuplicates(ArrayList<DogFirebase> dogsData);
         void addNewFavouriteDog(DogFirebase dogFirebase);
 
@@ -33,7 +34,7 @@ public interface MainContract {
         void getAllAnimals(AnimalType animalType);
         void addNewFavouriteAnimal(Animal animal);
         void getAllAnimalsForShelter(String shelterName);
-        boolean isNetworkAvailable(Context context);
         void getAllResetDogs();
+        void refreshAnimalsData();
     }
 }

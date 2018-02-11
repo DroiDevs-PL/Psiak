@@ -70,10 +70,10 @@
 
     <!-- Values For Tab Layout In Favourite Screen -->
 
-    <string name="tab_dogs">Dogs</string>
-    <string name="tab_cats">Cats</string>
-    <string name="tab_others">Others</string>
-    <string name="dog_name">Dog name</string>
+    <string name="tab_dogs">Psy</string>
+    <string name="tab_cats">Koty</string>
+    <string name="tab_others">Inne</string>
+    <string name="dog_name">Imię zwierzaka</string>
     <string name="rate_please_message">Jeśli spodobała Ci się aplikacja bylibyśmy wdzięczni za ocenę. Twój feedback pomaga w rozwoju aplikacji.\n Dzięki za pomoc!</string>
     <string name="ok">Okej!</string>
     <string name="questionForRating">Jak oceniasz aplikację?</string>
@@ -100,10 +100,10 @@
     <string name="choose_shelter">Wybierz schronisko</string>
     <string name="animal_preference_key" translatable="false">animal_preference</string>
     <string name="shelter_preference_key" translatable="false">shelter_preference</string>
-    <string name="animal_default_value" translatable="false">psy</string>
+    <string name="animal_default_value" translatable="false">Psy</string>
     <string name="shelter_default_value" translatable="false">Warszawa</string>
 
-
+    <!--Images descriptions-->
     <string name="image_view_animal_profile">imageAnimalProfile</string>
     <string name="tv_description">Description</string>
     <string name="tinder_card_image">tinderCardImageDescription</string>

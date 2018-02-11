@@ -14,9 +14,9 @@
         android:id="@+id/dog_card_view"
         android:layout_width="170dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="@dimen/psiak_spacing_xsmall"
+        android:layout_marginStart="@dimen/psiak_spacing_small"
+        android:layout_marginTop="@dimen/psiak_spacing_xsmall"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
@@ -27,7 +27,7 @@
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent">
 
-        <android.support.constraint.ConstraintLayout
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -36,7 +36,7 @@
                 android:layout_width="100dp"
                 android:layout_height="0dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="@dimen/psiak_spacing_small"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 app:srcCompat="@drawable/ic_doggy"
@@ -49,15 +49,15 @@
                 android:id="@+id/dog_card_view_tv_dog_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-condensed"
+                android:layout_marginBottom="@dimen/psiak_spacing_small"
+                android:layout_marginStart="@dimen/psiak_spacing_small"
+                android:layout_marginEnd="@dimen/psiak_spacing_small"
+                android:layout_marginTop="@dimen/psiak_spacing_small"
                 android:text="@string/dog_name"
+                android:textSize="@dimen/psiak_text_size_small"
+                android:fontFamily="sans-serif-condensed"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_light_background"
-                android:textSize="17sp"
                 android:textStyle="bold"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
@@ -73,16 +73,17 @@
                 android:id="@+id/dog_card_view_tv_dog_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:fontFamily="sans-serif-condensed"
                 android:text="@string/dog_age_hint"
+                android:textSize="@dimen/psiak_text_size_small"
+                android:layout_marginBottom="@dimen/psiak_spacing_small"
+                android:layout_marginEnd="@dimen/psiak_spacing_small"
+                android:layout_marginStart="@dimen/psiak_spacing_small"
+                android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/cardview_light_background"
-                android:textSize="17sp"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent" />
+
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>

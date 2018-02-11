@@ -58,6 +58,11 @@
             android:label="@string/title_activity_shelter_detail"
             android:theme="@style/AppTheme"
             android:parentActivityName=".ui.shelters.SheltersActivity"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

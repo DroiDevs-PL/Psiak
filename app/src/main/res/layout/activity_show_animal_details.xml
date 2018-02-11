@@ -34,7 +34,7 @@
           android:id="@+id/tv_AnimalHeading"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:textSize="24sp" />
+          android:textSize="@dimen/psiak_text_size_xlarge" />
 
         <TextView
           android:id="@+id/tv_Shelter"

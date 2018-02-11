@@ -10,8 +10,8 @@
     <LinearLayout
         android:id="@+id/layout_ShowAnimalDetails"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/psiaki_default_margin"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/psiak_spacing_medium"
         android:orientation="vertical"
         android:paddingTop="0dp">
 

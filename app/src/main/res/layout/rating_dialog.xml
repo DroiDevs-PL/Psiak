@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_gravity="center_horizontal|center_vertical"
-              android:layout_margin="@dimen/psiaki_default_margin_small"
+              android:layout_margin="@dimen/psiak_spacing_small"
               android:orientation="vertical"
               tools:ignore="ContentDescription">
 
@@ -24,10 +24,10 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:text="@string/rate_please_message"
-        android:textSize="15sp"
-        android:paddingTop="@dimen/psiaki_default_margin_small"
-        android:paddingStart="@dimen/psiaki_default_margin_small"
-        android:paddingEnd="@dimen/psiaki_default_margin_small"
+        android:textSize="@dimen/psiak_text_size_xsmall"
+        android:paddingTop="@dimen/psiak_spacing_small"
+        android:paddingStart="@dimen/psiak_spacing_small"
+        android:paddingEnd="@dimen/psiak_spacing_small"
         android:textStyle="bold"/>
 
 
@@ -37,16 +37,16 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/questionForRating"
-        android:textSize="24sp"
+        android:textSize="@dimen/psiak_text_size_xlarge"
         android:textStyle="bold"/>
 
     <com.hsalf.smilerating.SmileRating
         android:id="@+id/smile_rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/psiaki_default_margin_small"
-        android:paddingEnd="@dimen/psiaki_default_margin_small"
-        android:paddingBottom="@dimen/psiaki_default_margin_small"
-        android:paddingTop="@dimen/psiaki_default_margin_small"/>
+        android:paddingStart="@dimen/psiak_spacing_small"
+        android:paddingEnd="@dimen/psiak_spacing_small"
+        android:paddingBottom="@dimen/psiak_spacing_small"
+        android:paddingTop="@dimen/psiak_spacing_small"/>
 
 </LinearLayout>

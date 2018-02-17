@@ -2,6 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
+  android:layout_marginEnd="@dimen/psiak_spacing_medium"
+  android:layout_marginStart="@dimen/psiak_spacing_medium"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@color/bgShowAnimalDetails"
@@ -14,7 +16,7 @@
   <LinearLayout
     android:id="@+id/layout_ShowAnimalDetails"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingTop="0dp"
     android:orientation="vertical"
     android:visibility="invisible">
@@ -46,7 +48,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="40dp"
-          android:text="TextView" />
+          android:text="@string/text_view_tv_description" />
 
       </LinearLayout>
   </LinearLayout>

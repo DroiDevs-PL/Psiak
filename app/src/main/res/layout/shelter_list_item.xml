@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/psiak_spacing_medium"
+    android:layout_marginStart="@dimen/psiak_spacing_medium"
     android:minHeight="72dp">
     <ImageView
         android:layout_width="40dp"
@@ -12,20 +14,21 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="@dimen/psiak_spacing_medium"
-        android:layout_marginEnd="@dimen/psiak_spacing_medium"
-        android:scaleType="centerInside" />
+        android:paddingEnd="@dimen/psiak_spacing_small"
+        android:paddingStart="@dimen/psiak_spacing_small"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/shelter_list_item_image_view" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignWithParentIfMissing="true"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/iv_shelter_list_image"
-        android:layout_toRightOf="@+id/iv_shelter_list_image"
         android:orientation="vertical"
         android:paddingBottom="@dimen/psiak_spacing_medium"
         android:paddingTop="@dimen/psiak_spacing_medium"
-        android:layout_marginLeft="@dimen/psiak_spacing_medium"
-        android:layout_marginRight="@dimen/psiak_spacing_medium">
+        android:layout_marginLeft="@dimen/psiak_spacing_small"
+        android:layout_marginRight="@dimen/psiak_spacing_small">
         <TextView
             android:id="@+id/tv_shelter_name"
             style="@style/TextAppearance.AppCompat.Body2"

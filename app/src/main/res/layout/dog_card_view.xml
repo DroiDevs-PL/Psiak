@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/psiak_spacing_small"
+    android:layout_marginStart="@dimen/psiak_spacing_small"
     android:background="@color/white"
     android:clickable="true"
     android:orientation="vertical"

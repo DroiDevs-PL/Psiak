@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:ignore="ContentDescription">
+    tools:ignore="ContentDescription"
+    android:layout_marginEnd="@dimen/psiak_spacing_small"
+    android:layout_marginStart="@dimen/psiak_spacing_small">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/dogsAvailableLayout"
@@ -62,13 +64,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/rejectBtnGuideline"/>
+                app:layout_constraintEnd_toEndOf="@id/rejectBtnGuideline"
+                android:paddingBottom="@dimen/psiak_spacing_small"/>
 
             <ImageButton
                 android:id="@+id/acceptBtn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="@dimen/psiak_spacing_medium"
+                android:paddingBottom="@dimen/psiak_spacing_small"
                 android:background="@drawable/happy_dog_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

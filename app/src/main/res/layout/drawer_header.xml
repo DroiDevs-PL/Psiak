@@ -8,8 +8,8 @@
     android:layout_height="120dp"
     android:gravity="bottom"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/psiak_spacing_medium"
-    android:paddingRight="@dimen/psiak_spacing_medium"
+    android:paddingStart="@dimen/psiak_spacing_medium"
+    android:paddingEnd="@dimen/psiak_spacing_medium"
     android:layout_marginBottom="88dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     tools:ignore="ContentDescription">

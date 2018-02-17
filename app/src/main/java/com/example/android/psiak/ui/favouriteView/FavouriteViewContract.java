@@ -9,10 +9,10 @@ import io.realm.RealmResults;
 public interface FavouriteViewContract {
 
     interface View extends MvpView {
-
+        void showFavouriteAnimals(RealmResults<DogFirebase> animals);
     }
 
     interface Presenter<V extends MvpView> extends MvpPresenter<V> {
-        RealmResults<DogFirebase> getAllDogsFromLocalRepository();
+        void getAllAnimalsFromLocalRepository();
     }
 }

@@ -60,12 +60,25 @@ public class AnimalsFragment
         // TODO: Dependency Injection
         favouritePresenter = new FavouritePresenter(new DogsLocalRepository(getContext()));
         favouritePresenter.attachView(this);
-        RealmResults<DogFirebase> dogsCollection = favouritePresenter.getAllDogsFromLocalRepository();
+
+        favouritePresenter.getAllAnimalsFromLocalRepository();
+
+        return view;
+    }
+
+    // endregion
+
+    // region Public Methods
+
+
+    @Override
+    public void showFavouriteAnimals(RealmResults<DogFirebase> animals) {
 
         Bundle bundle = getArguments();
-        if(bundle != null){
+
+        if (bundle != null) {
             String animalType = bundle.getString("animalsToShow");
-            dogsCollection = dogsCollection.where().contains("type",animalType).findAll();
+            animals = animals.where().contains("type",animalType).findAll();
 
         }
 
@@ -77,16 +90,10 @@ public class AnimalsFragment
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        dogAdapter = new DogAdapter(getContext(), layoutManager, rootLayout, dogsCollection);
+        dogAdapter = new DogAdapter(getContext(), layoutManager, rootLayout, animals);
 
         recyclerView.setAdapter(dogAdapter);
-
-        return view;
     }
-
-    // endregion
-
-    // region Public Methods
 
     @Override
     public void showMessage(int messageId) {

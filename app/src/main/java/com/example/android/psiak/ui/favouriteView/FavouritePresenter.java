@@ -8,7 +8,7 @@ import com.example.android.psiak.ui.base.BasePresenter;
 
 import io.realm.RealmResults;
 
-class FavouritePresenter
+public class FavouritePresenter
         extends BasePresenter<FavouriteViewContract.View>
         implements FavouriteViewContract.Presenter<FavouriteViewContract.View> {
 
@@ -36,8 +36,10 @@ class FavouritePresenter
     // region Public Methods
 
     @Override
-    public RealmResults<DogFirebase> getAllDogsFromLocalRepository() {
-        return localRepository.getAll();
+    public void getAllAnimalsFromLocalRepository() {
+
+        view.showFavouriteAnimals(localRepository.getAll());
+
     }
 
     // endregion

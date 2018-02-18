@@ -1,6 +1,4 @@
-package com.example.android.psiak;
-
-import android.content.Context;
+package com.example.android.psiak.ui.addAnimal;
 
 import com.example.android.psiak.data.network.FirebaseDataListener;
 import com.example.android.psiak.data.network.Repository;

@@ -1,14 +1,9 @@
-package com.example.android.psiak;
+package com.example.android.psiak.ui.favourites;
 
-import android.content.Context;
-
-import com.example.android.psiak.data.local.DogsLocalRepository;
 import com.example.android.psiak.data.network.Repository;
-import com.example.android.psiak.model.Dog;
 import com.example.android.psiak.model.DogFirebase;
-import com.example.android.psiak.ui.favouriteView.AnimalsFragment;
-import com.example.android.psiak.ui.favouriteView.FavouritePresenter;
-import com.example.android.psiak.ui.favouriteView.FavouriteViewContract;
+import com.example.android.psiak.ui.favourite.FavouritePresenter;
+import com.example.android.psiak.ui.favourite.FavouriteViewContract;
 
 import org.junit.Before;
 import org.junit.Test;

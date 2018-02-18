@@ -38,8 +38,13 @@ public class FavouritePresenter
     @Override
     public void getAllAnimalsFromLocalRepository() {
 
-        view.showFavouriteAnimals(localRepository.getAll());
+        RealmResults<DogFirebase> realmResults = localRepository.getAll();
 
+        if (realmResults == null) {
+            view.showErrorMessage("Error");
+        } else {
+            view.showFavouriteAnimals(localRepository.getAll());
+        }
     }
 
     // endregion

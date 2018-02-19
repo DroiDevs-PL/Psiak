@@ -88,9 +88,10 @@
     <string name="rating_3">Świetna!</string>
 
     <!-- Values For tools design purposes only-->
-    <string name="lorem_placeholder_short">Lorem ipsum dolor sit amet, consectetur adipiscing veniam. </string>
-    <string name="lorem_placeholder_medium">Lorem ipsum dolor sit amet, consectetur dolore magna alea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
-    <string name="lorem_placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.!</string>
+    <string name="aboutus_title">Krótka historia powstania aplikacji \"Psiak\"</string>
+    <string name="aboutus_description_first">Aplikacja została wykonana przez grupę wrażliwych na los zwierząt entuzjastów, którzy spotkali się w projekcie "Google Developer Nanodegree Scholarship". Naszym celem było stworzenie programu, który pomógłby schroniskom w znalezieniu domów bezdomnym kotom i psom. Postanowiliśmy zebrać w jednym miejscu informacje o schroniskach i zwierzętach, które tam przebywają, zwiększając ich szanse na dom. </string>
+    <string name="aboutus_description_sec">Aplikacja umożliwia przeglądanie oraz archiwizowanie zdjęć i opisów zwierząt znajdujących się pod opieką schronisk z różnych stron Polski. Potencjalni opiekunowie mogą tutaj znaleźć informacje na temat miejsca pobytu zwierzaka, jego wieku, stosunku do innych zwierząt, dzieci itp. Natomiast schroniska mogą wprowadzać i uzupełniać dane dotyczące swoich podopiecznych.</string>
+    <string name="aboutus_description_last">Wierzymy, że nasza aplikacja przyniesie radość ludziom i zwierzętom!</string>
 
     <!--Preferences-->
     <string name="choose_animal">Domyślny gatunek</string>
@@ -120,5 +121,6 @@
     <string name="mock_shelter_description">Do najważniejszych zadań Schroniska należy: Przyjmowanie i przetrzymywanie zwierząt zagubionych, zabłąkanych i porzuconych lub z innych przyczyn bezdomnych, a w szczególności psów, kotów, a także innych zwierząt, które w wyniku zdarzeń losowych nie są zdolne samodzielnie egzystować. Poszukiwanie nowych domów dla zwierząt porzuconych, bezdomnych lub tych, które nie są w stanie przeżyć na wolności lub którym wypuszczenie na wolność może przysporzyć cierpień oraz przekazywanie zwierząt osobom zainteresowanym ich posiadaniem, zdolnym zapewnić im należyte warunki bytowania. Leczenie chorych zwierząt przebywających w Schronisku, rokujących nadzieję na wyzdrowienie. Informujemy, że z dniem 1.12.2014  w gabinecie Schroniska mieszkańcy Szczecina mogą bezpłatnie zaczipować swojego psa. Nie świadczymy żadnych innych usług weterynaryjnych. Nasz gabinet obejmuje swoją opieką jedynie psy znajdujące się na stanie Schroniska.</string>
     <string name="text_view_tv_description">Description</string>
     <string name="shelter_list_item_image_view">Image</string>
+
 
 </resources>

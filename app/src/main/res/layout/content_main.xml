@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:ignore="ContentDescription"
-    android:layout_marginEnd="@dimen/psiak_spacing_small"
-    android:layout_marginStart="@dimen/psiak_spacing_small">
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:layout_marginEnd="@dimen/psiak_spacing_small"
+                                             android:layout_marginStart="@dimen/psiak_spacing_small"
+                                             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                                             tools:ignore="ContentDescription"
+                                             tools:showIn="@layout/activity_main">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/dogsAvailableLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryLight"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorPrimaryLight">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.mindorks.placeholderview.SwipePlaceHolderView
             android:id="@+id/swipeView"
@@ -28,20 +29,21 @@
             app:layout_constraintBottom_toTopOf="@id/buttonPanel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_doggy"/>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:lottie_fileName="like.json"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="false"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="like.json"
+            app:lottie_loop="true"
             />
 
         <android.support.constraint.ConstraintLayout
@@ -61,19 +63,19 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/psiak_spacing_medium"
                 android:background="@drawable/sad_dog_button"
+                android:paddingBottom="@dimen/psiak_spacing_small"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/rejectBtnGuideline"
-                android:paddingBottom="@dimen/psiak_spacing_small"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageButton
                 android:id="@+id/acceptBtn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="@dimen/psiak_spacing_medium"
-                android:paddingBottom="@dimen/psiak_spacing_small"
                 android:background="@drawable/happy_dog_button"
+                android:paddingBottom="@dimen/psiak_spacing_small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/acceptBtnGuideline"
@@ -84,14 +86,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.7" />
+                app:layout_constraintGuide_percent="0.7"/>
 
             <android.support.constraint.Guideline
                 android:id="@+id/rejectBtnGuideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.3" />
+                app:layout_constraintGuide_percent="0.3"/>
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.Guideline
@@ -99,8 +101,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.87" />
+            app:layout_constraintGuide_percent="0.87"/>
 
     </android.support.constraint.ConstraintLayout>
+
     <include layout="@layout/no_dogs"/>
 </android.support.constraint.ConstraintLayout>

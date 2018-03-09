@@ -2,8 +2,8 @@
 
     <!-- Manifest -->
 
-    <string name="app_name">Psiaki</string>
-    <string name="title_activity_firebase_testing">Firebase testing</string>
+    <string name="app_name" translatable="false">Psiaki</string>
+    <string name="title_activity_firebase_testing" translatable="false">Firebase testing</string>
     <!--<string name="title_activity_main_old">MainActivityOLD</string>-->
 
     <!-- Main UI -->
@@ -65,33 +65,33 @@
     <string name="rate">Oceń aplikację</string>
     <string name="sample_text">Json do wyplucia</string>
     <string name="info_no_data">Brak danych</string>
-    <string name="title_activity_main_old">MainActivityOLD</string>
-    <string name="title_activity_favourite">FavouriteActivity</string>
+    <string name="title_activity_main_old" translatable="false">MainActivityOLD</string>
+    <string name="title_activity_favourite" translatable="false">FavouriteActivity</string>
 
     <!-- Values For Tab Layout In Favourite Screen -->
 
-    <string name="tab_dogs">Psy</string>
-    <string name="tab_cats">Koty</string>
-    <string name="tab_others">Inne</string>
-    <string name="dog_name">Imię zwierzaka</string>
-    <string name="rate_please_message">Prosimy o ocenę aplikacji. \n Twój feedback pomaga ją rozwijać.\n Dzięki za pomoc!</string>
-    <string name="ok">Okej!</string>
-    <string name="questionForRating">Jak oceniasz aplikację?</string>
-    <string name="sort">sort</string>
+    <string name="tab_dogs" translatable="false">Psy</string>
+    <string name="tab_cats" translatable="false">Koty</string>
+    <string name="tab_others" translatable="false">Inne</string>
+    <string name="dog_name" translatable="false">Imię zwierzaka</string>
+    <string name="rate_please_message" translatable="false">Prosimy o ocenę aplikacji. \n Twój feedback pomaga ją rozwijać.\n Dzięki za pomoc!</string>
+    <string name="ok" translatable="false">Okej!</string>
+    <string name="questionForRating" translatable="false">Jak oceniasz aplikację?</string>
+    <string name="sort" translatable="false">sort</string>
 
-    <string name="another_time">Innym razem</string>
-    <string name="rate_title">Oceń Psiaki</string>
-    <string name="rating_0">Tragiczna</string>
-    <string name="rating_1">Słaba</string>
-    <string name="rating_2">W porządku</string>
-    <string name="rating_4">Daje radę</string>
-    <string name="rating_3">Świetna!</string>
+    <string name="another_time" translatable="false">Innym razem</string>
+    <string name="rate_title" translatable="false">Oceń Psiaki</string>
+    <string name="rating_0" translatable="false">Tragiczna</string>
+    <string name="rating_1" translatable="false">Słaba</string>
+    <string name="rating_2" translatable="false">W porządku</string>
+    <string name="rating_4" translatable="false">Daje radę</string>
+    <string name="rating_3" translatable="false">Świetna!</string>
 
     <!-- Values For tools design purposes only-->
-    <string name="aboutus_title">Krótka historia powstania aplikacji \"Psiak\"</string>
-    <string name="aboutus_description_first">Aplikacja została wykonana przez grupę wrażliwych na los zwierząt entuzjastów, którzy spotkali się w projekcie "Google Developer Nanodegree Scholarship". Naszym celem było stworzenie programu, który pomógłby schroniskom w znalezieniu domów bezdomnym kotom i psom. Postanowiliśmy zebrać w jednym miejscu informacje o schroniskach i zwierzętach, które tam przebywają, zwiększając ich szanse na dom. </string>
-    <string name="aboutus_description_sec">Aplikacja umożliwia przeglądanie oraz archiwizowanie zdjęć i opisów zwierząt znajdujących się pod opieką schronisk z różnych stron Polski. Potencjalni opiekunowie mogą tutaj znaleźć informacje na temat miejsca pobytu zwierzaka, jego wieku, stosunku do innych zwierząt, dzieci itp. Natomiast schroniska mogą wprowadzać i uzupełniać dane dotyczące swoich podopiecznych.</string>
-    <string name="aboutus_description_last">Wierzymy, że nasza aplikacja przyniesie radość ludziom i zwierzętom!</string>
+    <string name="aboutus_title" translatable="false">Krótka historia powstania aplikacji \"Psiak\"</string>
+    <string name="aboutus_description_first" translatable="false">Aplikacja została wykonana przez grupę wrażliwych na los zwierząt entuzjastów, którzy spotkali się w projekcie "Google Developer Nanodegree Scholarship". Naszym celem było stworzenie programu, który pomógłby schroniskom w znalezieniu domów bezdomnym kotom i psom. Postanowiliśmy zebrać w jednym miejscu informacje o schroniskach i zwierzętach, które tam przebywają, zwiększając ich szanse na dom. </string>
+    <string name="aboutus_description_sec" translatable="false">Aplikacja umożliwia przeglądanie oraz archiwizowanie zdjęć i opisów zwierząt znajdujących się pod opieką schronisk z różnych stron Polski. Potencjalni opiekunowie mogą tutaj znaleźć informacje na temat miejsca pobytu zwierzaka, jego wieku, stosunku do innych zwierząt, dzieci itp. Natomiast schroniska mogą wprowadzać i uzupełniać dane dotyczące swoich podopiecznych.</string>
+    <string name="aboutus_description_last" translatable="false">Wierzymy, że nasza aplikacja przyniesie radość ludziom i zwierzętom!</string>
 
     <!--Preferences-->
     <string name="choose_animal">Domyślny gatunek</string>
@@ -105,22 +105,22 @@
     <string name="shelter_default_value" translatable="false">Warszawa</string>
 
     <!--Images descriptions-->
-    <string name="image_view_animal_profile">imageAnimalProfile</string>
-    <string name="tv_description">Description</string>
-    <string name="tinder_card_image">tinderCardImageDescription</string>
-    <string name="tinder_swipe_in_image">tinderInImageDescription</string>
-    <string name="tinder_swipe_out_image">tinderOutImageDescription</string>
+    <string name="image_view_animal_profile" translatable="false">imageAnimalProfile</string>
+    <string name="tv_description" translatable="false">Description</string>
+    <string name="tinder_card_image" translatable="false">tinderCardImageDescription</string>
+    <string name="tinder_swipe_in_image" translatable="false">tinderInImageDescription</string>
+    <string name="tinder_swipe_out_image" translatable="false">tinderOutImageDescription</string>
 
-    <string name="title_activity_shelters">Schroniska</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_shelter_detail">Schronisko</string>
-    <string name="phone_label">telefon</string>
-    <string name="shelter_info_header">O schronisku</string>
-    <string name="phone_label_text">Telefon</string>
-    <string name="address_label_string">Adres</string>
-    <string name="mock_shelter_description">Do najważniejszych zadań Schroniska należy: Przyjmowanie i przetrzymywanie zwierząt zagubionych, zabłąkanych i porzuconych lub z innych przyczyn bezdomnych, a w szczególności psów, kotów, a także innych zwierząt, które w wyniku zdarzeń losowych nie są zdolne samodzielnie egzystować. Poszukiwanie nowych domów dla zwierząt porzuconych, bezdomnych lub tych, które nie są w stanie przeżyć na wolności lub którym wypuszczenie na wolność może przysporzyć cierpień oraz przekazywanie zwierząt osobom zainteresowanym ich posiadaniem, zdolnym zapewnić im należyte warunki bytowania. Leczenie chorych zwierząt przebywających w Schronisku, rokujących nadzieję na wyzdrowienie. Informujemy, że z dniem 1.12.2014  w gabinecie Schroniska mieszkańcy Szczecina mogą bezpłatnie zaczipować swojego psa. Nie świadczymy żadnych innych usług weterynaryjnych. Nasz gabinet obejmuje swoją opieką jedynie psy znajdujące się na stanie Schroniska.</string>
-    <string name="text_view_tv_description">Description</string>
-    <string name="shelter_list_item_image_view">Image</string>
+    <string name="title_activity_shelters" translatable="false">Schroniska</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="title_activity_shelter_detail" translatable="false">Schronisko</string>
+    <string name="phone_label" translatable="false">telefon</string>
+    <string name="shelter_info_header" translatable="false">O schronisku</string>
+    <string name="phone_label_text" translatable="false">Telefon</string>
+    <string name="address_label_string" translatable="false">Adres</string>
+    <string name="mock_shelter_description" translatable="false">Do najważniejszych zadań Schroniska należy: Przyjmowanie i przetrzymywanie zwierząt zagubionych, zabłąkanych i porzuconych lub z innych przyczyn bezdomnych, a w szczególności psów, kotów, a także innych zwierząt, które w wyniku zdarzeń losowych nie są zdolne samodzielnie egzystować. Poszukiwanie nowych domów dla zwierząt porzuconych, bezdomnych lub tych, które nie są w stanie przeżyć na wolności lub którym wypuszczenie na wolność może przysporzyć cierpień oraz przekazywanie zwierząt osobom zainteresowanym ich posiadaniem, zdolnym zapewnić im należyte warunki bytowania. Leczenie chorych zwierząt przebywających w Schronisku, rokujących nadzieję na wyzdrowienie. Informujemy, że z dniem 1.12.2014  w gabinecie Schroniska mieszkańcy Szczecina mogą bezpłatnie zaczipować swojego psa. Nie świadczymy żadnych innych usług weterynaryjnych. Nasz gabinet obejmuje swoją opieką jedynie psy znajdujące się na stanie Schroniska.</string>
+    <string name="text_view_tv_description" translatable="false">Description</string>
+    <string name="shelter_list_item_image_view" translatable="false">Image</string>
 
 
 </resources>

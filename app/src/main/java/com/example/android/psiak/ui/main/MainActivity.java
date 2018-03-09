@@ -39,8 +39,12 @@ import com.example.android.psiak.ui.aboutUs.AboutUsActivity;
 import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
 import com.example.android.psiak.ui.favourite.FavouriteActivity;
 import com.example.android.psiak.ui.settings.SettingsActivity;
-import com.example.android.psiak.utils.GooglePlayUtils;
 import com.example.android.psiak.ui.shelters.SheltersActivity;
+import com.example.android.psiak.utils.GooglePlayUtils;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+import com.microsoft.appcenter.distribute.Distribute;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
@@ -97,6 +101,9 @@ public class MainActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        AppCenter.start(getApplication(), "49ae8661-0699-43cb-9efe-dc40059b35ab",
+                Analytics.class, Crashes.class, Distribute.class);
 
         configureSwipeView();
 

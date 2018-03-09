@@ -1,4 +1,4 @@
-package com.example.android.psiak.ui.favouriteView;
+package com.example.android.psiak.ui.favourite;
 
 
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.android.psiak.R;
-import com.example.android.psiak.model.AnimalType;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 

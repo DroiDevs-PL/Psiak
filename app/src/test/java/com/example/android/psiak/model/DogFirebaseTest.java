@@ -1,4 +1,4 @@
-package com.example.android.psiak;
+package com.example.android.psiak.model;
 
 import com.example.android.psiak.model.DogFirebase;
 

@@ -37,7 +37,7 @@ import com.example.android.psiak.model.Animal;
 import com.example.android.psiak.model.DogFirebase;
 import com.example.android.psiak.ui.aboutUs.AboutUsActivity;
 import com.example.android.psiak.ui.addAnimal.AddAnimalActivity;
-import com.example.android.psiak.ui.favouriteView.FavouriteActivity;
+import com.example.android.psiak.ui.favourite.FavouriteActivity;
 import com.example.android.psiak.ui.settings.SettingsActivity;
 import com.example.android.psiak.utils.GooglePlayUtils;
 import com.example.android.psiak.ui.shelters.SheltersActivity;

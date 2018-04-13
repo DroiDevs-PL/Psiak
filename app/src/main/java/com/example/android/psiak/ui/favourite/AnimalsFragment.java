@@ -1,4 +1,4 @@
-package com.example.android.psiak.ui.favouriteView;
+package com.example.android.psiak.ui.favourite;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

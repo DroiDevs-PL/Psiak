@@ -1,4 +1,4 @@
-package com.example.android.psiak.ui.favouriteView;
+package com.example.android.psiak.ui.favourite;
 
 
 import android.content.Context;
